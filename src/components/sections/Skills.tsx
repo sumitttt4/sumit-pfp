@@ -30,12 +30,6 @@ const Skills = () => {
       color: "from-purple-500 to-pink-500"
     },
     {
-      title: "Backend & Database",
-      icon: Database,
-      skills: ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "REST APIs", "GraphQL"],
-      color: "from-green-500 to-emerald-500"
-    },
-    {
       title: "Tools & Frameworks",
       icon: Globe,
       skills: ["Git", "Docker", "Webpack", "Vite", "Jest", "Cypress"],
@@ -71,7 +65,7 @@ const Skills = () => {
         </motion.div>
 
         {/* Skill Categories */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.title}

@@ -89,14 +89,14 @@ const Hero = () => {
             className="flex items-center justify-center space-x-6 pt-8"
           >
             <motion.a
-              href="https://github.com/sumitsharma"
+              href="https://github.com/sumitttt4"
               whileHover={{ scale: 1.2, rotate: 5 }}
               className="p-3 card-glass rounded-full hover:bg-accent/10 transition-colors"
             >
               <Github size={24} />
             </motion.a>
             <motion.a
-              href="mailto:sumit@example.com"
+              href="mailto:Sumitsharma9128@gmail.com"
               whileHover={{ scale: 1.2, rotate: -5 }}
               className="p-3 card-glass rounded-full hover:bg-accent/10 transition-colors"
             >
@@ -105,22 +105,6 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center space-y-2 text-muted-foreground"
-          >
-            <span className="text-sm">Scroll Down</span>
-            <ArrowDown size={20} />
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   );

@@ -8,13 +8,13 @@ const Footer = () => {
     {
       name: 'GitHub',
       icon: Github,
-      url: 'https://github.com/sumitsharma',
+      url: 'https://github.com/sumitttt4',
       color: 'hover:text-white'
     },
     {
       name: 'Email',
       icon: Mail,
-      url: 'mailto:sumit.sharma@example.com',
+      url: 'mailto:Sumitsharma9128@gmail.com',
       color: 'hover:text-blue-400'
     },
     {
