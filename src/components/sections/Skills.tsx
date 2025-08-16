@@ -20,19 +20,19 @@ const Skills = () => {
     {
       title: "Frontend Development",
       icon: Code,
-      skills: ["React.js", "TypeScript", "Next.js", "Vue.js", "HTML5", "CSS3"],
+      skills: ["React.js", "TypeScript"],
       color: "from-blue-500 to-cyan-500"
     },
     {
       title: "UI/UX Design",
       icon: Palette,
-      skills: ["Figma", "Adobe XD", "Sketch", "Prototyping", "Wireframing", "User Research"],
+      skills: ["Figma", "Adobe XD", "framer", "Prototyping"],
       color: "from-purple-500 to-pink-500"
     },
     {
       title: "Tools & Frameworks",
       icon: Globe,
-      skills: ["Git", "Docker", "Webpack", "Vite", "Jest", "Cypress"],
+      skills: ["Git", "Github", "Webpack", "Vite"],
       color: "from-orange-500 to-red-500"
     }
   ];
@@ -42,7 +42,6 @@ const Skills = () => {
     { name: "TypeScript", icon: Code, delay: 0.1 },
     { name: "Figma", icon: Figma, delay: 0.2 },
     { name: "GitHub", icon: Github, delay: 0.3 },
-    { name: "Mobile", icon: Smartphone, delay: 0.4 },
     { name: "Performance", icon: Zap, delay: 0.5 }
   ];
 
