@@ -57,7 +57,7 @@ const Header = () => {
                 whileHover={{ scale: 1.05 }}
                 className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent hover:opacity-90 transition"
               >
-                Sumit Sharma
+                SS4
               </motion.a>
 
               {/* Desktop Navigation */}

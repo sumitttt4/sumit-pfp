@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
+import { useHref } from 'react-router-dom';
 
 const Projects = () => {
   const ref = useRef(null);
@@ -11,8 +12,9 @@ const Projects = () => {
     {
       title: "ReportFlow",
       description: "A modern reporting dashboard with real-time analytics and data visualization.",
-      tech: ["React", "TypeScript", "Chart.js", "Tailwind CSS"],
+      tech: ["React", "TypeScript", "Figma", "Tailwind CSS"],
       liveUrl: "https://reportflow.netlify.app/",
+      githubUrl: "https://github.com/sumitttt4/reportflow",
       gradient: "from-blue-500 to-purple-600"
     },
     {
@@ -20,20 +22,23 @@ const Projects = () => {
       description: "Interactive emotional journey tracker with scroll-based animations and smooth transitions.",
       tech: ["React", "Framer Motion", "GSAP", "CSS3"],
       liveUrl: "https://emotional-flow-scroll.vercel.app/",
+      githubUrl: "https://github.com/sumitttt4/emotional-flow",
       gradient: "from-pink-500 to-orange-500"
     },
     {
       title: "Recurring Ease",
       description: "Subscription management platform with automated billing and customer portal.",
-      tech: ["React", "Node.js", "Stripe API", "MongoDB"],
+      tech: ["React", "Figma", "Stripe API"],
       liveUrl: "https://recurring-ease.vercel.app/",
+      githubUrl: "https://github.com/sumitttt4/recurring-ease",
       gradient: "from-green-500 to-teal-600"
     },
     {
       title: "Chemical Cleaners",
       description: "E-commerce platform for industrial cleaning supplies with inventory management.",
-      tech: ["React", "Redux", "Express.js", "PostgreSQL"],
-      liveUrl: "https://chemicalcleanes-theta.vercel.app/",
+      tech: ["React", "Express.js", "Framer Motion"],
+      liveUrl: "https://chemical-cleaners-theta.vercel.app/",
+      githubUrl: "https://github.com/sumitttt4/chemical-cleaners",
       gradient: "from-indigo-500 to-blue-600"
     }
   ];
@@ -69,7 +74,7 @@ const Projects = () => {
               <div className="card-glass card-floating rounded-2xl p-6 h-full border border-border/50 relative overflow-hidden">
                 {/* Gradient Background */}
                 <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient}`}></div>
-                
+
                 {/* Project Content */}
                 <div className="space-y-4">
                   <div className="flex items-start justify-between">
@@ -85,7 +90,9 @@ const Projects = () => {
                         <ExternalLink size={20} />
                       </motion.a>
                       <motion.a
-                        href="#"
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         whileHover={{ scale: 1.1, rotate: -10 }}
                         className="p-2 card-glass rounded-lg hover:bg-accent/10 transition-colors"
                       >
@@ -93,11 +100,11 @@ const Projects = () => {
                       </motion.a>
                     </div>
                   </div>
-                  
+
                   <p className="text-muted-foreground leading-relaxed">
                     {project.description}
                   </p>
-                  
+
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <motion.span
@@ -127,7 +134,9 @@ const Projects = () => {
           className="text-center mt-12"
         >
           <motion.a
-            href="https://github.com/sumitsharma"
+            href="https://github.com/sumitttt4"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center space-x-2 btn-ghost px-8 py-4 rounded-xl font-medium"
