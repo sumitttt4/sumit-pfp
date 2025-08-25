@@ -161,7 +161,7 @@ const Hero = () => {
           {/* Simple greeting */}
           <motion.p 
             variants={itemVariants}
-            className="text-sm font-medium text-muted-foreground mb-6 font-inter"
+            className="text-sm font-medium text-muted-foreground/90 mb-6 font-inter"
           >
             Hello, I'm
           </motion.p>
@@ -179,7 +179,7 @@ const Hero = () => {
           {/* Role */}
           <motion.p 
             variants={itemVariants}
-            className="text-xl md:text-2xl font-medium text-foreground/70 mb-6 font-inter"
+            className="text-xl md:text-2xl font-medium text-foreground/80 mb-6 font-inter"
           >
             Frontend Developer • UI/UX Designer
           </motion.p>
@@ -187,7 +187,7 @@ const Hero = () => {
           {/* Simple description */}
           <motion.p 
             variants={itemVariants}
-            className="max-w-lg mx-auto text-base text-muted-foreground leading-relaxed mb-12 font-inter"
+            className="max-w-lg mx-auto text-base text-muted-foreground/90 leading-relaxed mb-12 font-inter"
           >
             I craft clean, responsive digital products with a focus on intuitive user experiences.
           </motion.p>
@@ -224,7 +224,7 @@ const Hero = () => {
             <motion.a 
               href="https://github.com/sumitttt4" 
               whileHover={{ scale: 1.1 }}
-              className="p-3 text-muted-foreground hover:text-primary transition-colors"
+              className="p-3 text-muted-foreground/80 hover:text-primary transition-colors duration-300 rounded-lg hover:bg-primary/10"
               aria-label="GitHub"
             >
               <Github className="w-5 h-5" />
@@ -232,7 +232,7 @@ const Hero = () => {
             <motion.a 
               href="mailto:Sumitsharma9128@gmail.com" 
               whileHover={{ scale: 1.1 }}
-              className="p-3 text-muted-foreground hover:text-primary transition-colors"
+              className="p-3 text-muted-foreground/80 hover:text-primary transition-colors duration-300 rounded-lg hover:bg-primary/10"
               aria-label="Email"
             >
               <Mail className="w-5 h-5" />
@@ -240,7 +240,7 @@ const Hero = () => {
             <motion.a 
               href="https://www.linkedin.com/" 
               whileHover={{ scale: 1.1 }}
-              className="p-3 text-muted-foreground hover:text-primary transition-colors"
+              className="p-3 text-muted-foreground/80 hover:text-primary transition-colors duration-300 rounded-lg hover:bg-primary/10"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
