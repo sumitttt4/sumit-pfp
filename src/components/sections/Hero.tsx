@@ -1,111 +1,249 @@
-import { Canvas } from '@react-three/fiber';
 import { motion } from 'framer-motion';
-import { Github, Mail } from 'lucide-react';
-import { FloatingShapes } from '../3D/FloatingShapes';
+import { Github, Mail, Linkedin } from 'lucide-react';
 
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      
-      {/* Crimson Shadow Background with Top Glow */}
-      <div
-        className="absolute inset-0 z-0 animate-aurora"
-        style={{
-          background: `
-            radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 80, 120, 0.25), transparent 70%),
-            #000000
-          `,
-        }}
-      />
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  } as const;
 
-      {/* 3D Canvas */}
-      <div className="absolute inset-0 z-10 opacity-30">
-        <Canvas camera={{ position: [0, 0, 5] }}>
-          <FloatingShapes />
-        </Canvas>
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut" as const
+      }
+    }
+  } as const;
+
+  return (
+    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24">
+      {/* Animated blur background */}
+      <div className="absolute inset-0 bg-background">
+        {/* Floating blur shapes */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Shape 1 - Top left */}
+          <motion.div
+            className="absolute w-72 h-72 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl"
+            style={{ top: '10%', left: '10%' }}
+            animate={{
+              x: [0, 30, 0],
+              y: [0, -20, 0],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          
+          {/* Shape 2 - Top right */}
+          <motion.div
+            className="absolute w-96 h-96 bg-gradient-to-r from-accent/15 to-primary/15 rounded-full blur-3xl"
+            style={{ top: '20%', right: '15%' }}
+            animate={{
+              x: [0, -40, 0],
+              y: [0, 30, 0],
+              scale: [1, 0.9, 1],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+          />
+          
+          {/* Shape 3 - Bottom left */}
+          <motion.div
+            className="absolute w-80 h-80 bg-gradient-to-r from-primary/10 to-accent/25 rounded-full blur-3xl"
+            style={{ bottom: '15%', left: '20%' }}
+            animate={{
+              x: [0, 20, 0],
+              y: [0, -25, 0],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2
+            }}
+          />
+          
+          {/* Shape 4 - Bottom right */}
+          <motion.div
+            className="absolute w-64 h-64 bg-gradient-to-r from-accent/20 to-primary/10 rounded-full blur-3xl"
+            style={{ bottom: '10%', right: '10%' }}
+            animate={{
+              x: [0, -15, 0],
+              y: [0, 20, 0],
+              scale: [1, 0.8, 1],
+            }}
+            transition={{
+              duration: 9,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 3
+            }}
+          />
+          
+          {/* Center floating orb */}
+          <motion.div
+            className="absolute w-56 h-56 bg-gradient-to-r from-primary/5 to-accent/15 rounded-full blur-2xl"
+            style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+            animate={{
+              scale: [1, 1.3, 1],
+              rotate: [0, 180, 360],
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
+          
+          {/* Additional small floating particles */}
+          <motion.div
+            className="absolute w-32 h-32 bg-primary/10 rounded-full blur-xl"
+            style={{ top: '30%', left: '70%' }}
+            animate={{
+              x: [0, 15, 0],
+              y: [0, -10, 0],
+              opacity: [0.3, 0.7, 0.3],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 4
+            }}
+          />
+          
+          <motion.div
+            className="absolute w-40 h-40 bg-accent/8 rounded-full blur-2xl"
+            style={{ bottom: '40%', left: '60%' }}
+            animate={{
+              x: [0, -20, 0],
+              y: [0, 15, 0],
+              opacity: [0.2, 0.5, 0.2],
+            }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 5
+            }}
+          />
+        </div>
+        
+        {/* Subtle grid overlay for texture */}
+        <div className="absolute inset-0 bg-grid-small-black/[0.02] dark:bg-grid-small-white/[0.02]" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-20 text-center max-w-4xl mx-auto px-6">
-        <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="space-y-8"
+      {/* Main content */}
+      <div className="relative z-20 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          {/* Heading */}
-          <motion.h1 
-            className="text-5xl md:text-7xl font-extrabold leading-tight"
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+          {/* Simple greeting */}
+          <motion.p 
+            variants={itemVariants}
+            className="text-sm font-medium text-muted-foreground mb-6 font-inter"
           >
-            <span className="bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
-              Sumit
-            </span>{' '}
-            <span className="text-white">Sharma</span>
+            Hello, I'm
+          </motion.p>
+
+          {/* Clean name - no animations */}
+          <motion.h1 
+            variants={itemVariants}
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 font-poppins"
+          >
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Sumit Sharma
+            </span>
           </motion.h1>
 
-          {/* Subtitle */}
-          <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="space-y-4"
+          {/* Role */}
+          <motion.p 
+            variants={itemVariants}
+            className="text-xl md:text-2xl font-medium text-foreground/70 mb-6 font-inter"
           >
-            <h2 className="text-xl md:text-2xl font-medium text-gray-300">
-              Front End Developer & UI/UX Designer
-            </h2>
-            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              Crafting exceptional digital experiences with modern technologies and creative design solutions
-            </p>
+            Frontend Developer • UI/UX Designer
+          </motion.p>
+
+          {/* Simple description */}
+          <motion.p 
+            variants={itemVariants}
+            className="max-w-lg mx-auto text-base text-muted-foreground leading-relaxed mb-12 font-inter"
+          >
+            I craft clean, responsive digital products with a focus on intuitive user experiences.
+          </motion.p>
+
+          {/* Clean buttons */}
+          <motion.div 
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+          >
+            <motion.a 
+              href="#projects" 
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="btn-primary font-poppins"
+            >
+              View Work
+            </motion.a>
+
+            <motion.a 
+              href="#contact" 
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="btn-secondary font-poppins"
+            >
+              Contact
+            </motion.a>
           </motion.div>
 
-          {/* Buttons */}
-          <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8"
+          {/* Simple social links */}
+          <motion.div 
+            variants={itemVariants}
+            className="flex items-center justify-center gap-4"
           >
-            <motion.a
-              href="#projects"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 rounded-xl font-medium text-white bg-gradient-to-r from-pink-500 to-red-500 shadow-lg shadow-pink-500/30 hover:shadow-pink-500/50 transition-all"
+            <motion.a 
+              href="https://github.com/sumitttt4" 
+              whileHover={{ scale: 1.1 }}
+              className="p-3 text-muted-foreground hover:text-primary transition-colors"
+              aria-label="GitHub"
             >
-              View Projects
+              <Github className="w-5 h-5" />
             </motion.a>
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 rounded-xl font-medium border border-gray-500/50 text-gray-200 hover:bg-white/10 transition-all"
+            <motion.a 
+              href="mailto:Sumitsharma9128@gmail.com" 
+              whileHover={{ scale: 1.1 }}
+              className="p-3 text-muted-foreground hover:text-primary transition-colors"
+              aria-label="Email"
             >
-              Contact Me
+              <Mail className="w-5 h-5" />
             </motion.a>
-          </motion.div>
-
-          {/* Social Links */}
-          <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
-            className="flex items-center justify-center space-x-6 pt-8"
-          >
-            <motion.a
-              href="https://github.com/sumitttt4"
-              whileHover={{ scale: 1.2, rotate: 5 }}
-              className="p-3 bg-white/5 backdrop-blur-sm rounded-full hover:bg-white/10 transition-colors"
+            <motion.a 
+              href="https://www.linkedin.com/" 
+              whileHover={{ scale: 1.1 }}
+              className="p-3 text-muted-foreground hover:text-primary transition-colors"
+              aria-label="LinkedIn"
             >
-              <Github size={24} />
-            </motion.a>
-            <motion.a
-              href="mailto:Sumitsharma9128@gmail.com"
-              whileHover={{ scale: 1.2, rotate: -5 }}
-              className="p-3 bg-white/5 backdrop-blur-sm rounded-full hover:bg-white/10 transition-colors"
-            >
-              <Mail size={24} />
+              <Linkedin className="w-5 h-5" />
             </motion.a>
           </motion.div>
         </motion.div>

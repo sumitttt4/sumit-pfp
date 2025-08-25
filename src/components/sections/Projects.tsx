@@ -1,150 +1,152 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { ExternalLink, Github } from 'lucide-react';
-import { useHref } from 'react-router-dom';
+import { motion, useInView } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
+import projectsData from '@/data/projects';
+import ProjectModal from '@/components/ProjectModal';
 
 const Projects = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: '-120px' });
 
-  const projects = [
-    {
-      title: "ReportFlow",
-      description: "A modern reporting dashboard with real-time analytics and data visualization.",
-      tech: ["React", "TypeScript", "Figma", "Tailwind CSS"],
-      liveUrl: "https://reportflow.netlify.app/",
-      githubUrl: "https://github.com/sumitttt4/reportflow",
-      gradient: "from-blue-500 to-purple-600"
-    },
-    {
-      title: "Emotional Flow",
-      description: "Interactive emotional journey tracker with scroll-based animations and smooth transitions.",
-      tech: ["React", "Framer Motion", "GSAP", "CSS3"],
-      liveUrl: "https://emotional-flow-scroll.vercel.app/",
-      githubUrl: "https://github.com/sumitttt4/emotional-flow",
-      gradient: "from-pink-500 to-orange-500"
-    },
-    {
-      title: "Recurring Ease",
-      description: "Subscription management platform with automated billing and customer portal.",
-      tech: ["React", "Figma", "Stripe API"],
-      liveUrl: "https://recurring-ease.vercel.app/",
-      githubUrl: "https://github.com/sumitttt4/recurring-ease",
-      gradient: "from-green-500 to-teal-600"
-    },
-    {
-      title: "Chemical Cleaners",
-      description: "E-commerce platform for industrial cleaning supplies with inventory management.",
-      tech: ["React", "Express.js", "Framer Motion"],
-      liveUrl: "https://chemical-cleaners-theta.vercel.app/",
-      githubUrl: "https://github.com/sumitttt4/chemical-cleaners",
-      gradient: "from-indigo-500 to-blue-600"
-    }
-  ];
+  const [active, setActive] = useState(null as null | string);
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-br from-secondary/30 to-background" ref={ref}>
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="projects" className="py-24 bg-background" ref={ref}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <span className="text-sm font-semibold text-primary tracking-wider uppercase mb-3 block">Portfolio</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Featured <span className="text-gradient">Projects</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Showcasing my latest work in web development and design
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            A collection of projects showcasing my skills in frontend development, UI/UX design, and modern web technologies
           </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-accent to-accent/50 mx-auto mt-6"></div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 50 }}
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projectsData.map((project, idx) => (
+            <motion.article
+              key={project.id}
+              initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              whileHover={{ y: -10 }}
-              className="group"
+              transition={{ duration: 0.6, delay: 0.1 * idx }}
+              className="card-modern card-hover group cursor-pointer"
+              onClick={() => setActive(project.id)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === 'Enter') setActive(project.id); }}
             >
-              <div className="card-glass card-floating rounded-2xl p-6 h-full border border-border/50 relative overflow-hidden">
-                {/* Gradient Background */}
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient}`}></div>
-
-                {/* Project Content */}
-                <div className="space-y-4">
-                  <div className="flex items-start justify-between">
-                    <h3 className="text-2xl font-bold text-gradient">{project.title}</h3>
-                    <div className="flex space-x-2">
-                      <motion.a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1, rotate: 10 }}
-                        className="p-2 card-glass rounded-lg hover:bg-accent/10 transition-colors"
-                      >
-                        <ExternalLink size={20} />
-                      </motion.a>
-                      <motion.a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1, rotate: -10 }}
-                        className="p-2 card-glass rounded-lg hover:bg-accent/10 transition-colors"
-                      >
-                        <Github size={20} />
-                      </motion.a>
+              {/* Project Image */}
+              <div className="aspect-video bg-muted rounded-xl overflow-hidden relative mb-6">
+                {project.image ? (
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                    loading="lazy" 
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                    <span className="text-lg font-medium">{project.title}</span>
+                  </div>
+                )}
+                
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-110">
+                    <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                      <ArrowUpRight className="w-6 h-6 text-white" />
                     </div>
                   </div>
+                </div>
+              </div>
 
-                  <p className="text-muted-foreground leading-relaxed">
-                    {project.description}
-                  </p>
+              {/* Project Content */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed line-clamp-2">
+                  {project.description}
+                </p>
 
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <motion.span
-                        key={tech}
-                        whileHover={{ scale: 1.05 }}
-                        className="px-3 py-1 text-xs font-medium bg-accent/20 text-accent rounded-full border border-accent/30"
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.slice(0, 3).map(tech => (
+                    <span key={tech} className="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">
+                      {tech}
+                    </span>
+                  ))}
+                  {project.tech.length > 3 && (
+                    <span className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-xs font-medium">
+                      +{project.tech.length - 3}
+                    </span>
+                  )}
                 </div>
 
-                {/* Hover Effect */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"
-                />
+                {/* Action Links */}
+                <div className="flex items-center gap-4 pt-2">
+                  {project.liveUrl && (
+                    <a 
+                      href={project.liveUrl} 
+                      target="_blank" 
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-2 text-primary hover:text-primary/80 text-sm font-semibold transition-colors group/link"
+                    >
+                      <ExternalLink className="w-4 h-4 group-hover/link:scale-110 transition-transform" />
+                      Live Demo
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a 
+                      href={project.githubUrl} 
+                      target="_blank" 
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-2 text-muted-foreground hover:text-foreground text-sm font-semibold transition-colors group/link"
+                    >
+                      <Github className="w-4 h-4 group-hover/link:scale-110 transition-transform" />
+                      Code
+                    </a>
+                  )}
+                </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 
+        {/* View More */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-center mt-12"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-16"
         >
-          <motion.a
-            href="https://github.com/sumitttt4"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center space-x-2 btn-ghost px-8 py-4 rounded-xl font-medium"
+          <a 
+            href="https://github.com/sumitttt4" 
+            target="_blank" 
+            rel="noreferrer" 
+            className="btn-secondary inline-flex items-center gap-2"
           >
-            <Github size={20} />
-            <span>View More Projects</span>
-          </motion.a>
+            <Github className="w-5 h-5" />
+            View All Projects
+          </a>
         </motion.div>
+
+        {/* Modal */}
+        <ProjectModal 
+          project={active ? projectsData.find(p => p.id === active) || null : null} 
+          onClose={() => setActive(null)} 
+        />
       </div>
     </section>
   );
