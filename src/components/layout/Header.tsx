@@ -6,30 +6,13 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
-  const [isDark, setIsDark] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved ? saved === 'dark' : true;
-  });
-
-  const toggleTheme = () => {
-    const newTheme = !isDark;
-    setIsDark(newTheme);
-    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
-    
-    if (newTheme) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  };
+  // Always use dark theme for premium look
+  const [isDark] = useState(true);
 
   useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDark]);
+    // Force dark theme
+    document.documentElement.classList.add('dark');
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -38,10 +21,10 @@ const Header = () => {
   }, []);
 
   const navigation = [
-    { name: 'Home', href: '#home', id: 'home' },
+    { name: 'Home', href: '#hero', id: 'hero' },
     { name: 'About', href: '#about', id: 'about' },
     { name: 'Projects', href: '#projects', id: 'projects' },
-    { name: 'Skills', href: '#skills', id: 'skills' },
+    { name: 'Services', href: '#services', id: 'services' },
     { name: 'Contact', href: '#contact', id: 'contact' },
   ];
 
@@ -51,33 +34,33 @@ const Header = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-background/95 backdrop-blur-xl shadow-lg border-b border-border' : 'bg-background/80 backdrop-blur-md'
+        scrolled 
+          ? 'bg-background/80 backdrop-blur-sm border-b border-border' 
+          : 'bg-background/50 border-b border-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Clean Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="flex-shrink-0"
           >
-            <a href="#home" className="text-2xl font-bold text-gradient">
+            <a href="#home" className="text-xl font-semibold text-foreground tracking-tight">
               Sumit Sharma
             </a>
           </motion.div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          {/* Figma-style Navigation */}
+          <nav className="hidden md:flex items-center space-x-2">
             {navigation.map((item) => (
               <motion.a
                 key={item.name}
                 href={item.href}
-                whileHover={{ y: -2 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 hover:text-primary ${
-                  activeSection === item.id 
-                    ? 'nav-link-active' 
-                    : 'text-foreground/70 hover:text-foreground'
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className={`nav-item ${
+                  activeSection === item.id ? 'active' : ''
                 }`}
                 onClick={() => setActiveSection(item.id)}
               >
@@ -85,47 +68,34 @@ const Header = () => {
               </motion.a>
             ))}
             
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary ml-4"
+            <motion.a
+              href="https://drive.google.com/file/d/1TSW4-DH1mQuI1qxlv5HqfFA-WPlAeQBm/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="btn-primary ml-6"
             >
               <Download className="w-4 h-4 mr-2" />
               Resume
-            </motion.button>
+            </motion.a>
           </nav>
 
-          {/* Theme Toggle & Mobile Menu */}
-          <div className="flex items-center space-x-4">
-            {/* Theme Toggle */}
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
             <motion.button
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleTheme}
-              className="p-2 rounded-xl bg-muted hover:bg-muted/80 transition-all duration-300 hover:scale-105"
-              aria-label="Toggle theme"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setIsOpen(!isOpen)}
+              className="btn-icon"
+              aria-label="Toggle menu"
             >
-              {isDark ? (
-                <Sun className="h-5 w-5 text-foreground" />
+              {isOpen ? (
+                <X className="h-5 w-5" />
               ) : (
-                <Moon className="h-5 w-5 text-foreground" />
+                <Menu className="h-5 w-5" />
               )}
             </motion.button>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <motion.button
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-xl bg-muted hover:bg-muted/80 transition-all duration-300"
-                aria-label="Toggle menu"
-              >
-                {isOpen ? (
-                  <X className="h-6 w-6 text-foreground" />
-                ) : (
-                  <Menu className="h-6 w-6 text-foreground" />
-                )}
-              </motion.button>
-            </div>
           </div>
         </div>
       </div>
@@ -140,7 +110,7 @@ const Header = () => {
             transition={{ duration: 0.3 }}
             className="md:hidden border-t border-border overflow-hidden"
           >
-            <div className="px-4 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-xl">
+            <div className="px-4 pt-4 pb-6 space-y-2 bg-background/80 backdrop-blur-sm">
               {navigation.map((item, index) => (
                 <motion.a
                   key={item.name}
@@ -148,10 +118,10 @@ const Header = () => {
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: index * 0.1 }}
-                  className={`block px-3 py-2 rounded-xl text-base font-medium transition-all duration-300 ${
+                  className={`block px-4 py-3 rounded-lg text-base transition-colors ${
                     activeSection === item.id
-                      ? 'text-primary bg-primary/10'
-                      : 'text-foreground/70 hover:text-foreground hover:bg-muted'
+                      ? 'text-foreground bg-secondary'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
                   }`}
                   onClick={() => {
                     setActiveSection(item.id);
@@ -162,16 +132,19 @@ const Header = () => {
                 </motion.a>
               ))}
               
-              <motion.button
+              <motion.a
+                href="https://drive.google.com/file/d/1TSW4-DH1mQuI1qxlv5HqfFA-WPlAeQBm/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: navigation.length * 0.1 }}
-                className="btn-primary w-full mt-4"
+                className="btn-primary w-full mt-6"
                 onClick={() => setIsOpen(false)}
               >
                 <Download className="w-4 h-4 mr-2" />
                 Resume
-              </motion.button>
+              </motion.a>
             </div>
           </motion.div>
         )}

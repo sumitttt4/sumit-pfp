@@ -1,100 +1,57 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { 
-  Code2, 
-  Database, 
-  Palette, 
-  Globe, 
-  Layers, 
-  Zap,
-  Figma,
-  Github,
-  FileCode,
-  Smartphone
-} from 'lucide-react';
 
 const Skills = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   const skills = [
-    { name: "React.js", icon: Code2, color: "text-blue-500" },
-    { name: "TypeScript", icon: FileCode, color: "text-blue-600" }, 
-    { name: "JavaScript", icon: Code2, color: "text-yellow-500" },
-    { name: "Next.js", icon: Globe, color: "text-gray-800 dark:text-white" },
-    { name: "Tailwind CSS", icon: Palette, color: "text-cyan-500" },
-    { name: "Framer Motion", icon: Zap, color: "text-purple-500" },
-    { name: "Figma", icon: Figma, color: "text-orange-500" },
-    { name: "Git & GitHub", icon: Github, color: "text-gray-700 dark:text-gray-300" },
-    { name: "HTML5 & CSS3", icon: FileCode, color: "text-orange-600" },
-    { name: "Responsive Design", icon: Smartphone, color: "text-green-500" }
+    'Figma', 'Adobe XD', 'React', 'TypeScript', 'JavaScript', 
+    'Next.js', 'Tailwind CSS', 'Framer Motion', 'Git', 'VS Code',
+    'User Research', 'Prototyping', 'Design Systems', 'HTML5', 'CSS3'
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
-
   return (
-    <section id="skills" className="py-24 bg-gradient-to-b from-background to-muted/30" ref={ref}>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header */}
+    <section id="skills" className="py-20">
+      <div className="max-w-4xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          viewport={{ once: true }}
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-poppins">
-            Skills & Technologies
+          <h2 className="text-3xl font-semibold text-foreground mb-8">
+            Skills & Tools
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-inter">
-            Technologies I use to build modern digital experiences
-          </p>
         </motion.div>
 
-        {/* Skills Grid */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="notion-card"
         >
-          {skills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              variants={itemVariants}
-              className="group"
-            >
-              <div className="p-4 md:p-6 bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl text-center transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:border-primary/30 hover:bg-card dark:hover:bg-card/90">
-                <div className="flex flex-col items-center gap-3">
-                  <skill.icon className={`w-6 h-6 md:w-8 md:h-8 ${skill.color} transition-all duration-300 group-hover:scale-110`} />
-                  <span className="text-sm md:text-base font-medium text-foreground group-hover:text-primary transition-colors font-inter">
-                    {skill.name}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          <div className="flex flex-wrap gap-3">
+            {skills.map((skill, index) => (
+              <motion.span 
+                key={skill}
+                className="px-3 py-2 bg-muted text-muted-foreground rounded text-sm simple-hover cursor-pointer"
+                initial={{ opacity: 0, scale: 0.8, rotateY: -90 }}
+                whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+                transition={{ delay: index * 0.05, duration: 0.6 }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  scale: 1.1, 
+                  rotateY: 10,
+                  rotateX: -5,
+                  y: -2,
+                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)" 
+                }}
+                whileTap={{ scale: 0.95 }}
+                style={{ transformStyle: "preserve-3d" } as any}
+              >
+                {skill}
+              </motion.span>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

@@ -8,6 +8,13 @@ export type Project = {
   liveUrl?: string;
   githubUrl?: string;
   gradient?: string;
+  category?: string;
+  duration?: string;
+  team?: string;
+  problem?: string;
+  solution?: string;
+  results?: string[];
+  role?: string;
 };
 
 // Import local assets so Vite resolves them correctly
@@ -24,12 +31,13 @@ const projects: Project[] = [
   {
     id: 'reportflow',
     title: 'ReportFlow',
-    description: 'A modern reporting dashboard with real-time analytics and data visualization.',
-  image: reportflowImg,
-    tech: ['React', 'TypeScript', 'Tailwind CSS', 'Chart.js', 'Node.js', 'PostgreSQL'],
+    description: 'Enterprise reporting dashboard with real-time analytics, custom visualizations, and automated insights.',
+    image: reportflowImg,
+    tech: ['Figma', 'React', 'TypeScript', 'D3.js', 'Node.js', 'PostgreSQL'],
     liveUrl: 'https://reportflow.netlify.app/',
     githubUrl: 'https://github.com/sumitttt4/reportflow',
-    gradient: 'from-blue-500 to-purple-600'
+    gradient: 'from-blue-500 to-purple-600',
+    category: 'Dashboard'
   },
   {
     id: 'emotional-flow',
@@ -55,13 +63,14 @@ const projects: Project[] = [
   {
     id: 'ai-resume-builder',
     title: 'AI Resume Builder',
-    description: 'An AI-powered web app that enables one-click generation of professional resumes, cover letters, and portfolio content. Designed in Figma for clean and intuitive UI, developed using React, and integrated with AI for seamless, instant output. Deployed on Vercel with sleek light/dark modes and a modern card-style layout for a refined user experience.',
+    description: 'AI-powered platform that generates professional resumes, cover letters, and portfolios with one-click simplicity.',
     image: resumeBuilderImg,
     screenshots: [resumeBuilderImg],
-    tech: ['Figma', 'React', 'AI', 'Vercel'],
+    tech: ['Figma', 'React', 'TypeScript', 'AI Integration', 'Vercel'],
     liveUrl: 'https://ai-resume-builder.vercel.app/',
     githubUrl: 'https://github.com/sumitttt4/ai-resume-builder',
-    gradient: 'from-violet-500 to-purple-600'
+    gradient: 'from-violet-500 to-purple-600',
+    category: 'AI-Powered Tool'
   }
   ,
   {

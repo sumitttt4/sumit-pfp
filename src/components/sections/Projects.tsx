@@ -1,152 +1,123 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ExternalLink, Github } from 'lucide-react';
 import projectsData from '@/data/projects';
-import ProjectModal from '@/components/ProjectModal';
 
 const Projects = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-120px' });
-
-  const [active, setActive] = useState(null as null | string);
-
   return (
-    <section id="projects" className="py-24 bg-background" ref={ref}>
+    <section id="projects" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-semibold text-primary tracking-wider uppercase mb-3 block">Portfolio</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Featured <span className="text-gradient">Projects</span>
+          <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
+            Featured Projects
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            A collection of projects showcasing my skills in frontend development, UI/UX design, and modern web technologies
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Real projects with real impact. Each case study shows the problem, solution, and measurable results.
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projectsData.map((project, idx) => (
-            <motion.article
+        <div className="space-y-12">
+          {projectsData.slice(0, 3).map((project, index) => (
+            <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 * idx }}
-              className="card-modern card-hover group cursor-pointer"
-              onClick={() => setActive(project.id)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => { if (e.key === 'Enter') setActive(project.id); }}
+              initial={{ opacity: 0, y: 40, rotateX: 15 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              viewport={{ once: true }}
+              whileHover={{ 
+                y: -8, 
+                rotateX: -3,
+                scale: 1.02,
+                boxShadow: "0 35px 70px -12px rgba(0, 0, 0, 0.3)" 
+              }}
+              className="notion-card overflow-hidden cursor-pointer"
+              style={{ transformStyle: "preserve-3d" } as any}
             >
-              {/* Project Image */}
-              <div className="aspect-video bg-muted rounded-xl overflow-hidden relative mb-6">
-                {project.image ? (
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                    loading="lazy" 
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                    <span className="text-lg font-medium">{project.title}</span>
+              {/* Project Header */}
+              <div className="mb-6">
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
+                  <div>
+                    <h3 className="text-2xl font-semibold text-foreground mb-2">
+                      {project.title}
+                    </h3>
+                    {project.category && (
+                      <span className="inline-flex items-center px-3 py-1 bg-secondary text-foreground text-sm rounded-full">
+                        {project.category}
+                      </span>
+                    )}
                   </div>
-                )}
-                
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-110">
-                    <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                      <ArrowUpRight className="w-6 h-6 text-white" />
-                    </div>
+                  
+                  <div className="flex items-center gap-3">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary inline-flex items-center gap-2"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        View Live
+                      </a>
+                    )}
+                    
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-secondary inline-flex items-center gap-2"
+                      >
+                        <Github className="w-4 h-4" />
+                        Code
+                      </a>
+                    )}
                   </div>
                 </div>
-              </div>
 
-              {/* Project Content */}
-              <div className="space-y-4">
-                <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed line-clamp-2">
+                <p className="text-muted-foreground text-lg leading-relaxed">
                   {project.description}
                 </p>
-
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.slice(0, 3).map(tech => (
-                    <span key={tech} className="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">
-                      {tech}
-                    </span>
-                  ))}
-                  {project.tech.length > 3 && (
-                    <span className="px-3 py-1 bg-muted text-muted-foreground rounded-lg text-xs font-medium">
-                      +{project.tech.length - 3}
-                    </span>
-                  )}
-                </div>
-
-                {/* Action Links */}
-                <div className="flex items-center gap-4 pt-2">
-                  {project.liveUrl && (
-                    <a 
-                      href={project.liveUrl} 
-                      target="_blank" 
-                      rel="noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex items-center gap-2 text-primary hover:text-primary/80 text-sm font-semibold transition-colors group/link"
-                    >
-                      <ExternalLink className="w-4 h-4 group-hover/link:scale-110 transition-transform" />
-                      Live Demo
-                    </a>
-                  )}
-                  {project.githubUrl && (
-                    <a 
-                      href={project.githubUrl} 
-                      target="_blank" 
-                      rel="noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex items-center gap-2 text-muted-foreground hover:text-foreground text-sm font-semibold transition-colors group/link"
-                    >
-                      <Github className="w-4 h-4 group-hover/link:scale-110 transition-transform" />
-                      Code
-                    </a>
-                  )}
-                </div>
               </div>
-            </motion.article>
+
+
+
+              {/* Tech Stack */}
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((tech) => (
+                  <span 
+                    key={tech}
+                    className="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* View More */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-16"
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="text-center mt-12"
         >
           <a 
             href="https://github.com/sumitttt4" 
             target="_blank" 
             rel="noreferrer" 
-            className="btn-secondary inline-flex items-center gap-2"
+            className="btn-primary inline-flex items-center gap-2"
           >
-            <Github className="w-5 h-5" />
+            <Github className="w-4 h-4" />
             View All Projects
           </a>
         </motion.div>
-
-        {/* Modal */}
-        <ProjectModal 
-          project={active ? projectsData.find(p => p.id === active) || null : null} 
-          onClose={() => setActive(null)} 
-        />
       </div>
     </section>
   );
