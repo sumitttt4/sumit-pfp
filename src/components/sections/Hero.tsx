@@ -47,7 +47,8 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
             whileHover={{ rotateX: -2, y: -2 }}
           >
-            I design and build digital products with clean interfaces and thoughtful user experiences.
+            I design comprehensive digital experiences from mobile apps to SaaS platforms, 
+            specializing in user-centered design, data visualization, and conversion optimization.
           </motion.p>
 
           {/* Simple Buttons */}

@@ -17,7 +17,8 @@ const Projects = () => {
             Featured Projects
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Real projects with real impact. Each case study shows the problem, solution, and measurable results.
+            UI/UX design projects showcasing complete user experiences from research to final implementation. 
+            Each project demonstrates design thinking, user-centered solutions, and cross-platform consistency.
           </p>
         </motion.div>
 

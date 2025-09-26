@@ -2,9 +2,11 @@ import { motion } from 'framer-motion';
 
 const Skills = () => {
   const skills = [
-    'Figma', 'Adobe XD', 'React', 'TypeScript', 'JavaScript', 
-    'Next.js', 'Tailwind CSS', 'Framer Motion', 'Git', 'VS Code',
-    'User Research', 'Prototyping', 'Design Systems', 'HTML5', 'CSS3'
+    'UI/UX Design', 'Figma', 'User Research', 'Prototyping', 'Design Systems',
+    'Mobile Design', 'Dashboard Design', 'SaaS Landing Pages', 'Conversion Optimization',
+    'Brand Design', 'Data Visualization', 'Information Architecture', 'Marketing Design',
+    'React', 'TypeScript', 'JavaScript', 'Next.js', 'Tailwind CSS', 
+    'Framer Motion', 'Wireframing', 'User Testing', 'Cross-platform Design'
   ];
 
   return (
