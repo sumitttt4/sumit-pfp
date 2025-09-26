@@ -29,15 +29,48 @@ import resumeBuilderImg from '@/assets/ResumeBuilder.png';
 
 const projects: Project[] = [
   {
-    id: 'reportflow',
-    title: 'ReportFlow',
-    description: 'Enterprise reporting dashboard with real-time analytics, custom visualizations, and automated insights.',
-    image: reportflowImg,
-    tech: ['Figma', 'React', 'TypeScript', 'D3.js', 'Node.js', 'PostgreSQL'],
-    liveUrl: 'https://reportflow.netlify.app/',
-    githubUrl: 'https://github.com/sumitttt4/reportflow',
-    gradient: 'from-blue-500 to-purple-600',
-    category: 'Dashboard'
+    id: 'expense-finance-platform',
+    title: 'Expense - Personal Finance Platform',
+    description: 'Comprehensive financial management platform featuring both mobile and desktop interfaces. Designed complete user experience from expense tracking to financial insights with real-time data visualization and budget management tools.',
+    image: emotionFlowImg, // We'll update this with actual expense app screenshots
+    tech: ['UI/UX Design', 'Figma', 'Mobile Design', 'Dashboard Design', 'Data Visualization', 'Prototyping'],
+    liveUrl: '#figma-prototype', // Update with Figma prototype link
+    githubUrl: '#design-files', 
+    gradient: 'from-emerald-500 to-blue-600',
+    category: 'UI/UX Design',
+    duration: '2 weeks',
+    role: 'UI/UX Designer',
+    problem: 'Users struggle to effectively track and manage personal finances across different devices, lacking clear insights into spending patterns and budget management.',
+    solution: 'Designed a cohesive multi-platform experience with intuitive mobile expense tracking and comprehensive desktop dashboard for detailed financial analysis and reporting.',
+    results: [
+      'Seamless cross-platform user experience',
+      'Intuitive onboarding flow with educational illustrations',
+      'Real-time expense categorization and tracking',
+      'Comprehensive financial dashboard with data visualization',
+      'Dark mode interface optimized for daily usage'
+    ]
+  },
+  {
+    id: 'adsmaker-saas-platform',
+    title: 'AdsMaker - AI Content Platform',
+    description: 'SaaS landing page design for AI-powered content creation tool. Focused on conversion optimization with strategic visual hierarchy, compelling copywriting, and social proof integration for Instagram ads content generation.',
+    image: emotionFlowImg, // We'll replace with actual AdsMaker screenshots
+    tech: ['UI/UX Design', 'Figma', 'Landing Page Design', 'SaaS Design', 'Conversion Optimization', 'Brand Design'],
+    liveUrl: '#adsmaker-prototype',
+    githubUrl: '#adsmaker-design',
+    gradient: 'from-purple-500 to-orange-500',
+    category: 'SaaS Landing Page',
+    duration: '1 week',
+    role: 'UI/UX Designer',
+    problem: 'AI content creation tools need compelling landing pages that clearly communicate value proposition and convert visitors into paying customers.',
+    solution: 'Designed conversion-focused SaaS landing page with clear value proposition, strategic social proof placement, and optimized user flow from awareness to trial signup.',
+    results: [
+      'Clear value proposition with benefit-focused headlines',
+      'Strategic use of color to highlight key conversion points',
+      'Social proof integration with trusted brand logos',
+      'Mobile-optimized responsive design',
+      'Conversion-optimized CTA placement and copy'
+    ]
   },
   {
     id: 'emotional-flow',

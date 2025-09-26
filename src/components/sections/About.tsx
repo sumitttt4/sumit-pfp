@@ -32,18 +32,18 @@ const About = () => {
         >
           <div className="max-w-2xl mx-auto space-y-6 text-muted-foreground leading-relaxed">
             <p>
-              I'm a UI/UX Designer and Frontend Developer currently working as an intern at Metry AI. 
-              I enjoy creating digital products that are both functional and visually appealing.
+              I'm a UI/UX Designer and Frontend Developer currently interning at Metry AI in Tokyo, Japan. 
+              I specialize in creating comprehensive digital experiences that work seamlessly across mobile and desktop platforms.
             </p>
             
             <p>
-              My approach focuses on understanding user needs and translating them into clean, 
-              intuitive interfaces. I work with tools like Figma for design and React for development.
+              My design process combines user research, information architecture, and visual design to solve complex problems. 
+              I specialize in mobile apps, enterprise dashboards, and conversion-focused SaaS landing pages that drive business results.
             </p>
             
             <p>
-              When I'm not designing or coding, I'm exploring new technologies and learning 
-              from the design community.
+              I use Figma for design systems and prototyping, React and TypeScript for development, 
+              and believe in the power of design thinking to create meaningful user experiences.
             </p>
           </div>
         </motion.div>
