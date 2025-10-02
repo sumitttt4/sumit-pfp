@@ -6,7 +6,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Me",
-      description: "Drop me a line anytime",
+      description: "Response within 24 hours",
       action: "sumitsharma9128@gmail.com",
       link: "mailto:sumitsharma9128@gmail.com"
     }
@@ -102,9 +102,15 @@ const Contact = () => {
               Start a Project
             </a>
             
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin className="w-4 h-4" />
-              <span>Based in India • Available Worldwide</span>
+            <div className="flex flex-col sm:flex-row items-center gap-4 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4" />
+                <span>Based in India • Remote Worldwide</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span>Available for new projects</span>
+              </div>
             </div>
           </div>
         </motion.div>

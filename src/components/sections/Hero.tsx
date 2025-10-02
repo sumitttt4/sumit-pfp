@@ -6,8 +6,8 @@ const Hero = () => {
     <section id="hero" className="min-h-screen flex items-center justify-center py-20">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20, rotateX: -5 }}
-          animate={{ opacity: 1, y: 0, rotateX: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="space-y-8"
         >
@@ -20,10 +20,9 @@ const Hero = () => {
           {/* Clean Name */}
           <motion.h1 
             className="text-5xl md:text-7xl font-semibold tracking-tight text-foreground"
-            initial={{ opacity: 0, y: 30, rotateY: -15 }}
-            animate={{ opacity: 1, y: 0, rotateY: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            whileHover={{ scale: 1.02, rotateY: 2 }}
           >
             Sumit Sharma
           </motion.h1>
@@ -31,10 +30,9 @@ const Hero = () => {
           {/* Simple Role */}
           <motion.p 
             className="text-xl md:text-2xl text-muted-foreground font-medium"
-            initial={{ opacity: 0, x: -20, rotateX: -10 }}
-            animate={{ opacity: 1, x: 0, rotateX: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            whileHover={{ rotateX: 5, scale: 1.05 }}
           >
             UI/UX Designer & Frontend Developer
           </motion.p>
@@ -42,10 +40,9 @@ const Hero = () => {
           {/* Clean Description */}
           <motion.p 
             className="max-w-2xl mx-auto text-lg text-muted-foreground leading-relaxed"
-            initial={{ opacity: 0, y: 20, rotateX: 10 }}
-            animate={{ opacity: 1, y: 0, rotateX: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            whileHover={{ rotateX: -2, y: -2 }}
           >
             I design comprehensive digital experiences from mobile apps to SaaS platforms, 
             specializing in user-centered design, data visualization, and conversion optimization.
@@ -58,25 +55,19 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            <motion.a 
+            <a 
               href="#projects" 
-              whileHover={{ scale: 1.05, rotateX: -5, y: -3 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary"
-              style={{ transformStyle: "preserve-3d" } as any}
+              className="btn-primary hover:scale-105 transition-transform"
             >
               View Work
-            </motion.a>
+            </a>
 
-            <motion.a 
+            <a 
               href="#contact" 
-              whileHover={{ scale: 1.05, rotateX: 5, y: -3 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-secondary"
-              style={{ transformStyle: "preserve-3d" } as any}
+              className="btn-secondary hover:scale-105 transition-transform"
             >
               Get in Touch
-            </motion.a>
+            </a>
           </motion.div>
 
           {/* Simple Social Links */}
@@ -84,7 +75,7 @@ const Hero = () => {
             {[
               { href: "https://github.com/sumitttt4", icon: Github, label: "GitHub" },
               { href: "mailto:Sumitsharma9128@gmail.com", icon: Mail, label: "Email" },
-              { href: "https://www.linkedin.com/", icon: Linkedin, label: "LinkedIn" }
+              { href: "https://www.linkedin.com/in/sumit-sharma-designer/", icon: Linkedin, label: "LinkedIn" }
             ].map(({ href, icon: Icon, label }) => (
               <motion.a 
                 key={label}
