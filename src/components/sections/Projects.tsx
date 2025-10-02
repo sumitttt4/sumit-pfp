@@ -26,18 +26,11 @@ const Projects = () => {
           {projectsData.slice(0, 3).map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 40, rotateX: 15 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              whileHover={{ 
-                y: -8, 
-                rotateX: -3,
-                scale: 1.02,
-                boxShadow: "0 35px 70px -12px rgba(0, 0, 0, 0.3)" 
-              }}
-              className="notion-card overflow-hidden cursor-pointer"
-              style={{ transformStyle: "preserve-3d" } as any}
+              className="notion-card overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-2"
             >
               {/* Project Header */}
               <div className="mb-6">
@@ -54,28 +47,58 @@ const Projects = () => {
                   </div>
                   
                   <div className="flex items-center gap-3">
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-primary inline-flex items-center gap-2"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        View Live
-                      </a>
-                    )}
-                    
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-secondary inline-flex items-center gap-2"
-                      >
-                        <Github className="w-4 h-4" />
-                        Code
-                      </a>
+                    {project.category === 'UI/UX Design' ? (
+                      <>
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-primary inline-flex items-center gap-2"
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                            View Prototype
+                          </a>
+                        )}
+                        
+                        {project.githubUrl && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-secondary inline-flex items-center gap-2"
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                            Case Study
+                          </a>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-primary inline-flex items-center gap-2"
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                            View Live
+                          </a>
+                        )}
+                        
+                        {project.githubUrl && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-secondary inline-flex items-center gap-2"
+                          >
+                            <Github className="w-4 h-4" />
+                            Code
+                          </a>
+                        )}
+                      </>
                     )}
                   </div>
                 </div>

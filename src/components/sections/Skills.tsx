@@ -1,12 +1,19 @@
 import { motion } from 'framer-motion';
 
 const Skills = () => {
-  const skills = [
-    'UI/UX Design', 'Figma', 'User Research', 'Prototyping', 'Design Systems',
-    'Mobile Design', 'Dashboard Design', 'SaaS Landing Pages', 'Conversion Optimization',
-    'Brand Design', 'Data Visualization', 'Information Architecture', 'Marketing Design',
-    'React', 'TypeScript', 'JavaScript', 'Next.js', 'Tailwind CSS', 
-    'Framer Motion', 'Wireframing', 'User Testing', 'Cross-platform Design'
+  const skillCategories = [
+    {
+      title: 'Design',
+      skills: ['UI/UX Design', 'Figma', 'User Research', 'Prototyping', 'Design Systems', 'Mobile Design', 'Dashboard Design']
+    },
+    {
+      title: 'Development',
+      skills: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Framer Motion']
+    },
+    {
+      title: 'Specialties',
+      skills: ['SaaS Landing Pages', 'Data Visualization', 'Conversion Optimization', 'Cross-platform Design']
+    }
   ];
 
   return (
@@ -24,37 +31,32 @@ const Skills = () => {
           </h2>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="notion-card"
-        >
-          <div className="flex flex-wrap gap-3">
-            {skills.map((skill, index) => (
-              <motion.span 
-                key={skill}
-                className="px-3 py-2 bg-muted text-muted-foreground rounded text-sm simple-hover cursor-pointer"
-                initial={{ opacity: 0, scale: 0.8, rotateY: -90 }}
-                whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-                transition={{ delay: index * 0.05, duration: 0.6 }}
-                viewport={{ once: true }}
-                whileHover={{ 
-                  scale: 1.1, 
-                  rotateY: 10,
-                  rotateX: -5,
-                  y: -2,
-                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)" 
-                }}
-                whileTap={{ scale: 0.95 }}
-                style={{ transformStyle: "preserve-3d" } as any}
-              >
-                {skill}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {skillCategories.map((category, categoryIndex) => (
+            <motion.div
+              key={category.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+              viewport={{ once: true }}
+              className="notion-card"
+            >
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                {category.title}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill, index) => (
+                  <span 
+                    key={skill}
+                    className="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full hover:bg-muted-foreground/20 transition-colors"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

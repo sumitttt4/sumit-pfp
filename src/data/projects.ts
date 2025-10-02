@@ -32,10 +32,10 @@ const projects: Project[] = [
     id: 'expense-finance-platform',
     title: 'Expense - Personal Finance Platform',
     description: 'Comprehensive financial management platform featuring both mobile and desktop interfaces. Designed complete user experience from expense tracking to financial insights with real-time data visualization and budget management tools.',
-    image: emotionFlowImg, // We'll update this with actual expense app screenshots
-    tech: ['UI/UX Design', 'Figma', 'Mobile Design', 'Dashboard Design', 'Data Visualization', 'Prototyping'],
-    liveUrl: '#figma-prototype', // Update with Figma prototype link
-    githubUrl: '#design-files', 
+    image: emotionFlowImg, 
+    tech: ['UI/UX Design', 'Figma', 'Mobile Design', 'Dashboard Design', 'Data Visualization'],
+    liveUrl: 'https://www.figma.com/proto/expense-app', // Add your actual Figma prototype link
+    githubUrl: 'https://www.behance.net/sumit-expense-case-study', // Add case study link
     gradient: 'from-emerald-500 to-blue-600',
     category: 'UI/UX Design',
     duration: '2 weeks',
