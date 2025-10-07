@@ -1,9 +1,11 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const NotFound = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     console.error(
@@ -13,11 +15,19 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white">
+    <div className={`min-h-screen flex items-center justify-center transition-colors duration-500 ${
+      isDarkMode ? 'bg-gray-950' : 'bg-white'
+    }`}>
       <div className="text-center px-4">
-        <h1 className="text-8xl font-bold mb-4 text-gray-200">404</h1>
-        <h2 className="text-3xl font-bold mb-4 text-gray-900">Page Not Found</h2>
-        <p className="text-gray-600 mb-8 max-w-md text-lg">
+        <h1 className={`text-8xl font-bold mb-4 ${
+          isDarkMode ? 'text-gray-800' : 'text-gray-200'
+        }`}>404</h1>
+        <h2 className={`text-3xl font-bold mb-4 ${
+          isDarkMode ? 'text-white' : 'text-gray-900'
+        }`}>Page Not Found</h2>
+        <p className={`mb-8 max-w-md text-lg ${
+          isDarkMode ? 'text-gray-400' : 'text-gray-600'
+        }`}>
           The page you're looking for doesn't exist or has been moved.
         </p>
         <button
