@@ -135,18 +135,18 @@ const ProjectCard = ({
       </div>
 
       {/* Content Section */}
-      <div className="relative p-6 space-y-3">
+      <div className="relative p-4 space-y-3">
         {/* Title & Subtitle */}
-        <div className="space-y-2">
+        <div className="space-y-1">
           <h3
-            className={`text-xl sm:text-2xl font-semibold transition-colors duration-200 line-clamp-2 ${
+            className={`text-lg sm:text-xl font-semibold transition-colors duration-200 line-clamp-2 ${
               isDarkMode ? 'text-white' : 'text-gray-900'
             }`}
           >
             {title}
           </h3>
           <p
-            className={`text-sm leading-relaxed line-clamp-2 ${
+            className={`text-xs sm:text-sm leading-relaxed line-clamp-2 ${
               isDarkMode ? 'text-gray-400' : 'text-gray-600'
             }`}
           >
@@ -155,11 +155,11 @@ const ProjectCard = ({
         </div>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2">
-          {tags.slice(0, 3).map((tag, index) => (
+        <div className="flex flex-wrap gap-1.5">
+          {tags.slice(0, 2).map((tag, index) => (
             <span
               key={index}
-              className={`px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-200 ${
+              className={`px-2 py-0.5 text-xs font-medium rounded-md transition-all duration-200 ${
                 isDarkMode
                   ? 'bg-gray-800/80 text-gray-300 border border-gray-700/50 group-hover:bg-gray-800 group-hover:border-gray-600'
                   : 'bg-gray-100 text-gray-700 border border-gray-200 group-hover:bg-gray-200'
@@ -168,27 +168,27 @@ const ProjectCard = ({
               {tag}
             </span>
           ))}
-          {tags.length > 3 && (
+          {tags.length > 2 && (
             <span
-              className={`px-2.5 py-1 text-xs font-medium rounded-full ${
+              className={`px-2 py-0.5 text-xs font-medium rounded-md ${
                 isDarkMode ? 'text-gray-500' : 'text-gray-500'
               }`}
             >
-              +{tags.length - 3}
+              +{tags.length - 2}
             </span>
           )}
         </div>
 
         {/* View Details - Show on hover */}
         <motion.div
-          className={`flex items-center gap-2 pt-2 font-medium text-sm transition-all duration-300 opacity-0 group-hover:opacity-100 ${
+          className={`flex items-center gap-1.5 pt-1 font-medium text-xs transition-all duration-300 opacity-0 group-hover:opacity-100 ${
             isDarkMode ? 'text-white' : 'text-gray-900'
           }`}
           initial={{ x: -10 }}
           whileHover={{ x: 0 }}
         >
           <span>View Case Study</span>
-          <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+          <ArrowRight className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-1" />
         </motion.div>
       </div>
 

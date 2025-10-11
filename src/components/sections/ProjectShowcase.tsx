@@ -24,7 +24,7 @@ const ProjectShowcase = () => {
   const layoutPattern = ['large', 'medium', 'medium'];
 
   return (
-    <section className={`min-h-screen py-20 px-4 sm:px-6 ${isDarkMode ? 'bg-black' : 'bg-white'}`}>
+    <section className={`min-h-screen py-20 px-4 sm:px-6 ${isDarkMode ? 'bg-black' : 'bg-gray-50'}`}>
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -46,7 +46,7 @@ const ProjectShowcase = () => {
         </motion.div>
 
         {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px] mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[280px] mb-12">
           {previewProjects.map((project, index) => {
             const variant = layoutPattern[index % layoutPattern.length] as 'large' | 'medium' | 'small' | 'wide' | 'tall';
             const tags = project.category?.split('•').map(tag => tag.trim()) || [];

@@ -12,6 +12,7 @@
   category?: string;
   duration?: string;
   team?: string;
+  tags?: string[];
   
   // Case Study Fields
   overview?: string;
@@ -19,19 +20,14 @@
   goals?: string[];
   research?: string;
   designProcess?: {
-    wireframing?: string;
-    uiDesign?: string;
-    prototype?: string;
-  };
+    title?: string;
+    description?: string;
+  }[];
   development?: string;
-  visualIdentity?: {
-    typography?: string;
-    colorPalette?: string;
-    icons?: string;
-  };
+  visualIdentity?: string;
   outcome?: string;
   testimonials?: string[];
-  learnings?: string;
+  learnings?: string[];
   nextSteps?: string[];
   role?: string;
   results?: string[];
@@ -54,6 +50,7 @@ const projects: Project[] = [
     category: 'SaaS Product Design • Web App • UI/UX',
     role: 'Lead Designer & Frontend Developer',
     duration: '2024 • 3 months',
+    tags: ['React', 'UI/UX', 'SaaS', 'Web App', 'Design System'],
     
     // Overview
     overview: 'LinkEase is a modern web platform that helps users organize and manage all their important links in one place. Designed for creators, professionals, and teams, it simplifies digital workflows and ensures quick access to key resources. This case study covers the end-to-end design process, from research to development.',
@@ -73,27 +70,37 @@ const projects: Project[] = [
     research: 'Interviewed 5–7 users (students, designers, freelancers). Most relied on messy browser bookmarks. Key needs: categorization, easy search, device sync, and simple onboarding. Visual appeal and dark/light mode were important for usability. Focus: Effortless organization with visual clarity.',
     
     // Design Process
-    designProcess: {
-      wireframing: 'Low-fidelity Figma wireframes defined the dashboard layout, search bar, and categories.',
-      uiDesign: 'High-fidelity mockups in Figma refined spacing, typography, and icons. Grid-based layout for visual balance. Minimal dark theme for readability. Subtle accent gradients for energy. Custom icons for consistency.',
-      prototype: 'Interactive Figma prototypes tested flows for adding, editing, and searching links. Simplified "Add Link" from modal to inline action.'
-    },
+    designProcess: [
+      {
+        title: 'Wireframing',
+        description: 'Low-fidelity Figma wireframes defined the dashboard layout, search bar, and categories.'
+      },
+      {
+        title: 'UI Design', 
+        description: 'High-fidelity mockups in Figma refined spacing, typography, and icons. Grid-based layout for visual balance. Minimal dark theme for readability. Subtle accent gradients for energy. Custom icons for consistency.'
+      },
+      {
+        title: 'Prototyping',
+        description: 'Interactive Figma prototypes tested flows for adding, editing, and searching links. Simplified "Add Link" from modal to inline action.'
+      }
+    ],
     
     // Development
     development: 'Built with React + Vite for fast performance. Styled with Tailwind CSS for responsive design. Deployed on Vercel for seamless hosting and updates.',
     
     // Visual Identity
-    visualIdentity: {
-      typography: 'Inter + Sans Serif for clean readability',
-      colorPalette: 'Muted dark base with vibrant accent gradients',
-      icons: 'Simple, consistent, and balanced custom icons'
-    },
+    visualIdentity: 'A modern design system featuring Inter typography for clean readability, muted dark base colors with vibrant accent gradients, and simple, consistent custom icons throughout the interface.',
     
     // Outcome
     outcome: '90% of test users found LinkEase faster and easier than browser bookmarks. Users praised the balance of aesthetics and functionality. Modular design allows future scalability (AI tag suggestions, smart categorization).',
     
     // Learnings
-    learnings: 'Minimal design needs multiple iterations to balance aesthetics and usability. Animations should support navigation, not distract. Coding the project highlighted small UI refinements missed in design tools.',
+    learnings: [
+      'Minimal design needs multiple iterations to balance aesthetics and usability',
+      'Animations should support navigation, not distract from the core functionality',
+      'Coding the project highlighted small UI refinements missed in design tools',
+      'User feedback is crucial for iterating on the interface design'
+    ],
     
     // Next Steps
     nextSteps: [

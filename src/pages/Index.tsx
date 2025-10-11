@@ -7,8 +7,8 @@ const Index = () => {
   return (
     <div className={`min-h-screen transition-colors duration-500 ${
       isDarkMode 
-        ? 'bg-gray-950' 
-        : 'bg-gradient-to-br from-pink-100 via-purple-100 to-indigo-200'
+        ? 'bg-black' 
+        : 'bg-gray-50'
     }`}>
       <Hero isDarkMode={isDarkMode} />
     </div>
