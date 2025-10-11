@@ -38,10 +38,11 @@ const Section = ({ title, children, icon }: SectionProps) => (
 );
 
 export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps) {
-  const { theme } = useTheme();
+  const { isDarkMode } = useTheme();
 
-  const caseStudy = project.caseStudy;
-  if (!caseStudy) return null;
+  // Use the project directly as it contains case study fields
+  const caseStudy = project;
+  if (!caseStudy.overview) return null;
 
   return (
     <AnimatePresence>
@@ -61,7 +62,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
           animate={{ scale: 1, y: 0 }}
           exit={{ scale: 0.95, y: 20 }}
           className={`relative w-full max-w-6xl max-h-[90vh] overflow-hidden rounded-3xl ${
-            theme === 'dark' ? 'bg-zinc-900' : 'bg-white'
+            isDarkMode ? 'bg-zinc-900' : 'bg-white'
           }`}
           onClick={(e) => e.stopPropagation()}
         >
@@ -69,7 +70,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
           <button
             onClick={onClose}
             className={`absolute top-6 right-6 z-10 p-2 rounded-full transition-colors ${
-              theme === 'dark'
+              isDarkMode
                 ? 'bg-zinc-800 hover:bg-zinc-700 text-white'
                 : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
             }`}
@@ -131,13 +132,13 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
 
             {/* Meta Info Cards - Enhanced */}
             <div className={`px-8 md:px-12 py-8 border-b ${
-              theme === 'dark' ? 'border-zinc-800' : 'border-gray-200'
+              isDarkMode ? 'border-zinc-800' : 'border-gray-200'
             }`}>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <motion.div 
                   whileHover={{ y: -4 }}
                   className={`p-6 rounded-2xl border ${
-                    theme === 'dark' ? 'bg-zinc-800/50 border-zinc-700' : 'bg-gray-50 border-gray-200'
+                    isDarkMode ? 'bg-zinc-800/50 border-zinc-700' : 'bg-gray-50 border-gray-200'
                   }`}
                 >
                   <div className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-2">Role</div>
@@ -147,17 +148,17 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                 <motion.div 
                   whileHover={{ y: -4 }}
                   className={`p-6 rounded-2xl border ${
-                    theme === 'dark' ? 'bg-zinc-800/50 border-zinc-700' : 'bg-gray-50 border-gray-200'
+                    isDarkMode ? 'bg-zinc-800/50 border-zinc-700' : 'bg-gray-50 border-gray-200'
                   }`}
                 >
                   <div className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-2">Timeline</div>
-                  <div className="text-xl font-semibold">{caseStudy.timeline}</div>
+                  <div className="text-xl font-semibold">{caseStudy.duration}</div>
                 </motion.div>
                 
                 <motion.div 
                   whileHover={{ y: -4 }}
                   className={`p-6 rounded-2xl border ${
-                    theme === 'dark' ? 'bg-zinc-800/50 border-zinc-700' : 'bg-gray-50 border-gray-200'
+                    isDarkMode ? 'bg-zinc-800/50 border-zinc-700' : 'bg-gray-50 border-gray-200'
                   }`}
                 >
                   <div className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-2">Team</div>
@@ -171,7 +172,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
               {/* Overview */}
               <Section title="Overview" icon={<Target className="w-5 h-5 text-blue-500" />}>
                 <p className={`text-lg md:text-xl leading-relaxed ${
-                  theme === 'dark' ? 'text-zinc-300' : 'text-gray-700'
+                  isDarkMode ? 'text-zinc-300' : 'text-gray-700'
                 }`}>
                   {caseStudy.overview}
                 </p>
@@ -180,10 +181,10 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
               {/* Problem - Enhanced with Visual Callout */}
               <Section title="The Problem" icon={<Quote className="w-5 h-5 text-red-500" />}>
                 <div className={`p-8 rounded-2xl border-l-4 border-red-500 ${
-                  theme === 'dark' ? 'bg-red-500/5' : 'bg-red-50'
+                  isDarkMode ? 'bg-red-500/5' : 'bg-red-50'
                 }`}>
                   <p className={`text-xl md:text-2xl font-medium leading-relaxed ${
-                    theme === 'dark' ? 'text-zinc-200' : 'text-gray-800'
+                    isDarkMode ? 'text-zinc-200' : 'text-gray-800'
                   }`}>
                     {caseStudy.problem}
                   </p>
@@ -203,7 +204,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                         transition={{ delay: index * 0.1 }}
                         whileHover={{ borderColor: 'rgb(34 211 238)' }}
                         className={`p-6 rounded-2xl border ${
-                          theme === 'dark' 
+                          isDarkMode 
                             ? 'bg-gradient-to-br from-cyan-500/5 to-blue-500/5 border-zinc-700' 
                             : 'bg-gradient-to-br from-cyan-50 to-blue-50 border-gray-200'
                         }`}
@@ -212,7 +213,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                           <div className="w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0 mt-1">
                             <CheckCircle2 className="w-5 h-5 text-cyan-500" />
                           </div>
-                          <p className={`text-lg ${theme === 'dark' ? 'text-zinc-300' : 'text-gray-700'}`}>
+                          <p className={`text-lg ${isDarkMode ? 'text-zinc-300' : 'text-gray-700'}`}>
                             {goal}
                           </p>
                         </div>
@@ -226,7 +227,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
               {caseStudy.research && (
                 <Section title="Research & Insights" icon={<Lightbulb className="w-5 h-5 text-yellow-500" />}>
                   <p className={`text-lg md:text-xl leading-relaxed mb-8 ${
-                    theme === 'dark' ? 'text-zinc-300' : 'text-gray-700'
+                    isDarkMode ? 'text-zinc-300' : 'text-gray-700'
                   }`}>
                     {caseStudy.research}
                   </p>
@@ -234,34 +235,34 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                   {/* Stats Grid */}
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div className={`p-6 rounded-2xl text-center ${
-                      theme === 'dark' ? 'bg-blue-500/10' : 'bg-blue-50'
+                      isDarkMode ? 'bg-blue-500/10' : 'bg-blue-50'
                     }`}>
                       <div className="text-4xl font-bold text-blue-500 mb-2">5-7</div>
-                      <div className={`text-sm ${theme === 'dark' ? 'text-zinc-400' : 'text-gray-600'}`}>
+                      <div className={`text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>
                         User Interviews
                       </div>
                     </div>
                     <div className={`p-6 rounded-2xl text-center ${
-                      theme === 'dark' ? 'bg-green-500/10' : 'bg-green-50'
+                      isDarkMode ? 'bg-green-500/10' : 'bg-green-50'
                     }`}>
                       <div className="text-4xl font-bold text-green-500 mb-2">100%</div>
-                      <div className={`text-sm ${theme === 'dark' ? 'text-zinc-400' : 'text-gray-600'}`}>
+                      <div className={`text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>
                         Needed Categories
                       </div>
                     </div>
                     <div className={`p-6 rounded-2xl text-center ${
-                      theme === 'dark' ? 'bg-purple-500/10' : 'bg-purple-50'
+                      isDarkMode ? 'bg-purple-500/10' : 'bg-purple-50'
                     }`}>
                       <div className="text-4xl font-bold text-purple-500 mb-2">85%</div>
-                      <div className={`text-sm ${theme === 'dark' ? 'text-zinc-400' : 'text-gray-600'}`}>
+                      <div className={`text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>
                         Wanted Dark Mode
                       </div>
                     </div>
                     <div className={`p-6 rounded-2xl text-center ${
-                      theme === 'dark' ? 'bg-orange-500/10' : 'bg-orange-50'
+                      isDarkMode ? 'bg-orange-500/10' : 'bg-orange-50'
                     }`}>
                       <div className="text-4xl font-bold text-orange-500 mb-2">Fast</div>
-                      <div className={`text-sm ${theme === 'dark' ? 'text-zinc-400' : 'text-gray-600'}`}>
+                      <div className={`text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>
                         Quick Add Feature
                       </div>
                     </div>
@@ -290,7 +291,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                         }`} />
                         
                         <div className={`p-6 rounded-2xl ${
-                          theme === 'dark' ? 'bg-zinc-800/50' : 'bg-gray-50'
+                          isDarkMode ? 'bg-zinc-800/50' : 'bg-gray-50'
                         }`}>
                           <div className="flex items-center gap-3 mb-3">
                             <span className={`px-3 py-1 rounded-full text-sm font-medium ${
@@ -302,7 +303,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                             </span>
                             <h3 className="text-2xl font-bold">{process.title}</h3>
                           </div>
-                          <p className={`text-lg ${theme === 'dark' ? 'text-zinc-400' : 'text-gray-600'}`}>
+                          <p className={`text-lg ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>
                             {process.description}
                           </p>
                         </div>
@@ -315,7 +316,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
               {/* Visual Design - Enhanced Gallery with Annotations */}
               {project.screenshots && project.screenshots.length > 0 && (
                 <Section title="Visual Design" icon={<Layers className="w-5 h-5 text-blue-500" />}>
-                  <p className={`text-lg mb-8 ${theme === 'dark' ? 'text-zinc-400' : 'text-gray-600'}`}>
+                  <p className={`text-lg mb-8 ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>
                     A comprehensive look at the design system and key screens
                   </p>
                   
@@ -383,7 +384,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
               {caseStudy.visualIdentity && (
                 <Section title="Design System" icon={<Layers className="w-5 h-5 text-blue-500" />}>
                   <p className={`text-lg md:text-xl leading-relaxed mb-8 ${
-                    theme === 'dark' ? 'text-zinc-300' : 'text-gray-700'
+                    isDarkMode ? 'text-zinc-300' : 'text-gray-700'
                   }`}>
                     {caseStudy.visualIdentity}
                   </p>
@@ -393,14 +394,14 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                     <motion.div 
                       whileHover={{ y: -4 }}
                       className={`p-8 rounded-2xl border ${
-                        theme === 'dark' ? 'bg-zinc-800/50 border-zinc-700' : 'bg-gray-50 border-gray-200'
+                        isDarkMode ? 'bg-zinc-800/50 border-zinc-700' : 'bg-gray-50 border-gray-200'
                       }`}
                     >
                       <div className="text-6xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
                         Aa
                       </div>
                       <h4 className="text-xl font-bold mb-2">Typography</h4>
-                      <p className={`text-sm ${theme === 'dark' ? 'text-zinc-400' : 'text-gray-600'}`}>
+                      <p className={`text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>
                         Inter for clean, modern readability
                       </p>
                     </motion.div>
@@ -408,7 +409,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                     <motion.div 
                       whileHover={{ y: -4 }}
                       className={`p-8 rounded-2xl border ${
-                        theme === 'dark' ? 'bg-zinc-800/50 border-zinc-700' : 'bg-gray-50 border-gray-200'
+                        isDarkMode ? 'bg-zinc-800/50 border-zinc-700' : 'bg-gray-50 border-gray-200'
                       }`}
                     >
                       <div className="flex gap-2 mb-4">
@@ -417,7 +418,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                         <div className="w-12 h-12 rounded-full bg-purple-500" />
                       </div>
                       <h4 className="text-xl font-bold mb-2">Color Palette</h4>
-                      <p className={`text-sm ${theme === 'dark' ? 'text-zinc-400' : 'text-gray-600'}`}>
+                      <p className={`text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>
                         Vibrant blues with dark mode support
                       </p>
                     </motion.div>
@@ -425,7 +426,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                     <motion.div 
                       whileHover={{ y: -4 }}
                       className={`p-8 rounded-2xl border ${
-                        theme === 'dark' ? 'bg-zinc-800/50 border-zinc-700' : 'bg-gray-50 border-gray-200'
+                        isDarkMode ? 'bg-zinc-800/50 border-zinc-700' : 'bg-gray-50 border-gray-200'
                       }`}
                     >
                       <div className="flex gap-3 mb-4">
@@ -434,7 +435,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                         <Target className="w-8 h-8 text-purple-500" />
                       </div>
                       <h4 className="text-xl font-bold mb-2">Iconography</h4>
-                      <p className={`text-sm ${theme === 'dark' ? 'text-zinc-400' : 'text-gray-600'}`}>
+                      <p className={`text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>
                         Consistent, minimal icon set
                       </p>
                     </motion.div>
@@ -472,7 +473,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
 
                   {caseStudy.outcome && (
                     <p className={`text-lg md:text-xl leading-relaxed mb-6 ${
-                      theme === 'dark' ? 'text-zinc-300' : 'text-gray-700'
+                      isDarkMode ? 'text-zinc-300' : 'text-gray-700'
                     }`}>
                       {caseStudy.outcome}
                     </p>
@@ -488,7 +489,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                           viewport={{ once: true }}
                           transition={{ delay: index * 0.1 }}
                           className={`flex items-start gap-3 text-lg ${
-                            theme === 'dark' ? 'text-zinc-300' : 'text-gray-700'
+                            isDarkMode ? 'text-zinc-300' : 'text-gray-700'
                           }`}
                         >
                           <CheckCircle2 className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
@@ -504,7 +505,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
               {caseStudy.learnings && caseStudy.learnings.length > 0 && (
                 <Section title="Key Learnings" icon={<Lightbulb className="w-5 h-5 text-yellow-500" />}>
                   <div className={`p-8 rounded-3xl ${
-                    theme === 'dark' 
+                    isDarkMode 
                       ? 'bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border border-yellow-500/20' 
                       : 'bg-gradient-to-br from-yellow-50 to-orange-50 border border-yellow-200'
                   }`}>
@@ -521,7 +522,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                           viewport={{ once: true }}
                           transition={{ delay: index * 0.1 }}
                           className={`text-lg leading-relaxed ${
-                            theme === 'dark' ? 'text-zinc-300' : 'text-gray-700'
+                            isDarkMode ? 'text-zinc-300' : 'text-gray-700'
                           }`}
                         >
                           <span className="text-yellow-500 font-bold mr-2">→</span>
@@ -545,7 +546,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 }}
                         className={`flex items-start gap-3 text-lg ${
-                          theme === 'dark' ? 'text-zinc-300' : 'text-gray-700'
+                          isDarkMode ? 'text-zinc-300' : 'text-gray-700'
                         }`}
                       >
                         <ArrowRight className="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" />
@@ -577,7 +578,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-colors ${
-                          theme === 'dark'
+                          isDarkMode
                             ? 'bg-zinc-800 hover:bg-zinc-700 text-white'
                             : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
                         }`}
@@ -592,7 +593,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-colors ${
-                          theme === 'dark'
+                          isDarkMode
                             ? 'bg-zinc-800 hover:bg-zinc-700 text-white'
                             : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
                         }`}
