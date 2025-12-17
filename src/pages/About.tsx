@@ -1,243 +1,161 @@
-﻿import { ArrowLeft, Mail, MapPin, Briefcase, ExternalLink } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+﻿import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { ArrowLeft, Mail, MapPin, Briefcase, ExternalLink, GraduationCap, Globe, PenTool, Coffee } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const About = () => {
   const navigate = useNavigate();
   const { isDarkMode } = useTheme();
 
-  const skills = [
-    'UI/UX Design',
-    'Figma',
-    'Product Design',
-    'Prototyping',
-    'React.js',
-    'TypeScript',
-    'Tailwind CSS',
-    'JavaScript'
-  ];
+  const GlassCard = ({ children, className = "", noPadding = false }: { children: React.ReactNode, className?: string, noPadding?: boolean }) => (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ scale: 1.01 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className={`
+                relative overflow-hidden
+                bg-white/40 dark:bg-black/40 
+                backdrop-blur-2xl saturate-150
+                border border-white/20 dark:border-white/10
+                shadow-2xl dark:shadow-black/50
+                rounded-3xl
+                ${noPadding ? '' : 'p-6 sm:p-8'}
+                ${className}
+            `}
+    >
+      {children}
+    </motion.div>
+  );
 
-  const experience = [
-    {
-      role: 'UI/UX Intern',
-      company: 'Metry AI',
-      period: 'Aug 2025 - Present',
-      location: 'Tokyo, Japan'
-    },
-    {
-      role: 'Freelance Designer',
-      company: 'Various Clients',
-      period: '2024 - 2025',
-      location: 'Remote'
-    }
+  const skills = [
+    'UI/UX Design', 'Figma', 'Product Design', 'Prototyping',
+    'React.js', 'TypeScript', 'Tailwind', 'Motion'
   ];
 
   return (
-    <div className={`min-h-screen relative overflow-hidden ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
-      {/* Background Pattern - Same as Hero */}
-      <div className={`absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:64px_64px] ${isDarkMode ? 'opacity-50' : 'opacity-30'}`} />
-      
-      {/* Gradient Blobs - Same as Hero but no glow in dark mode */}
-      <div className={`absolute top-20 left-10 w-96 h-96 rounded-full blur-3xl ${isDarkMode ? 'bg-purple-500/5' : 'bg-pink-400/40'}`} />
-      <div className={`absolute bottom-20 right-10 w-[500px] h-[500px] rounded-full blur-3xl ${isDarkMode ? 'bg-blue-500/5' : 'bg-indigo-400/40'}`} />
-      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full blur-3xl ${isDarkMode ? 'bg-cyan-500/5' : 'bg-purple-300/30'}`} />
-      
-      {/* Header */}
-      <div className={`relative border-b ${isDarkMode ? 'border-gray-800' : 'border-gray-200'}`}>
-        <div className="max-w-6xl mx-auto px-6 py-6">
-          <button
-            onClick={() => navigate('/')}
-            className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${
-              isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back
-          </button>
-        </div>
+    <div className={`min-h-screen relative overflow-x-hidden ${isDarkMode ? 'bg-black' : 'bg-gray-50'}`}>
+      {/* Background Pattern */}
+      <div className="absolute inset-0 z-0 opacity-40 dark:opacity-20 pointer-events-none fixed">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div className="absolute right-0 top-0 -z-10 m-auto h-[400px] w-[400px] rounded-full bg-gray-400 opacity-20 blur-[100px] dark:bg-white/5"></div>
       </div>
 
-      {/* Main Content */}
-      <div className="relative max-w-6xl mx-auto px-6 py-12 z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          
-          {/* Left Column - About & Experience */}
-          <div className="space-y-10">
-            {/* About Section */}
-            <div className={`p-8 rounded-2xl backdrop-blur-sm ${
-              isDarkMode 
-                ? 'bg-gray-800/50 border border-gray-700/50' 
-                : 'bg-white/80 border border-gray-200 shadow-lg'
-            }`}>
-              <h1 className={`text-4xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                About Me
-              </h1>
-              <p className={`text-lg leading-relaxed mb-6 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                I'm a UI/UX designer passionate about creating beautiful and functional digital experiences. 
-                Currently based in Tokyo, working with AI-powered products and building scalable design systems.
-              </p>
-              
-              <div className="flex items-center gap-2 mb-4">
-                <MapPin className={`w-5 h-5 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`} />
-                <span className={`text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-24 relative z-10 font-sans">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-12 flex items-center justify-between"
+        >
+          <div>
+            <button
+              onClick={() => navigate('/')}
+              className={`group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest transition-colors mb-4 ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-black'
+                }`}
+            >
+              <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+              Back to Home
+            </button>
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-gray-900 dark:text-white leading-[0.9]">
+              More about <span className="text-gray-400 dark:text-gray-600">Sumit.</span>
+            </h1>
+          </div>
+        </motion.div>
+
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+          {/* 1. Main Bio Card */}
+          <GlassCard className="col-span-1 md:col-span-2 lg:col-span-2 row-span-2 flex flex-col justify-center">
+            <div className="space-y-6">
+              <div className="w-16 h-16 flex items-center justify-center">
+                <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand.png" alt="Wave" className="w-14 h-14 hover:animate-wave origin-bottom-right" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
+                  I craft digital experiences with a focus on motion and usability.
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  I'm a Design Engineer from Tokyo who loves bridging the gap between design and development. I believe that the best products are built when design and engineering work in harmony, not in silos.
+                </p>
+              </div>
+              <div className="flex items-center gap-4 text-sm font-medium text-gray-500 dark:text-gray-400">
+                <span className="flex items-center gap-1">
+                  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Round%20Pushpin.png" alt="Location" className="w-5 h-5" />
                   Tokyo, Japan
                 </span>
-              </div>
-
-              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${
-                isDarkMode ? 'bg-green-500/10 text-green-400' : 'bg-green-50 text-green-700'
-              }`}>
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-sm font-medium">Available for work</span>
+                <span className="flex items-center gap-1">
+                  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Food/Hot%20Beverage.png" alt="Coffee" className="w-5 h-5" />
+                  Matcha Lover
+                </span>
               </div>
             </div>
+          </GlassCard>
 
-            {/* Experience Section */}
-            <div className={`p-8 rounded-2xl backdrop-blur-sm ${
-              isDarkMode 
-                ? 'bg-gray-800/50 border border-gray-700/50' 
-                : 'bg-white/80 border border-gray-200 shadow-lg'
-            }`}>
-              <div className="flex items-center gap-2 mb-6">
-                <Briefcase className={`w-5 h-5 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} />
-                <h2 className={`text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                  Experience
-                </h2>
+
+          {/* 2. Skills Cloud - Now Expanded */}
+          <GlassCard className="col-span-1 md:col-span-1 lg:col-span-2">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-0">
+                <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Hammer%20and%20Wrench.png" alt="Toolkit" className="w-10 h-10" />
               </div>
-              
-              <div className="space-y-6">
-                {experience.map((exp, index) => (
-                  <div 
-                    key={index}
-                    className={`pb-6 ${
-                      index !== experience.length - 1 
-                        ? `border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}` 
-                        : ''
-                    }`}
-                  >
-                    <h3 className={`text-lg font-semibold mb-1 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                      {exp.role}
-                    </h3>
-                    <p className={`text-base mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                      {exp.company}
-                    </p>
-                    <p className={`text-sm ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>
-                      {exp.period} • {exp.location}
-                    </p>
+              <h3 className="font-bold text-gray-900 dark:text-white tracking-tight">Toolkit</h3>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {skills.map((skill) => (
+                <span key={skill} className="px-3 py-1.5 text-xs font-semibold rounded-md bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/10">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </GlassCard>
+
+          {/* 5. Writing / Medium */}
+          <GlassCard className="col-span-1 md:col-span-2 bg-gradient-to-br from-gray-50 to-white dark:from-white/5 dark:to-white/0">
+            <div className="flex flex-col h-full justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-0">
+                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Memo.png" alt="Writing" className="w-10 h-10" />
                   </div>
-                ))}
+                  <ExternalLink className="w-4 h-4 text-gray-400" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Thoughts & Writing</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2">
+                  I occassionally write about design systems, React performance, and the future of web interfaces on Medium.
+                </p>
               </div>
-            </div>
-          </div>
-
-          {/* Right Column - Skills & Contact */}
-          <div className="space-y-10">
-            {/* Skills Section */}
-            <div className={`p-8 rounded-2xl backdrop-blur-sm ${
-              isDarkMode 
-                ? 'bg-gray-800/50 border border-gray-700/50' 
-                : 'bg-white/80 border border-gray-200 shadow-lg'
-            }`}>
-              <h2 className={`text-2xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                Skills & Tools
-              </h2>
-              <div className="flex flex-wrap gap-2">
-                {skills.map((skill, index) => (
-                  <span
-                    key={index}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      isDarkMode 
-                        ? 'bg-gray-700/50 text-gray-300 hover:bg-gray-700' 
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Writing Section */}
-            <div className={`p-8 rounded-2xl backdrop-blur-sm ${
-              isDarkMode 
-                ? 'bg-gray-800/50 border border-gray-700/50' 
-                : 'bg-white/80 border border-gray-200 shadow-lg'
-            }`}>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                Sometimes I write
-              </h2>
-              <p className={`text-base mb-6 leading-relaxed ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                Sharing thoughts on design, product, and tech on Medium.
-              </p>
               <a
                 href="https://medium.com/@sumitsharma9128"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
-                  isDarkMode 
-                    ? 'bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 border border-blue-500/30' 
-                    : 'bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200'
-                }`}
+                className="mt-6 inline-flex items-center text-sm font-semibold text-gray-900 dark:text-white hover:opacity-70 transition-opacity"
               >
-                Read my articles
-                <ExternalLink className="w-4 h-4" />
+                Read Articles <ArrowLeft className="w-4 h-4 ml-1 rotate-180" />
               </a>
             </div>
+          </GlassCard>
 
-            {/* Contact Section */}
-            <div className={`p-8 rounded-2xl backdrop-blur-sm ${
-              isDarkMode 
-                ? 'bg-gray-800/50 border border-gray-700/50' 
-                : 'bg-white/80 border border-gray-200 shadow-lg'
-            }`}>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                Let's work together
-              </h2>
-              <p className={`text-base mb-6 leading-relaxed ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                Open to internships, freelance projects, and collaboration opportunities.
-              </p>
-              <a
-                href="mailto:Sumitsharma9128@gmail.com"
-                className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-colors ${
-                  isDarkMode 
-                    ? 'bg-blue-500 hover:bg-blue-600 text-white' 
-                    : 'bg-gray-900 hover:bg-gray-800 text-white'
-                }`}
-              >
-                <Mail className="w-5 h-5" />
-                Get in touch
-              </a>
-            </div>
-
-            {/* Quick Info */}
-            <div className="space-y-4">
-              <div className={`p-6 rounded-xl backdrop-blur-sm ${
-                isDarkMode 
-                  ? 'bg-gray-800/30 border border-gray-700/30' 
-                  : 'bg-white/60 border border-gray-200'
-              }`}>
-                <p className={`text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                  Location
-                </p>
-                <p className={`text-base font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                  Tokyo, Japan 🇯🇵
-                </p>
+          {/* 6. Contact CTA - Minimal */}
+          <GlassCard className="col-span-1 md:col-span-3 lg:col-span-4 flex items-center justify-between group cursor-pointer" noPadding>
+            <a href="mailto:Sumitsharma9128@gmail.com" className="flex items-center justify-between w-full p-8">
+              <div className="flex items-center gap-4">
+                <div className="p-0">
+                  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Envelope.png" alt="Email" className="w-12 h-12" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">Start a project</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">Sumitsharma9128@gmail.com</p>
+                </div>
               </div>
-
-              <div className={`p-6 rounded-xl backdrop-blur-sm ${
-                isDarkMode 
-                  ? 'bg-gray-800/30 border border-gray-700/30' 
-                  : 'bg-white/60 border border-gray-200'
-              }`}>
-                <p className={`text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                  Current Role
-                </p>
-                <p className={`text-base font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                  UI/UX Intern at Metry AI
-                </p>
+              <div className="w-10 h-10 rounded-full border border-gray-200 dark:border-white/20 flex items-center justify-center group-hover:bg-gray-100 dark:group-hover:bg-white/10 transition-colors">
+                <ArrowLeft className="w-5 h-5 text-gray-900 dark:text-white rotate-[135deg]" />
               </div>
-            </div>
-          </div>
+            </a>
+          </GlassCard>
+
         </div>
       </div>
     </div>
