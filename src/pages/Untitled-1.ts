@@ -1,1 +1,0 @@
-import Lottie from '@lottielab/lottie-player/react';
