@@ -4,31 +4,47 @@ import { useTheme } from '@/contexts/ThemeContext';
 import { LogIn, Moon, Sun, Command, Mail, Copy } from 'lucide-react';
 
 // Sample Project Data
-const projects = [
+interface Project {
+    id: number;
+    title: string;
+    year: string;
+    category: string;
+    image: string;
+    video?: string;
+    link?: string;
+}
+
+const projects: Project[] = [
     {
         id: 1,
         title: "Digital Wallet",
         year: "2024",
         category: "Fintech",
-        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1470&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1470&auto=format&fit=crop",
+        video: "/videos/Wallet.mp4",
+        link: "https://filecard-delta.vercel.app/"
     },
     {
         id: 2,
         title: "n8n workflow",
         year: "2024",
         category: "Automation",
-        image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=1974&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=1974&auto=format&fit=crop",
+        video: "/videos/n8n.mp4",
+        link: "https://n8n-workflow-eta.vercel.app/"
     },
     {
         id: 3,
         title: "Linkease",
         year: "2023",
         category: "SaaS",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+        video: "/videos/Linkease.mp4",
+        link: "https://link-ease-omega.vercel.app/"
     },
     {
         id: 4,
-        title: "Loyalty rewards at Salonbooking",
+        title: "Loyalty rewards",
         year: "2023",
         category: "Product Design",
         image: "https://images.unsplash.com/photo-1560066984-1fa980fab5aa?q=80&w=1992&auto=format&fit=crop"
@@ -52,7 +68,9 @@ const projects = [
         title: "File Showcase",
         year: "2022",
         category: "System Design",
-        image: "https://images.unsplash.com/photo-1544396821-4dd40b938ad3?q=80&w=2073&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1544396821-4dd40b938ad3?q=80&w=2073&auto=format&fit=crop",
+        video: "/videos/FileShowcase.mp4",
+        link: "https://file-showcase.vercel.app/"
     },
     {
         id: 8,
@@ -69,6 +87,38 @@ const DashboardLayout = () => {
     const [selectedProject, setSelectedProject] = useState<number | null>(null);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isHirePopupOpen, setIsHirePopupOpen] = useState(false);
+
+    useEffect(() => {
+        (function (C: any, A, L) {
+            let p = function (a: any, ar: any) { a.q.push(ar); };
+            let d = C.document;
+            C.Cal = C.Cal || function () {
+                let cal = C.Cal;
+                let ar = arguments;
+                if (!cal.loaded) {
+                    cal.ns = {};
+                    cal.q = cal.q || [];
+                    d.head.appendChild(d.createElement("script")).src = A;
+                    cal.loaded = true;
+                }
+                if (ar[0] === L) {
+                    const api = function () { p(api, arguments); };
+                    const namespace = ar[1];
+                    api.q = api.q || [];
+                    if (typeof namespace === "string") {
+                        cal.ns[namespace] = cal.ns[namespace] || api;
+                        p(cal.ns[namespace], ar);
+                        p(cal, ["initNamespace", namespace]);
+                    } else p(cal, ar);
+                    return;
+                }
+                p(cal, ar);
+            };
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+
+        (window as any).Cal("init", "15min", { origin: "https://app.cal.com" });
+        (window as any).Cal.ns["15min"]("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
+    }, []);
 
     const activeProject = projects.find(p => p.id === (hoveredProject || selectedProject));
 
@@ -185,17 +235,32 @@ const DashboardLayout = () => {
                 transition-transform duration-300
                 -translate-x-full md:translate-x-0
             `}>
+                <style>
+                    {`
+                    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+                    `}
+                </style>
                 <div className={`h-16 flex items-center px-6 border-b ${borderColor}`}>
-                    <div className="flex items-center gap-2 font-semibold">
-                        <div className={`w-5 h-5 rounded ${isDarkMode ? 'bg-white text-black' : 'bg-black text-white'} flex items-center justify-center text-xs`}>S</div>
-                        <span>Sumit.</span>
+                    <div
+                        onClick={() => {
+                            setSelectedProject(null);
+                            setHoveredProject(null);
+                        }}
+                        className="flex items-center gap-2 cursor-pointer hover:opacity-70 transition-opacity"
+                    >
+                        <span className="text-red-500 text-xl" style={{ fontFamily: '"Pacifico", cursive' }}>Hello Stranger</span>
                     </div>
                 </div>
 
-                <div className="flex-1 overflow-y-auto py-8 px-4 space-y-4">
-                    <div className={`mb-6 px-2 text-xs font-semibold ${textSecondary} uppercase tracking-wider`}>
+                {/* Fixed Projects Header */}
+                <div className={`px-6 py-4 border-b ${borderColor}`}>
+                    <div className={`text-xs font-semibold ${textSecondary} uppercase tracking-wider`}>
                         Projects
                     </div>
+                </div>
+
+                {/* Scrollable Projects List Only */}
+                <div className="flex-1 overflow-y-auto px-4 py-4">
                     <nav className="space-y-1">
                         {projects.map((project) => (
                             <button
@@ -295,53 +360,57 @@ const DashboardLayout = () => {
 
                             <AnimatePresence>
                                 {isProfileOpen && (
-                                    <motion.div
-                                        initial={{ opacity: 0, scale: 0.95, x: 10, y: 0 }}
-                                        animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-                                        exit={{ opacity: 0, scale: 0.95, x: 10, y: 0 }}
-                                        transition={{ duration: 0.1 }}
-                                        className={`absolute right-0 top-full mt-2 w-64 rounded-xl border ${borderColor} ${bgPrimary} p-3 shadow-2xl z-50`}
-                                    >
-                                        {/* User Info Header */}
-                                        <div className="flex items-center gap-3 mb-3 pb-3 border-b border-black/5">
-                                            <div className="w-10 h-10 rounded-full overflow-hidden bg-blue-600 flex items-center justify-center text-white font-semibold text-sm">
-                                                SS
+                                    <>
+                                        {/* Invisible Backdrop to handle click outside */}
+                                        <div
+                                            className="fixed inset-0 z-40 bg-transparent"
+                                            onClick={() => setIsProfileOpen(false)}
+                                        />
+
+                                        <motion.div
+                                            initial={{ opacity: 0, scale: 0.90, y: 8, transformOrigin: 'top right' }}
+                                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                                            exit={{ opacity: 0, scale: 0.90, y: 8 }}
+                                            transition={{ duration: 0.2, ease: [0.32, 0.72, 0, 1] }} // Smooth "pop" ease
+                                            className={`absolute right-0 top-full mt-2 w-72 rounded-2xl border ${borderColor} ${bgPrimary} p-2 shadow-2xl z-50 overflow-hidden ring-1 ring-black/5`}
+                                        >
+                                            {/* User Info Header */}
+                                            <div className="flex items-center gap-3 p-3 mb-1">
+                                                <div className="w-10 h-10 rounded-full overflow-hidden bg-blue-600 flex items-center justify-center text-white font-semibold text-sm shadow-inner shrink-0">
+                                                    SS
+                                                </div>
+                                                <div className="flex-1 min-w-0 flex flex-col justify-center">
+                                                    <h4 className={`text-sm font-bold ${textPrimary} truncate leading-tight`}>Sumit Sharma</h4>
+                                                    <p className={`text-xs ${textSecondary} truncate leading-tight mt-0.5`}>sumitsharma9128@gmail.com</p>
+                                                </div>
                                             </div>
-                                            <div className="flex-1 min-w-0">
-                                                <h4 className={`text-sm font-semibold ${textPrimary} truncate`}>Sumit Sharma</h4>
-                                                <p className={`text-xs ${textSecondary} truncate`}>sumitsharma9128@gmail.com</p>
+
+                                            <div className={`h-px ${isDarkMode ? 'bg-white/10' : 'bg-black/5'} mx-3 mb-2`} />
+
+                                            {/* Actions */}
+                                            <div className="space-y-0.5 px-1">
+                                                <a
+                                                    href="mailto:sumitsharma9128@gmail.com"
+                                                    className={`w-full text-left flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-xl ${textSecondary} hover:${bgSecondary} hover:${textPrimary} transition-colors cursor-pointer group`}
+                                                >
+                                                    <Mail className="w-4 h-4 opacity-70 group-hover:opacity-100" />
+                                                    <span>Send Email</span>
+                                                </a>
+
+                                                <div className={`h-px ${isDarkMode ? 'bg-white/10' : 'bg-black/5'} mx-2 my-2`} />
+
+                                                <button
+                                                    data-cal-link="sumit-sharma/15min"
+                                                    data-cal-namespace="15min"
+                                                    data-cal-config='{"layout":"month_view"}'
+                                                    className={`w-full text-left flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-xl ${textSecondary} hover:${bgSecondary} hover:${textPrimary} transition-colors cursor-pointer group`}
+                                                >
+                                                    <span className="w-5 h-5 flex items-center justify-center text-[10px] font-bold border border-current rounded-[6px] opacity-70 group-hover:opacity-100">K</span>
+                                                    <span>Schedule Call</span>
+                                                </button>
                                             </div>
-                                        </div>
-
-                                        {/* Actions */}
-                                        <div className="space-y-1">
-                                            <button
-                                                onClick={() => {
-                                                    navigator.clipboard.writeText("sumitsharma9128@gmail.com");
-                                                    setIsProfileOpen(false);
-                                                }}
-                                                className={`w-full text-left flex items-center gap-2 px-2 py-2 text-sm rounded-md ${textSecondary} hover:${bgSecondary} hover:${textPrimary} transition-colors cursor-pointer`}
-                                            >
-                                                <Copy className="w-4 h-4" />
-                                                <span>Copy Email</span>
-                                            </button>
-
-                                            <a
-                                                href="mailto:sumitsharma9128@gmail.com"
-                                                className={`w-full text-left flex items-center gap-2 px-2 py-2 text-sm rounded-md ${textSecondary} hover:${bgSecondary} hover:${textPrimary} transition-colors cursor-pointer`}
-                                            >
-                                                <Mail className="w-4 h-4" />
-                                                <span>Send Email</span>
-                                            </a>
-
-                                            <div className={`h-px ${isDarkMode ? 'bg-white/5' : 'bg-black/5'} my-1`} />
-
-                                            <button className={`w-full text-left flex items-center gap-2 px-2 py-2 text-sm rounded-md ${textSecondary} hover:${bgSecondary} hover:${textPrimary} transition-colors cursor-pointer`}>
-                                                <span className="w-4 h-4 flex items-center justify-center text-[10px] border border-current rounded-sm">K</span>
-                                                <span>Schedule Call</span>
-                                            </button>
-                                        </div>
-                                    </motion.div>
+                                        </motion.div>
+                                    </>
                                 )}
                             </AnimatePresence>
                         </div>
@@ -350,7 +419,7 @@ const DashboardLayout = () => {
                 </header>
 
                 {/* Center Stage with Dynamic Background */}
-                <div className={`flex-1 flex items-center justify-center p-8 md:p-12 relative overflow-hidden ${isDarkMode ? 'bg-black' : 'bg-[#fff8f0]'}`}>
+                <div className={`flex-1 flex items-center justify-center p-8 md:p-12 relative overflow-hidden ${isDarkMode ? 'bg-black' : 'bg-white'}`}>
 
                     {/* Background Visuals */}
                     {isDarkMode ? (
@@ -372,34 +441,7 @@ const DashboardLayout = () => {
                         </>
                     ) : (
                         /* Light Mode: Organic Mesh Gradient Animation */
-                        <div className="absolute inset-0 z-0 overflow-hidden">
-                            <motion.div
-                                className="absolute inset-[-50%]"
-                                animate={{
-                                    rotate: [0, 360],
-                                    scale: [1, 1.1, 1],
-                                }}
-                                transition={{
-                                    duration: 40,
-                                    ease: "linear",
-                                    repeat: Infinity,
-                                }}
-                            >
-                                <div
-                                    className="w-full h-full"
-                                    style={{
-                                        backgroundImage: `
-                                            radial-gradient(circle at 50% 50%, rgba(255, 192, 203, 0.2) 0%, transparent 60%), /* Floating Pink Blob */
-                                            radial-gradient(circle at 20% 80%, rgba(255, 182, 153, 0.2) 0%, transparent 60%),
-                                            radial-gradient(circle at 80% 20%, rgba(255, 244, 214, 0.2) 0%, transparent 60%),
-                                            radial-gradient(circle at 40% 40%, rgba(255, 182, 153, 0.15) 0%, transparent 60%),
-                                            radial-gradient(circle at 60% 60%, rgba(255, 228, 225, 0.2) 0%, transparent 60%) /* Misty Rose (Pinkish) */
-                                        `,
-                                        filter: 'blur(100px) saturate(110%)', // High blur for very soft float
-                                    }}
-                                />
-                            </motion.div>
-                        </div>
+                        <div className="absolute inset-0 z-0 bg-white" />
                     )}
                     <div className="w-full max-w-3xl relative z-10">
 
@@ -411,13 +453,30 @@ const DashboardLayout = () => {
                                     animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                                     exit={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
                                     transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                                    className={`relative aspect-video rounded-xl overflow-hidden shadow-2xl ring-1 group ${isDarkMode ? 'ring-white/10' : 'ring-black/10'}`}
+                                    className={`
+                                        fixed inset-0 z-[100] w-full h-full bg-black flex flex-col
+                                        md:relative md:w-full md:h-auto md:aspect-video md:rounded-xl md:inset-auto md:z-auto md:block
+                                        overflow-hidden shadow-2xl ring-1 group 
+                                        ${isDarkMode ? 'ring-white/10' : 'ring-black/10'}
+                                    `}
                                 >
-                                    <img
-                                        src={activeProject?.image}
-                                        alt={activeProject?.title}
-                                        className="w-full h-full object-cover"
-                                    />
+                                    {activeProject?.video ? (
+                                        <video
+                                            key={activeProject.video}
+                                            src={activeProject.video}
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                            className="w-full h-full object-cover"
+                                        />
+                                    ) : (
+                                        <img
+                                            src={activeProject?.image}
+                                            alt={activeProject?.title}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    )}
 
                                     {/* Home / Close Button */}
                                     <button
@@ -426,18 +485,42 @@ const DashboardLayout = () => {
                                             setSelectedProject(null);
                                             setHoveredProject(null);
                                         }}
-                                        className="absolute top-4 right-4 p-2 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md transition-all hover:scale-105 active:scale-95 z-20 opacity-30 group-hover:opacity-100 transition-opacity duration-300"
+                                        className={`
+                                            absolute top-6 right-6 md:top-4 md:right-4 z-50 
+                                            p-4 md:p-2 rounded-full shadow-2xl 
+                                            transition-all duration-200 hover:scale-105 active:scale-95 
+                                            flex items-center justify-center
+                                            bg-black text-white
+                                            ${isDarkMode
+                                                ? 'md:bg-white md:text-black md:hover:bg-gray-200'
+                                                : 'md:bg-black md:text-white md:hover:bg-gray-800'
+                                            }
+                                        `}
                                         title="Go Home"
                                     >
-                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                        <svg className="w-6 h-6 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                                         </svg>
                                     </button>
 
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-8">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-8 md:p-8 pb-12 md:pb-8">
                                         <div>
-                                            <h3 className="text-2xl font-semibold text-white tracking-tight">{activeProject?.title}</h3>
-                                            <p className="text-white/80 text-sm mt-1">{activeProject?.category} — {activeProject?.year}</p>
+                                            <h3 className="text-3xl md:text-2xl font-bold text-white tracking-tight leading-tight mb-2 md:mb-0">{activeProject?.title}</h3>
+                                            <p className="text-white/80 text-base md:text-sm mt-1 font-medium">{activeProject?.category} — {activeProject?.year}</p>
+                                            {activeProject?.link && (
+                                                <a
+                                                    href={activeProject.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center gap-2 mt-4 md:mt-3 px-4 py-2 md:px-0 md:py-0 bg-white/10 md:bg-transparent rounded-full md:rounded-none backdrop-blur-md md:backdrop-blur-none text-sm font-semibold text-white hover:bg-white/20 md:hover:bg-transparent md:hover:text-white md:hover:underline transition-all"
+                                                    onClick={(e) => e.stopPropagation()}
+                                                >
+                                                    See it in action
+                                                    <svg className="w-4 h-4 md:w-3 md:h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                    </svg>
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
                                 </motion.div>
@@ -457,9 +540,14 @@ const DashboardLayout = () => {
                                             onMouseEnter={() => setIsHirePopupOpen(true)}
                                             onClick={() => setIsHirePopupOpen(true)}
                                         >
-                                            <span className={`${isDarkMode ? 'bg-white/20 hover:bg-white/40' : 'bg-black/20 hover:bg-black/40'} px-2 py-0.5 rounded text-transparent select-none transition-colors`}>
-                                                ████████
-                                            </span>
+                                            <span
+                                                className={`
+                                                    inline-block align-middle rounded-md transition-colors ml-1.5
+                                                    w-16 h-4 
+                                                    md:w-24 md:h-6
+                                                    ${isDarkMode ? 'bg-white/20 hover:bg-white/40' : 'bg-black/10 hover:bg-black/20'}
+                                                `}
+                                            />
                                         </span></span>
                                     </h1>
 
@@ -468,6 +556,24 @@ const DashboardLayout = () => {
                                         <a href="mailto:sumitsharma9128@gmail.com" className={`hover:${textPrimary} transition-colors`}>Email</a>
                                         <a href="https://linkedin.com" className={`hover:${textPrimary} transition-colors`}>LinkedIn</a>
                                         <a href="https://twitter.com" className={`hover:${textPrimary} transition-colors`}>Twitter</a>
+                                    </div>
+
+                                    {/* Mobile Project List (Hidden on Desktop) */}
+                                    <div className="mt-16 md:hidden space-y-6">
+                                        {projects.map((project) => (
+                                            <div
+                                                key={project.id}
+                                                onClick={() => setSelectedProject(project.id)}
+                                                className="group flex items-baseline justify-between cursor-pointer"
+                                            >
+                                                <h4 className={`text-lg font-medium ${textPrimary} group-hover:opacity-60 transition-opacity`}>
+                                                    {project.title}
+                                                </h4>
+                                                <span className={`text-sm ${textSecondary} font-normal`}>
+                                                    {project.year}
+                                                </span>
+                                            </div>
+                                        ))}
                                     </div>
                                 </motion.div>
                             )}
