@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '@/contexts/ThemeContext';
 import { LogIn, Moon, Sun, Command, Mail, Copy } from 'lucide-react';
@@ -348,7 +348,11 @@ const DashboardLayout = () => {
                             {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
                         </button>
 
-                        <div className="relative">
+                        <div
+                            className="relative"
+                            onMouseEnter={() => setIsProfileOpen(true)}
+                            onMouseLeave={() => setIsProfileOpen(false)}
+                        >
                             <button
                                 onClick={() => setIsProfileOpen(!isProfileOpen)}
                                 className="group relative outline-none"
