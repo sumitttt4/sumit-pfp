@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '@/contexts/ThemeContext';
 import { LogIn, Moon, Sun, Command, Mail, Copy } from 'lucide-react';
 
+import robotImg from '@/assets/images/robot.png';
+
 // Sample Project Data
 interface Project {
     id: number;
@@ -25,7 +27,7 @@ const projects: Project[] = [
     {
         id: 3,
         title: "Linkease",
-        year: "2023",
+        year: "2025",
         category: "SaaS",
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
         video: "/videos/Linkease.mp4",
@@ -37,7 +39,7 @@ const projects: Project[] = [
     {
         id: 2,
         title: "n8n workflow",
-        year: "2024",
+        year: "2025",
         category: "Automation",
         image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=1974&auto=format&fit=crop",
         video: "/videos/n8n.mp4",
@@ -49,7 +51,7 @@ const projects: Project[] = [
     {
         id: 100,
         title: "Design",
-        year: "2024",
+        year: "2025",
         category: "Folder",
         image: "https://images.unsplash.com/photo-1626785774573-4b799314346d?q=80&w=2070&auto=format&fit=crop",
         type: 'folder',
@@ -57,7 +59,7 @@ const projects: Project[] = [
             {
                 id: 1,
                 title: "Digital Wallet",
-                year: "2024",
+                year: "2025",
                 category: "Fintech",
                 image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1470&auto=format&fit=crop",
                 video: "/videos/Wallet.mp4",
@@ -69,7 +71,7 @@ const projects: Project[] = [
             {
                 id: 7,
                 title: "File Showcase",
-                year: "2022",
+                year: "2025",
                 category: "System Design",
                 image: "/images/file-showcase-fallback.png",
                 video: "/videos/File.mp4",
@@ -83,7 +85,7 @@ const projects: Project[] = [
     {
         id: 101,
         title: "Client Work",
-        year: "2023",
+        year: "2025",
         category: "Folder",
         image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
         type: 'folder',
@@ -91,7 +93,7 @@ const projects: Project[] = [
             {
                 id: 4,
                 title: "Loyalty rewards",
-                year: "2023",
+                year: "2025",
                 category: "Product Design",
                 image: "/images/loyalty-rewards.png",
                 isNDA: true,
@@ -102,7 +104,7 @@ const projects: Project[] = [
             {
                 id: 5,
                 title: "Admin Panel Dashboard",
-                year: "2023",
+                year: "2025",
                 category: "Web App",
                 image: "/images/admin-dashboard-kyc.png",
                 isNDA: true,
@@ -239,7 +241,7 @@ const DashboardLayout = () => {
                                         <div className="relative">
                                             <div className="absolute inset-0 bg-gradient-to-b from-blue-400/20 to-purple-400/20 blur-xl rounded-full" />
                                             <img
-                                                src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Robot.png"
+                                                src={robotImg}
                                                 alt="Robot"
                                                 className="w-20 h-20 relative z-10"
                                             />
@@ -431,9 +433,9 @@ const DashboardLayout = () => {
                     {/* Social Links */}
                     <div className={`px-6 pt-4 pb-6 flex items-center justify-between`}>
                         <div className={`flex gap-4 text-xs ${textSecondary}`}>
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className={`hover:${textPrimary} transition-colors`}>GitHub</a>
+                            <a href="https://github.com/sumitttt4" target="_blank" rel="noopener noreferrer" className={`hover:${textPrimary} transition-colors`}>GitHub</a>
                             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={`hover:${textPrimary} transition-colors`}>LinkedIn</a>
-                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className={`hover:${textPrimary} transition-colors`}>Twitter</a>
+                            <a href="https://x.com/Sumitthq" target="_blank" rel="noopener noreferrer" className={`hover:${textPrimary} transition-colors`}>Twitter</a>
                         </div>
                     </div>
                 </div>
@@ -443,12 +445,12 @@ const DashboardLayout = () => {
             <main className={`flex-1 flex flex-col h-screen overflow-hidden ${bgPrimary} transition-colors duration-300`}>
 
                 {/* Header */}
-                <header className={`h-16 border-b ${borderColor} flex items-center justify-between px-8 bg-transparent relative z-20`}>
+                <header className={`h-16 flex-none border-b ${borderColor} flex items-center justify-between px-4 md:px-8 bg-transparent relative z-20 gap-4`}>
 
                     {/* Breadcrumbs / Title */}
-                    <div className="flex items-center gap-2 text-sm">
+                    <div className="flex items-center gap-2 text-sm min-w-0">
                         <span
-                            className={`${textSecondary} hover:${textPrimary} cursor-pointer transition-colors`}
+                            className={`${textSecondary} hover:${textPrimary} cursor-pointer transition-colors whitespace-nowrap`}
                             onClick={() => {
                                 setSelectedProject(null);
                                 setHoveredProject(null);
@@ -457,32 +459,52 @@ const DashboardLayout = () => {
                         >
                             Sumit
                         </span>
-                        <span className={textSecondary}>/</span>
-                        <span
-                            className={`${currentFolderId ? `${textSecondary} hover:${textPrimary} cursor-pointer` : textPrimary} transition-colors`}
-                            onClick={() => {
-                                if (currentFolderId) {
-                                    setSelectedProject(null);
-                                    setCurrentFolderId(null);
-                                }
-                            }}
-                        >
-                            Home
-                        </span>
-                        {currentFolder && (
-                            <>
-                                <span className={textSecondary}>/</span>
-                                <span className={textPrimary}>{currentFolder.title}</span>
-                            </>
-                        )}
-                        {activeProject && !activeProject.items && (
-                            <>
-                                <span className={textSecondary}>/</span>
-                                <span className={textPrimary}>{activeProject.title}</span>
-                            </>
-                        )}
+
+                        {/* Mobile Breadcrumb Logic: Sumit / ... / Current */}
+                        <div className="md:hidden flex items-center gap-2 overflow-hidden">
+                            <span className={textSecondary}>/</span>
+                            {(activeProject || currentFolder) ? (
+                                <>
+                                    <span className={textSecondary}>...</span>
+                                    <span className={textSecondary}>/</span>
+                                    <span className={`${textPrimary} truncate`}>
+                                        {activeProject ? activeProject.title : currentFolder?.title}
+                                    </span>
+                                </>
+                            ) : (
+                                <span className={textPrimary}>Home</span>
+                            )}
+                        </div>
+
+                        {/* Desktop Breadcrumb Logic: Full Path */}
+                        <div className="hidden md:flex items-center gap-2">
+                            <span className={textSecondary}>/</span>
+                            <span
+                                className={`${currentFolderId ? `${textSecondary} hover:${textPrimary} cursor-pointer` : textPrimary} transition-colors`}
+                                onClick={() => {
+                                    if (currentFolderId) {
+                                        setSelectedProject(null);
+                                        setCurrentFolderId(null);
+                                    }
+                                }}
+                            >
+                                Home
+                            </span>
+                            {currentFolder && (
+                                <>
+                                    <span className={textSecondary}>/</span>
+                                    <span className={textPrimary}>{currentFolder.title}</span>
+                                </>
+                            )}
+                            {activeProject && !activeProject.items && (
+                                <>
+                                    <span className={textSecondary}>/</span>
+                                    <span className={textPrimary}>{activeProject.title}</span>
+                                </>
+                            )}
+                        </div>
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 shrink-0">
                         <button
                             onClick={toggleTheme}
                             className={`p-2 rounded-full ${bgSecondary} ${textSecondary} hover:${textPrimary} transition-colors`}
@@ -497,11 +519,15 @@ const DashboardLayout = () => {
                         >
                             <button
                                 onClick={() => setIsProfileOpen(!isProfileOpen)}
-                                className="group relative outline-none"
+                                className={`
+                                    inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background
+                                    h-10 px-4 py-2
+                                    ${isDarkMode
+                                        ? 'bg-white text-black hover:bg-white/90'
+                                        : 'bg-black text-white hover:bg-black/90'}
+                                `}
                             >
-                                <div className={`w-8 h-8 rounded-full overflow-hidden border-2 ${isDarkMode ? 'border-white/10' : 'border-black/5'} bg-blue-600 flex items-center justify-center transition-all group-hover:scale-105 group-hover:border-black/20 group-active:scale-95`}>
-                                    <span className="text-white font-semibold text-[10px]">SS</span>
-                                </div>
+                                Contact me
                             </button>
 
                             <AnimatePresence>
@@ -514,21 +540,16 @@ const DashboardLayout = () => {
                                         />
 
                                         <motion.div
-                                            initial={{ opacity: 0, scale: 0.90, y: 8, transformOrigin: 'top right' }}
+                                            initial={{ opacity: 0, scale: 0.95, y: 5, transformOrigin: 'top right' }}
                                             animate={{ opacity: 1, scale: 1, y: 0 }}
-                                            exit={{ opacity: 0, scale: 0.90, y: 8 }}
-                                            transition={{ duration: 0.2, ease: [0.32, 0.72, 0, 1] }} // Smooth "pop" ease
-                                            className={`absolute right-0 top-full mt-2 w-72 rounded-2xl border ${borderColor} ${bgPrimary} p-2 shadow-2xl z-50 overflow-hidden ring-1 ring-black/5`}
+                                            exit={{ opacity: 0, scale: 0.95, y: 5 }}
+                                            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                                            className={`absolute right-0 top-full mt-2 w-72 rounded-xl border ${borderColor} ${bgPrimary} p-1 shadow-xl z-50 overflow-hidden ring-1 ring-black/5`}
                                         >
-                                            {/* User Info Header */}
-                                            <div className="flex items-center gap-3 p-3 mb-1">
-                                                <div className="w-10 h-10 rounded-full overflow-hidden bg-blue-600 flex items-center justify-center text-white font-semibold text-sm shadow-inner shrink-0">
-                                                    SS
-                                                </div>
-                                                <div className="flex-1 min-w-0 flex flex-col justify-center">
-                                                    <h4 className={`text-sm font-bold ${textPrimary} truncate leading-tight`}>Sumit Sharma</h4>
-                                                    <p className={`text-xs ${textSecondary} truncate leading-tight mt-0.5`}>sumitsharma9128@gmail.com</p>
-                                                </div>
+                                            {/* User Info Header - No Logo */}
+                                            <div className="flex flex-col px-3 py-2.5">
+                                                <h4 className={`text-sm font-semibold ${textPrimary} truncate leading-none mb-1`}>Sumit Sharma</h4>
+                                                <p className={`text-xs ${textSecondary} truncate leading-none`}>sumitsharma9128@gmail.com</p>
                                             </div>
 
                                             <div className={`h-px ${isDarkMode ? 'bg-white/10' : 'bg-black/5'} mx-3 mb-2`} />
@@ -604,9 +625,9 @@ const DashboardLayout = () => {
                                 >
                                     <div className={`max-w-4xl mx-auto px-6 md:px-12 ${selectedProject ? 'min-h-full flex flex-col justify-center pt-6 pb-24' : 'h-full flex flex-col justify-center'}`}>
 
-                                        {/* Header Section (Only visible when Selected/Clicked) */}
+                                        {/* Project Title & Actions (Only visible when Selected) */}
                                         {selectedProject && (
-                                            <div className="flex justify-between items-start mb-4 text-black dark:text-white">
+                                            <div className="flex justify-between items-start mb-4 text-black dark:text-white animate-in fade-in slide-in-from-bottom-2 duration-300">
                                                 <div className="space-y-1">
                                                     <h1 className="text-3xl font-bold tracking-tight">
                                                         {activeProject.title}
@@ -640,8 +661,9 @@ const DashboardLayout = () => {
 
                                         {/* Main Visual Preview (Video Box) */}
                                         <div className={`
-                                            w-full h-[40vh] min-h-[320px] rounded-xl overflow-hidden shadow-2xl ring-1 relative
+                                            w-full rounded-xl overflow-hidden shadow-2xl ring-1 relative
                                             bg-black/5 dark:bg-white/5
+                                            ${activeProject?.video ? 'aspect-video' : 'h-auto'}
                                             ${isDarkMode ? 'ring-white/10' : 'ring-black/10'}
                                             ${selectedProject ? 'mb-6' : ''}
                                         `}>
@@ -664,7 +686,7 @@ const DashboardLayout = () => {
                                             <img
                                                 src={activeProject?.image}
                                                 alt={activeProject?.title}
-                                                className={`w-full h-full object-cover ${activeProject?.video ? 'hidden' : ''}`}
+                                                className={`w-full h-auto block ${activeProject?.video ? 'hidden' : ''}`}
                                             />
                                         </div>
 
@@ -783,13 +805,11 @@ const DashboardLayout = () => {
 
                                     <div className={`flex gap-4 text-sm ${textSecondary} font-medium`}>
                                         <a href="/about" className={`hover:${textPrimary} transition-colors`}>About</a>
-                                        <a href="mailto:sumitsharma9128@gmail.com" className={`hover:${textPrimary} transition-colors`}>Email</a>
-                                        <a href="https://linkedin.com" className={`hover:${textPrimary} transition-colors`}>LinkedIn</a>
-                                        <a href="https://twitter.com" className={`hover:${textPrimary} transition-colors`}>Twitter</a>
+                                        <a href="https://github.com/sumitttt4" target="_blank" rel="noopener noreferrer" className={`hover:${textPrimary} transition-colors`}>GitHub</a>
+                                        <a href="https://x.com/Sumitthq" target="_blank" rel="noopener noreferrer" className={`hover:${textPrimary} transition-colors`}>Twitter</a>
                                     </div>
 
-                                    {/* Mobile Project List (Hidden on Desktop) */}
-                                    <div className="mt-16 md:hidden space-y-6">
+                                    <div className="mt-16 md:hidden space-y-2">
                                         {visibleProjects.map((project) => (
                                             <div
                                                 key={project.id}
@@ -800,12 +820,24 @@ const DashboardLayout = () => {
                                                         setSelectedProject(project.id);
                                                     }
                                                 }}
-                                                className="group flex items-baseline justify-between cursor-pointer"
+                                                className={`
+                                                    group flex items-center justify-between w-full px-4 py-3 rounded-xl cursor-pointer transition-all duration-200
+                                                    border border-transparent
+                                                    ${selectedProject === project.id
+                                                        ? (isDarkMode ? 'bg-white/10 text-white border-white/5' : 'bg-black/5 text-black border-black/5')
+                                                        : `hover:bg-black/5 dark:hover:bg-white/5 text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white ${isDarkMode ? 'hover:border-white/5' : 'hover:border-black/5'}`
+                                                    }
+                                                `}
                                             >
-                                                <h4 className={`text-lg font-medium ${textPrimary} group-hover:opacity-60 transition-opacity`}>
-                                                    {project.title}
-                                                </h4>
-                                                <span className={`text-sm ${textSecondary} font-normal`}>
+                                                <div className="flex items-center gap-3 overflow-hidden">
+                                                    {project.type === 'folder' && (
+                                                        <svg className="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                                                        </svg>
+                                                    )}
+                                                    <span className="text-base font-medium truncate">{project.title}</span>
+                                                </div>
+                                                <span className={`text-xs ${selectedProject === project.id ? 'opacity-100' : 'opacity-50 group-hover:opacity-100'} transition-opacity whitespace-nowrap ml-2`}>
                                                     {project.year}
                                                 </span>
                                             </div>
