@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -12,17 +13,26 @@ interface Project {
     image: string;
     video?: string;
     link?: string;
+    type?: 'project' | 'folder';
+    items?: Project[];
+    description?: string;
+    isNDA?: boolean;
+    overview?: string;
+    process?: string;
 }
 
 const projects: Project[] = [
     {
-        id: 1,
-        title: "Digital Wallet",
-        year: "2024",
-        category: "Fintech",
-        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1470&auto=format&fit=crop",
-        video: "/videos/Wallet.mp4",
-        link: "https://filecard-delta.vercel.app/"
+        id: 3,
+        title: "Linkease",
+        year: "2023",
+        category: "SaaS",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+        video: "/videos/Linkease.mp4",
+        link: "https://link-ease-omega.vercel.app/",
+        description: "A centralized platform for collecting and managing links with a single click.",
+        overview: "Linkease solves the problem of digital clutter by providing a minimalistic yet powerful interface for bookmark management. The goal was to create a 'save-for-later' experience that feels instant and effortless, removing the friction typical of standard browser bookmarks.",
+        process: "The design approach prioritized speed. I implemented a one-click save extension and a dashboard that automatically categorizes links based on metadata. The UI is dark-mode first, reducing eye strain for power users. We used Framer Motion for subtle interactions, making the act of organizing links feel satisfying rather than tedious.",
     },
     {
         id: 2,
@@ -31,53 +41,76 @@ const projects: Project[] = [
         category: "Automation",
         image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=1974&auto=format&fit=crop",
         video: "/videos/n8n.mp4",
-        link: "https://n8n-workflow-eta.vercel.app/"
+        link: "https://n8n-workflow-eta.vercel.app/",
+        description: "Visualizing complex automation workflows with clarity and precision.",
+        overview: "This project focuses on the visualization of n8n automation workflows. The challenge was to take complex, multi-step backend logic and present it in a way that is easily understandable for non-technical stakeholders throughout the monitoring dashboard.",
+        process: "I started by deconstructing common automation patterns. The design uses a node-based interface metaphor but simplified for status monitoring. Color coding indicates success, failure, or pending states. A key feature is the 'replay' view, allowing users to step through a workflow execution visually to identify bottlenecks.",
     },
     {
-        id: 3,
-        title: "Linkease",
+        id: 100,
+        title: "Design",
+        year: "2024",
+        category: "Folder",
+        image: "https://images.unsplash.com/photo-1626785774573-4b799314346d?q=80&w=2070&auto=format&fit=crop",
+        type: 'folder',
+        items: [
+            {
+                id: 1,
+                title: "Digital Wallet",
+                year: "2024",
+                category: "Fintech",
+                image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1470&auto=format&fit=crop",
+                video: "/videos/Wallet.mp4",
+                link: "https://filecard-delta.vercel.app/",
+                description: "Next-gen digital wallet focused on cross-border payments.",
+                overview: "Digital Wallet re-imagines the peer-to-peer payment experience for a global audience. The primary goal was to abstract away the complexities of currency conversion and international fees, presenting users with a simple 'send and receive' interface.",
+                process: "We focused heavily on trust signals. The UI uses biometric authentication cues and clear transaction states to reassure users. The 'cards' interface allows users to manage multiple currencies as distinct entities. Motion design plays a huge role here—swiping a card feels physical and responsive, adding a layer of tactile feedback to digital finance.",
+            },
+            {
+                id: 7,
+                title: "File Showcase",
+                year: "2022",
+                category: "System Design",
+                image: "/images/file-showcase-fallback.png",
+                video: "/videos/File.mp4",
+                link: "https://file-showcase.vercel.app/",
+                description: "A robust file management system for enterprise collaboration.",
+                overview: "File Showcase is a design study in information density. Enterprise file managers often suffer from clutter. This project aims to maximize data visibility—showing file types, sizes, and owners at a glance—without making the interface feel crowded.",
+                process: "I utilized a modular grid system that adapts to different screen sizes. The 'smart-filter' feature was a key design innovation, allowing users to view files by context (e.g., 'recently edited by me') rather than just directory structure. The visual style is strictly functional, relying on typography and spacing rather than decoration to create hierarchy.",
+            }
+        ]
+    },
+    {
+        id: 101,
+        title: "Client Work",
         year: "2023",
-        category: "SaaS",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
-        video: "/videos/Linkease.mp4",
-        link: "https://link-ease-omega.vercel.app/"
-    },
-    {
-        id: 4,
-        title: "Loyalty rewards",
-        year: "2023",
-        category: "Product Design",
-        image: "https://images.unsplash.com/photo-1560066984-1fa980fab5aa?q=80&w=1992&auto=format&fit=crop"
-    },
-    {
-        id: 5,
-        title: "Admin Panel Dashboard",
-        year: "2023",
-        category: "Web App",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
-    },
-    {
-        id: 6,
-        title: "Future World (Concept)",
-        year: "2022",
-        category: "3D Art",
-        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop"
-    },
-    {
-        id: 7,
-        title: "File Showcase",
-        year: "2022",
-        category: "System Design",
-        image: "/images/file-showcase-fallback.png",
-        video: "/videos/FileShowcase.mp4",
-        link: "https://file-showcase.vercel.app/"
-    },
-    {
-        id: 8,
-        title: "MicroHabbit",
-        year: "2022",
-        category: "Mobile App",
-        image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop"
+        category: "Folder",
+        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
+        type: 'folder',
+        items: [
+            {
+                id: 4,
+                title: "Loyalty rewards",
+                year: "2023",
+                category: "Product Design",
+                image: "/images/loyalty-rewards.png",
+                isNDA: true,
+                description: "Gamified loyalty program for high-retention user engagement.",
+                overview: "This project is covered by a Non-Disclosure Agreement. The goal was to revamp an existing loyalty system into a gamified experience to boost user retention. We focused on clear progress indicators, rewarding micro-interactions, and a tier-based achievement system. The challenge was to balance the fun, gamified elements with the clear utility of a financial reward system.",
+                process: "Due to confidentiality, I cannot share specific flows, but the process involved extensive user journey mapping to identify 'delight moments'. We prototyped high-fidelity animations for reward unlocking to test emotional response. The visual language moved away from standard corporate colors to a more vibrant, energetic palette while maintaining brand consistency. We conducted A/B testing on the claim process to minimize friction.",
+            },
+            {
+                id: 5,
+                title: "Admin Panel Dashboard",
+                year: "2023",
+                category: "Web App",
+                image: "/images/admin-dashboard-kyc.png",
+                isNDA: true,
+                description: "A comprehensive KYC management dashboard for merchant verification.",
+                overview: "This project operates under a strict Non-Disclosure Agreement (NDA). The dashboard is designed to streamline the KYC (Know Your Customer) process for onboarding merchants, allowing administrators to verify PAN, GST, and FSSAI documents efficiently. The interface focuses on clarity, speed, and handling large volumes of data without overwhelming the user.",
+                process: "The design process focused on heavy data hierarchy management. Start by analyzing the verification workflow: Request -> Review -> Approve/Reject. We implemented a 'Master KYC Database' view for quick searching and status filtering. Color-coded badges (Verified, Rejected, Under Review) were essential for scannability. The 'Action' column uses minimal icons to keep the table clean. I will write the detailed process behind this design below...",
+            }
+        ]
     }
 ];
 
@@ -85,10 +118,12 @@ const DashboardLayout = () => {
     const { isDarkMode, toggleTheme } = useTheme();
     const [hoveredProject, setHoveredProject] = useState<number | null>(null);
     const [selectedProject, setSelectedProject] = useState<number | null>(null);
+    const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isHirePopupOpen, setIsHirePopupOpen] = useState(false);
 
     useEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (function (C: any, A, L) {
             let p = function (a: any, ar: any) { a.q.push(ar); };
             let d = C.document;
@@ -120,7 +155,29 @@ const DashboardLayout = () => {
         (window as any).Cal.ns["15min"]("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
     }, []);
 
-    const activeProject = projects.find(p => p.id === (hoveredProject || selectedProject));
+    // Recursive search to find any project by ID (for rendering active project)
+    const findProjectById = (id: number, items: Project[] = projects): Project | undefined => {
+        for (const item of items) {
+            if (item.id === id) return item;
+            if (item.items) {
+                const found = findProjectById(id, item.items);
+                if (found) return found;
+            }
+        }
+        return undefined;
+    };
+
+    const activeProject = selectedProject ? findProjectById(selectedProject) : (hoveredProject ? findProjectById(hoveredProject) : undefined);
+
+    // Determine visible projects based on current folder
+    const getCurrentFolderItems = () => {
+        if (!currentFolderId) return projects;
+        const folder = projects.find(p => p.id === currentFolderId);
+        return folder?.items || [];
+    };
+
+    const visibleProjects = getCurrentFolderItems();
+    const currentFolder = currentFolderId ? projects.find(p => p.id === currentFolderId) : null;
 
     // Strict 3-color palette
     const textPrimary = isDarkMode ? 'text-white' : 'text-black';
@@ -245,6 +302,7 @@ const DashboardLayout = () => {
                         onClick={() => {
                             setSelectedProject(null);
                             setHoveredProject(null);
+                            setCurrentFolderId(null);
                         }}
                         className="flex items-center gap-2 cursor-pointer hover:opacity-70 transition-opacity"
                     >
@@ -259,38 +317,91 @@ const DashboardLayout = () => {
                     </div>
                 </div>
 
-                {/* Scrollable Projects List Only */}
-                <div className="flex-1 overflow-y-auto px-4 py-4">
-                    <nav className="space-y-1">
-                        {projects.map((project) => (
-                            <button
+                {/* Projects Grid */}
+                <div className="flex-1 overflow-y-auto p-4 space-y-2">
+                    {currentFolderId && (
+                        <button
+                            onClick={() => setCurrentFolderId(null)}
+                            className={`w-full text-left px-4 py-3 rounded-xl mb-2 flex items-center gap-3 ${isDarkMode ? 'hover:bg-white/5 text-white/70' : 'hover:bg-black/5 text-black/70'} transition-colors group`}
+                        >
+                            <span className="w-8 h-8 flex items-center justify-center rounded-lg bg-transparent border border-current opacity-50 group-hover:opacity-100">
+                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </span>
+                            <span className="font-medium text-sm">Back to Home</span>
+                        </button>
+                    )}
+
+                    {visibleProjects.map((project) => {
+                        const isFolderExpanded = project.type === 'folder' && (hoveredProject === project.id || project.items?.some(p => p.id === hoveredProject));
+
+                        // Expanded Folder Content
+                        if (isFolderExpanded && project.items) {
+                            return (
+                                <div
+                                    key={project.id}
+                                    onMouseLeave={() => setHoveredProject(null)}
+                                    className="space-y-1"
+                                >
+                                    {project.items.map((item) => (
+                                        <div
+                                            key={item.id}
+                                            onMouseEnter={() => setHoveredProject(item.id)}
+                                            onClick={() => setSelectedProject(item.id)}
+                                            className={`
+                                                group flex items-center justify-between w-full px-4 py-3 rounded-xl cursor-pointer transition-all duration-200
+                                                ${selectedProject === item.id
+                                                    ? (isDarkMode ? 'bg-white/10 text-white' : 'bg-black/5 text-black')
+                                                    : 'hover:bg-black/5 dark:hover:bg-white/5 text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white'
+                                                }
+                                            `}
+                                        >
+                                            <span className="text-sm font-medium truncate">{item.title}</span>
+                                            <span className={`text-xs ${selectedProject === item.id ? 'opacity-100' : 'opacity-50 group-hover:opacity-100'} transition-opacity`}>
+                                                {item.year}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+                            );
+                        }
+
+                        // Top Level Items (Folders included)
+                        return (
+                            <div
                                 key={project.id}
                                 onMouseEnter={() => setHoveredProject(project.id)}
                                 onMouseLeave={() => setHoveredProject(null)}
-                                onClick={() => setSelectedProject(project.id === selectedProject ? null : project.id)}
+                                onClick={() => {
+                                    if (project.type === 'folder') {
+                                        setCurrentFolderId(project.id);
+                                    } else {
+                                        setSelectedProject(project.id);
+                                    }
+                                }}
                                 className={`
-                                    w-full flex items-center justify-between px-3 py-2.5 text-sm rounded-md transition-all duration-200 group relative
-                                    ${(project.id === selectedProject)
-                                        ? `${bgSecondary} ${textPrimary} font-semibold shadow-sm`
-                                        : (hoveredProject === project.id)
-                                            ? `${bgSecondary} ${textPrimary} translate-x-1`
-                                            : `${textSecondary} hover:${textPrimary}`
+                                    group flex items-center justify-between w-full px-4 py-3 rounded-xl cursor-pointer transition-all duration-200
+                                    ${selectedProject === project.id
+                                        ? (isDarkMode ? 'bg-white/10 text-white' : 'bg-black/5 text-black')
+                                        : 'hover:bg-black/5 dark:hover:bg-white/5 text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white'
                                     }
                                 `}
                             >
-                                {/* Active Indicator Line */}
-                                {project.id === selectedProject && (
-                                    <motion.div
-                                        layoutId="activeProjectIndicator"
-                                        className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-4 bg-red-500 rounded-r-md"
-                                    />
-                                )}
-
-                                <span className={project.id === selectedProject ? "ml-2" : ""}>{project.title}</span>
-                                <span className={`text-[10px] ${textSecondary} opacity-0 group-hover:opacity-100 transition-opacity`}>{project.year}</span>
-                            </button>
-                        ))}
-                    </nav>
+                                <div className="flex items-center gap-3">
+                                    {project.type === 'folder' && (
+                                        <svg className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                                        </svg>
+                                    )}
+                                    <span className="text-sm font-medium truncate">{project.title}</span>
+                                </div>
+                                <span className={`text-xs ${selectedProject === project.id ? 'opacity-100' : 'opacity-50 group-hover:opacity-100'} transition-opacity`}>
+                                    {project.year}
+                                </span>
+                            </div>
+                        );
+                    })}
                 </div>
 
                 <div className={`border-t ${borderColor}`}>
@@ -336,9 +447,40 @@ const DashboardLayout = () => {
 
                     {/* Breadcrumbs / Title */}
                     <div className="flex items-center gap-2 text-sm">
-                        <span className={textSecondary}>Sumit</span>
+                        <span
+                            className={`${textSecondary} hover:${textPrimary} cursor-pointer transition-colors`}
+                            onClick={() => {
+                                setSelectedProject(null);
+                                setHoveredProject(null);
+                                setCurrentFolderId(null);
+                            }}
+                        >
+                            Sumit
+                        </span>
                         <span className={textSecondary}>/</span>
-                        <span className={textPrimary}>{activeProject ? activeProject.title : "Main"}</span>
+                        <span
+                            className={`${currentFolderId ? `${textSecondary} hover:${textPrimary} cursor-pointer` : textPrimary} transition-colors`}
+                            onClick={() => {
+                                if (currentFolderId) {
+                                    setSelectedProject(null);
+                                    setCurrentFolderId(null);
+                                }
+                            }}
+                        >
+                            Home
+                        </span>
+                        {currentFolder && (
+                            <>
+                                <span className={textSecondary}>/</span>
+                                <span className={textPrimary}>{currentFolder.title}</span>
+                            </>
+                        )}
+                        {activeProject && !activeProject.items && (
+                            <>
+                                <span className={textSecondary}>/</span>
+                                <span className={textPrimary}>{activeProject.title}</span>
+                            </>
+                        )}
                     </div>
                     <div className="flex items-center gap-4">
                         <button
@@ -447,92 +589,169 @@ const DashboardLayout = () => {
                         /* Light Mode: Organic Mesh Gradient Animation */
                         <div className="absolute inset-0 z-0 bg-white" />
                     )}
-                    <div className="w-full max-w-3xl relative z-10">
+
+                    <div className="w-full max-w-3xl relative z-10 h-full flex flex-col justify-center">
 
                         <AnimatePresence mode="wait">
                             {activeProject ? (
                                 <motion.div
                                     key="preview"
-                                    initial={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
-                                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                                    exit={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
-                                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                                    className={`
-                                        fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4
-                                        md:relative md:p-0 md:bg-transparent md:block md:inset-auto md:z-auto
-                                    `}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="w-full h-full overflow-y-auto overflow-x-hidden no-scrollbar scroll-smooth"
                                 >
-                                    <div className={`
-                                        w-full max-w-lg aspect-video rounded-xl overflow-hidden shadow-2xl ring-1 relative
-                                        ${isDarkMode ? 'ring-white/10' : 'ring-black/10'}
-                                    `}>
-                                        {activeProject?.video ? (
-                                            <video
-                                                key={activeProject.video}
-                                                src={activeProject.video}
-                                                autoPlay
-                                                muted
-                                                loop
-                                                playsInline
-                                                className="w-full h-full object-cover"
-                                                onError={(e) => {
-                                                    e.currentTarget.style.display = 'none';
-                                                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                                                }}
-                                            />
-                                        ) : null}
+                                    <div className={`max-w-4xl mx-auto px-6 md:px-12 ${selectedProject ? 'min-h-full flex flex-col justify-center pt-6 pb-24' : 'h-full flex flex-col justify-center'}`}>
 
-                                        <img
-                                            src={activeProject?.image}
-                                            alt={activeProject?.title}
-                                            className={`w-full h-full object-cover ${activeProject?.video ? 'hidden' : ''}`}
-                                        />
+                                        {/* Header Section (Only visible when Selected/Clicked) */}
+                                        {selectedProject && (
+                                            <div className="flex justify-between items-start mb-4 text-black dark:text-white">
+                                                <div className="space-y-1">
+                                                    <h1 className="text-3xl font-bold tracking-tight">
+                                                        {activeProject.title}
+                                                    </h1>
+                                                    <p className="text-base opacity-60 font-medium">
+                                                        {activeProject.description || activeProject.category}
+                                                    </p>
+                                                </div>
 
-                                        {/* Home / Close Button */}
-                                        <button
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                setSelectedProject(null);
-                                                setHoveredProject(null);
-                                            }}
-                                            className={`
-                                            absolute top-6 right-6 md:top-4 md:right-4 z-50 
-                                            p-4 md:p-2 rounded-full shadow-2xl 
-                                            transition-all duration-200 hover:scale-105 active:scale-95 
-                                            flex items-center justify-center
-                                            bg-black text-white
-                                            ${isDarkMode
-                                                    ? 'md:bg-white md:text-black md:hover:bg-gray-200'
-                                                    : 'md:bg-black md:text-white md:hover:bg-gray-800'
-                                                }
-                                        `}
-                                            title="Go Home"
-                                        >
-                                            <svg className="w-6 h-6 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-8 md:p-8 pb-12 md:pb-8">
-                                            <div>
-                                                <h3 className="text-3xl md:text-2xl font-bold text-white tracking-tight leading-tight mb-2 md:mb-0">{activeProject?.title}</h3>
-                                                <p className="text-white/80 text-base md:text-sm mt-1 font-medium">{activeProject?.category} — {activeProject?.year}</p>
-                                                {activeProject?.link && (
-                                                    <a
-                                                        href={activeProject.link}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="inline-flex items-center gap-2 mt-4 md:mt-3 px-4 py-2 md:px-0 md:py-0 bg-white/10 md:bg-transparent rounded-full md:rounded-none backdrop-blur-md md:backdrop-blur-none text-sm font-semibold text-white hover:bg-white/20 md:hover:bg-transparent md:hover:text-white md:hover:underline transition-all"
-                                                        onClick={(e) => e.stopPropagation()}
-                                                    >
-                                                        See it in action
-                                                        <svg className="w-4 h-4 md:w-3 md:h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                                        </svg>
-                                                    </a>
-                                                )}
+                                                {/* Close Button at top-right of content */}
+                                                <button
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setSelectedProject(null);
+                                                        setHoveredProject(null);
+                                                    }}
+                                                    className={`
+                                                    p-2 rounded-full
+                                                    transition-all duration-200 hover:scale-110 active:scale-95
+                                                    bg-black/5 dark:bg-white/10 text-black dark:text-white
+                                                    hover:bg-black/10 dark:hover:bg-white/20
+                                                `}
+                                                    title="Close Project"
+                                                >
+                                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                                    </svg>
+                                                </button>
                                             </div>
+                                        )}
+
+                                        {/* Main Visual Preview (Video Box) */}
+                                        <div className={`
+                                            w-full h-[40vh] min-h-[320px] rounded-xl overflow-hidden shadow-2xl ring-1 relative
+                                            bg-black/5 dark:bg-white/5
+                                            ${isDarkMode ? 'ring-white/10' : 'ring-black/10'}
+                                            ${selectedProject ? 'mb-6' : ''}
+                                        `}>
+                                            {activeProject?.video ? (
+                                                <video
+                                                    key={activeProject.video}
+                                                    src={activeProject.video}
+                                                    autoPlay
+                                                    muted
+                                                    loop
+                                                    playsInline
+                                                    className="w-full h-full object-cover"
+                                                    onError={(e) => {
+                                                        e.currentTarget.style.display = 'none';
+                                                        e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                                                    }}
+                                                />
+                                            ) : null}
+
+                                            <img
+                                                src={activeProject?.image}
+                                                alt={activeProject?.title}
+                                                className={`w-full h-full object-cover ${activeProject?.video ? 'hidden' : ''}`}
+                                            />
                                         </div>
+
+                                        {/* Detailed Content (Only visible when Selected/Clicked) */}
+                                        {selectedProject && (
+                                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
+                                                {/* Action Buttons */}
+                                                <div className="flex flex-wrap justify-center gap-4 mb-10 w-full">
+                                                    {activeProject?.link && (
+                                                        <a
+                                                            href={activeProject.link}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className={`
+                                                                inline-flex items-center justify-center h-10 rounded-md px-8 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50
+                                                                ${isDarkMode
+                                                                    ? 'bg-white text-black hover:bg-white/90 ring-offset-black'
+                                                                    : 'bg-black text-white hover:bg-black/90 ring-offset-white'}
+                                                            `}
+                                                            onClick={(e) => e.stopPropagation()}
+                                                        >
+                                                            See it in action
+                                                        </a>
+                                                    )}
+
+                                                    <button
+                                                        onClick={() => {
+                                                            document.getElementById('case-study-section')?.scrollIntoView({ behavior: 'smooth' });
+                                                        }}
+                                                        className={`
+                                                            inline-flex items-center justify-center h-10 rounded-md px-8 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border
+                                                            ${isDarkMode
+                                                                ? 'border-white/20 hover:bg-white/10 text-white ring-offset-black'
+                                                                : 'border-black/20 hover:bg-black/5 text-black ring-offset-white'}
+                                                        `}
+                                                    >
+                                                        More About This
+                                                    </button>
+                                                </div>
+
+                                                {/* Case Study Section (Below Fold) */}
+                                                <div id="case-study-section" className="space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                                                    <div className={`h-px w-full ${isDarkMode ? 'bg-white/10' : 'bg-black/10'}`} />
+
+                                                    {/* NDA Notice */}
+                                                    {activeProject.isNDA && (
+                                                        <div className={`p-4 rounded-lg border ${isDarkMode ? 'bg-red-500/10 border-red-500/20 text-red-400' : 'bg-red-50 border-red-200 text-red-600'} flex items-start gap-3`}>
+                                                            <svg className="w-5 h-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                            </svg>
+                                                            <div className="text-sm">
+                                                                <strong className="block font-semibold mb-1">Non-Disclosure Agreement</strong>
+                                                                This project is protected under an NDA. Some specific details and sensitive data have been omitted or obfuscated. The visual represented here is a conceptualized version of the final delivered product.
+                                                            </div>
+                                                        </div>
+                                                    )}
+
+                                                    <div className="space-y-6">
+                                                        <h2 className={`text-2xl font-bold ${textPrimary}`}>The Overview</h2>
+                                                        <p className={`text-lg leading-relaxed ${textSecondary}`}>
+                                                            {activeProject.overview || "This project was conceived to solve a specific problem in the industry. By leveraging modern web technologies, we created a seamless experience that allows users to capture data efficiently. The focus was on minimalism and speed, ensuring that the interface never gets in the way of the user's task."}
+                                                        </p>
+                                                    </div>
+
+                                                    {activeProject.process && (
+                                                        <div className="space-y-6">
+                                                            <h2 className={`text-2xl font-bold ${textPrimary}`}>The Process</h2>
+                                                            <p className={`text-lg leading-relaxed ${textSecondary} whitespace-pre-line`}>
+                                                                {activeProject.process}
+                                                            </p>
+                                                        </div>
+                                                    )}
+
+                                                    {!activeProject.process && (
+                                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                                            <div className={`aspect-square rounded-2xl ${isDarkMode ? 'bg-white/5' : 'bg-black/5'} p-8 flex items-center justify-center`}>
+                                                                <span className={`${textSecondary} text-sm`}>Feature Placeholder 1</span>
+                                                            </div>
+                                                            <div className={`aspect-square rounded-2xl ${isDarkMode ? 'bg-white/5' : 'bg-black/5'} p-8 flex items-center justify-center`}>
+                                                                <span className={`${textSecondary} text-sm`}>Feature Placeholder 2</span>
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        )}
+
                                     </div>
                                 </motion.div>
                             ) : (
@@ -571,10 +790,16 @@ const DashboardLayout = () => {
 
                                     {/* Mobile Project List (Hidden on Desktop) */}
                                     <div className="mt-16 md:hidden space-y-6">
-                                        {projects.map((project) => (
+                                        {visibleProjects.map((project) => (
                                             <div
                                                 key={project.id}
-                                                onClick={() => setSelectedProject(project.id)}
+                                                onClick={() => {
+                                                    if (project.type === 'folder') {
+                                                        setCurrentFolderId(project.id);
+                                                    } else {
+                                                        setSelectedProject(project.id);
+                                                    }
+                                                }}
                                                 className="group flex items-baseline justify-between cursor-pointer"
                                             >
                                                 <h4 className={`text-lg font-medium ${textPrimary} group-hover:opacity-60 transition-opacity`}>
