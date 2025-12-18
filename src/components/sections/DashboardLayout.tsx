@@ -68,7 +68,7 @@ const projects: Project[] = [
         title: "File Showcase",
         year: "2022",
         category: "System Design",
-        image: "https://images.unsplash.com/photo-1544396821-4dd40b938ad3?q=80&w=2073&auto=format&fit=crop",
+        image: "/images/file-showcase-fallback.png",
         video: "/videos/FileShowcase.mp4",
         link: "https://file-showcase.vercel.app/"
     },
@@ -338,7 +338,7 @@ const DashboardLayout = () => {
                     <div className="flex items-center gap-2 text-sm">
                         <span className={textSecondary}>Sumit</span>
                         <span className={textSecondary}>/</span>
-                        <span className={textPrimary}>{activeProject ? activeProject.title : "Overview"}</span>
+                        <span className={textPrimary}>{activeProject ? activeProject.title : "Main"}</span>
                     </div>
                     <div className="flex items-center gap-4">
                         <button
@@ -458,73 +458,80 @@ const DashboardLayout = () => {
                                     exit={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
                                     transition={{ type: "spring", stiffness: 300, damping: 25 }}
                                     className={`
-                                        fixed inset-0 z-[100] w-full h-full bg-black flex flex-col
-                                        md:relative md:w-full md:h-auto md:aspect-video md:rounded-xl md:inset-auto md:z-auto md:block
-                                        overflow-hidden shadow-2xl ring-1 group 
-                                        ${isDarkMode ? 'ring-white/10' : 'ring-black/10'}
+                                        fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4
+                                        md:relative md:p-0 md:bg-transparent md:block md:inset-auto md:z-auto
                                     `}
                                 >
-                                    {activeProject?.video ? (
-                                        <video
-                                            key={activeProject.video}
-                                            src={activeProject.video}
-                                            autoPlay
-                                            muted
-                                            loop
-                                            playsInline
-                                            className="w-full h-full object-cover"
-                                        />
-                                    ) : (
+                                    <div className={`
+                                        w-full max-w-lg aspect-video rounded-xl overflow-hidden shadow-2xl ring-1 relative
+                                        ${isDarkMode ? 'ring-white/10' : 'ring-black/10'}
+                                    `}>
+                                        {activeProject?.video ? (
+                                            <video
+                                                key={activeProject.video}
+                                                src={activeProject.video}
+                                                autoPlay
+                                                muted
+                                                loop
+                                                playsInline
+                                                className="w-full h-full object-cover"
+                                                onError={(e) => {
+                                                    e.currentTarget.style.display = 'none';
+                                                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                                                }}
+                                            />
+                                        ) : null}
+
                                         <img
                                             src={activeProject?.image}
                                             alt={activeProject?.title}
-                                            className="w-full h-full object-cover"
+                                            className={`w-full h-full object-cover ${activeProject?.video ? 'hidden' : ''}`}
                                         />
-                                    )}
 
-                                    {/* Home / Close Button */}
-                                    <button
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            setSelectedProject(null);
-                                            setHoveredProject(null);
-                                        }}
-                                        className={`
+                                        {/* Home / Close Button */}
+                                        <button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setSelectedProject(null);
+                                                setHoveredProject(null);
+                                            }}
+                                            className={`
                                             absolute top-6 right-6 md:top-4 md:right-4 z-50 
                                             p-4 md:p-2 rounded-full shadow-2xl 
                                             transition-all duration-200 hover:scale-105 active:scale-95 
                                             flex items-center justify-center
                                             bg-black text-white
                                             ${isDarkMode
-                                                ? 'md:bg-white md:text-black md:hover:bg-gray-200'
-                                                : 'md:bg-black md:text-white md:hover:bg-gray-800'
-                                            }
+                                                    ? 'md:bg-white md:text-black md:hover:bg-gray-200'
+                                                    : 'md:bg-black md:text-white md:hover:bg-gray-800'
+                                                }
                                         `}
-                                        title="Go Home"
-                                    >
-                                        <svg className="w-6 h-6 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                    </button>
+                                            title="Go Home"
+                                        >
+                                            <svg className="w-6 h-6 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
 
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-8 md:p-8 pb-12 md:pb-8">
-                                        <div>
-                                            <h3 className="text-3xl md:text-2xl font-bold text-white tracking-tight leading-tight mb-2 md:mb-0">{activeProject?.title}</h3>
-                                            <p className="text-white/80 text-base md:text-sm mt-1 font-medium">{activeProject?.category} — {activeProject?.year}</p>
-                                            {activeProject?.link && (
-                                                <a
-                                                    href={activeProject.link}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="inline-flex items-center gap-2 mt-4 md:mt-3 px-4 py-2 md:px-0 md:py-0 bg-white/10 md:bg-transparent rounded-full md:rounded-none backdrop-blur-md md:backdrop-blur-none text-sm font-semibold text-white hover:bg-white/20 md:hover:bg-transparent md:hover:text-white md:hover:underline transition-all"
-                                                    onClick={(e) => e.stopPropagation()}
-                                                >
-                                                    See it in action
-                                                    <svg className="w-4 h-4 md:w-3 md:h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                                    </svg>
-                                                </a>
-                                            )}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-8 md:p-8 pb-12 md:pb-8">
+                                            <div>
+                                                <h3 className="text-3xl md:text-2xl font-bold text-white tracking-tight leading-tight mb-2 md:mb-0">{activeProject?.title}</h3>
+                                                <p className="text-white/80 text-base md:text-sm mt-1 font-medium">{activeProject?.category} — {activeProject?.year}</p>
+                                                {activeProject?.link && (
+                                                    <a
+                                                        href={activeProject.link}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="inline-flex items-center gap-2 mt-4 md:mt-3 px-4 py-2 md:px-0 md:py-0 bg-white/10 md:bg-transparent rounded-full md:rounded-none backdrop-blur-md md:backdrop-blur-none text-sm font-semibold text-white hover:bg-white/20 md:hover:bg-transparent md:hover:text-white md:hover:underline transition-all"
+                                                        onClick={(e) => e.stopPropagation()}
+                                                    >
+                                                        See it in action
+                                                        <svg className="w-4 h-4 md:w-3 md:h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                        </svg>
+                                                    </a>
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
                                 </motion.div>
