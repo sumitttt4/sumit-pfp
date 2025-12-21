@@ -99,10 +99,10 @@ const About = () => {
             </aside>
 
             {/* Main Content - Scrollable on Mobile, Centered Bento on Desktop */}
-            <main className={`flex-1 flex flex-col h-full relative overflow-hidden ${bgPrimary} transition-colors duration-300`}>
+            <main className={`flex-1 h-full relative overflow-hidden ${bgPrimary} transition-colors duration-300`}>
 
-                {/* Header */}
-                <header className={`h-16 flex-none border-b ${borderColor} flex items-center justify-between px-6 md:px-8 bg-transparent z-20`}>
+                {/* Header - Sticky/Translucent for Premium Feel */}
+                <header className={`absolute top-0 left-0 right-0 h-16 flex items-center justify-between px-6 md:px-8 border-b ${borderColor} ${isDarkMode ? 'bg-black/80' : 'bg-white/80'} backdrop-blur-md z-30`}>
                     <div className="flex items-center gap-2 text-sm">
                         <span className={`${textSecondary} hover:${textPrimary} cursor-pointer transition-colors`} onClick={() => navigate('/')}>Sumit</span>
                         <span className={textSecondary}>/</span>
@@ -116,24 +116,24 @@ const About = () => {
                     </div>
                 </header>
 
-                <div className="flex-1 overflow-y-auto md:overflow-hidden flex items-center justify-center p-4 md:p-12 relative">
+                <div className="w-full h-full overflow-y-auto overflow-x-hidden p-4 md:p-12 pt-24 md:pt-12 relative flex flex-col items-center justify-center">
                     {isDarkMode && (
-                        <div className="absolute inset-0 opacity-[0.015] pointer-events-none z-0 mix-blend-overlay"
+                        <div className="fixed inset-0 opacity-[0.015] pointer-events-none z-0 mix-blend-overlay"
                             style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
                         />
                     )}
 
-                    <div className="w-full max-w-5xl md:h-[80vh] h-auto grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 relative z-10 text-pretty pb-20 md:pb-0">
+                    <div className="w-full max-w-5xl mx-auto h-auto grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10 text-pretty pb-20 md:pb-0">
 
                         {/* 1. Main Bio (Large) */}
-                        <BentoCard className="md:col-span-2 md:row-span-1 flex flex-col justify-center min-h-[250px] md:min-h-0">
+                        <BentoCard className="md:col-span-2 flex flex-col justify-center min-h-[300px]">
                             <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
                                 {/* Logo Removed as requested */}
-                                <div className="space-y-4">
-                                    <h1 className={`text-3xl md:text-3xl font-bold ${textPrimary} tracking-tight`}>
+                                <div className="space-y-6">
+                                    <h1 className={`text-3xl md:text-4xl font-bold ${textPrimary} tracking-tight`}>
                                         From my pen
                                     </h1>
-                                    <p className={`text-base md:text-lg leading-relaxed ${textSecondary}`}>
+                                    <p className={`text-base md:text-xl leading-relaxed ${textSecondary} max-w-2xl`}>
                                         I’m Sumit Sharma, passionate about design and converting those designs into real-world sites and applications. Designing has been my go-to hobby at any time; I see the world through design and admire it, and I really wanna be one of the greats in design at the end of my time. Thanks.
                                     </p>
                                     <div className={`flex items-center gap-2 text-xs font-medium ${textSecondary} uppercase tracking-wider`}>
@@ -145,9 +145,9 @@ const About = () => {
                         </BentoCard>
 
                         {/* 2. Status / Action */}
-                        <BentoCard className="md:col-span-1 md:row-span-1 flex flex-col justify-between min-h-[200px] md:min-h-0 gap-6 md:gap-0">
+                        <BentoCard className="md:col-span-1 flex flex-col justify-between min-h-[300px] gap-6 md:gap-0">
                             <div>
-                                <h3 className={`font-semibold ${textPrimary} mb-1`}>Writing</h3>
+                                <h3 className={`font-semibold ${textPrimary} mb-2`}>Writing</h3>
                                 <p className={`text-sm ${textSecondary} mb-4 leading-relaxed`}>
                                     Sometimes I write about design, code, and the chaotic beauty of building products. Thoughts, tutorials, and occasional rants.
                                 </p>
@@ -156,7 +156,7 @@ const About = () => {
                                 href="https://medium.com/@sumitsharma9128"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`w-full py-2.5 rounded-xl font-medium text-sm text-center flex items-center justify-center gap-2
+                                className={`w-full py-3 rounded-xl font-medium text-sm text-center flex items-center justify-center gap-2
                                     ${isDarkMode
                                         ? 'bg-white text-black hover:bg-white/90'
                                         : 'bg-black text-white hover:bg-black/90'} 
@@ -170,9 +170,9 @@ const About = () => {
                         </BentoCard>
 
                         {/* 3. Toolkit (Wide Bottom) */}
-                        <BentoCard className="md:col-span-3 md:row-span-1 flex flex-col justify-center min-h-[200px] md:min-h-0">
-                            <h3 className={`text-sm font-bold uppercase tracking-wider mb-6 ${textSecondary}`}>Toolkit</h3>
-                            <div className="flex flex-wrap gap-3">
+                        <BentoCard className="md:col-span-3 flex flex-col justify-center min-h-[250px]">
+                            <h3 className={`text-sm font-bold uppercase tracking-wider mb-8 ${textSecondary}`}>Toolkit</h3>
+                            <div className="flex flex-wrap gap-4">
                                 {[
                                     { name: 'Figma', icon: 'https://cdn.simpleicons.org/figma/F24E1E' },
                                     { name: 'React', icon: 'https://cdn.simpleicons.org/react/61DAFB' },
@@ -180,15 +180,18 @@ const About = () => {
                                     { name: 'Next.js', icon: isDarkMode ? 'https://cdn.simpleicons.org/nextdotjs/white' : 'https://cdn.simpleicons.org/nextdotjs/black' },
                                     { name: 'Framer Motion', icon: isDarkMode ? 'https://cdn.simpleicons.org/framer/white' : 'https://cdn.simpleicons.org/framer/black' },
                                     { name: 'Rive', icon: 'https://cdn.simpleicons.org/rive/D7242D' },
-                                    { name: 'API', icon: isDarkMode ? 'https://cdn.simpleicons.org/postman/white' : 'https://cdn.simpleicons.org/postman/black' }, // Using Postman icon for API interaction representation or generic
-                                    { name: 'JavaScript', icon: 'https://cdn.simpleicons.org/javascript/F7DF1E' }
+                                    { name: 'Postman', icon: 'https://cdn.simpleicons.org/postman/FF6C37' },
+                                    { name: 'JavaScript', icon: 'https://cdn.simpleicons.org/javascript/F7DF1E' },
+                                    { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript/3178C6' },
+                                    { name: 'Git', icon: 'https://cdn.simpleicons.org/git/F05032' },
+                                    { name: 'Node.js', icon: 'https://cdn.simpleicons.org/nodedotjs/339933' }
                                 ].map((skill) => (
                                     <span
                                         key={skill.name}
-                                        className={`px-4 py-2 rounded-xl text-sm font-medium border flex items-center gap-2
+                                        className={`px-5 py-2.5 rounded-xl text-sm font-medium border flex items-center gap-2.5 transition-all hover:scale-105
                                             ${isDarkMode
-                                                ? 'bg-black/20 border-white/5 text-white/70'
-                                                : 'bg-white/50 border-black/5 text-black/70'}
+                                                ? 'bg-black/20 border-white/5 text-white/70 hover:bg-white/10 hover:text-white hover:border-white/10'
+                                                : 'bg-white/50 border-black/5 text-black/70 hover:bg-black/5 hover:text-black hover:border-black/10'}
                                         `}
                                     >
                                         <img src={skill.icon} alt={skill.name} className="w-4 h-4 object-contain" />

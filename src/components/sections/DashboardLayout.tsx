@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '@/contexts/ThemeContext';
 import { LogIn, Moon, Sun, Command, Mail, Copy } from 'lucide-react';
+import { toast } from "sonner";
 
 import robotImg from '@/assets/images/robot.png';
 
@@ -194,18 +196,20 @@ const DashboardLayout = () => {
             {/* Hire Me Modal - Full Screen Overlay with Hover Detection */}
             <AnimatePresence>
                 {isHirePopupOpen && (
-                    <>
-                        {/* Backdrop Overlay */}
-                        <motion.div
-                            key="modal-backdrop"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.15 }}
-                            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-md"
-                            onMouseEnter={() => setIsHirePopupOpen(false)}
-                        />
-
+                    <motion.div
+                        key="modal-backdrop"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.15 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md"
+                        // Handle click outside on the container
+                        onClick={(e) => {
+                            if (e.target === e.currentTarget) {
+                                setIsHirePopupOpen(false);
+                            }
+                        }}
+                    >
                         {/* Shadcn-Styled Hire Me Card */}
                         <motion.div
                             key="modal-card"
@@ -213,19 +217,18 @@ const DashboardLayout = () => {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 10 }}
                             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50"
+                            className="relative w-full max-w-sm"
                             onMouseLeave={() => setIsHirePopupOpen(false)}
                         >
                             {/* Card Container */}
-                            <div className="w-96 rounded-lg border border-black/10 bg-white shadow-lg relative">
+                            <div className="w-full rounded-lg border border-black/10 bg-white shadow-lg relative overflow-hidden">
 
                                 {/* Close Button - Shadcn Ghost Style */}
-                                {/* Magnetic Close Button */}
                                 <motion.button
                                     onClick={() => setIsHirePopupOpen(false)}
                                     whileHover={{ scale: 1.1, rotate: 90 }}
                                     whileTap={{ scale: 0.9 }}
-                                    className="absolute top-3 right-3 inline-flex items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 hover:bg-black/5 text-black/40 hover:text-black h-8 w-8"
+                                    className="absolute top-3 right-3 inline-flex items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 hover:bg-black/5 text-black/40 hover:text-black h-8 w-8 z-20"
                                     aria-label="Close"
                                 >
                                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -281,7 +284,7 @@ const DashboardLayout = () => {
                                 </div>
                             </div>
                         </motion.div>
-                    </>
+                    </motion.div>
                 )}
             </AnimatePresence>
 
@@ -520,11 +523,11 @@ const DashboardLayout = () => {
                             <button
                                 onClick={() => setIsProfileOpen(!isProfileOpen)}
                                 className={`
-                                    inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background
-                                    h-10 px-4 py-2
+                                    inline-flex items-center justify-center rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background
+                                    h-10 px-6 py-2
                                     ${isDarkMode
-                                        ? 'bg-white text-black hover:bg-white/90'
-                                        : 'bg-black text-white hover:bg-black/90'}
+                                        ? 'bg-white text-black hover:bg-white/90 shadow-md'
+                                        : 'bg-white/50 backdrop-blur-md border border-white/40 shadow-[0_4px_12px_rgba(0,0,0,0.08),inset_0_2px_4px_rgba(255,255,255,0.9)] text-black hover:bg-white/80 hover:scale-105 active:scale-95'}
                                 `}
                             >
                                 Contact me
@@ -787,7 +790,7 @@ const DashboardLayout = () => {
                                 >
                                     <h1 className={`text-xl md:text-3xl font-bold ${textPrimary} leading-tight mb-6 tracking-tight`}>
                                         Sumit Sharma, <br />
-                                        <span className="whitespace-nowrap">on a journey to <span className="text-red-500">design engineer</span> at <span
+                                        <span className="whitespace-normal md:whitespace-nowrap">on a journey to <span className="text-red-500">design engineer</span> at <span
                                             className="relative inline-block cursor-pointer"
                                             onMouseEnter={() => setIsHirePopupOpen(true)}
                                             onClick={() => setIsHirePopupOpen(true)}
@@ -803,13 +806,18 @@ const DashboardLayout = () => {
                                         </span></span>
                                     </h1>
 
-                                    <div className={`flex gap-4 text-sm ${textSecondary} font-medium`}>
+                                    <div className={`flex gap-4 text-sm ${textSecondary} font-medium items-center`}>
                                         <a href="/about" className={`hover:${textPrimary} transition-colors`}>About</a>
                                         <a href="https://github.com/sumitttt4" target="_blank" rel="noopener noreferrer" className={`hover:${textPrimary} transition-colors`}>GitHub</a>
-                                        <a href="https://x.com/Sumitthq" target="_blank" rel="noopener noreferrer" className={`hover:${textPrimary} transition-colors`}>Twitter</a>
+                                        <Link to="/blog" className={`hover:${textPrimary} transition-colors`}>Blog</Link>
+                                        <a href="https://x.com/Sumitthq" target="_blank" rel="noopener noreferrer" className={`hover:${textPrimary} transition-colors flex items-center gap-1`}>
+                                            <svg viewBox="0 0 24 24" className="w-3 h-3 fill-current" aria-hidden="true">
+                                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                            </svg>
+                                        </a>
                                     </div>
 
-                                    <div className="mt-16 md:hidden space-y-2">
+                                    <div className="mt-10 md:hidden space-y-2">
                                         {visibleProjects.map((project) => (
                                             <div
                                                 key={project.id}
