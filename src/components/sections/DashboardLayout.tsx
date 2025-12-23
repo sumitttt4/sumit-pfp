@@ -27,6 +27,30 @@ interface Project {
 
 const projects: Project[] = [
     {
+        id: 6,
+        title: "SafeAgree",
+        year: "2025",
+        category: "Privacy Tool",
+        image: "https://images.unsplash.com/photo-1555421689-3f034debb7a6?q=80&w=2070&auto=format&fit=crop",
+        video: "/videos/Safeagree.mp4",
+        link: "https://safe-agree.vercel.app/",
+        description: "The Privacy Shield for the 'I Agree' Era.",
+        overview: "The Problem: We all do it. We click \"I Agree\" on 50 page legal contracts without reading a single word. Companies know this, and they hide predatory clauses like selling your data, hidden fees, and forced arbitration deep in the fine print.\n\nThe Solution: SafeAgree is an intelligence engine that reads the fine print for you in seconds. It transforms dense legal jargon into a simple, high-fidelity Trust Score, giving you the clarity to sign up (or walk away) with confidence.",
+        process: "The design emphasizes immediate comprehension. We replaced endless scrolling with a clear, dashboard-style summary. Key risks are highlighted in red, while safe clauses are green. The 'Trust Score' works as a quick heuristic for users who want to make fast but informed decisions.",
+    },
+    /*
+    {
+        id: 7,
+        title: "DayZero",
+        year: "2025",
+        category: "Productivity OS",
+        image: "https://images.unsplash.com/photo-1481487484168-9b930d5b7960?q=80&w=2661&auto=format&fit=crop",
+        description: "The Anti-Performative Productivity OS.",
+        overview: "DayZero is a mobile-first accountability protocol designed to solve the 'Build in Public' crisis. While traditional tools rely on self-reported data, DayZero introduces 'Automated Verification' and 'Social Consequence,' shifting focus to undeniable proof of work. The design rejects standard SaaS dark modes for a strictly premium 'Titanium & Paper' light mode aesthetic.",
+        process: "The UX is built on 'Weaponized Psychology' and API-first verification. Key features include the 'Truth Engine' which verifies streaks via actual deployment events (Vercel/Stripe), and the 'Dead Man’s Switch' for reputation staking. Visually, we prioritized 'Haptic Visuals' using Framer Motion to give digital cards a tactile, spring-physics feel, mixing Google Sans with Geist Mono for a high-density, gallery-like mobile experience.",
+    },
+    */
+    {
         id: 3,
         title: "Linkease",
         year: "2025",
