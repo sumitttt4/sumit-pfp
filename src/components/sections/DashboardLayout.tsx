@@ -27,6 +27,18 @@ interface Project {
 
 const projects: Project[] = [
     {
+        id: 8,
+        title: "MonoQr",
+        year: "2025",
+        category: "Web Tool",
+        image: "https://images.unsplash.com/photo-1595079676339-1534801fafde?q=80&w=2070&auto=format&fit=crop",
+        video: "/videos/MonoQr.mp4",
+        link: "https://mono-qr.vercel.app/",
+        description: "Instant QR Codes for Modern Brands.",
+        overview: "Create vector-quality, custom-branded QR codes instantly in your browser. No sign-up required for basics. Enterprise-grade privacy included.",
+        process: "The interface is designed for speed, allowing users to generate codes in milliseconds. We stripped away complex 'marketing' fluff to focus on the core utility: a reliable, privacy-first QR generator that supports multiple data types including WiFi credentials and VCards.",
+    },
+    {
         id: 6,
         title: "SafeAgree",
         year: "2025",
@@ -142,6 +154,23 @@ const projects: Project[] = [
     }
 ];
 
+const workExperience = [
+    {
+        id: 1,
+        company: "Bazuroo App",
+        role: "Product Designer",
+        date: "July 2025 - Present",
+        location: "Part-time • Remote",
+    },
+    {
+        id: 2,
+        company: "Metry Ai",
+        role: "Frontend designer intern",
+        date: "August 2024 - Present",
+        location: "Tokyo (Remote)",
+    }
+];
+
 const DashboardLayout = () => {
     const { isDarkMode, toggleTheme } = useTheme();
     const [hoveredProject, setHoveredProject] = useState<number | null>(null);
@@ -209,7 +238,8 @@ const DashboardLayout = () => {
 
     // Strict 3-color palette
     const textPrimary = isDarkMode ? 'text-white' : 'text-black';
-    const textSecondary = isDarkMode ? 'text-white/50' : 'text-black/50';
+    const textSecondary = isDarkMode ? 'text-white/50' : 'text-black/60';
+    const textMuted = isDarkMode ? 'text-white/40' : 'text-black/40';
     const bgPrimary = isDarkMode ? 'bg-black' : 'bg-white';
     const bgSecondary = isDarkMode ? 'bg-white/5' : 'bg-black/5';
     const borderColor = isDarkMode ? 'border-white/10' : 'border-black/10';
@@ -286,22 +316,14 @@ const DashboardLayout = () => {
                                     </div>
 
                                     {/* Shadcn Button - Default Variant */}
-                                    <div className="flex gap-2">
-                                        <a
-                                            href="mailto:sumitsharma9128@gmail.com?subject=Let's Talk - Job Opportunity"
-                                            className="flex-1 inline-flex items-center justify-center rounded-md text-sm font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 bg-black text-white hover:bg-black/90 h-10 px-4 py-2"
-                                        >
-                                            Let's Talk →
-                                        </a>
+                                    <div className="flex justify-center">
                                         <button
-                                            onClick={() => {
-                                                navigator.clipboard.writeText("sumitsharma9128@gmail.com");
-                                                // Ideally show a toast here
-                                            }}
-                                            className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 bg-gray-100 text-black hover:bg-gray-200 h-10 w-10"
-                                            title="Copy Email"
+                                            data-cal-link="sumit-sharma/15min"
+                                            data-cal-namespace="15min"
+                                            data-cal-config='{"layout":"month_view"}'
+                                            className="inline-flex items-center justify-center rounded-md text-sm font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 bg-black text-white hover:bg-black/90 h-10 px-6 py-2"
                                         >
-                                            <Copy className="w-4 h-4" />
+                                            Let's Talk
                                         </button>
                                     </div>
 
@@ -638,7 +660,7 @@ const DashboardLayout = () => {
                         <div className="absolute inset-0 z-0 bg-white" />
                     )}
 
-                    <div className="w-full max-w-3xl relative z-10 h-full flex flex-col justify-center">
+                    <div className="w-full max-w-3xl relative z-10 h-full flex flex-col justify-start pt-10 md:justify-center md:pt-0">
 
                         <AnimatePresence mode="wait">
                             {activeProject ? (
@@ -839,6 +861,28 @@ const DashboardLayout = () => {
                                                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                                             </svg>
                                         </a>
+                                    </div>
+
+                                    {/* Work Experience Section */}
+                                    <div className="mt-8 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-200">
+                                        <h3 className={`text-xs font-semibold ${textSecondary} mb-3 uppercase tracking-wider`}>
+                                            Experience
+                                        </h3>
+                                        <div className="space-y-4">
+                                            {workExperience.map((job) => (
+                                                <div key={job.id} className="group">
+                                                    <div className="flex items-baseline justify-between">
+                                                        <div className={`font-medium ${textPrimary} group-hover:text-red-500 transition-colors`}>{job.company}</div>
+                                                        <div className={`text-xs font-monoSync ${isDarkMode ? 'text-white/40' : 'text-black/50'} text-right shrink-0 ml-4`}>{job.date}</div>
+                                                    </div>
+                                                    <div className="flex items-start justify-between mt-0.5">
+                                                        <div className={`text-sm ${textSecondary} pr-4`}>{job.role}</div>
+                                                        {/* @ts-ignore */}
+                                                        {job.location && <div className={`text-[10px] ${isDarkMode ? 'text-white/30' : 'text-black/40'} text-right shrink-0 whitespace-nowrap`}>{job.location}</div>}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
 
                                     <div className="mt-10 md:hidden space-y-2">
