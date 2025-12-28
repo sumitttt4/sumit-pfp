@@ -18,7 +18,7 @@ const About = () => {
     const borderColor = isDarkMode ? 'border-white/10' : 'border-black/10';
 
     const BentoCard = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
-        <div className={`p-6 rounded-2xl border ${borderColor} ${bgSecondary} hover:bg-black/5 dark:hover:bg-white/10 transition-colors ${className}`}>
+        <div className={`p-5 md:p-6 rounded-2xl border ${borderColor} ${bgSecondary} hover:bg-black/5 dark:hover:bg-white/10 transition-colors ${className}`}>
             {children}
         </div>
     );
@@ -116,7 +116,7 @@ const About = () => {
                     </div>
                 </header>
 
-                <div className="w-full h-full overflow-y-auto overflow-x-hidden p-4 md:p-12 pt-24 md:pt-12 relative flex flex-col items-center justify-center">
+                <div className="w-full h-full overflow-y-auto overflow-x-hidden no-scrollbar p-4 md:p-12 pt-24 md:pt-12 relative flex flex-col items-center justify-start md:justify-center">
                     {isDarkMode && (
                         <div className="fixed inset-0 opacity-[0.015] pointer-events-none z-0 mix-blend-overlay"
                             style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
@@ -126,7 +126,7 @@ const About = () => {
                     <div className="w-full max-w-5xl mx-auto h-auto grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10 text-pretty pb-20 md:pb-0">
 
                         {/* 1. Main Bio (Large) */}
-                        <BentoCard className="md:col-span-2 flex flex-col justify-center min-h-[300px]">
+                        <BentoCard className="md:col-span-2 flex flex-col justify-center min-h-auto md:min-h-[300px]">
                             <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
                                 {/* Logo Removed as requested */}
                                 <div className="space-y-6">
@@ -145,7 +145,7 @@ const About = () => {
                         </BentoCard>
 
                         {/* 2. Status / Action */}
-                        <BentoCard className="md:col-span-1 flex flex-col justify-between min-h-[300px] gap-6 md:gap-0">
+                        <BentoCard className="md:col-span-1 flex flex-col justify-between min-h-auto md:min-h-[300px] gap-6 md:gap-0">
                             <div>
                                 <h3 className={`font-semibold ${textPrimary} mb-2`}>Writing</h3>
                                 <p className={`text-sm ${textSecondary} mb-4 leading-relaxed`}>
@@ -170,7 +170,7 @@ const About = () => {
                         </BentoCard>
 
                         {/* 3. Toolkit (Wide Bottom) */}
-                        <BentoCard className="md:col-span-3 flex flex-col justify-center min-h-[250px]">
+                        <BentoCard className="md:col-span-3 flex flex-col justify-center min-h-auto md:min-h-[250px]">
                             <h3 className={`text-sm font-bold uppercase tracking-wider mb-8 ${textSecondary}`}>Toolkit</h3>
                             <div className="flex flex-wrap gap-4">
                                 {[
