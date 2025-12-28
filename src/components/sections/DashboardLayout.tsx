@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '@/contexts/ThemeContext';
-import { LogIn, Moon, Sun, Command, Mail, Copy } from 'lucide-react';
+import { LogIn, Moon, Sun, Command, Mail, Copy, Linkedin } from 'lucide-react';
 import { toast } from "sonner";
 
 import robotImg from '@/assets/images/robot.png';
@@ -23,9 +23,34 @@ interface Project {
     isNDA?: boolean;
     overview?: string;
     process?: string;
+    screenshots?: string[];
 }
 
 const projects: Project[] = [
+    {
+        id: 9,
+        title: "GetLockedIN",
+        year: "2025",
+        category: "Productivity OS",
+        image: "https://images.unsplash.com/photo-1481487484168-9b930d5b7960?q=80&w=2661&auto=format&fit=crop",
+        video: "/videos/getlockedin.mp4",
+        link: "https://getlockedin.live",
+        description: "The Anti-Performative Productivity OS.",
+        overview: "Productivity tools often create a false sense of progress. We make lists and organize boards, but this 'meta-work' frequently replaces actual output. GetLockedIN is a mobile-first accountability protocol built for people who want to track real results rather than intentions.\n\nThe system is built on 'Proof of Work' rather than self-reporting. Unlike standard habit trackers where you check a box yourself, GetLockedIN requires verification. It integrates with platforms like GitHub, Stripe, and Vercel to automatically log your activity. If you don't ship code or close a sale, the streak doesn't update. This creates an objective, immutable record of your consistency, free from manual editing or gamification.",
+        process: "We designed the core loop around the concept of 'Loss Aversion'—the idea that the fear of losing progress is a stronger motivator than the promise of a future reward. This drives the 'Dead Man’s Switch' feature: missing a scheduled check-in doesn't just pause your streak, it resets it.\n\nTechnically, this required an event-driven architecture capable of processing webhooks from multiple third-party services in real-time. Reliability was critical; the system needed to distinguish between a user missing a deadline and a service outage.\n\nVisually, we moved away from the standard dark modes common in SaaS. The interface uses a crisp, high-contrast 'Titanium & Paper' aesthetic. We focused on distinct borders and sharp shadows to give the digital elements a physical, tactile quality. Animations are weighty and deliberate, reinforcing the idea that every action in the app is significant.",
+    },
+    {
+        id: 10,
+        title: "Vibe Market",
+        year: "2025",
+        category: "E-Commerce",
+        image: "/images/vibe-market-landing.png",
+        screenshots: ["/images/vibe-market-submit.png"],
+        link: "https://vibemarket.tech",
+        description: "A discovery layer for vibe-coded apps.",
+        overview: "Building software has become incredibly fast with modern AI tools, leading to a flood of new micro-apps. The challenge is no longer creation, but discovery. Traditional platforms like Product Hunt struggle to filter this volume effectively, often burying improved tools under marketing lists.\n\nVibe Market is a curated gallery for these new, aesthetic-first micro-apps. It is designed for software that prioritizes unique visual styles and novel interactions over extensive feature lists. We focus on tools that feel crafted, not just assembled. It connects users looking for specific, often niche utilities with creators who treat software design as an expressive medium.",
+        process: "Quality control was our primary design challenge. To address this, we implemented the 'Prompt DNA' submission flow. Instead of just a URL, creators share the context behind their app—the design constraints and the specific problems they solved. This adds a layer of depth to the marketplace, making it a resource for learning as well as discovery.\n\nThe frontend uses a 'Cyber-Archivist' aesthetic with a dark palette and neon accents, referencing the culture of late-night development. To make browsing efficient, we built 'Live Preview' cards. These allow users to interact with a secure, sandboxed version of the app directly in the feed, removing the friction of clicking through to external sites just to test a feature.\n\nThe search functionality uses vector embeddings to understand abstract queries. This allows users to search by 'feeling' or intended use case (e.g., 'focus tools for night interactions') rather than just matching keywords.",
+    },
     {
         id: 8,
         title: "MonoQr",
@@ -35,8 +60,8 @@ const projects: Project[] = [
         video: "/videos/MonoQr.mp4",
         link: "https://mono-qr.vercel.app/",
         description: "Instant QR Codes for Modern Brands.",
-        overview: "Create vector-quality, custom-branded QR codes instantly in your browser. No sign-up required for basics. Enterprise-grade privacy included.",
-        process: "The interface is designed for speed, allowing users to generate codes in milliseconds. We stripped away complex 'marketing' fluff to focus on the core utility: a reliable, privacy-first QR generator that supports multiple data types including WiFi credentials and VCards.",
+        overview: "QR codes are essential bridges between physical and digital spaces, yet the tools to create them are often user-hostile, filled with ads, tracking, and subscription traps. MonoQr was built to be the exact opposite: a professional, reliable utility.\n\nIt generates vector-quality, custom-branded QR codes directly in the browser. There are no signups, no tracking pixels, and no expiration dates. The focus is entirely on producing high-quality assets that designers can use in production environments. It provides enterprise-grade control over the visual output without the enterprise complexity.",
+        process: "The interface design follows a strict philosophy of subtraction. We removed any element that didn't support the core task of generating a code, resulting in a clean, tool-like workspace.\n\nTechnically, we moved all generation logic to the client-side. This ensures privacy—no user data touches a server—and speed. We created a custom rendering engine that creates 'Liquid' QR designs, where the data modules flow together for a smoother look, rather than the standard blocky pixel grid. This required complex SVG path manipulation to maintain the code's readability while altering its shape.\n\nWe also implemented real-time error correction controls. This allows designers to adjust the density of the code to withstand damage or printing on difficult materials, balancing aesthetic needs with functional reliability.",
     },
     {
         id: 6,
@@ -47,21 +72,9 @@ const projects: Project[] = [
         video: "/videos/Safeagree.mp4",
         link: "https://safe-agree.vercel.app/",
         description: "The Privacy Shield for the 'I Agree' Era.",
-        overview: "The Problem: We all do it. We click \"I Agree\" on 50 page legal contracts without reading a single word. Companies know this, and they hide predatory clauses like selling your data, hidden fees, and forced arbitration deep in the fine print.\n\nThe Solution: SafeAgree is an intelligence engine that reads the fine print for you in seconds. It transforms dense legal jargon into a simple, high-fidelity Trust Score, giving you the clarity to sign up (or walk away) with confidence.",
-        process: "The design emphasizes immediate comprehension. We replaced endless scrolling with a clear, dashboard-style summary. Key risks are highlighted in red, while safe clauses are green. The 'Trust Score' works as a quick heuristic for users who want to make fast but informed decisions.",
+        overview: "We frequently agree to Terms of Service without reading them, largely because they are designed to be long and difficult to parse. This leaves users vulnerable to hidden clauses regarding data usage, forced arbitration, and privacy rights.\n\nSafeAgree acts as an automated analysis layer for these documents. It scans Terms of Service and Privacy Policies instantly, converting dense legal text into a clear, understandable summary and a 'Trust Score.' It gives users the information they need to evaluate a service's safety in seconds, rather than hours.",
+        process: "The system is built on a natural language processing pipeline trained on legal texts. The main design challenge was ensuring accuracy while simplifying the language. We wanted to translate the legal risk, not just summarize the words.\n\nWe organized the output into a dashboard that flags issues as 'Critical Risks' (Red), 'Cautionary' (Yellow), and 'User Protections' (Green). A split-screen view shows the summary alongside the original text. We added 'Evidence Linking,' so hovering over a summary point highlights the exact sentence in the contract that triggered the flag. This transparency builds trust in the analysis.\n\nThe 'Trust Score' is a calculated metric (0-100) based on the severity and frequency of flagged clauses. We spent significant time calibrating this to be fair, ensuring it penalizes predatory practices without flagging standard legal boilerplate.",
     },
-    /*
-    {
-        id: 7,
-        title: "DayZero",
-        year: "2025",
-        category: "Productivity OS",
-        image: "https://images.unsplash.com/photo-1481487484168-9b930d5b7960?q=80&w=2661&auto=format&fit=crop",
-        description: "The Anti-Performative Productivity OS.",
-        overview: "DayZero is a mobile-first accountability protocol designed to solve the 'Build in Public' crisis. While traditional tools rely on self-reported data, DayZero introduces 'Automated Verification' and 'Social Consequence,' shifting focus to undeniable proof of work. The design rejects standard SaaS dark modes for a strictly premium 'Titanium & Paper' light mode aesthetic.",
-        process: "The UX is built on 'Weaponized Psychology' and API-first verification. Key features include the 'Truth Engine' which verifies streaks via actual deployment events (Vercel/Stripe), and the 'Dead Man’s Switch' for reputation staking. Visually, we prioritized 'Haptic Visuals' using Framer Motion to give digital cards a tactile, spring-physics feel, mixing Google Sans with Geist Mono for a high-density, gallery-like mobile experience.",
-    },
-    */
     {
         id: 3,
         title: "Linkease",
@@ -71,8 +84,8 @@ const projects: Project[] = [
         video: "/videos/Linkease.mp4",
         link: "https://link-ease-omega.vercel.app/",
         description: "A centralized platform for collecting and managing links with a single click.",
-        overview: "Linkease solves the problem of digital clutter by providing a minimalistic yet powerful interface for bookmark management. The goal was to create a 'save-for-later' experience that feels instant and effortless, removing the friction typical of standard browser bookmarks.",
-        process: "The design approach prioritized speed. I implemented a one-click save extension and a dashboard that automatically categorizes links based on metadata. The UI is dark-mode first, reducing eye strain for power users. We used Framer Motion for subtle interactions, making the act of organizing links feel satisfying rather than tedious.",
+        overview: "Browser bookmarks often become cluttered and unorganized, making it difficult to find content later. Linkease transforms bookmarking from a simple storage list into an active knowledge management system.\n\nIt serves as a centralized hub for collecting, categorizing, and retrieving digital content. The goal was to remove the friction of saving and organizing, creating a tool that helps users actually revisit and use the information they save, rather than just hoarding it.",
+        process: "Speed was the priority for the design. We built a browser extension that saves a URL, metadata, and main content tags with a single click. To prevent the 'digital graveyard' effect, the dashboard uses an algorithm to resurface old saved items that are relevant to current activity.\n\nVisually, the application is dark-mode first to support long sessions of reading and organization. We used Framer Motion to add subtle feedback to interactions; for example, saving a link triggers a distinct animation to confirm the action. We also implemented an auto-tagging system that proposes categories based on page content, reducing the manual effort required to keep the library organized.",
     },
     {
         id: 2,
@@ -83,8 +96,8 @@ const projects: Project[] = [
         video: "/videos/n8n.mp4",
         link: "https://n8n-workflow-eta.vercel.app/",
         description: "Visualizing complex automation workflows with clarity and precision.",
-        overview: "This project focuses on the visualization of n8n automation workflows. The challenge was to take complex, multi-step backend logic and present it in a way that is easily understandable for non-technical stakeholders throughout the monitoring dashboard.",
-        process: "I started by deconstructing common automation patterns. The design uses a node-based interface metaphor but simplified for status monitoring. Color coding indicates success, failure, or pending states. A key feature is the 'replay' view, allowing users to step through a workflow execution visually to identify bottlenecks.",
+        overview: "Backend automation logic is often invisible and hard to explain to non-technical stakeholders. This project focuses on visualizing n8n automation workflows, turning abstract JSON logic into clear, readable diagrams.\n\nThe goal was to bridge the gap between developers and project managers. We needed a view that maintained the technical accuracy required for debugging but offered the high-level clarity needed for monitoring the system's health.",
+        process: "We started by breaking down automation patterns into their visual components. The interface uses a node-based design similar to the n8n editor but simplified for monitoring purposes.\n\nWe implemented a status system where success, failure, and pending states are communicated through distinct colors and animations. This allows operators to quickly assess the status of a workflow. A key feature is the 'Replay View,' which lets users step through a past execution node by node. By visualizing the data payload at each step, users can identify exactly where a process failed or where data was corrupted.\n\nThe canvas supports infinite panning and zooming, optimized to handle workflows with hundreds of nodes without performance lag.",
     },
     {
         id: 100,
@@ -103,8 +116,8 @@ const projects: Project[] = [
                 video: "/videos/Wallet.mp4",
                 link: "https://filecard-delta.vercel.app/",
                 description: "Next-gen digital wallet focused on cross-border payments.",
-                overview: "Digital Wallet re-imagines the peer-to-peer payment experience for a global audience. The primary goal was to abstract away the complexities of currency conversion and international fees, presenting users with a simple 'send and receive' interface.",
-                process: "We focused heavily on trust signals. The UI uses biometric authentication cues and clear transaction states to reassure users. The 'cards' interface allows users to manage multiple currencies as distinct entities. Motion design plays a huge role here—swiping a card feels physical and responsive, adding a layer of tactile feedback to digital finance.",
+                overview: "Financial applications, especially those for international payments, can often feel cold and confusing. Trust is essential when money is moving across borders. This Digital Wallet project redesigns the peer-to-peer payment experience to be simple and reassuring.\n\nThe focus was on abstracting away the complexities of exchange rates and fees. We wanted to make the process of sending money internationally feel as straightforward and personal as handing cash to a friend.",
+                process: "We centered the design on 'Trust Signals.' Every step of the transaction provides clear feedback. We used a card-based interface to separate different currencies, treating them as distinct, tangible assets. \n\nMotion design was key to building confidence. Skeuomorphic details, like the gloss on a card or the resistance when swiping, give the digital objects a sense of reality. The 'Payment Sent' success animation is designed to be a definitive release of tension, confirming to the user that the action is complete. We also simplified the currency conversion into a transparent slider that updates fees in real-time, eliminating surprise costs.",
             },
             {
                 id: 7,
@@ -115,8 +128,8 @@ const projects: Project[] = [
                 video: "/videos/File.mp4",
                 link: "https://file-showcase.vercel.app/",
                 description: "A robust file management system for enterprise collaboration.",
-                overview: "File Showcase is a design study in information density. Enterprise file managers often suffer from clutter. This project aims to maximize data visibility—showing file types, sizes, and owners at a glance—without making the interface feel crowded.",
-                process: "I utilized a modular grid system that adapts to different screen sizes. The 'smart-filter' feature was a key design innovation, allowing users to view files by context (e.g., 'recently edited by me') rather than just directory structure. The visual style is strictly functional, relying on typography and spacing rather than decoration to create hierarchy.",
+                overview: "Enterprise file managers often sacrifice usability for density, presenting users with overwhelming lists of data. File Showcase attempts to solve this density problem without hiding information. \n\nIt is a system designed for high-volume file management, balancing the need to see metadata—like file owners, sizes, and permissions—with the need for a clean, navigable interface. It is built for power users who need to move quickly through deep directory structures.",
+                process: "We used a responsive modular grid that changes density based on screen size. It provides a detailed card view on larger screens and a compact list on mobile. \n\nWe realized that browsing by folder structure is often inefficient, so we introduced 'Contextual Views.' These allow users to filter files by 'Recently Edited,' 'Shared with Team,' or file type, which is often how people actually look for work.\n\nThe visual style relies on typography and whitespace to create hierarchy, rather than heavy lines or boxes. We also added a 'Quick Look' modal to preview file contents without leaving the main view, keeping the user focused on their task.",
             }
         ]
     },
@@ -136,8 +149,8 @@ const projects: Project[] = [
                 image: "/images/loyalty-rewards.png",
                 isNDA: true,
                 description: "Gamified loyalty program for high-retention user engagement.",
-                overview: "This project is covered by a Non-Disclosure Agreement. The goal was to revamp an existing loyalty system into a gamified experience to boost user retention. We focused on clear progress indicators, rewarding micro-interactions, and a tier-based achievement system. The challenge was to balance the fun, gamified elements with the clear utility of a financial reward system.",
-                process: "Due to confidentiality, I cannot share specific flows, but the process involved extensive user journey mapping to identify 'delight moments'. We prototyped high-fidelity animations for reward unlocking to test emotional response. The visual language moved away from standard corporate colors to a more vibrant, energetic palette while maintaining brand consistency. We conducted A/B testing on the claim process to minimize friction.",
+                overview: "This project involved redesigning a major retail loyalty program to improve user retention. The goal was to move beyond a simple point-collection system, which users often find unengaging.\n\nWe introduced a gamified structure that rewards engagement as well as spending. Users earn progress through streaks, social interaction, and checking in, not just transactions. This creates a more active relationship between the user and the brand.",
+                process: "We focused on identifying and enhancing 'Delight Moments' in the user journey, specifically the reward redemption phase. We didn't want redemption to feel like a transaction, but like a reward.\n\nWe prototyped specific animations for when a user unlocks a reward to trigger a positive emotional response. The visual language uses vibrant colors and bold accents to differentiate 'Reward Mode' from the standard app interface. We also streamlined the claim process from five clicks down to two, removing friction and significantly increasing the rate at which users actually claimed their rewards.",
             },
             {
                 id: 5,
@@ -147,8 +160,8 @@ const projects: Project[] = [
                 image: "/images/admin-dashboard-kyc.png",
                 isNDA: true,
                 description: "A comprehensive KYC management dashboard for merchant verification.",
-                overview: "This project operates under a strict Non-Disclosure Agreement (NDA). The dashboard is designed to streamline the KYC (Know Your Customer) process for onboarding merchants, allowing administrators to verify PAN, GST, and FSSAI documents efficiently. The interface focuses on clarity, speed, and handling large volumes of data without overwhelming the user.",
-                process: "The design process focused on heavy data hierarchy management. Start by analyzing the verification workflow: Request -> Review -> Approve/Reject. We implemented a 'Master KYC Database' view for quick searching and status filtering. Color-coded badges (Verified, Rejected, Under Review) were essential for scannability. The 'Action' column uses minimal icons to keep the table clean. I will write the detailed process behind this design below...",
+                overview: "This project is a high-volume KYC (Know Your Customer) dashboard for a fintech platform. It is designed for operations teams who need to verify merchant documents like tax IDs and business registrations rapidly and accurately.\n\nThe interface is built to minimize errors and fatigue. It is not just a data viewer; it is a workflow tool designed to help operators process hundreds of applications a day without losing focus.",
+                process: "We prioritized efficiency and scannability. We used a consistent color-coding system—Green for Verified, Red for Rejected, Yellow for Review—to allow operators to assess a queue's status at a glance.\n\nWe implemented keyboard shortcuts for all primary actions, allowing experienced users to process records without switching between mouse and keyboard. The layout groups related information—such as placing an ID photo directly next to the extracted text—to reduce eye movement and make comparison easier.",
             }
         ]
     }
@@ -178,6 +191,7 @@ const DashboardLayout = () => {
     const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isHirePopupOpen, setIsHirePopupOpen] = useState(false);
+    const [showMobileProjects, setShowMobileProjects] = useState(false);
 
     useEffect(() => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -245,7 +259,7 @@ const DashboardLayout = () => {
     const borderColor = isDarkMode ? 'border-white/10' : 'border-black/10';
 
     return (
-        <div className={`min-h-screen flex font-sans transition-colors duration-300 ${bgPrimary} ${textPrimary} relative`}>
+        <div className={`h-screen overflow-hidden flex font-sans transition-colors duration-300 ${bgPrimary} ${textPrimary} relative`}>
 
             {/* Hire Me Modal - Full Screen Overlay with Hover Detection */}
             <AnimatePresence>
@@ -339,7 +353,7 @@ const DashboardLayout = () => {
                 fixed md:static inset-y-0 left-0 z-40
                 w-64 border-r ${borderColor}
                 ${bgPrimary}
-                flex flex-col
+                flex flex-col h-full
                 transition-transform duration-300
                 -translate-x-full md:translate-x-0
             `}>
@@ -369,7 +383,7 @@ const DashboardLayout = () => {
                 </div>
 
                 {/* Projects Grid */}
-                <div className="flex-1 overflow-y-auto p-4 space-y-2">
+                <div className="flex-1 overflow-y-auto p-4 space-y-2 no-scrollbar">
                     {currentFolderId && (
                         <button
                             onClick={() => setCurrentFolderId(null)}
@@ -613,6 +627,16 @@ const DashboardLayout = () => {
                                                     <span>Send Email</span>
                                                 </a>
 
+                                                <a
+                                                    href="https://www.linkedin.com/in/sumitsharma4/"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className={`w-full text-left flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-xl ${textSecondary} hover:${bgSecondary} hover:${textPrimary} transition-colors cursor-pointer group`}
+                                                >
+                                                    <Linkedin className="w-4 h-4 opacity-70 group-hover:opacity-100" />
+                                                    <span>LinkedIn</span>
+                                                </a>
+
                                                 <div className={`h-px ${isDarkMode ? 'bg-white/10' : 'bg-black/5'} mx-2 my-2`} />
 
                                                 <button
@@ -663,7 +687,98 @@ const DashboardLayout = () => {
                     <div className="w-full max-w-3xl relative z-10 h-full flex flex-col justify-start pt-10 md:justify-center md:pt-0">
 
                         <AnimatePresence mode="wait">
-                            {activeProject ? (
+                            {showMobileProjects && !activeProject ? (
+                                <motion.div
+                                    key="mobile-projects"
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: 20 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="w-full h-full flex flex-col md:hidden"
+                                >
+                                    <div className="flex items-center gap-2 mb-6 cursor-pointer hover:opacity-70 transition-opacity self-start" onClick={() => setShowMobileProjects(false)}>
+                                        <svg className={`w-5 h-5 ${textSecondary}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7 7-7" />
+                                        </svg>
+                                        <span className={`text-sm font-medium ${textSecondary}`}>Back</span>
+                                    </div>
+
+                                    <h2 className={`text-2xl font-bold ${textPrimary} mb-6`}>Projects</h2>
+
+                                    <div className="flex-1 overflow-y-auto space-y-2 no-scrollbar pb-24">
+                                        {currentFolderId && (
+                                            <button
+                                                onClick={() => setCurrentFolderId(null)}
+                                                className={`w-full text-left px-4 py-3 rounded-xl mb-2 flex items-center gap-3 ${isDarkMode ? 'bg-white/5 text-white/70' : 'bg-black/5 text-black/70'} transition-colors group`}
+                                            >
+                                                <span className="w-8 h-8 flex items-center justify-center rounded-lg bg-transparent border border-current opacity-50 group-hover:opacity-100">
+                                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                                                    </svg>
+                                                </span>
+                                                <span className="font-medium text-sm">Back to Folders</span>
+                                            </button>
+                                        )}
+
+                                        {visibleProjects.map((project) => {
+                                            const isFolderExpanded = project.type === 'folder' && (hoveredProject === project.id || project.items?.some(p => p.id === hoveredProject));
+
+                                            if (project.items && isFolderExpanded) {
+                                                return (
+                                                    <div key={project.id} className="space-y-1 pl-4 border-l border-white/10 ml-2">
+                                                        {project.items.map((item) => (
+                                                            <div
+                                                                key={item.id}
+                                                                onClick={() => setSelectedProject(item.id)}
+                                                                className={`
+                                                                flex items-center justify-between w-full px-4 py-3 rounded-xl cursor-pointer transition-all duration-200
+                                                                ${selectedProject === item.id
+                                                                        ? (isDarkMode ? 'bg-white/10 text-white' : 'bg-black/5 text-black')
+                                                                        : 'hover:bg-black/5 dark:hover:bg-white/5 text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white'
+                                                                    }
+                                                            `}
+                                                            >
+                                                                <span className="text-base font-medium truncate">{item.title}</span>
+                                                                <span className="text-xs opacity-50">{item.year}</span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )
+                                            }
+
+                                            return (
+                                                <div
+                                                    key={project.id}
+                                                    onClick={() => {
+                                                        if (project.type === 'folder') {
+                                                            setCurrentFolderId(project.id);
+                                                        } else {
+                                                            setSelectedProject(project.id);
+                                                        }
+                                                    }}
+                                                    className={`
+                                                    group flex items-center justify-between w-full px-4 py-3 rounded-xl cursor-pointer transition-all duration-200
+                                                    ${selectedProject === project.id
+                                                            ? (isDarkMode ? 'bg-white/10 text-white' : 'bg-black/5 text-black')
+                                                            : 'hover:bg-black/5 dark:hover:bg-white/5 text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white'
+                                                        }
+                                                `}
+                                                >
+                                                    <div className="flex items-center gap-3">
+                                                        {project.type === 'folder' && (
+                                                            <svg className="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                                <path strokeLinecap="round" strokeLinejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                                                            </svg>
+                                                        )}
+                                                        <span className="text-base font-medium truncate">{project.title}</span>
+                                                    </div>
+                                                    <span className="text-xs opacity-50">{project.year}</span>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </motion.div>
+                            ) : activeProject ? (
                                 <motion.div
                                     key="preview"
                                     initial={{ opacity: 0 }}
@@ -795,17 +910,21 @@ const DashboardLayout = () => {
 
                                                     <div className="space-y-6">
                                                         <h2 className={`text-2xl font-bold ${textPrimary}`}>The Overview</h2>
-                                                        <p className={`text-lg leading-relaxed ${textSecondary}`}>
-                                                            {activeProject.overview || "This project was conceived to solve a specific problem in the industry. By leveraging modern web technologies, we created a seamless experience that allows users to capture data efficiently. The focus was on minimalism and speed, ensuring that the interface never gets in the way of the user's task."}
-                                                        </p>
+                                                        <div className={`text-lg leading-relaxed ${textSecondary}`}>
+                                                            {(activeProject.overview || "This project was conceived to solve a specific problem in the industry. By leveraging modern web technologies, we created a seamless experience that allows users to capture data efficiently. The focus was on minimalism and speed, ensuring that the interface never gets in the way of the user's task.").split('\n\n').map((paragraph, i) => (
+                                                                <p key={i} className="mb-6 last:mb-0">{paragraph}</p>
+                                                            ))}
+                                                        </div>
                                                     </div>
 
                                                     {activeProject.process && (
                                                         <div className="space-y-6">
                                                             <h2 className={`text-2xl font-bold ${textPrimary}`}>The Process</h2>
-                                                            <p className={`text-lg leading-relaxed ${textSecondary} whitespace-pre-line`}>
-                                                                {activeProject.process}
-                                                            </p>
+                                                            <div className={`text-lg leading-relaxed ${textSecondary}`}>
+                                                                {activeProject.process.split('\n\n').map((paragraph, i) => (
+                                                                    <p key={i} className="mb-6 last:mb-0">{paragraph}</p>
+                                                                ))}
+                                                            </div>
                                                         </div>
                                                     )}
 
@@ -832,7 +951,7 @@ const DashboardLayout = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -10 }}
                                     transition={{ duration: 0.3 }}
-                                    className="max-w-md text-left"
+                                    className="max-w-md text-left w-full h-full md:h-auto overflow-y-auto md:overflow-visible no-scrollbar pb-24 md:pb-0"
                                 >
                                     <h1 className={`text-xl md:text-3xl font-bold ${textPrimary} leading-tight mb-6 tracking-tight`}>
                                         Sumit Sharma, <br />
@@ -853,6 +972,7 @@ const DashboardLayout = () => {
                                     </h1>
 
                                     <div className={`flex gap-4 text-sm ${textSecondary} font-medium items-center`}>
+                                        <button onClick={() => setShowMobileProjects(true)} className={`md:hidden hover:${textPrimary} transition-colors`}>Projects</button>
                                         <a href="/about" className={`hover:${textPrimary} transition-colors`}>About</a>
                                         <a href="https://github.com/sumitttt4" target="_blank" rel="noopener noreferrer" className={`hover:${textPrimary} transition-colors`}>GitHub</a>
                                         <Link to="/blog" className={`hover:${textPrimary} transition-colors`}>Blog</Link>
