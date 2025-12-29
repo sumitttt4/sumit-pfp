@@ -28,6 +28,18 @@ interface Project {
 
 const projects: Project[] = [
     {
+        id: 6,
+        title: "SafeAgree",
+        year: "2025",
+        category: "Privacy Tool",
+        image: "https://images.unsplash.com/photo-1555421689-3f034debb7a6?q=80&w=2070&auto=format&fit=crop",
+        video: "/videos/Safeagree.mp4",
+        link: "https://safe-agree.vercel.app/",
+        description: "Making consent understandable, not skippable",
+        overview: "SafeAgree is a web app that helps users understand Terms and Conditions before agreeing to them. Instead of forcing people to blindly click 'I agree,' it transforms long, legal text into clear risk signals and readable summaries.\n\nProblem: Terms and Conditions are intentionally long, dense, and unreadable. Most users accept them under time pressure without understanding what rights they’re giving up or what risks they’re accepting.\n\nUser: People signing up for digital products who want clarity and confidence before accepting mandatory legal terms not legal advice, just understandable information.\n\nOutcome: SafeAgree turns opaque legal text into readable insights, helping users make more informed consent decisions instead of blindly agreeing.",
+        process: "Role: Design Engineer | Type: UX-driven web application | Stack: Next.js, React, Tailwind, AI integration, Figma.\n\nDesign Principle: Clarity over speed. The interface introduces intentional friction to slow users down and make consent a conscious decision rather than a reflex.\n\nExperience Flow: The product follows a linear, low cognitive load flow: Paste a URL or raw Terms text -> Parse and analyze the content -> Surface a high-level trust signal -> Break down clauses with clear risk indicators -> Let users decide with context.\n\nKey Design Decisions: Used a single typeface to maintain consistency and reduce visual noise while reading dense content. Applied a semantic color system: Red for high-risk clauses, Green for user-friendly terms, Gray for neutral information, and Yellow sparingly to draw attention without urgency. Kept the layout minimal to avoid distracting from critical information.\n\nEngineering Decisions: Implemented URL parsing with a fallback to manual text input for invalid links. Designed the system to handle very large inputs (up to ~300,000 words). Added clear loading, empty, and error states to maintain user trust during analysis.",
+    },
+    {
         id: 9,
         title: "GetLockedIN",
         year: "2025",
@@ -35,9 +47,9 @@ const projects: Project[] = [
         image: "https://images.unsplash.com/photo-1481487484168-9b930d5b7960?q=80&w=2661&auto=format&fit=crop",
         video: "/videos/getlockedin.mp4",
         link: "https://getlockedin.live",
-        description: "The Anti-Performative Productivity OS.",
-        overview: "Productivity tools often create a false sense of progress. We make lists and organize boards, but this 'meta-work' frequently replaces actual output. GetLockedIN is a mobile-first accountability protocol built for people who want to track real results rather than intentions.\n\nThe system is built on 'Proof of Work' rather than self-reporting. Unlike standard habit trackers where you check a box yourself, GetLockedIN requires verification. It integrates with platforms like GitHub, Stripe, and Vercel to automatically log your activity. If you don't ship code or close a sale, the streak doesn't update. This creates an objective, immutable record of your consistency, free from manual editing or gamification.",
-        process: "We designed the core loop around the concept of 'Loss Aversion'—the idea that the fear of losing progress is a stronger motivator than the promise of a future reward. This drives the 'Dead Man’s Switch' feature: missing a scheduled check-in doesn't just pause your streak, it resets it.\n\nTechnically, this required an event-driven architecture capable of processing webhooks from multiple third-party services in real-time. Reliability was critical; the system needed to distinguish between a user missing a deadline and a service outage.\n\nVisually, we moved away from the standard dark modes common in SaaS. The interface uses a crisp, high-contrast 'Titanium & Paper' aesthetic. We focused on distinct borders and sharp shadows to give the digital elements a physical, tactile quality. Animations are weighty and deliberate, reinforcing the idea that every action in the app is significant.",
+        description: "The Anti-Performative Productivity OS",
+        overview: "GetLockedIN is a mobile-first accountability protocol built for people who want to track real results rather than intentions. It operates on 'Proof of Work' rather than self-reporting.\n\nProblem: Productivity tools often create a false sense of progress. We make lists and organize boards, but this 'meta-work' frequently replaces actual output. Traditional habit trackers rely on the honor system, which is easily gamified.\n\nUser: Builders and makers tired of 'performative productivity' who want an objective, immutable record of their consistency.\n\nOutcome: A system that integrates with GitHub, Stripe, and Vercel to automatically log activity, creating a verifiable reputation score that cannot be faked.",
+        process: "Role: Product Designer & Engineer | Type: Mobile Web App | Stack: React, Next.js, Framer Motion, Supabase, APIs (GitHub, Stripe).\n\nDesign Principle: Weaponized Psychology. We used Loss Aversion—the pain of losing a streak—as a stronger motivator than the pleasure of gaining one. This drives the 'Dead Man’s Switch' mechanic.\n\nExperience Flow: Connect external accounts -> Define shipping goals -> System auto-verifies work -> Miss a deadline? The system publicly tweets your failure -> Ship code to keep the streak alive.\n\nKey Design Decisions: Rejected standard 'SaaS Dark Mode' for a premium 'Titanium & Paper' aesthetic. High-contrast borders and sharp 90-degree corners give digital cards a tactile, physical presence. Animations are weighty and momentum-based.\n\nEngineering Decisions: Built a robust Event-Driven Architecture to handle real-time webhooks. Implemented a 'Replay & Verify' queue system to ensure fairness, distinguishing between a user missing a deadline and a service API outage.",
     },
     {
         id: 10,
@@ -47,9 +59,9 @@ const projects: Project[] = [
         image: "/images/vibe-market-landing.png",
         screenshots: ["/images/vibe-market-submit.png"],
         link: "https://vibemarket.tech",
-        description: "A discovery layer for vibe-coded apps.",
-        overview: "Building software has become incredibly fast with modern AI tools, leading to a flood of new micro-apps. The challenge is no longer creation, but discovery. Traditional platforms like Product Hunt struggle to filter this volume effectively, often burying improved tools under marketing lists.\n\nVibe Market is a curated gallery for these new, aesthetic-first micro-apps. It is designed for software that prioritizes unique visual styles and novel interactions over extensive feature lists. We focus on tools that feel crafted, not just assembled. It connects users looking for specific, often niche utilities with creators who treat software design as an expressive medium.",
-        process: "Quality control was our primary design challenge. To address this, we implemented the 'Prompt DNA' submission flow. Instead of just a URL, creators share the context behind their app—the design constraints and the specific problems they solved. This adds a layer of depth to the marketplace, making it a resource for learning as well as discovery.\n\nThe frontend uses a 'Cyber-Archivist' aesthetic with a dark palette and neon accents, referencing the culture of late-night development. To make browsing efficient, we built 'Live Preview' cards. These allow users to interact with a secure, sandboxed version of the app directly in the feed, removing the friction of clicking through to external sites just to test a feature.\n\nThe search functionality uses vector embeddings to understand abstract queries. This allows users to search by 'feeling' or intended use case (e.g., 'focus tools for night interactions') rather than just matching keywords.",
+        description: "A discovery layer for vibe-coded apps",
+        overview: "Vibe Market is a curated gallery for new, aesthetic-first micro-apps, designed to solve the discovery problem in the AI era.\n\nProblem: Building software is now incredibly fast, leading to a flood of micro-apps. Traditional platforms like Product Hunt are built for enterprise marketing, burying niche, high-craft tools under lists of generic SaaS.\n\nUser: Design-conscious users looking for specific, 'vibe-coded' utilities, and creators who treat software design as an expressive medium.\n\nOutcome: A discovery layer that filters for 'Soul' and 'Craft,' connecting specific user needs with unique, visually distinct tools.",
+        process: "Role: Frontend Engineer & Curator | Type: Marketplace | Stack: Next.js, Typescript, Tailwind, Vector Embeddings.\n\nDesign Principle: Gallery over Directory. The interface treats each app as an art piece, prioritizing visual distinctiveness and interactive trials over feature lists.\n\nExperience Flow: Browse curated feed -> Hover for Live Preview -> View 'Prompt DNA' to see the build context -> One-click access.\n\nKey Design Decisions: Adopted a 'Cyber-Archivist' aesthetic with dark palettes and neon accents. Developed 'Live Preview' cards that allow users to interact with a sandboxed version of the app directly in the feed, removing click-through friction.\n\nEngineering Decisions: Implemented the 'Prompt DNA' submission flow to capture the AI context behind apps. Used vector embeddings for 'Vibe Match' search, allowing users to search by abstract feelings (e.g., 'night focus') rather than just keywords.",
     },
     {
         id: 8,
@@ -59,21 +71,9 @@ const projects: Project[] = [
         image: "https://images.unsplash.com/photo-1595079676339-1534801fafde?q=80&w=2070&auto=format&fit=crop",
         video: "/videos/MonoQr.mp4",
         link: "https://mono-qr.vercel.app/",
-        description: "Instant QR Codes for Modern Brands.",
-        overview: "QR codes are essential bridges between physical and digital spaces, yet the tools to create them are often user-hostile, filled with ads, tracking, and subscription traps. MonoQr was built to be the exact opposite: a professional, reliable utility.\n\nIt generates vector-quality, custom-branded QR codes directly in the browser. There are no signups, no tracking pixels, and no expiration dates. The focus is entirely on producing high-quality assets that designers can use in production environments. It provides enterprise-grade control over the visual output without the enterprise complexity.",
-        process: "The interface design follows a strict philosophy of subtraction. We removed any element that didn't support the core task of generating a code, resulting in a clean, tool-like workspace.\n\nTechnically, we moved all generation logic to the client-side. This ensures privacy—no user data touches a server—and speed. We created a custom rendering engine that creates 'Liquid' QR designs, where the data modules flow together for a smoother look, rather than the standard blocky pixel grid. This required complex SVG path manipulation to maintain the code's readability while altering its shape.\n\nWe also implemented real-time error correction controls. This allows designers to adjust the density of the code to withstand damage or printing on difficult materials, balancing aesthetic needs with functional reliability.",
-    },
-    {
-        id: 6,
-        title: "SafeAgree",
-        year: "2025",
-        category: "Privacy Tool",
-        image: "https://images.unsplash.com/photo-1555421689-3f034debb7a6?q=80&w=2070&auto=format&fit=crop",
-        video: "/videos/Safeagree.mp4",
-        link: "https://safe-agree.vercel.app/",
-        description: "The Privacy Shield for the 'I Agree' Era.",
-        overview: "We frequently agree to Terms of Service without reading them, largely because they are designed to be long and difficult to parse. This leaves users vulnerable to hidden clauses regarding data usage, forced arbitration, and privacy rights.\n\nSafeAgree acts as an automated analysis layer for these documents. It scans Terms of Service and Privacy Policies instantly, converting dense legal text into a clear, understandable summary and a 'Trust Score.' It gives users the information they need to evaluate a service's safety in seconds, rather than hours.",
-        process: "The system is built on a natural language processing pipeline trained on legal texts. The main design challenge was ensuring accuracy while simplifying the language. We wanted to translate the legal risk, not just summarize the words.\n\nWe organized the output into a dashboard that flags issues as 'Critical Risks' (Red), 'Cautionary' (Yellow), and 'User Protections' (Green). A split-screen view shows the summary alongside the original text. We added 'Evidence Linking,' so hovering over a summary point highlights the exact sentence in the contract that triggered the flag. This transparency builds trust in the analysis.\n\nThe 'Trust Score' is a calculated metric (0-100) based on the severity and frequency of flagged clauses. We spent significant time calibrating this to be fair, ensuring it penalizes predatory practices without flagging standard legal boilerplate.",
+        description: "Instant QR Codes for Modern Brands",
+        overview: "MonoQr is a professional QR code generator that focuses on privacy, design quality, and reliability.\n\nProblem: The QR ecosystem is user-hostile, filled with ads, hidden tracking pixels, and subscription traps that hold physical prints hostage.\n\nUser: Designers and brands who need vector-quality, reliable assets for production environments without 'enshittification.'\n\nOutcome: A pure utility tool that delivers enterprise-grade design control and absolute privacy, for free.",
+        process: "Role: Full Stack Engineer | Type: Web Utility | Stack: React, Canvas API, SVG manipulation.\n\nDesign Principle: Radical Subtraction. We removed every element that didn't serve the core task of generating a code, creating a professional, tool-like workspace.\n\nExperience Flow: Enter URL -> Real-time vector preview -> Adjust error correction & density -> Download SVG/PNG.\n\nKey Design Decisions: Created 'Liquid' QR designs where modules flow together for a smoother aesthetic. Added real-time error correction controls to allow designers to balance data density with visual resilience for difficult print materials.\n\nEngineering Decisions: Moved all generation logic to the client-side. No user data touches a server, ensuring privacy and speed. Built a custom rendering engine for instant high-fidelity vector previews.",
     },
     {
         id: 3,
@@ -83,9 +83,9 @@ const projects: Project[] = [
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
         video: "/videos/Linkease.mp4",
         link: "https://link-ease-omega.vercel.app/",
-        description: "A centralized platform for collecting and managing links with a single click.",
-        overview: "Browser bookmarks often become cluttered and unorganized, making it difficult to find content later. Linkease transforms bookmarking from a simple storage list into an active knowledge management system.\n\nIt serves as a centralized hub for collecting, categorizing, and retrieving digital content. The goal was to remove the friction of saving and organizing, creating a tool that helps users actually revisit and use the information they save, rather than just hoarding it.",
-        process: "Speed was the priority for the design. We built a browser extension that saves a URL, metadata, and main content tags with a single click. To prevent the 'digital graveyard' effect, the dashboard uses an algorithm to resurface old saved items that are relevant to current activity.\n\nVisually, the application is dark-mode first to support long sessions of reading and organization. We used Framer Motion to add subtle feedback to interactions; for example, saving a link triggers a distinct animation to confirm the action. We also implemented an auto-tagging system that proposes categories based on page content, reducing the manual effort required to keep the library organized.",
+        description: "A centralized platform for collecting and managing links",
+        overview: "Linkease transforms bookmarking from a passive storage list into an active knowledge management system.\n\nProblem: Browser bookmarks are clutter magnets. We save things to read later, but bad organization and high-friction retrieval turn these lists into 'digital graveyards.'\n\nUser: Researchers, developers, and power users who need to organize massive amounts of digital content without breaking their workflow.\n\nOutcome: A centralized hub that not only saves links but helps users categorize, synthesize, and actually revisit them using active recall.",
+        process: "Role: Product Designer | Type: SaaS / Extension | Stack: React, Node.js, NLP.\n\nDesign Principle: Flow State Functionality. Saving a link must be instant (<1s) to prevent breaking the user's current focus.\n\nExperience Flow: One-click extension save -> Auto-tagging based on content -> 'Active Recall' dashboard resurfaces relevant links -> Read & Archive.\n\nKey Design Decisions: Dark-mode first UI to support long research sessions. Used Framer Motion to add satisfying 'snap' animations to interactions. \n\nEngineering Decisions: Built a 'Categorization Engine' using NLP to auto-suggest tags, reducing the cognitive load of manual organization. Implemented an extraction algorithm to capture robust metadata and cover images."
     },
     {
         id: 2,
@@ -95,9 +95,9 @@ const projects: Project[] = [
         image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=1974&auto=format&fit=crop",
         video: "/videos/n8n.mp4",
         link: "https://n8n-workflow-eta.vercel.app/",
-        description: "Visualizing complex automation workflows with clarity and precision.",
-        overview: "Backend automation logic is often invisible and hard to explain to non-technical stakeholders. This project focuses on visualizing n8n automation workflows, turning abstract JSON logic into clear, readable diagrams.\n\nThe goal was to bridge the gap between developers and project managers. We needed a view that maintained the technical accuracy required for debugging but offered the high-level clarity needed for monitoring the system's health.",
-        process: "We started by breaking down automation patterns into their visual components. The interface uses a node-based design similar to the n8n editor but simplified for monitoring purposes.\n\nWe implemented a status system where success, failure, and pending states are communicated through distinct colors and animations. This allows operators to quickly assess the status of a workflow. A key feature is the 'Replay View,' which lets users step through a past execution node by node. By visualizing the data payload at each step, users can identify exactly where a process failed or where data was corrupted.\n\nThe canvas supports infinite panning and zooming, optimized to handle workflows with hundreds of nodes without performance lag.",
+        description: "Visualizing complex automation workflows with clarity",
+        overview: "This project focuses on visualizing n8n automation workflows, turning abstract JSON logic into clear, readable diagrams for system monitoring.\n\nProblem: Backend automation is a 'black box' to non-technical stakeholders. JSON logs are useful for debugging code but terrible for explaining system health to project managers or clients.\n\nUser: Project Managers needing high-level status updates, and Developers needing a clear visual debugger.\n\nOutcome: A 'Rosetta Stone' visualization that bridges the gap between technical logic and business process visibility.",
+        process: "Role: Front-End Developer | Type: Data Visualization | Stack: Vue.js, D3.js (Graphing), n8n API.\n\nDesign Principle: Clarity through Status. Success, Failure, and Pending states must be instantly recognizable from a distance using color and motion.\n\nExperience Flow: View Workflow Map -> See real-time node status (pulsing/glowing) -> Click node for 'Time Travel' data inspection -> Replay execution.\n\nKey Design Decisions: Simplified the node editor view for *monitoring* rather than editing. Used motion (pulsing, shaking) to convey status health intuitively.\n\nEngineering Decisions: Implemented 'Time Travel' debugging to step through past executions payload-by-payload. Optimized canvas rendering to handle infinite panning on workflows with hundreds of nodes."
     },
     {
         id: 100,
@@ -115,9 +115,9 @@ const projects: Project[] = [
                 image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1470&auto=format&fit=crop",
                 video: "/videos/Wallet.mp4",
                 link: "https://filecard-delta.vercel.app/",
-                description: "Next-gen digital wallet focused on cross-border payments.",
-                overview: "Financial applications, especially those for international payments, can often feel cold and confusing. Trust is essential when money is moving across borders. This Digital Wallet project redesigns the peer-to-peer payment experience to be simple and reassuring.\n\nThe focus was on abstracting away the complexities of exchange rates and fees. We wanted to make the process of sending money internationally feel as straightforward and personal as handing cash to a friend.",
-                process: "We centered the design on 'Trust Signals.' Every step of the transaction provides clear feedback. We used a card-based interface to separate different currencies, treating them as distinct, tangible assets. \n\nMotion design was key to building confidence. Skeuomorphic details, like the gloss on a card or the resistance when swiping, give the digital objects a sense of reality. The 'Payment Sent' success animation is designed to be a definitive release of tension, confirming to the user that the action is complete. We also simplified the currency conversion into a transparent slider that updates fees in real-time, eliminating surprise costs.",
+                description: "Next-gen digital wallet focused on cross-border payments",
+                overview: "A digital wallet concept re-imagining the peer-to-peer payment experience to be simple, human-centric, and reassuring.\n\nProblem: International money transfer is often stressful, confusing, and opaque. Users face hidden fees and cold, banking-style interfaces that induce anxiety.\n\nUser: Global citizens sending money to friends and family who value ease of use and emotional reassurance over banking jargon.\n\nOutcome: A payment experience that builds trust at every step, making moving money feel as instant and intimate as handing cash to a friend.",
+                process: "Role: Design Engineer | Type: Mobile App Concept | Stack: React Native, Reanimated, Figma.\n\nDesign Principle: Trust Signals. Every interaction must provide clear, tangible feedback to reassure the user that their money is safe.\n\nKey Design Decisions: Used skeuomorphic 'card' metaphors for currencies to make them feel tangible. Motion design is central—swipes have resistance, success states are celebratory. Simplified currency conversion to a transparent real-time slider.\n\nEngineering Decisions: Focused on fluid 60fps animations using Reanimated to ensure the app felt responsive and native, which is crucial for building trust in financial applications.",
             },
             {
                 id: 7,
@@ -127,9 +127,9 @@ const projects: Project[] = [
                 image: "/images/file-showcase-fallback.png",
                 video: "/videos/File.mp4",
                 link: "https://file-showcase.vercel.app/",
-                description: "A robust file management system for enterprise collaboration.",
-                overview: "Enterprise file managers often sacrifice usability for density, presenting users with overwhelming lists of data. File Showcase attempts to solve this density problem without hiding information. \n\nIt is a system designed for high-volume file management, balancing the need to see metadata—like file owners, sizes, and permissions—with the need for a clean, navigable interface. It is built for power users who need to move quickly through deep directory structures.",
-                process: "We used a responsive modular grid that changes density based on screen size. It provides a detailed card view on larger screens and a compact list on mobile. \n\nWe realized that browsing by folder structure is often inefficient, so we introduced 'Contextual Views.' These allow users to filter files by 'Recently Edited,' 'Shared with Team,' or file type, which is often how people actually look for work.\n\nThe visual style relies on typography and whitespace to create hierarchy, rather than heavy lines or boxes. We also added a 'Quick Look' modal to preview file contents without leaving the main view, keeping the user focused on their task.",
+                description: "A robust file management system for enterprise collaboration",
+                overview: "A design study in solving the 'density vs. usability' paradox in high-volume enterprise file management.\n\nProblem: Enterprise tools often dump data on users with zero hierarchy, or hide it behind too many clicks. Finding the right file in a deep tree is painful and slow.\n\nUser: Enterprise power users managing thousands of assets who need both speed and rich context.\n\nOutcome: A balanced interface that maximizes data visibility without causing cognitive overload.",
+                process: "Role: UI/UX Designer | Type: System Design | Stack: React, Grid Layouts.\n\nDesign Principle: Context over Location. Users find files by 'who sent it' or 'when,' not just 'where it is.'\n\nKey Design Decisions: 'Smart-Filter' views (Recently Edited, Shared with Team). Responsive modular grid that shifts from card to list view based on density needs. Typography-driven hierarchy.\n\nEngineering Decisions: Implemented a 'Quick Look' modal for instant file previews without navigation, preserving user context and flow.",
             }
         ]
     },
@@ -148,9 +148,9 @@ const projects: Project[] = [
                 category: "Product Design",
                 image: "/images/loyalty-rewards.png",
                 isNDA: true,
-                description: "Gamified loyalty program for high-retention user engagement.",
-                overview: "This project involved redesigning a major retail loyalty program to improve user retention. The goal was to move beyond a simple point-collection system, which users often find unengaging.\n\nWe introduced a gamified structure that rewards engagement as well as spending. Users earn progress through streaks, social interaction, and checking in, not just transactions. This creates a more active relationship between the user and the brand.",
-                process: "We focused on identifying and enhancing 'Delight Moments' in the user journey, specifically the reward redemption phase. We didn't want redemption to feel like a transaction, but like a reward.\n\nWe prototyped specific animations for when a user unlocks a reward to trigger a positive emotional response. The visual language uses vibrant colors and bold accents to differentiate 'Reward Mode' from the standard app interface. We also streamlined the claim process from five clicks down to two, removing friction and significantly increasing the rate at which users actually claimed their rewards.",
+                description: "Gamified loyalty program for high-retention user engagement",
+                overview: "A gamified loyalty program redesign for a major retailer, shifting from a transactional model to an engagement-based one.\n\nProblem: Users find standard point systems boring and transactional. Retention drops because the reward feels too distant and the process too passive.\n\nUser: Retail customers seeking recognition and fun value from their brand interactions.\n\nOutcome: A system that increased retention by rewarding engagement streaks and social actions, not just spending.",
+                process: "Role: Product Designer (NDA) | Type: Mobile Feature | Stack: N/A (Design only).\n\nDesign Principle: Engagement Engineering. Reward the action, delight the user.\n\nKey Design Decisions: 'Delight Moments' in redemption—unlocking a reward feels like a loot box event. Vibrant 'Reward Mode' aesthetic distinct from the main app.\n\nEngineering Decisions: (Design Focus) Streamlined claim flow from 5 clicks to 2, removing friction from the most positive user interaction.",
             },
             {
                 id: 5,
@@ -159,9 +159,9 @@ const projects: Project[] = [
                 category: "Web App",
                 image: "/images/admin-dashboard-kyc.png",
                 isNDA: true,
-                description: "A comprehensive KYC management dashboard for merchant verification.",
-                overview: "This project is a high-volume KYC (Know Your Customer) dashboard for a fintech platform. It is designed for operations teams who need to verify merchant documents like tax IDs and business registrations rapidly and accurately.\n\nThe interface is built to minimize errors and fatigue. It is not just a data viewer; it is a workflow tool designed to help operators process hundreds of applications a day without losing focus.",
-                process: "We prioritized efficiency and scannability. We used a consistent color-coding system—Green for Verified, Red for Rejected, Yellow for Review—to allow operators to assess a queue's status at a glance.\n\nWe implemented keyboard shortcuts for all primary actions, allowing experienced users to process records without switching between mouse and keyboard. The layout groups related information—such as placing an ID photo directly next to the extracted text—to reduce eye movement and make comparison easier.",
+                description: "A comprehensive KYC management dashboard for merchant verification",
+                overview: "A high-volume KYC (Know Your Customer) verification dashboard designed for speed, accuracy, and operator ergonomics.\n\nProblem: Compliance operators suffer from fatigue using slow, clunky interfaces, leading to errors and bottlenecks in merchant onboarding.\n\nUser: Operations teams processing hundreds of verifications daily.\n\nOutcome: An 'Operator's Cockpit' that reduces time-per-verification and fatigue through keyboard-first design.",
+                process: "Role: UI Designer (NDA) | Type: Web App | Stack: React, React Table.\n\nDesign Principle: Efficiency First. Minimize eye travel and mouse usage.\n\nKey Design Decisions: Consistent color coding (Green/Red/Yellow) for instant scanning. 'Eye-Tennis' reduction by grouping ID photos next to data.\n\nEngineering Decisions: Implemented global keyboard shortcuts for Approve/Reject actions to allow mouse-free workflows for power users.",
             }
         ]
     }
@@ -169,18 +169,20 @@ const projects: Project[] = [
 
 const workExperience = [
     {
+        id: 2,
+        company: "Metry Ai",
+        role: "Frontend design intern",
+        date: "August 2025 - Present",
+        location: "Tokyo (Remote)",
+        description: "Designed and implemented a gamified loyalty reward system. Currently developing customer support interfaces to streamline user issue resolution."
+    },
+    {
         id: 1,
         company: "Bazuroo App",
         role: "Product Designer",
-        date: "July 2025 - Present",
+        date: "July 2025 - December 2025",
         location: "Part-time • Remote",
-    },
-    {
-        id: 2,
-        company: "Metry Ai",
-        role: "Frontend designer intern",
-        date: "August 2024 - Present",
-        location: "Tokyo (Remote)",
+        description: "Combined design and development to build a comprehensive admin panel using React. Architected the complete app flow and crafted high-fidelity screens for client deployment."
     }
 ];
 
@@ -192,6 +194,7 @@ const DashboardLayout = () => {
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isHirePopupOpen, setIsHirePopupOpen] = useState(false);
     const [showMobileProjects, setShowMobileProjects] = useState(false);
+    const [expandedJobId, setExpandedJobId] = useState<number | null>(null);
 
     useEffect(() => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -908,25 +911,64 @@ const DashboardLayout = () => {
                                                         </div>
                                                     )}
 
-                                                    <div className="space-y-6">
-                                                        <h2 className={`text-2xl font-bold ${textPrimary}`}>The Overview</h2>
-                                                        <div className={`text-lg leading-relaxed ${textSecondary}`}>
-                                                            {(activeProject.overview || "This project was conceived to solve a specific problem in the industry. By leveraging modern web technologies, we created a seamless experience that allows users to capture data efficiently. The focus was on minimalism and speed, ensuring that the interface never gets in the way of the user's task.").split('\n\n').map((paragraph, i) => (
-                                                                <p key={i} className="mb-6 last:mb-0">{paragraph}</p>
-                                                            ))}
-                                                        </div>
-                                                    </div>
+                                                    {(() => {
+                                                        const allBlocks = [
+                                                            ...(activeProject.overview || "").split('\n\n'),
+                                                            ...(activeProject.process || "").split('\n\n')
+                                                        ].filter(Boolean);
 
-                                                    {activeProject.process && (
-                                                        <div className="space-y-6">
-                                                            <h2 className={`text-2xl font-bold ${textPrimary}`}>The Process</h2>
-                                                            <div className={`text-lg leading-relaxed ${textSecondary}`}>
-                                                                {activeProject.process.split('\n\n').map((paragraph, i) => (
-                                                                    <p key={i} className="mb-6 last:mb-0">{paragraph}</p>
-                                                                ))}
+                                                        // Extract Metadata (Role, Stack, etc.)
+                                                        const metaIndex = allBlocks.findIndex(b => b.includes('Role:') && b.includes('|'));
+                                                        const metaBlock = metaIndex !== -1 ? allBlocks[metaIndex] : null;
+                                                        const distinctBlocks = allBlocks.filter((_, i) => i !== metaIndex);
+
+                                                        // Keywords to treat as headers
+                                                        const headerKeywords = ['Problem', 'User', 'Outcome', 'Design Principle', 'Experience Flow', 'Key Design Decisions', 'Engineering Decisions'];
+
+                                                        return (
+                                                            <div className="space-y-10">
+                                                                {/* Hoisted Metadata */}
+                                                                {metaBlock && (
+                                                                    <div className={`p-6 rounded-2xl border ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/5'}`}>
+                                                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                                                            {metaBlock.split('|').map((item, i) => {
+                                                                                const [label, value] = item.split(':').map(s => s.trim());
+                                                                                if (!value) return <span key={i} className={`text-sm ${textSecondary}`}>{item}</span>;
+                                                                                return (
+                                                                                    <div key={i}>
+                                                                                        <span className={`text-xs font-semibold uppercase tracking-wider opacity-50 block mb-1 ${textSecondary}`}>{label}</span>
+                                                                                        <span className={`text-sm font-medium ${textPrimary}`}>{value}</span>
+                                                                                    </div>
+                                                                                );
+                                                                            })}
+                                                                        </div>
+                                                                    </div>
+                                                                )}
+
+                                                                {/* Main Content */}
+                                                                <div className={`text-lg leading-relaxed space-y-8 ${textSecondary}`}>
+                                                                    {distinctBlocks.map((block, i) => {
+                                                                        // Check for "Keyword: Content" pattern
+                                                                        const keywordMatch = block.match(/^([A-Za-z ]+):\s*(.+)/s);
+                                                                        if (keywordMatch) {
+                                                                            const [_, title, content] = keywordMatch;
+                                                                            if (headerKeywords.some(k => title.includes(k))) {
+                                                                                return (
+                                                                                    <div key={i} className="space-y-3">
+                                                                                        <h3 className={`text-xl font-bold ${textPrimary}`}>{title}</h3>
+                                                                                        <div className="leading-relaxed opacity-90">{content}</div>
+                                                                                    </div>
+                                                                                );
+                                                                            }
+                                                                        }
+
+                                                                        // Fallback parsing (e.g. for simple paragraphs)
+                                                                        return <p key={i}>{block}</p>;
+                                                                    })}
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    )}
+                                                        );
+                                                    })()}
 
                                                     {!activeProject.process && (
                                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -951,25 +993,15 @@ const DashboardLayout = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -10 }}
                                     transition={{ duration: 0.3 }}
-                                    className="max-w-md text-left w-full h-full md:h-auto overflow-y-auto md:overflow-visible no-scrollbar pb-24 md:pb-0"
+                                    className="max-w-md md:max-w-2xl text-left w-full h-full md:h-auto overflow-y-auto md:overflow-visible no-scrollbar pb-24 md:pb-0"
                                 >
-                                    <h1 className={`text-xl md:text-3xl font-bold ${textPrimary} leading-tight mb-6 tracking-tight`}>
-                                        Sumit Sharma, <br />
-                                        <span className="whitespace-normal md:whitespace-nowrap">on a journey to <span className="text-red-500">design engineer</span> at <span
-                                            className="relative inline-block cursor-pointer"
-                                            onMouseEnter={() => setIsHirePopupOpen(true)}
-                                            onClick={() => setIsHirePopupOpen(true)}
-                                        >
-                                            <span
-                                                className={`
-                                                    inline-block align-middle rounded-md transition-colors ml-1.5
-                                                    w-16 h-4 
-                                                    md:w-24 md:h-6
-                                                    ${isDarkMode ? 'bg-white/20 hover:bg-white/40' : 'bg-black/10 hover:bg-black/20'}
-                                                `}
-                                            />
-                                        </span></span>
+                                    <h1 className={`text-xl md:text-3xl font-bold ${textPrimary} leading-tight mb-2 tracking-tight`}>
+                                        Sumit Sharma
                                     </h1>
+                                    <p className={`text-lg md:text-xl font-medium ${textSecondary} mb-6 md:whitespace-nowrap`}>
+                                        <span className="text-red-500">Design engineer</span> - designing, learning and developing
+                                    </p>
+
 
                                     <div className={`flex gap-4 text-sm ${textSecondary} font-medium items-center`}>
                                         <button onClick={() => setShowMobileProjects(true)} className={`md:hidden hover:${textPrimary} transition-colors`}>Projects</button>
@@ -989,19 +1021,56 @@ const DashboardLayout = () => {
                                             Experience
                                         </h3>
                                         <div className="space-y-4">
-                                            {workExperience.map((job) => (
-                                                <div key={job.id} className="group">
-                                                    <div className="flex items-baseline justify-between">
-                                                        <div className={`font-medium ${textPrimary} group-hover:text-red-500 transition-colors`}>{job.company}</div>
-                                                        <div className={`text-xs font-monoSync ${isDarkMode ? 'text-white/40' : 'text-black/50'} text-right shrink-0 ml-4`}>{job.date}</div>
+                                            {workExperience.map((job) => {
+                                                const isExpanded = expandedJobId === job.id;
+                                                return (
+                                                    <div
+                                                        key={job.id}
+                                                        className="group cursor-pointer"
+                                                        onClick={() => setExpandedJobId(isExpanded ? null : job.id)}
+                                                    >
+                                                        <div className="flex items-baseline justify-between">
+                                                            <div className="flex items-center gap-2">
+                                                                {/* Chevron that appears on hover, rotates when expanded */}
+                                                                <svg
+                                                                    className={`w-3 h-3 text-red-500 transition-all duration-200 
+                                                                    ${isExpanded ? 'rotate-90 opacity-100' : 'opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0'}`}
+                                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}
+                                                                >
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                                                </svg>
+                                                                <div className={`font-medium transition-colors ${isExpanded ? 'text-red-500' : `${textPrimary} group-hover:text-red-500`}`}>
+                                                                    {job.company}
+                                                                </div>
+                                                            </div>
+                                                            <div className={`text-xs font-monoSync ${isDarkMode ? 'text-white/40' : 'text-black/50'} text-right shrink-0 ml-4`}>{job.date}</div>
+                                                        </div>
+
+                                                        <div className="flex items-start justify-between mt-0.5 pl-5">
+                                                            <div className={`text-sm ${textSecondary} pr-4`}>{job.role}</div>
+                                                            {/* @ts-ignore */}
+                                                            {job.location && <div className={`text-[10px] ${isDarkMode ? 'text-white/30' : 'text-black/40'} text-right shrink-0 whitespace-nowrap`}>{job.location}</div>}
+                                                        </div>
+
+                                                        {/* Expanded Description */}
+                                                        <AnimatePresence>
+                                                            {isExpanded && (
+                                                                <motion.div
+                                                                    initial={{ height: 0, opacity: 0 }}
+                                                                    animate={{ height: 'auto', opacity: 1 }}
+                                                                    exit={{ height: 0, opacity: 0 }}
+                                                                    transition={{ duration: 0.2 }}
+                                                                    className="overflow-hidden"
+                                                                >
+                                                                    <p className={`text-xs leading-relaxed ${textSecondary} mt-3 pl-5 border-l-2 ${isDarkMode ? 'border-white/10' : 'border-black/5'}`}>
+                                                                        {job.description}
+                                                                    </p>
+                                                                </motion.div>
+                                                            )}
+                                                        </AnimatePresence>
                                                     </div>
-                                                    <div className="flex items-start justify-between mt-0.5">
-                                                        <div className={`text-sm ${textSecondary} pr-4`}>{job.role}</div>
-                                                        {/* @ts-ignore */}
-                                                        {job.location && <div className={`text-[10px] ${isDarkMode ? 'text-white/30' : 'text-black/40'} text-right shrink-0 whitespace-nowrap`}>{job.location}</div>}
-                                                    </div>
-                                                </div>
-                                            ))}
+                                                );
+                                            })}
                                         </div>
                                     </div>
 
@@ -1044,10 +1113,10 @@ const DashboardLayout = () => {
                         </AnimatePresence>
 
                     </div>
-                </div>
+                </div >
 
-            </main>
-        </div>
+            </main >
+        </div >
     );
 };
 
