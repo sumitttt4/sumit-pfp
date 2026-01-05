@@ -195,7 +195,117 @@ const DashboardLayout = () => {
                 )}
             </AnimatePresence>
 
-            {/* Sidebar */}
+            {/* Mobile Projects Overlay (Full Screen) */}
+            <AnimatePresence>
+                {showMobileProjects && (
+                    <motion.div
+                        key="mobile-projects"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                        className="fixed inset-0 z-[60] bg-black flex flex-col md:hidden overflow-hidden"
+                    >
+                        {/* Mobile Header */}
+                        <div className="flex-none h-16 px-6 flex items-center justify-between border-b border-white/10 shrink-0 bg-black/50 backdrop-blur-md sticky top-0 z-10">
+                            <h2 className="text-xl font-bold text-white tracking-tight">All Projects</h2>
+                            <button
+                                onClick={() => setShowMobileProjects(false)}
+                                className="p-2 -mr-2 text-white/60 hover:text-white"
+                            >
+                                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        {/* Search Bar */}
+                        <div className="flex-none px-6 py-4">
+                            <div className="relative">
+                                <Command className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
+                                <input
+                                    type="text"
+                                    placeholder="Search Posts..."
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/20"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Projects List (Scrollable) */}
+                        <div className="flex-1 overflow-y-auto px-6 pb-24 space-y-8 no-scrollbar">
+                            {/* Flatten all projects (recursively if needed, but for now mostly flat) */}
+                            {projects.flatMap(p => p.items ? p.items : [p]).map((project) => (
+                                <div key={project.id} className="group cursor-pointer" onClick={() => {
+                                    setSelectedProject(project.id);
+                                    setShowMobileProjects(false);
+                                }}>
+                                    {/* Card Container - No Border, Just Content */}
+                                    <div className="space-y-3">
+
+                                        {/* Image Top */}
+                                        <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-white/5 border border-white/10">
+                                            {project.video ? (
+                                                <video
+                                                    src={project.video}
+                                                    muted
+                                                    loop
+                                                    playsInline
+                                                    className="w-full h-full object-cover"
+                                                    onMouseOver={e => e.currentTarget.play()}
+                                                    onMouseOut={e => e.currentTarget.pause()}
+                                                />
+                                            ) : (
+                                                <img
+                                                    src={project.image}
+                                                    alt={project.title}
+                                                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                                                />
+                                            )}
+
+                                            {project.isNDA && (
+                                                <div className="absolute top-2 right-2 px-2 py-1 rounded bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-medium text-white/80">
+                                                    NDA
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Content Bottom */}
+                                        <div>
+                                            <h3 className="text-lg font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">
+                                                {project.title}
+                                            </h3>
+                                            <div className="flex items-center gap-2 text-xs font-medium text-blue-400 mb-2">
+                                                {project.category}
+                                                {project.year && <span className="text-white/20">• {project.year}</span>}
+                                            </div>
+
+                                            <p className="text-sm text-white/60 line-clamp-2 leading-relaxed mb-3">
+                                                {project.description}
+                                            </p>
+
+                                            {/* Action Link (External) */}
+                                            {project.link && (
+                                                <a
+                                                    href={project.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    onClick={(e) => e.stopPropagation()}
+                                                    className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-400 hover:text-blue-300 hover:underline"
+                                                >
+                                                    Live Preview
+                                                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                    </svg>
+                                                </a>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
             <aside className={`
                 fixed md:static inset-y-0 left-0 z-40
                 w-64 border-r ${borderColor}
@@ -548,98 +658,7 @@ const DashboardLayout = () => {
                     <div className="w-full max-w-3xl relative z-10 h-full flex flex-col justify-start pt-10 md:justify-center md:pt-0">
 
                         <AnimatePresence mode="wait">
-                            {showMobileProjects && !activeProject ? (
-                                <motion.div
-                                    key="mobile-projects"
-                                    initial={{ opacity: 0, x: 20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: 20 }}
-                                    transition={{ duration: 0.2 }}
-                                    className="w-full h-full flex flex-col md:hidden"
-                                >
-                                    <div className="flex items-center gap-2 mb-6 cursor-pointer hover:opacity-70 transition-opacity self-start" onClick={() => setShowMobileProjects(false)}>
-                                        <svg className={`w-5 h-5 ${textSecondary}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7 7-7" />
-                                        </svg>
-                                        <span className={`text-sm font-medium ${textSecondary}`}>Back</span>
-                                    </div>
-
-                                    <h2 className={`text-2xl font-bold ${textPrimary} mb-6`}>Projects</h2>
-
-                                    <div className="flex-1 overflow-y-auto space-y-2 no-scrollbar pb-24">
-                                        {currentFolderId && (
-                                            <button
-                                                onClick={() => setCurrentFolderId(null)}
-                                                className={`w-full text-left px-4 py-3 rounded-xl mb-2 flex items-center gap-3 ${isDarkMode ? 'bg-white/5 text-white/70' : 'bg-black/5 text-black/70'} transition-colors group`}
-                                            >
-                                                <span className="w-8 h-8 flex items-center justify-center rounded-lg bg-transparent border border-current opacity-50 group-hover:opacity-100">
-                                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                                                    </svg>
-                                                </span>
-                                                <span className="font-medium text-sm">Back to Folders</span>
-                                            </button>
-                                        )}
-
-                                        {visibleProjects.map((project) => {
-                                            const isFolderExpanded = project.type === 'folder' && (hoveredProject === project.id || project.items?.some(p => p.id === hoveredProject));
-
-                                            if (project.items && isFolderExpanded) {
-                                                return (
-                                                    <div key={project.id} className="space-y-1 pl-4 border-l border-white/10 ml-2">
-                                                        {project.items.map((item) => (
-                                                            <div
-                                                                key={item.id}
-                                                                onClick={() => setSelectedProject(item.id)}
-                                                                className={`
-                                                                flex items-center justify-between w-full px-4 py-3 rounded-xl cursor-pointer transition-all duration-200
-                                                                ${selectedProject === item.id
-                                                                        ? (isDarkMode ? 'bg-white/10 text-white' : 'bg-black/5 text-black')
-                                                                        : 'hover:bg-black/5 dark:hover:bg-white/5 text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white'
-                                                                    }
-                                                            `}
-                                                            >
-                                                                <span className="text-base font-medium truncate">{item.title}</span>
-                                                                <span className="text-xs opacity-50">{item.year}</span>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                )
-                                            }
-
-                                            return (
-                                                <div
-                                                    key={project.id}
-                                                    onClick={() => {
-                                                        if (project.type === 'folder') {
-                                                            setCurrentFolderId(project.id);
-                                                        } else {
-                                                            setSelectedProject(project.id);
-                                                        }
-                                                    }}
-                                                    className={`
-                                                    group flex items-center justify-between w-full px-4 py-3 rounded-xl cursor-pointer transition-all duration-200
-                                                    ${selectedProject === project.id
-                                                            ? (isDarkMode ? 'bg-white/10 text-white' : 'bg-black/5 text-black')
-                                                            : 'hover:bg-black/5 dark:hover:bg-white/5 text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white'
-                                                        }
-                                                `}
-                                                >
-                                                    <div className="flex items-center gap-3">
-                                                        {project.type === 'folder' && (
-                                                            <svg className="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                                                <path strokeLinecap="round" strokeLinejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-                                                            </svg>
-                                                        )}
-                                                        <span className="text-base font-medium truncate">{project.title}</span>
-                                                    </div>
-                                                    <span className="text-xs opacity-50">{project.year}</span>
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                </motion.div>
-                            ) : activeProject ? (
+                            {activeProject ? (
                                 <motion.div
                                     key="preview"
                                     initial={{ opacity: 0 }}
