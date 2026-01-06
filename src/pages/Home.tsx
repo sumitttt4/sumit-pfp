@@ -71,8 +71,8 @@ const Home = () => {
 
                 <div className="text-white/50 space-y-6 text-lg leading-relaxed max-w-2xl font-light">
                     <p>
-                        Currently crafting <strong className="text-white/90 font-medium">Glyph</strong>, a brand identity engine for creators.
-                        Before that: built admin panels for <strong className="text-white/90 font-medium">Bazuroo</strong> and scaled frontend architecture at <strong className="text-white/90 font-medium">Metry</strong>.
+                        Currently crafting <a href="https://glyph.software" target="_blank" rel="noreferrer" className="text-white/90 font-medium hover:text-cyan-400 transition-colors underline decoration-white/30 hover:decoration-cyan-400/50 underline-offset-4">Glyph</a>, a brand identity engine for creators.
+                        Before that: built <strong className="text-white/90 font-medium">an Admin Panel Dashboard</strong> and scaled frontend architecture at <strong className="text-white/90 font-medium">Metri AI (Tokyo)</strong>.
                     </p>
                     <p>
                         Obsessed with micro-interactions, clean code, and shipping fast.
