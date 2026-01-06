@@ -8,8 +8,9 @@ const GridBackground: React.FC = () => {
     return (
         <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#050505]" aria-hidden="true">
             {/* 1. The Mesh Gradient Base (Atmospheric Glow) */}
-            <div className="absolute top-[-20%] left-[-10%] w-[1000px] h-[1000px] bg-indigo-950/20 rounded-full blur-[120px] mix-blend-screen opacity-30 animate-pulse" style={{ animationDuration: '4s' }} />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[800px] h-[800px] bg-slate-900/10 rounded-full blur-[100px] mix-blend-screen opacity-20" />
+            {/* 1. The Mesh Gradient Base (Atmospheric Glow) */}
+            <div className="absolute top-[-20%] left-[-10%] w-[1000px] h-[1000px] bg-indigo-950/20 rounded-full blur-[80px] mix-blend-screen opacity-30 animate-pulse" style={{ animationDuration: '4s', willChange: 'transform' }} />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[800px] h-[800px] bg-slate-900/10 rounded-full blur-[60px] mix-blend-screen opacity-20" style={{ willChange: 'transform' }} />
 
             {/* 2. The Dot Grid (Engineered Feel) */}
             <div

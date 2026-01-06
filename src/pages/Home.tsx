@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import LetsTalkModal from '@/components/ui/LetsTalkModal';
+import Marquee from "react-fast-marquee";
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Github, Twitter, Linkedin, Mail, ExternalLink, Coffee } from 'lucide-react';
 import projects from '@/data/projects';
@@ -19,6 +20,12 @@ const stack = [
     { name: "Node.js", color: "bg-green-400/10 text-green-400 border-green-400/20" },
     { name: "PostgreSQL", color: "bg-blue-300/10 text-blue-300 border-blue-300/20" },
     { name: "Figma", color: "bg-purple-400/10 text-purple-400 border-purple-400/20" },
+    { name: "Supabase", color: "bg-emerald-400/10 text-emerald-400 border-emerald-400/20" },
+    { name: "REST APIs", color: "bg-orange-400/10 text-orange-400 border-orange-400/20" },
+    { name: "GraphQL", color: "bg-pink-400/10 text-pink-400 border-pink-400/20" },
+    { name: "Docker", color: "bg-blue-500/10 text-blue-500 border-blue-500/20" },
+    { name: "Prisma", color: "bg-indigo-400/10 text-indigo-400 border-indigo-400/20" },
+    { name: "Framer Motion", color: "bg-fuchsia-400/10 text-fuchsia-400 border-fuchsia-400/20" },
 ];
 
 const Home = () => {
@@ -95,15 +102,27 @@ const Home = () => {
                 className="space-y-8"
             >
                 <h2 className="text-xl font-bold text-white/90 tracking-tight">Tools that I have used</h2>
-                <div className="flex flex-wrap gap-3">
-                    {stack.map((tech) => (
-                        <span
-                            key={tech.name}
-                            className={`px-3 py-1.5 rounded-full text-xs font-medium border ${tech.color} bg-opacity-[0.03] backdrop-blur-sm transition-all hover:scale-105 cursor-default`}
-                        >
-                            {tech.name}
-                        </span>
-                    ))}
+                <div className="space-y-4">
+                    <Marquee gradient={false} speed={40} className="py-2">
+                        {[...stack.slice(0, 7), ...stack.slice(0, 7), ...stack.slice(0, 7)].map((tech, i) => (
+                            <span
+                                key={`${tech.name}-${i}`}
+                                className={`mx-4 px-4 py-2 rounded-full text-xs font-medium border ${tech.color} bg-opacity-[0.03] backdrop-blur-sm transition-all hover:scale-105 cursor-default`}
+                            >
+                                {tech.name}
+                            </span>
+                        ))}
+                    </Marquee>
+                    <Marquee gradient={false} speed={40} direction="right" className="py-2">
+                        {[...stack.slice(7), ...stack.slice(7), ...stack.slice(7)].map((tech, i) => (
+                            <span
+                                key={`${tech.name}-${i}`}
+                                className={`mx-4 px-4 py-2 rounded-full text-xs font-medium border ${tech.color} bg-opacity-[0.03] backdrop-blur-sm transition-all hover:scale-105 cursor-default`}
+                            >
+                                {tech.name}
+                            </span>
+                        ))}
+                    </Marquee>
                 </div>
 
                 {/* GitHub Calendar */}

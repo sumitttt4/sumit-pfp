@@ -115,7 +115,7 @@ const Blog = () => {
                     {/* Newsletter Card */}
                     <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
                         <div className="space-y-4">
-                            <h3 className="text-sm font-medium text-white/60 text-right">Stay updated with my latest projects</h3>
+                            <h3 className="text-sm font-medium text-white/60 text-right">Stay updated with my latest blogs</h3>
 
                             <form onSubmit={handleSubscribe} className="flex gap-2">
                                 <input

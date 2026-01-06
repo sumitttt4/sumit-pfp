@@ -26,28 +26,31 @@ const MinimalLayout = ({ children }: { children?: React.ReactNode }) => {
                     <div className="absolute -left-1.5 -bottom-1.5 text-white/20 text-[10px]">+</div>
                     <div className="absolute -right-1.5 -bottom-1.5 text-white/20 text-[10px]">+</div>
 
-                    <div className="px-6 h-16 flex items-center justify-end gap-8">
-                        {navLinks.map((link) => {
-                            const isActive = location.pathname === link.path;
-                            return (
-                                <Link
-                                    key={link.name}
-                                    to={link.path}
-                                    className={`text-sm font-medium transition-colors relative ${isActive ? 'text-cyan-400' : 'text-gray-400 hover:text-white'}`}
-                                >
-                                    {link.name}
-                                    {isActive && (
-                                        <motion.div
-                                            layoutId="nav-underline"
-                                            className="absolute -bottom-5 left-0 right-0 h-[1px] bg-cyan-400"
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            transition={{ duration: 0.2 }}
-                                        />
-                                    )}
-                                </Link>
-                            );
-                        })}
+                    <div className="px-6 h-16 flex items-center justify-end">
+                        {/* Navigation Links */}
+                        <div className="flex items-center gap-4 sm:gap-8">
+                            {navLinks.map((link) => {
+                                const isActive = location.pathname === link.path;
+                                return (
+                                    <Link
+                                        key={link.name}
+                                        to={link.path}
+                                        className={`text-sm font-medium transition-colors relative ${isActive ? 'text-cyan-400' : 'text-gray-400 hover:text-white'}`}
+                                    >
+                                        {link.name}
+                                        {isActive && (
+                                            <motion.div
+                                                layoutId="nav-underline"
+                                                className="absolute -bottom-5 left-0 right-0 h-[1px] bg-cyan-400"
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                transition={{ duration: 0.2 }}
+                                            />
+                                        )}
+                                    </Link>
+                                );
+                            })}
+                        </div>
                     </div>
                 </header>
 
