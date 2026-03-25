@@ -60,20 +60,20 @@ export default function Home() {
                 className="max-w-3xl space-y-8 py-20"
             >
                 <div className="space-y-4">
-                    <h1 className="text-5xl font-bold text-white/90 tracking-[-0.04em]">
+                    <h1 className="text-5xl font-bold text-zinc-900 dark:text-white/90 tracking-[-0.04em]">
                         Sumit Sharma
                     </h1>
-                    <p className="text-xl text-white/60 font-medium max-w-2xl leading-relaxed">
-                        <span className="font-playfair italic text-2xl text-white/80 pr-1">Design Engineer</span>
+                    <p className="text-xl text-zinc-900/80 dark:text-white/60 font-medium max-w-2xl leading-relaxed">
+                        <span className="font-playfair italic text-2xl text-zinc-900/90 dark:text-white/80 pr-1">Design Engineer</span>
                         who bridges the gap between Figma and Code.
                         I build polished, interactive interfaces that feel alive.
                     </p>
                 </div>
 
-                <div className="text-white/50 space-y-6 text-lg leading-relaxed max-w-2xl font-light">
+                <div className="text-zinc-900/70 dark:text-white/50 space-y-6 text-lg leading-relaxed max-w-2xl font-light">
                     <p>
-                        Currently building <a href="https://glyph.software" target="_blank" rel="noreferrer" className="text-white/90 font-medium hover:text-cyan-400 transition-colors underline decoration-white/30 hover:decoration-cyan-400/50 underline-offset-4">Glyph</a>, an AI brand identity generator with 7 paying customers.
-                        Also running <a href="https://fedup.studio" target="_blank" rel="noreferrer" className="text-white/90 font-medium hover:text-cyan-400 transition-colors underline decoration-white/30 hover:decoration-cyan-400/50 underline-offset-4">Fedup Studio</a> — a design & development agency.
+                        Currently building <a href="https://glyph.software" target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white/90 font-medium hover:text-cyan-400 transition-colors underline decoration-black/30 dark:decoration-white/30 hover:decoration-cyan-400/50 underline-offset-4">Glyph</a>, an AI brand identity generator with 7 paying customers.
+                        Also running <a href="https://fedup.studio" target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white/90 font-medium hover:text-cyan-400 transition-colors underline decoration-black/30 dark:decoration-white/30 hover:decoration-cyan-400/50 underline-offset-4">Fedup Studio</a> — a design & development agency.
                     </p>
 
                     {/* Experience Timeline */}
@@ -86,17 +86,17 @@ export default function Home() {
                     >
                         <div className="relative space-y-0">
                             {/* Vertical line */}
-                            <div className="absolute left-[4px] top-[10px] bottom-[10px] w-px bg-white/10" />
+                            <div className="absolute left-[4px] top-[10px] bottom-[10px] w-px bg-black/10 dark:bg-white/10" />
 
                             {/* Metry AI */}
                             <div className="relative flex items-start gap-4 py-2.5">
-                                <div className="relative z-10 mt-1.5 w-[9px] h-[9px] rounded-full bg-white/20 border border-white/10 shrink-0" />
+                                <div className="relative z-10 mt-1.5 w-[9px] h-[9px] rounded-full bg-black/20 dark:bg-white/20 border border-black/10 dark:border-white/10 shrink-0" />
                                 <div className="min-w-0">
                                     <div className="flex items-baseline gap-2 flex-wrap">
-                                        <span className="text-sm font-medium text-white/70">Metry AI</span>
-                                        <span className="text-xs text-white/30">— Frontend Engineer Intern</span>
+                                        <span className="text-sm font-medium text-zinc-900/80 dark:text-white/70">Metry AI</span>
+                                        <span className="text-xs text-zinc-900/50 dark:text-white/30">— Frontend Engineer Intern</span>
                                     </div>
-                                    <span className="text-[11px] font-mono text-white/25 tracking-wide">Aug 2024 – Jan 2025</span>
+                                    <span className="text-[11px] font-mono text-zinc-900/50 dark:text-white/25 tracking-wide">Aug 2024 – Jan 2025</span>
                                 </div>
                             </div>
 
@@ -108,10 +108,10 @@ export default function Home() {
                                 </div>
                                 <div className="min-w-0">
                                     <div className="flex items-baseline gap-2 flex-wrap">
-                                        <a href="https://fedup.studio" target="_blank" rel="noreferrer" className="text-sm font-medium text-white/70 hover:text-cyan-400 transition-colors underline decoration-white/15 hover:decoration-cyan-400/40 underline-offset-2">Fedup Studio</a>
-                                        <span className="text-xs text-white/30">— Founder & Design Engineer</span>
+                                        <a href="https://fedup.studio" target="_blank" rel="noreferrer" className="text-sm font-medium text-zinc-900/80 dark:text-white/70 hover:text-cyan-400 transition-colors underline decoration-black/15 dark:decoration-white/15 hover:decoration-cyan-400/40 underline-offset-2">Fedup Studio</a>
+                                        <span className="text-xs text-zinc-900/50 dark:text-white/30">— Founder & Design Engineer</span>
                                     </div>
-                                    <span className="text-[11px] font-mono text-white/25 tracking-wide">Feb 2025 – Present</span>
+                                    <span className="text-[11px] font-mono text-zinc-900/50 dark:text-white/25 tracking-wide">Feb 2025 – Present</span>
                                 </div>
                             </div>
                         </div>
@@ -125,18 +125,18 @@ export default function Home() {
                         }}
                         className="pl-1 flex items-start gap-3"
                     >
-                        <span className="text-[11px] font-mono text-white/25 tracking-wide uppercase shrink-0 pt-px">Currently building</span>
+                        <span className="text-[11px] font-mono text-zinc-900/50 dark:text-white/25 tracking-wide uppercase shrink-0 pt-px">Currently building</span>
                         <div className="flex items-baseline gap-2 flex-wrap">
                             <a
                                 href="https://glyph.software"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="text-sm font-medium text-white/70 hover:text-cyan-400 transition-colors inline-flex items-center gap-1"
+                                className="text-sm font-medium text-zinc-900/80 dark:text-white/70 hover:text-cyan-400 transition-colors inline-flex items-center gap-1"
                             >
                                 Glyph
-                                <ExternalLink className="w-3 h-3 text-white/25" />
+                                <ExternalLink className="w-3 h-3 text-zinc-900/50 dark:text-white/25" />
                             </a>
-                            <span className="text-xs text-white/30">· AI brand identity generator · 7 paying customers</span>
+                            <span className="text-xs text-zinc-900/50 dark:text-white/30">· AI brand identity generator · 7 paying customers</span>
                         </div>
                     </motion.div>
 
@@ -151,7 +151,7 @@ export default function Home() {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                         </span>
-                        <span className="text-sm font-medium tracking-wide uppercase text-white/40">Available Now · Full-Time or Freelance · <span className="text-white/30">Bengaluru · IST</span> <span onClick={() => setIsLetsTalkOpen(true)} className="text-cyan-400/90 hover:text-cyan-300 cursor-pointer transition-colors border-b border-cyan-500/30 pb-0.5">Let&apos;s talk</span></span>
+                        <span className="text-sm font-medium tracking-wide uppercase text-zinc-900/60 dark:text-white/40">Available Now · Full-Time or Freelance · <span className="text-zinc-900/50 dark:text-white/30">Bengaluru · IST</span> <span onClick={() => setIsLetsTalkOpen(true)} className="text-cyan-400/90 hover:text-cyan-300 cursor-pointer transition-colors border-b border-cyan-500/30 pb-0.5">Let&apos;s talk</span></span>
                     </motion.p>
                 </div>
             </motion.section>
@@ -164,7 +164,7 @@ export default function Home() {
                 }}
                 className="space-y-8"
             >
-                <h2 className="text-xl font-bold text-white/90 tracking-tight">Tools that I have used</h2>
+                <h2 className="text-xl font-bold text-zinc-900 dark:text-white/90 tracking-tight">Tools that I have used</h2>
                 <div className="space-y-4">
                     <Marquee gradient={false} speed={40} className="py-2">
                         {[...stack.slice(0, 7), ...stack.slice(0, 7), ...stack.slice(0, 7)].map((tech, i) => (
@@ -190,7 +190,7 @@ export default function Home() {
 
                 {/* GitHub Calendar */}
                 <div className="pt-6">
-                    <h3 className="text-sm font-bold text-white/40 mb-4 tracking-wider uppercase">Code Contributions</h3>
+                    <h3 className="text-sm font-bold text-zinc-900/60 dark:text-white/40 mb-4 tracking-wider uppercase">Code Contributions</h3>
                     <div className="relative overflow-hidden flex justify-center lg:justify-start -ml-1">
                         <GitHubCalendar
                             username="sumitttt4"
@@ -219,7 +219,7 @@ export default function Home() {
                 }}
                 className="space-y-10"
             >
-                <h2 className="text-xl font-bold text-white/90 tracking-tight">Featured Projects</h2>
+                <h2 className="text-xl font-bold text-zinc-900 dark:text-white/90 tracking-tight">Featured Projects</h2>
                 <BorderGrid columns={2}>
                     {featuredProjects.map((project) => (
                         <motion.div
@@ -229,7 +229,7 @@ export default function Home() {
                             className="group space-y-5 perspective-1000"
                         >
                             {/* Glassmorphic Project Card */}
-                            <div className="aspect-video w-full rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 backdrop-blur-md relative shadow-2xl shadow-black/50">
+                            <div className="aspect-video w-full rounded-xl overflow-hidden bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 backdrop-blur-md relative shadow-2xl shadow-black/50">
                                 {project.video ? (
                                     <video
                                         src={project.video}
@@ -251,12 +251,12 @@ export default function Home() {
                             </div>
                             <div className="px-1">
                                 <div className="flex items-baseline justify-between mb-1">
-                                    <h3 className="text-lg font-bold text-white/90 group-hover:text-white transition-colors tracking-tight">
+                                    <h3 className="text-lg font-bold text-zinc-900 dark:text-white/90 group-hover:text-white transition-colors tracking-tight">
                                         {project.title}
                                     </h3>
-                                    <span className="text-[10px] font-mono text-white/30 uppercase tracking-widest">{project.category}</span>
+                                    <span className="text-[10px] font-mono text-zinc-900/50 dark:text-white/30 uppercase tracking-widest">{project.category}</span>
                                 </div>
-                                <p className="text-sm text-white/50 line-clamp-2 leading-relaxed font-light">
+                                <p className="text-sm text-zinc-900/70 dark:text-white/50 line-clamp-2 leading-relaxed font-light">
                                     {project.description}
                                 </p>
                                 <div className="flex items-center gap-4 mt-4 text-xs font-medium">
@@ -276,7 +276,7 @@ export default function Home() {
                     ))}
                 </BorderGrid>
                 <div className="text-center pt-8">
-                    <Link href="/projects" className="text-sm text-white/40 hover:text-white transition-colors border-b border-transparent hover:border-white/20 pb-1">
+                    <Link href="/projects" className="text-sm text-zinc-900/60 dark:text-white/40 hover:text-zinc-900 dark:hover:text-white transition-colors border-b border-transparent hover:border-black/20 dark:hover:border-white/20 pb-1">
                         View all projects →
                     </Link>
                 </div>
@@ -291,8 +291,8 @@ export default function Home() {
                 className="space-y-8"
             >
                 <div className="flex items-center justify-between">
-                    <h2 className="text-xl font-bold text-white/90 tracking-tight">Most recent posts</h2>
-                    <Link href="/blog" className="text-xs font-medium text-white/40 hover:text-white transition-colors">
+                    <h2 className="text-xl font-bold text-zinc-900 dark:text-white/90 tracking-tight">Most recent posts</h2>
+                    <Link href="/blog" className="text-xs font-medium text-zinc-900/60 dark:text-white/40 hover:text-zinc-900 dark:hover:text-white transition-colors">
                         View all
                     </Link>
                 </div>
@@ -305,31 +305,31 @@ export default function Home() {
                                 href={post.link}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="group block space-y-4 p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/10 hover:bg-white/[0.04] transition-all backdrop-blur-sm"
+                                className="group block space-y-4 p-6 rounded-2xl bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-all backdrop-blur-sm"
                             >
-                                <div className="flex items-center gap-3 text-[10px] tracking-wider uppercase text-white/30 font-medium">
+                                <div className="flex items-center gap-3 text-[10px] tracking-wider uppercase text-zinc-900/50 dark:text-white/30 font-medium">
                                     <span className="text-cyan-400/70"># {post.tags[0].toLowerCase()}</span>
                                     <span>•</span>
                                     <span>{post.readTime}</span>
                                 </div>
-                                <h3 className="text-lg font-bold text-white/80 group-hover:text-white transition-colors">
+                                <h3 className="text-lg font-bold text-zinc-900/90 dark:text-white/80 group-hover:text-white transition-colors">
                                     {post.title}
                                 </h3>
-                                <p className="text-sm text-white/40 line-clamp-2 leading-relaxed">
+                                <p className="text-sm text-zinc-900/60 dark:text-white/40 line-clamp-2 leading-relaxed">
                                     {post.excerpt}
                                 </p>
                             </a>
                         ) : (
-                            <Link key={post.id} href="/blog" className="group block space-y-4 p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/10 hover:bg-white/[0.04] transition-all backdrop-blur-sm">
-                                <div className="flex items-center gap-3 text-[10px] tracking-wider uppercase text-white/30 font-medium">
+                            <Link key={post.id} href="/blog" className="group block space-y-4 p-6 rounded-2xl bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-all backdrop-blur-sm">
+                                <div className="flex items-center gap-3 text-[10px] tracking-wider uppercase text-zinc-900/50 dark:text-white/30 font-medium">
                                     <span className="text-cyan-400/70"># {post.tags[0].toLowerCase()}</span>
                                     <span>•</span>
                                     <span>{post.readTime}</span>
                                 </div>
-                                <h3 className="text-lg font-bold text-white/80 group-hover:text-white transition-colors">
+                                <h3 className="text-lg font-bold text-zinc-900/90 dark:text-white/80 group-hover:text-white transition-colors">
                                     {post.title}
                                 </h3>
-                                <p className="text-sm text-white/40 line-clamp-2 leading-relaxed">
+                                <p className="text-sm text-zinc-900/60 dark:text-white/40 line-clamp-2 leading-relaxed">
                                     {post.excerpt}
                                 </p>
                             </Link>
@@ -347,39 +347,39 @@ export default function Home() {
                 }}
                 className="space-y-8 max-w-2xl"
             >
-                <h2 className="text-xl font-bold text-white/90 tracking-tight">Let&apos;s Work Together</h2>
+                <h2 className="text-xl font-bold text-zinc-900 dark:text-white/90 tracking-tight">Let&apos;s Work Together</h2>
                 <div className="space-y-5">
                     <div className="space-y-2">
-                        <p className="text-white/70 text-lg font-medium leading-relaxed">
+                        <p className="text-zinc-900/80 dark:text-white/70 text-lg font-medium leading-relaxed">
                             Open to full-time Design Engineer roles<br />
                             and select freelance projects.
                         </p>
-                        <p className="text-white/40 text-sm">
+                        <p className="text-zinc-900/60 dark:text-white/40 text-sm">
                             Based in Bengaluru · <span className="text-green-400">Available now</span>
                         </p>
                     </div>
                     <div className="space-y-2.5">
                         <a 
                             href="mailto:sumitsharma9128@gmail.com"
-                            className="flex items-center gap-2.5 text-white/60 hover:text-white transition-colors text-sm group"
+                            className="flex items-center gap-2.5 text-zinc-900/80 dark:text-white/60 hover:text-zinc-900 dark:hover:text-white transition-colors text-sm group"
                         >
-                            <span className="text-white/30">→</span>
-                            <span className="group-hover:underline decoration-white/30 underline-offset-4">sumitsharma9128@gmail.com</span>
+                            <span className="text-zinc-900/50 dark:text-white/30">→</span>
+                            <span className="group-hover:underline decoration-black/30 dark:decoration-white/30 underline-offset-4">sumitsharma9128@gmail.com</span>
                         </a>
                         <a 
                             href="https://cal.com/sumit-sharma/15min"
                             target="_blank"
                             rel="noreferrer"
-                            className="flex items-center gap-2.5 text-white/60 hover:text-white transition-colors text-sm group"
+                            className="flex items-center gap-2.5 text-zinc-900/80 dark:text-white/60 hover:text-zinc-900 dark:hover:text-white transition-colors text-sm group"
                         >
-                            <span className="text-white/30">→</span>
-                            <span className="group-hover:underline decoration-white/30 underline-offset-4">Book a 15-min call</span>
+                            <span className="text-zinc-900/50 dark:text-white/30">→</span>
+                            <span className="group-hover:underline decoration-black/30 dark:decoration-white/30 underline-offset-4">Book a 15-min call</span>
                         </a>
                     </div>
                     <div className="pt-2">
                         <button
                             onClick={() => setIsLetsTalkOpen(true)}
-                            className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 hover:border-white/20 text-white font-medium text-sm transition-all"
+                            className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-black/10 dark:bg-white/10 hover:bg-white/15 border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 text-zinc-900 dark:text-white font-medium text-sm transition-all"
                         >
                             <Send className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                             Get in Touch
@@ -388,19 +388,19 @@ export default function Home() {
                 </div>
 
                 <div className="flex gap-6 pt-4">
-                    <a href="https://github.com/sumitttt4" target="_blank" rel="noreferrer" className="text-white/30 hover:text-white transition-colors transform hover:scale-110">
+                    <a href="https://github.com/sumitttt4" target="_blank" rel="noreferrer" className="text-zinc-900/50 dark:text-white/30 hover:text-zinc-900 dark:hover:text-white transition-colors transform hover:scale-110">
                         <Github className="w-5 h-5" />
                     </a>
-                    <a href="https://twitter.com/Sumitthq" target="_blank" rel="noreferrer" className="text-white/30 hover:text-white transition-colors transform hover:scale-110">
+                    <a href="https://twitter.com/Sumitthq" target="_blank" rel="noreferrer" className="text-zinc-900/50 dark:text-white/30 hover:text-zinc-900 dark:hover:text-white transition-colors transform hover:scale-110">
                         <Twitter className="w-5 h-5" />
                     </a>
-                    <a href="https://linkedin.com/in/sumitsharma4" target="_blank" rel="noreferrer" className="text-white/30 hover:text-white transition-colors transform hover:scale-110">
+                    <a href="https://linkedin.com/in/sumitsharma4" target="_blank" rel="noreferrer" className="text-zinc-900/50 dark:text-white/30 hover:text-zinc-900 dark:hover:text-white transition-colors transform hover:scale-110">
                         <Linkedin className="w-5 h-5" />
                     </a>
-                    <a href="mailto:sumitsharma9128@gmail.com" className="text-white/30 hover:text-white transition-colors transform hover:scale-110">
+                    <a href="mailto:sumitsharma9128@gmail.com" className="text-zinc-900/50 dark:text-white/30 hover:text-zinc-900 dark:hover:text-white transition-colors transform hover:scale-110">
                         <Mail className="w-5 h-5" />
                     </a>
-                    <a href="https://buymeacoffee.com/sumitsharmq" target="_blank" rel="noreferrer" className="text-white/30 hover:text-[#FFDD00] transition-colors transform hover:scale-110">
+                    <a href="https://buymeacoffee.com/sumitsharmq" target="_blank" rel="noreferrer" className="text-zinc-900/50 dark:text-white/30 hover:text-[#FFDD00] transition-colors transform hover:scale-110">
                         <Coffee className="w-5 h-5" />
                     </a>
                 </div>
