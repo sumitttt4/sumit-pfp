@@ -61,7 +61,7 @@ const LetsTalkModal: React.FC<LetsTalkModalProps> = ({ isOpen, onClose }) => {
                         </button>
 
                         <div className="w-full p-6 flex flex-col gap-3 bg-[#050505]">
-                            <h2 className="text-2xl font-bold text-white mb-4 font-playfair italic text-center">Let's build something.</h2>
+                            <h2 className="text-2xl font-bold text-white mb-4 font-playfair italic text-center">Let&apos;s build something.</h2>
 
                             {/* 1. Cal.com Card */}
                             <a

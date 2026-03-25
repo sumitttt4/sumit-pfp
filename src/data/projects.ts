@@ -1,4 +1,4 @@
-﻿
+
 export interface Project {
   id: number;
   title: string;
@@ -10,6 +10,7 @@ export interface Project {
   type?: 'project' | 'folder';
   items?: Project[];
   description?: string;
+  impact?: string;
   isNDA?: boolean;
   overview?: string;
   process?: string;
@@ -26,6 +27,7 @@ export const projects: Project[] = [
     video: "/videos/glyph.mp4",
     link: "https://glyph.software/",
     description: "The intelligent brand identity generator for developers",
+    impact: "120+ users · 7 paying customers",
     overview: "Glyph is a powerful design tool that bridges the gap between development and design. It allows users to generate comprehensive brand identities, including logo marks, color palettes, and typography systems, all exportable as code-ready assets.\n\nProblem: Developers often struggle to create cohesive brand identities for their side projects without hiring expensive designers. Generic logo makers provide low-quality rasters, not the vector assets and design tokens needed for modern web development.\n\nUser: Indie hackers, developers, and founders who need a professional, scalable brand system in minutes, not weeks.\n\nOutcome: A 'Design Engineer in a Box' that outputs production-ready code snippets (CSS/Tailwind), SVG vectors, and brand guidelines.",
     process: "Role: Creator & Lead Engineer | Type: SaaS Product | Stack: Next.js, React, Framer Motion, SVG Manipulation.\n\nDesign Principle: 'Magic, then Utility.' The initial generation feels like magic, but the editing tools provide deep, granular control for refinement.\n\nExperience Flow: Enter Brand Name -> Select Vibe -> AI Generates Identity -> Refine in Real-time Editor -> Export to Code.\n\nKey Design Decisions: Built a custom SVG rendering engine to ensure all assets are mathematically perfect vectors. Implemented a 'live preview' system that updates the entire brand board instantly as users tweak colors or fonts.\n\nEngineering Decisions: Architected a client-side export engine to generate ZIP packages with SVGs and design tokens without server overhead. Optimized for performance with heavy usage of web workers for asset generation."
   },
@@ -38,6 +40,7 @@ export const projects: Project[] = [
     video: "/videos/Safeagree.mp4",
     link: "https://safe-agree.vercel.app/",
     description: "Making consent understandable, not skippable",
+    impact: "Live · Open Source",
     overview: "SafeAgree is a web app that helps users understand Terms and Conditions before agreeing to them. Instead of forcing people to blindly click 'I agree,' it transforms long, legal text into clear risk signals and readable summaries.\n\nProblem: Terms and Conditions are intentionally long, dense, and unreadable. Most users accept them under time pressure without understanding what rights they’re giving up or what risks they’re accepting.\n\nUser: People signing up for digital products who want clarity and confidence before accepting mandatory legal terms not legal advice, just understandable information.\n\nOutcome: SafeAgree turns opaque legal text into readable insights, helping users make more informed consent decisions instead of blindly agreeing.",
     process: "Role: Design Engineer | Type: UX-driven web application | Stack: Next.js, React, Tailwind, AI integration, Figma.\n\nDesign Principle: Clarity over speed. The interface introduces intentional friction to slow users down and make consent a conscious decision rather than a reflex.\n\nExperience Flow: The product follows a linear, low cognitive load flow: Paste a URL or raw Terms text -> Parse and analyze the content -> Surface a high-level trust signal -> Break down clauses with clear risk indicators -> Let users decide with context.\n\nKey Design Decisions: Used a single typeface to maintain consistency and reduce visual noise while reading dense content. Applied a semantic color system: Red for high-risk clauses, Green for user-friendly terms, Gray for neutral information, and Yellow sparingly to draw attention without urgency. Kept the layout minimal to avoid distracting from critical information.\n\nEngineering Decisions: Implemented URL parsing with a fallback to manual text input for invalid links. Designed the system to handle very large inputs (up to ~300,000 words). Added clear loading, empty, and error states to maintain user trust during analysis.",
   },
@@ -50,6 +53,7 @@ export const projects: Project[] = [
     video: "/videos/getlockedin.mp4",
     link: "https://getlockedin.live",
     description: "The Anti-Performative Productivity OS",
+    impact: "Live · API-integrated",
     overview: "GetLockedIN is a mobile-first accountability protocol built for people who want to track real results rather than intentions. It operates on 'Proof of Work' rather than self-reporting.\n\nProblem: Productivity tools often create a false sense of progress. We make lists and organize boards, but this 'meta-work' frequently replaces actual output. Traditional habit trackers rely on the honor system, which is easily gamified.\n\nUser: Builders and makers tired of 'performative productivity' who want an objective, immutable record of their consistency.\n\nOutcome: A system that integrates with GitHub, Stripe, and Vercel to automatically log activity, creating a verifiable reputation score that cannot be faked.",
     process: "Role: Product Designer & Engineer | Type: Mobile Web App | Stack: React, Next.js, Framer Motion, Supabase, APIs (GitHub, Stripe).\n\nDesign Principle: Weaponized Psychology. We used Loss Aversion—the pain of losing a streak—as a stronger motivator than the pleasure of gaining one. This drives the 'Dead Man’s Switch' mechanic.\n\nExperience Flow: Connect external accounts -> Define shipping goals -> System auto-verifies work -> Miss a deadline? The system publicly tweets your failure -> Ship code to keep the streak alive.\n\nKey Design Decisions: Rejected standard 'SaaS Dark Mode' for a premium 'Titanium & Paper' aesthetic. High-contrast borders and sharp 90-degree corners give digital cards a tactile, physical presence. Animations are weighty and momentum-based.\n\nEngineering Decisions: Built a robust Event-Driven Architecture to handle real-time webhooks. Implemented a 'Replay & Verify' queue system to ensure fairness, distinguishing between a user missing a deadline and a service API outage.",
   },
@@ -75,6 +79,7 @@ export const projects: Project[] = [
     screenshots: ["/images/vibe-market-submit.png"],
     link: "https://vibemarket.tech",
     description: "A discovery layer for vibe-coded apps",
+    impact: "Live · Curated marketplace",
     overview: "Vibe Market is a curated gallery for new, aesthetic-first micro-apps, designed to solve the discovery problem in the AI era.\n\nProblem: Building software is now incredibly fast, leading to a flood of micro-apps. Traditional platforms like Product Hunt are built for enterprise marketing, burying niche, high-craft tools under lists of generic SaaS.\n\nUser: Design-conscious users looking for specific, 'vibe-coded' utilities, and creators who treat software design as an expressive medium.\n\nOutcome: A discovery layer that filters for 'Soul' and 'Craft,' connecting specific user needs with unique, visually distinct tools.",
     process: "Role: Frontend Engineer & Curator | Type: Marketplace | Stack: Next.js, Typescript, Tailwind, Vector Embeddings.\n\nDesign Principle: Gallery over Directory. The interface treats each app as an art piece, prioritizing visual distinctiveness and interactive trials over feature lists.\n\nExperience Flow: Browse curated feed -> Hover for Live Preview -> View 'Prompt DNA' to see the build context -> One-click access.\n\nKey Design Decisions: Adopted a 'Cyber-Archivist' aesthetic with dark palettes and neon accents. Developed 'Live Preview' cards that allow users to interact with a sandboxed version of the app directly in the feed, removing click-through friction.\n\nEngineering Decisions: Implemented the 'Prompt DNA' submission flow to capture the AI context behind apps. Used vector embeddings for 'Vibe Match' search, allowing users to search by abstract feelings (e.g., 'night focus') rather than just keywords.",
   },

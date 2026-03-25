@@ -1,8 +1,10 @@
+"use client";
+
 import React, { useState } from 'react';
-import { ArrowUpRight, ExternalLink, Search } from 'lucide-react';
+import { ExternalLink, Search } from 'lucide-react';
 import projects from '@/data/projects';
 
-const Projects = () => {
+export default function Projects() {
     const [filter, setFilter] = useState('');
 
     // Flatten all projects
@@ -18,7 +20,7 @@ const Projects = () => {
         <div className="space-y-12">
             <div className="space-y-4">
                 <h1 className="text-4xl font-bold text-white">All Projects</h1>
-                <p className="text-gray-400">A collection of mostly useless things I built.</p>
+                <p className="text-gray-400">Products I&apos;ve shipped. Some have paying customers.</p>
 
                 {/* Search Bar */}
                 <div className="relative max-w-md mt-6">
@@ -81,6 +83,11 @@ const Projects = () => {
                             <p className="text-sm text-gray-400 line-clamp-2 leading-relaxed">
                                 {project.description}
                             </p>
+                            {project.impact && (
+                                <p className="text-xs text-green-400/80 font-medium flex items-center gap-1 mt-1">
+                                    <span>↗</span> {project.impact}
+                                </p>
+                            )}
                         </div>
                     </div>
                 ))}
@@ -88,11 +95,9 @@ const Projects = () => {
 
             {filteredProjects.length === 0 && (
                 <div className="text-center py-20 text-gray-500">
-                    No projects found matching "{filter}"
+                    No projects found matching &quot;{filter}&quot;
                 </div>
             )}
         </div>
     );
-};
-
-export default Projects;
+}

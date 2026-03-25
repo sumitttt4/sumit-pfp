@@ -1,10 +1,19 @@
+"use client";
+
 import React from 'react';
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
+import { Sun, Moon } from 'lucide-react';
+import { useTheme } from 'next-themes';
 import GridBackground from '@/components/ui/GridBackground';
 
-const MinimalLayout = ({ children }: { children?: React.ReactNode }) => {
-    const location = useLocation();
+const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
+    const pathname = usePathname();
+    const { theme, setTheme } = useTheme();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => setMounted(true), []);
 
     const navLinks = [
         { name: 'Me', path: '/' },
@@ -13,7 +22,7 @@ const MinimalLayout = ({ children }: { children?: React.ReactNode }) => {
     ];
 
     return (
-        <div className="min-h-screen bg-[#050505] text-gray-200 font-sans selection:bg-cyan-500/20 selection:text-cyan-400 relative">
+        <div className="min-h-screen bg-[#050505] dark:bg-[#050505] text-gray-200 font-sans selection:bg-cyan-500/20 selection:text-cyan-400 relative">
             {/* Decorative Background */}
             <GridBackground />
 
@@ -30,11 +39,11 @@ const MinimalLayout = ({ children }: { children?: React.ReactNode }) => {
                         {/* Navigation Links */}
                         <div className="flex items-center gap-4 sm:gap-8">
                             {navLinks.map((link) => {
-                                const isActive = location.pathname === link.path;
+                                const isActive = pathname === link.path;
                                 return (
                                     <Link
                                         key={link.name}
-                                        to={link.path}
+                                        href={link.path}
                                         className={`text-sm font-medium transition-colors relative ${isActive ? 'text-cyan-400' : 'text-gray-400 hover:text-white'}`}
                                     >
                                         {link.name}
@@ -50,13 +59,33 @@ const MinimalLayout = ({ children }: { children?: React.ReactNode }) => {
                                     </Link>
                                 );
                             })}
+                            <a
+                                href={pathname === '/' ? '#contact' : '/#contact'}
+                                className="text-sm font-medium px-4 py-1.5 rounded-full border border-white/20 text-white/70 hover:text-white hover:border-white/40 hover:bg-white/5 transition-all"
+                            >
+                                Hire Me
+                            </a>
+                            {/* Theme Toggle */}
+                            {mounted && (
+                                <button
+                                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                                    className="p-2 rounded-full text-white/40 hover:text-white hover:bg-white/5 transition-all"
+                                    aria-label="Toggle theme"
+                                >
+                                    {theme === 'dark' ? (
+                                        <Sun className="w-4 h-4" />
+                                    ) : (
+                                        <Moon className="w-4 h-4" />
+                                    )}
+                                </button>
+                            )}
                         </div>
                     </div>
                 </header>
 
                 {/* Main Content */}
                 <main className="py-20 px-6 sm:px-12 relative">
-                    {children || <Outlet />}
+                    {children}
                 </main>
 
                 {/* Footer */}
