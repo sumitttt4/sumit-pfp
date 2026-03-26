@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createReader } from '@keystatic/core/reader';
+import { DocumentRenderer } from '@keystatic/core/renderer';
 import keystaticConfig from '../../../../keystatic.config';
 import { notFound } from 'next/navigation';
 
@@ -37,9 +37,9 @@ export default async function Post({ params }: { params: { slug: string } }) {
       <div className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
         {/* Render serialized markdoc or plain content for now */}
         {contentNode ? (
-          <div dangerouslySetInnerHTML={{ __html: JSON.stringify(contentNode) }} />
+          <DocumentRenderer document={contentNode} />
         ) : (
-          <p>Content rendering will be handled by Markdoc...</p>
+          <p>Writing in progress...</p>
         )}
       </div>
     </article>
