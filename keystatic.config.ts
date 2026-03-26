@@ -16,7 +16,16 @@ export default config({
         tag: fields.text({ label: 'Tag', defaultValue: 'Design' }),
         excerpt: fields.text({ label: 'Excerpt', multiline: true }),
         readTime: fields.text({ label: 'Read Time', defaultValue: '3 min read' }),
-        content: fields.markdoc({ label: 'Content' }),
+        content: fields.document({
+          label: 'Content',
+          formatting: true,
+          dividers: true,
+          links: true,
+          images: {
+            directory: 'public/images/blog',
+            publicPath: '/images/blog'
+          }
+        }),
       },
     }),
   },
