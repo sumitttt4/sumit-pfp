@@ -30,7 +30,7 @@ export default function Projects() {
                         placeholder="Search projects..."
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
-                        className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl py-2.5 pl-10 pr-4 text-sm text-zinc-900 dark:text-white placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/50 transition-all"
+                        className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl py-2.5 pl-10 pr-4 text-sm text-zinc-900 dark:text-white placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-black/20 dark:focus:ring-white/20 transition-all"
                     />
                 </div>
             </div>
@@ -63,7 +63,7 @@ export default function Projects() {
                         {/* Content */}
                         <div className="flex-1 space-y-2">
                             <div className="flex justify-between items-start">
-                                <h3 className="text-base font-bold text-zinc-900 dark:text-white group-hover:text-cyan-400 transition-colors">
+                                <h3 className="text-base font-bold text-zinc-900 dark:text-white group-hover:text-zinc-600 dark:group-hover:text-white/80 transition-colors">
                                     {project.title}
                                 </h3>
                                 {project.link && (
@@ -77,14 +77,14 @@ export default function Projects() {
                                     </a>
                                 )}
                             </div>
-                            <div className="text-xs font-mono text-cyan-500/80">
+                            <div className="text-xs font-mono text-zinc-900/50 dark:text-white/50">
                                 {project.category}
                             </div>
                             <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed">
                                 {project.description}
                             </p>
                             {project.impact && (
-                                <p className="text-xs text-green-400/80 font-medium flex items-center gap-1 mt-1">
+                                <p className="text-xs text-zinc-900/60 dark:text-white/50 font-medium flex items-center gap-1 mt-1">
                                     <span>↗</span> {project.impact}
                                 </p>
                             )}

@@ -19,17 +19,17 @@ const BorderGrid: React.FC<BorderGridProps> = ({ children, columns = 2, classNam
             {children.map((child, index) => (
                 <div
                     key={index}
-                    className="relative border border-white/5 p-8 group transition-colors hover:bg-white/[0.02]"
+                    className="relative border border-black/5 dark:border-white/5 p-8 group transition-colors hover:bg-black/[0.02] dark:hover:bg-white/[0.02]"
                 >
                     {/* Corner Markers */}
                     {/* Top Left */}
-                    <span className="absolute -top-1.5 -left-1.5 text-white/20 text-[10px] select-none pointer-events-none">+</span>
+                    <span className="absolute -top-1.5 -left-1.5 text-black/20 dark:text-white/20 text-[10px] select-none pointer-events-none">+</span>
                     {/* Top Right */}
-                    <span className="absolute -top-1.5 -right-1.5 text-white/20 text-[10px] select-none pointer-events-none">+</span>
+                    <span className="absolute -top-1.5 -right-1.5 text-black/20 dark:text-white/20 text-[10px] select-none pointer-events-none">+</span>
                     {/* Bottom Left */}
-                    <span className="absolute -bottom-1.5 -left-1.5 text-white/20 text-[10px] select-none pointer-events-none">+</span>
+                    <span className="absolute -bottom-1.5 -left-1.5 text-black/20 dark:text-white/20 text-[10px] select-none pointer-events-none">+</span>
                     {/* Bottom Right */}
-                    <span className="absolute -bottom-1.5 -right-1.5 text-white/20 text-[10px] select-none pointer-events-none">+</span>
+                    <span className="absolute -bottom-1.5 -right-1.5 text-black/20 dark:text-white/20 text-[10px] select-none pointer-events-none">+</span>
 
                     {/* Content */}
                     {child}
