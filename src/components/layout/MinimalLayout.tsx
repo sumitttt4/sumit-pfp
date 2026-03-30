@@ -22,7 +22,7 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
     ];
 
     return (
-        <div className="min-h-screen bg-white dark:bg-[#050505] text-gray-900 dark:text-gray-200 font-sans selection:bg-cyan-500/20 selection:text-cyan-400 relative">
+        <div className="min-h-screen bg-white dark:bg-[#050505] text-gray-900 dark:text-gray-200 font-sans selection:bg-black/10 dark:selection:bg-white/20 selection:text-black dark:selection:text-white relative">
             {/* Decorative Background */}
             <GridBackground />
 
@@ -44,13 +44,13 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
                                     <Link
                                         key={link.name}
                                         href={link.path}
-                                        className={`text-sm font-medium transition-colors relative ${isActive ? 'text-cyan-600 dark:text-cyan-400' : 'text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white'}`}
+                                        className={`text-sm font-medium transition-colors relative ${isActive ? 'text-zinc-900 dark:text-white' : 'text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white'}`}
                                     >
                                         {link.name}
                                         {isActive && (
                                             <motion.div
                                                 layoutId="nav-underline"
-                                                className="absolute -bottom-5 left-0 right-0 h-[1px] bg-cyan-400"
+                                                className="absolute -bottom-5 left-0 right-0 h-[1px] bg-zinc-900 dark:bg-white"
                                                 initial={{ opacity: 0 }}
                                                 animate={{ opacity: 1 }}
                                                 transition={{ duration: 0.2 }}
@@ -108,7 +108,7 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
                                 <input
                                     type="email"
                                     placeholder="Enter your email"
-                                    className="flex-1 bg-black/5 border border-black/10 dark:bg-white/5 dark:border-white/10 rounded-lg px-4 py-2 text-sm text-gray-800 dark:text-gray-200 focus:outline-none focus:border-cyan-600/50 dark:focus:border-cyan-400/50 transition-colors placeholder:text-gray-500 dark:placeholder:text-gray-600"
+                                    className="flex-1 bg-black/5 border border-black/10 dark:bg-white/5 dark:border-white/10 rounded-lg px-4 py-2 text-sm text-gray-800 dark:text-gray-200 focus:outline-none focus:border-black/30 dark:focus:border-white/30 transition-colors placeholder:text-gray-500 dark:placeholder:text-gray-600"
                                 />
                                 <button
                                     type="submit"

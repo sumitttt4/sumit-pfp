@@ -23,13 +23,13 @@ export default async function Post({ params }: { params: { slug: string } }) {
   const contentNode = await post.content();
 
   return (
-    <article className="prose prose-invert prose-cyan max-w-3xl mx-auto py-12">
+    <article className="prose prose-zinc dark:prose-invert max-w-3xl mx-auto py-12">
       <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-wider text-zinc-900/60 dark:text-white/40 mb-6">
           <span>{post.date}</span>
           <span>•</span>
           <span>{post.readTime}</span>
           <span>•</span>
-          <span className="text-cyan-400">{post.tag}</span>
+          <span className="text-zinc-900/70 dark:text-white/60">{post.tag}</span>
       </div>
       <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white mb-8 border-b border-black/10 dark:border-white/10 pb-8">
         {post.title}

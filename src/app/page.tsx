@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import { useTheme } from 'next-themes';
 import LetsTalkModal from '@/components/ui/LetsTalkModal';
 import Marquee from "react-fast-marquee";
 import { motion } from 'framer-motion';
@@ -15,7 +16,7 @@ import BorderGrid from '@/components/ui/BorderGrid';
 const stack = [
     { name: "JavaScript", color: "bg-yellow-400/10 text-yellow-400 border-yellow-400/20" },
     { name: "TypeScript", color: "bg-blue-400/10 text-blue-400 border-blue-400/20" },
-    { name: "Next.js", color: "bg-white/10 text-white border-white/20" },
+    { name: "Next.js", color: "bg-gray-900/10 text-gray-900 border-gray-900/20 dark:bg-white/10 dark:text-white dark:border-white/20" },
     { name: "React.js", color: "bg-cyan-400/10 text-cyan-400 border-cyan-400/20" },
     { name: "TailwindCSS", color: "bg-sky-400/10 text-sky-400 border-sky-400/20" },
     { name: "Node.js", color: "bg-green-400/10 text-green-400 border-green-400/20" },
@@ -31,6 +32,14 @@ const stack = [
 
 export default function Home() {
     const [isLetsTalkOpen, setIsLetsTalkOpen] = useState(false);
+    const { resolvedTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+    React.useEffect(() => setMounted(true), []);
+    const calendarColorScheme = mounted && resolvedTheme === 'light' ? 'light' : 'dark';
+    const calendarTheme = useMemo(() => ({
+        dark: ['rgba(255,255,255,0.03)', 'rgba(255,255,255,0.1)', 'rgba(255,255,255,0.25)', 'rgba(255,255,255,0.5)', 'rgba(255,255,255,0.8)'],
+        light: ['#ebedf0', '#c6c6c6', '#8c8c8c', '#4a4a4a', '#1a1a1a'],
+    }), []);
 
     // Flatten projects for display
     const featuredProjects = projects.flatMap(p => p.items ? p.items : [p]).slice(0, 4);
@@ -65,15 +74,15 @@ export default function Home() {
                     </h1>
                     <p className="text-xl text-zinc-900/80 dark:text-white/60 font-medium max-w-2xl leading-relaxed">
                         <span className="font-playfair italic text-2xl text-zinc-900/90 dark:text-white/80 pr-1">Design Engineer</span>
-                        who bridges the gap between Figma and Code.
-                        I build polished, interactive interfaces that feel alive.
+                        who enjoys turning ideas into real, interactive things.
+                        I design in Figma, build in code, and care a lot about the little details.
                     </p>
                 </div>
 
                 <div className="text-zinc-900/70 dark:text-white/50 space-y-6 text-lg leading-relaxed max-w-2xl font-light">
                     <p>
-                        Currently building <a href="https://glyph.software" target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white/90 font-medium hover:text-cyan-400 transition-colors underline decoration-black/30 dark:decoration-white/30 hover:decoration-cyan-400/50 underline-offset-4">Glyph</a>, an AI brand identity generator with 7 paying customers.
-                        Also running <a href="https://fedup.studio" target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white/90 font-medium hover:text-cyan-400 transition-colors underline decoration-black/30 dark:decoration-white/30 hover:decoration-cyan-400/50 underline-offset-4">Fedup Studio</a> — a design & development agency.
+                        Currently building <a href="https://glyph.software" target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white/90 font-medium hover:text-zinc-600 dark:hover:text-white transition-colors underline decoration-black/20 dark:decoration-white/20 hover:decoration-black/50 dark:hover:decoration-white/50 underline-offset-4">Glyph</a>, an AI brand identity generator with 7 paying customers.
+                        Also running <a href="https://fedup.studio" target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white/90 font-medium hover:text-zinc-600 dark:hover:text-white transition-colors underline decoration-black/20 dark:decoration-white/20 hover:decoration-black/50 dark:hover:decoration-white/50 underline-offset-4">Fedup Studio</a> — a design & development agency.
                     </p>
 
                     {/* Experience Timeline */}
@@ -108,7 +117,7 @@ export default function Home() {
                                 </div>
                                 <div className="min-w-0">
                                     <div className="flex items-baseline gap-2 flex-wrap">
-                                        <a href="https://fedup.studio" target="_blank" rel="noreferrer" className="text-sm font-medium text-zinc-900/80 dark:text-white/70 hover:text-cyan-400 transition-colors underline decoration-black/15 dark:decoration-white/15 hover:decoration-cyan-400/40 underline-offset-2">Fedup Studio</a>
+                                        <a href="https://fedup.studio" target="_blank" rel="noreferrer" className="text-sm font-medium text-zinc-900/80 dark:text-white/70 hover:text-zinc-900 dark:hover:text-white transition-colors underline decoration-black/10 dark:decoration-white/10 hover:decoration-black/40 dark:hover:decoration-white/40 underline-offset-2">Fedup Studio</a>
                                         <span className="text-xs text-zinc-900/50 dark:text-white/30">— Founder & Design Engineer</span>
                                     </div>
                                     <span className="text-[11px] font-mono text-zinc-900/50 dark:text-white/25 tracking-wide">Feb 2025 – Present</span>
@@ -131,7 +140,7 @@ export default function Home() {
                                 href="https://glyph.software"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="text-sm font-medium text-zinc-900/80 dark:text-white/70 hover:text-cyan-400 transition-colors inline-flex items-center gap-1"
+                                className="text-sm font-medium text-zinc-900/80 dark:text-white/70 hover:text-zinc-900 dark:hover:text-white transition-colors inline-flex items-center gap-1"
                             >
                                 Glyph
                                 <ExternalLink className="w-3 h-3 text-zinc-900/50 dark:text-white/25" />
@@ -151,7 +160,7 @@ export default function Home() {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                         </span>
-                        <span className="text-sm font-medium tracking-wide uppercase text-zinc-900/60 dark:text-white/40">Available Now · Full-Time or Freelance · <span className="text-zinc-900/50 dark:text-white/30">Bengaluru · IST</span> <span onClick={() => setIsLetsTalkOpen(true)} className="text-cyan-400/90 hover:text-cyan-300 cursor-pointer transition-colors border-b border-cyan-500/30 pb-0.5">Let&apos;s talk</span></span>
+                        <span className="text-sm font-medium tracking-wide uppercase text-zinc-900/60 dark:text-white/40">Available Now · Full-Time or Freelance · <span className="text-zinc-900/50 dark:text-white/30">Bengaluru · IST</span> <span onClick={() => setIsLetsTalkOpen(true)} className="text-zinc-900 dark:text-white cursor-pointer transition-colors border-b border-zinc-900/30 dark:border-white/30 hover:border-zinc-900/60 dark:hover:border-white/60 pb-0.5">Let&apos;s talk</span></span>
                     </motion.p>
                 </div>
             </motion.section>
@@ -194,7 +203,7 @@ export default function Home() {
                     <div className="relative overflow-hidden flex justify-center lg:justify-start -ml-1">
                         <GitHubCalendar
                             username="sumitttt4"
-                            colorScheme="dark"
+                            colorScheme={calendarColorScheme as 'light' | 'dark'}
                             fontSize={12}
                             blockSize={13}
                             blockMargin={3}
@@ -202,9 +211,7 @@ export default function Home() {
                             labels={{
                                 totalCount: '{{count}} contributions in 2026',
                             }}
-                            theme={{
-                                dark: ['rgba(255,255,255,0.03)', 'rgba(255,255,255,0.1)', 'rgba(255,255,255,0.2)', 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.7)'],
-                            }}
+                            theme={calendarTheme}
                             renderColorLegend={() => <></>}
                         />
                     </div>
@@ -229,14 +236,14 @@ export default function Home() {
                             className="group space-y-5 perspective-1000"
                         >
                             {/* Glassmorphic Project Card */}
-                            <div className="aspect-video w-full rounded-xl overflow-hidden bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 backdrop-blur-md relative shadow-2xl shadow-black/50">
+                            <div className="aspect-video w-full rounded-xl overflow-hidden bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 backdrop-blur-md relative shadow-xl shadow-black/10 dark:shadow-2xl dark:shadow-black/50">
                                 {project.video ? (
                                     <video
                                         src={project.video}
                                         muted
                                         loop
                                         playsInline
-                                        className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-500"
+                                        className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                                         onMouseOver={e => e.currentTarget.play()}
                                         onMouseOut={e => e.currentTarget.pause()}
                                     />
@@ -244,14 +251,14 @@ export default function Home() {
                                     <img
                                         src={project.image}
                                         alt={project.title}
-                                        className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-500"
+                                        className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                                     />
                                 )}
 
                             </div>
                             <div className="px-1">
                                 <div className="flex items-baseline justify-between mb-1">
-                                    <h3 className="text-lg font-bold text-zinc-900 dark:text-white/90 group-hover:text-white transition-colors tracking-tight">
+                                    <h3 className="text-lg font-bold text-zinc-900 dark:text-white/90 group-hover:text-zinc-600 dark:group-hover:text-white transition-colors tracking-tight">
                                         {project.title}
                                     </h3>
                                     <span className="text-[10px] font-mono text-zinc-900/50 dark:text-white/30 uppercase tracking-widest">{project.category}</span>
@@ -261,12 +268,12 @@ export default function Home() {
                                 </p>
                                 <div className="flex items-center gap-4 mt-4 text-xs font-medium">
                                     {project.link && (
-                                        <a href={project.link} target="_blank" rel="noreferrer" className="text-cyan-400/90 hover:text-cyan-300 transition-colors flex items-center gap-1.5 border-b border-transparent hover:border-cyan-400/30 pb-0.5">
+                                        <a href={project.link} target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white hover:text-zinc-600 dark:hover:text-white/70 transition-colors flex items-center gap-1.5 border-b border-zinc-900/20 dark:border-white/20 hover:border-zinc-900/40 dark:hover:border-white/40 pb-0.5">
                                             <ArrowUpRight className="w-3.5 h-3.5" /> Live Preview
                                         </a>
                                     )}
                                     {project.impact && (
-                                        <span className="text-green-400/80 flex items-center gap-1">
+                                        <span className="text-zinc-900/70 dark:text-white/70 flex items-center gap-1">
                                             <span className="text-[10px]">↗</span> {project.impact}
                                         </span>
                                     )}
@@ -308,11 +315,11 @@ export default function Home() {
                                 className="group block space-y-4 p-6 rounded-2xl bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-all backdrop-blur-sm"
                             >
                                 <div className="flex items-center gap-3 text-[10px] tracking-wider uppercase text-zinc-900/50 dark:text-white/30 font-medium">
-                                    <span className="text-cyan-400/70"># {post.tags[0].toLowerCase()}</span>
+                                    <span className="text-zinc-900/60 dark:text-white/50"># {post.tags[0].toLowerCase()}</span>
                                     <span>•</span>
                                     <span>{post.readTime}</span>
                                 </div>
-                                <h3 className="text-lg font-bold text-zinc-900/90 dark:text-white/80 group-hover:text-white transition-colors">
+                                <h3 className="text-lg font-bold text-zinc-900/90 dark:text-white/80 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">
                                     {post.title}
                                 </h3>
                                 <p className="text-sm text-zinc-900/60 dark:text-white/40 line-clamp-2 leading-relaxed">
@@ -322,11 +329,11 @@ export default function Home() {
                         ) : (
                             <Link key={post.id} href="/blog" className="group block space-y-4 p-6 rounded-2xl bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-all backdrop-blur-sm">
                                 <div className="flex items-center gap-3 text-[10px] tracking-wider uppercase text-zinc-900/50 dark:text-white/30 font-medium">
-                                    <span className="text-cyan-400/70"># {post.tags[0].toLowerCase()}</span>
+                                    <span className="text-zinc-900/60 dark:text-white/50"># {post.tags[0].toLowerCase()}</span>
                                     <span>•</span>
                                     <span>{post.readTime}</span>
                                 </div>
-                                <h3 className="text-lg font-bold text-zinc-900/90 dark:text-white/80 group-hover:text-white transition-colors">
+                                <h3 className="text-lg font-bold text-zinc-900/90 dark:text-white/80 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">
                                     {post.title}
                                 </h3>
                                 <p className="text-sm text-zinc-900/60 dark:text-white/40 line-clamp-2 leading-relaxed">
@@ -355,7 +362,7 @@ export default function Home() {
                             and select freelance projects.
                         </p>
                         <p className="text-zinc-900/60 dark:text-white/40 text-sm">
-                            Based in Bengaluru · <span className="text-green-400">Available now</span>
+                            Based in Bengaluru · <span className="text-zinc-900 dark:text-white font-medium">Available now</span>
                         </p>
                     </div>
                     <div className="space-y-2.5">
@@ -379,7 +386,7 @@ export default function Home() {
                     <div className="pt-2">
                         <button
                             onClick={() => setIsLetsTalkOpen(true)}
-                            className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-black/10 dark:bg-white/10 hover:bg-white/15 border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 text-zinc-900 dark:text-white font-medium text-sm transition-all"
+                            className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-black/10 dark:bg-white/10 hover:bg-black/15 dark:hover:bg-white/15 border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 text-zinc-900 dark:text-white font-medium text-sm transition-all"
                         >
                             <Send className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                             Get in Touch
@@ -400,7 +407,7 @@ export default function Home() {
                     <a href="mailto:sumitsharma9128@gmail.com" className="text-zinc-900/50 dark:text-white/30 hover:text-zinc-900 dark:hover:text-white transition-colors transform hover:scale-110">
                         <Mail className="w-5 h-5" />
                     </a>
-                    <a href="https://buymeacoffee.com/sumitsharmq" target="_blank" rel="noreferrer" className="text-zinc-900/50 dark:text-white/30 hover:text-[#FFDD00] transition-colors transform hover:scale-110">
+                    <a href="https://buymeacoffee.com/sumitsharmq" target="_blank" rel="noreferrer" className="text-zinc-900/50 dark:text-white/30 hover:text-zinc-900 dark:hover:text-white transition-colors transform hover:scale-110">
                         <Coffee className="w-5 h-5" />
                     </a>
                 </div>

@@ -6,17 +6,26 @@ import React from 'react';
  */
 const GridBackground: React.FC = () => {
     return (
-        <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#050505]" aria-hidden="true">
+        <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-white dark:bg-[#050505]" aria-hidden="true">
             {/* 1. The Mesh Gradient Base (Atmospheric Glow) */}
-            {/* 1. The Mesh Gradient Base (Atmospheric Glow) */}
-            <div className="absolute top-[-20%] left-[-10%] w-[1000px] h-[1000px] bg-indigo-950/20 rounded-full blur-[80px] mix-blend-screen opacity-30 animate-pulse" style={{ animationDuration: '4s', willChange: 'transform' }} />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[800px] h-[800px] bg-slate-900/10 rounded-full blur-[60px] mix-blend-screen opacity-20" style={{ willChange: 'transform' }} />
+            <div className="absolute top-[-20%] left-[-10%] w-[1000px] h-[1000px] hidden dark:block bg-indigo-950/20 rounded-full blur-[80px] mix-blend-screen opacity-30 animate-pulse" style={{ animationDuration: '4s', willChange: 'transform' }} />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[800px] h-[800px] hidden dark:block bg-slate-900/10 rounded-full blur-[60px] mix-blend-screen opacity-20" style={{ willChange: 'transform' }} />
 
             {/* 2. The Dot Grid (Engineered Feel) */}
             <div
-                className="absolute inset-0"
+                className="absolute inset-0 dark:block hidden"
                 style={{
                     backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
+                    backgroundSize: '30px 30px',
+                    maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)'
+                }}
+            />
+            {/* Light Mode Grid */}
+            <div
+                className="absolute inset-0 block dark:hidden"
+                style={{
+                    backgroundImage: 'radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px)',
                     backgroundSize: '30px 30px',
                     maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)',
                     WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)'

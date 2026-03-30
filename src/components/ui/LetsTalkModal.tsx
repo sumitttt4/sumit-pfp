@@ -88,16 +88,16 @@ const LetsTalkModal: React.FC<LetsTalkModalProps> = ({ isOpen, onClose }) => {
                                 onClick={handleCopyEmail}
                                 className="relative group h-20 rounded-xl border border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.05] dark:hover:bg-white/[0.05] transition-all cursor-pointer overflow-hidden flex items-center px-6 gap-4 hover:border-black/20 dark:hover:border-white/20"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                                <div className="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center text-zinc-900/70 dark:text-white/50 group-hover:text-cyan-400 group-hover:bg-cyan-500/10 transition-colors">
+                                <div className="absolute inset-0 bg-gradient-to-r from-black/5 dark:from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center text-zinc-900/70 dark:text-white/50 group-hover:text-zinc-900 dark:group-hover:text-white group-hover:bg-black/10 dark:group-hover:bg-white/10 transition-colors">
                                     <Mail className="w-5 h-5" />
                                 </div>
                                 <div className="flex-1">
-                                    <h3 className="text-base font-bold text-zinc-900 dark:text-white group-hover:text-cyan-400 transition-colors">Email Me</h3>
+                                    <h3 className="text-base font-bold text-zinc-900 dark:text-white group-hover:text-zinc-700 dark:group-hover:text-white/90 transition-colors">Email Me</h3>
                                     <p className="text-xs text-zinc-900/60 dark:text-white/40">sumitsharma9128@gmail.com</p>
                                 </div>
                                 <div className="text-zinc-900/40 dark:text-white/20">
-                                    {copied ? <Check className="w-5 h-5 text-green-400" /> : <Copy className="w-5 h-5 group-hover:text-cyan-400" />}
+                                    {copied ? <Check className="w-5 h-5 text-green-400" /> : <Copy className="w-5 h-5 group-hover:text-zinc-900 dark:group-hover:text-white" />}
                                 </div>
                             </div>
 
