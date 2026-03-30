@@ -201,19 +201,21 @@ export default function Home() {
                 <div className="pt-6">
                     <h3 className="text-sm font-bold text-zinc-900/60 dark:text-white/40 mb-4 tracking-wider uppercase">Code Contributions</h3>
                     <div className="relative overflow-hidden flex justify-center lg:justify-start -ml-1">
-                        <GitHubCalendar
-                            username="sumitttt4"
-                            colorScheme={calendarColorScheme as 'light' | 'dark'}
-                            fontSize={12}
-                            blockSize={13}
-                            blockMargin={3}
-                            year={2026}
-                            labels={{
-                                totalCount: '{{count}} contributions in 2026',
-                            }}
-                            theme={calendarTheme}
-                            renderColorLegend={() => <></>}
-                        />
+                        {mounted && (
+                            <GitHubCalendar
+                                username="sumitttt4"
+                                colorScheme={calendarColorScheme as 'light' | 'dark'}
+                                fontSize={12}
+                                blockSize={13}
+                                blockMargin={3}
+                                year={2026}
+                                labels={{
+                                    totalCount: '{{count}} contributions in 2026',
+                                }}
+                                theme={calendarTheme}
+                                renderColorLegend={() => <></>}
+                            />
+                        )}
                     </div>
                 </div>
             </motion.section>
