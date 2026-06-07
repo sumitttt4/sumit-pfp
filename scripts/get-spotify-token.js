@@ -22,7 +22,7 @@ const cliClientSecret = args[1];
 
 function startAuth(clientId, clientSecret) {
     const redirectUri = 'http://localhost:3001/api/callback';
-    const scopes = 'user-read-currently-playing';
+    const scopes = 'user-read-currently-playing user-read-recently-played';
     
     const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId.trim()}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}`;
     
