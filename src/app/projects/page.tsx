@@ -7,13 +7,12 @@ import projects from '@/data/projects';
 export default function Projects() {
     const [filter, setFilter] = useState('');
 
-    // Flatten all projects
-    const allProjects = projects.flatMap(p => p.items ? p.items : [p]);
+    const allProjects = projects;
 
     const filteredProjects = allProjects.filter(p =>
-        p.title.toLowerCase().includes(filter.toLowerCase()) ||
+        p.name.toLowerCase().includes(filter.toLowerCase()) ||
         p.category.toLowerCase().includes(filter.toLowerCase()) ||
-        p.description?.toLowerCase().includes(filter.toLowerCase())
+        p.description.toLowerCase().includes(filter.toLowerCase())
     );
 
     return (
@@ -30,45 +29,33 @@ export default function Projects() {
                         placeholder="Search projects..."
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
-                        className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl py-2.5 pl-10 pr-4 text-sm text-zinc-900 dark:text-white placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-black/20 dark:focus:ring-white/20 transition-all"
+                        className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl py-2.5 pl-10 pr-4 text-sm text-zinc-900 dark:text-white placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-brandAccent transition-all"
                     />
                 </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredProjects.map((project) => (
-                    <div key={project.id} className="group flex flex-col space-y-3 bg-black/5 dark:bg-white/5 rounded-2xl p-4 border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10 transition-colors">
+                    <div key={project.slug} className="group flex flex-col space-y-3 bg-black/5 dark:bg-white/5 rounded-2xl p-4 border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10 transition-colors">
 
                         {/* Image */}
                         <div className="aspect-video w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-black/20 relative">
-                            {project.video ? (
-                                <video
-                                    src={project.video}
-                                    muted
-                                    loop
-                                    playsInline
-                                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-                                    onMouseOver={e => e.currentTarget.play()}
-                                    onMouseOut={e => e.currentTarget.pause()}
-                                />
-                            ) : (
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-                                />
-                            )}
+                            <img
+                                src={project.image}
+                                alt={project.name}
+                                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                            />
                         </div>
 
                         {/* Content */}
                         <div className="flex-1 space-y-2">
                             <div className="flex justify-between items-start">
                                 <h3 className="text-base font-bold text-zinc-900 dark:text-white group-hover:text-zinc-600 dark:group-hover:text-white/80 transition-colors">
-                                    {project.title}
+                                    {project.name}
                                 </h3>
-                                {project.link && (
+                                {project.liveUrl && (
                                     <a
-                                        href={project.link}
+                                        href={project.liveUrl}
                                         target="_blank"
                                         rel="noreferrer"
                                         className="text-gray-500 dark:text-gray-500 hover:text-zinc-900 dark:hover:text-white transition-colors"
@@ -83,9 +70,9 @@ export default function Projects() {
                             <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed">
                                 {project.description}
                             </p>
-                            {project.impact && (
+                            {project.metrics && (
                                 <p className="text-xs text-zinc-900/60 dark:text-white/50 font-medium flex items-center gap-1 mt-1">
-                                    <span>↗</span> {project.impact}
+                                    <span>↗</span> {project.metrics}
                                 </p>
                             )}
                         </div>

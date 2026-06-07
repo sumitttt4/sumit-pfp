@@ -16,11 +16,11 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Satoshi', 'Inter', 'sans-serif'],
-				satoshi: ['Satoshi', 'sans-serif'],
-				inter: ['Inter', 'sans-serif'],
-				poppins: ['Poppins', 'sans-serif'],
-				playfair: ['Playfair Display', 'serif'],
+				sans: ['var(--font-geist-sans)', 'sans-serif'],
+				satoshi: ['var(--font-geist-sans)', 'sans-serif'],
+				inter: ['var(--font-geist-sans)', 'sans-serif'],
+				poppins: ['var(--font-geist-sans)', 'sans-serif'],
+				playfair: ['var(--font-geist-sans)', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -47,6 +47,11 @@ export default {
 				accent: {
 					DEFAULT: 'hsl(var(--accent))',
 					foreground: 'hsl(var(--accent-foreground))'
+				},
+				brandAccent: {
+					DEFAULT: '#f97316',
+					hover: '#ea580c',
+					dark: '#c2410c',
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
