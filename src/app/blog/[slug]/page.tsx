@@ -3,6 +3,20 @@ import { DocumentRenderer } from '@keystatic/core/renderer';
 import keystaticConfig from '../../../../keystatic.config';
 import { notFound } from 'next/navigation';
 
+function formatDate(dateString: string) {
+  try {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return dateString;
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    });
+  } catch {
+    return dateString;
+  }
+}
+
 export async function generateStaticParams() {
   const reader = createReader(process.cwd(), keystaticConfig);
   const posts = await reader.collections.posts.list();
@@ -23,9 +37,9 @@ export default async function Post({ params }: { params: { slug: string } }) {
   const contentNode = await post.content();
 
   return (
-    <article className="prose prose-zinc dark:prose-invert max-w-3xl mx-auto py-12">
+    <article className="prose prose-sm prose-zinc dark:prose-invert max-w-3xl mx-auto py-12 animate-fade-in">
       <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-wider text-zinc-900/60 dark:text-white/40 mb-6">
-          <span>{post.date}</span>
+          <span>{formatDate(post.date)}</span>
           <span>•</span>
           <span>{post.readTime}</span>
           <span>•</span>

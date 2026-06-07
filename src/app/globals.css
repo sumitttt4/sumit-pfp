@@ -103,3 +103,14 @@
 .animate-music-bar {
   animation: music-bar 1s ease-in-out infinite;
 }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}

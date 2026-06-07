@@ -4,25 +4,31 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Sun, Moon } from 'lucide-react';
-import { useTheme } from 'next-themes';
 import GridBackground from '@/components/ui/GridBackground';
+
+import { useTheme } from 'next-themes';
+import LetsTalkModal from '@/components/ui/LetsTalkModal';
+import { Sun, Moon } from 'lucide-react';
 
 const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
     const pathname = usePathname();
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = React.useState(false);
+    const [isLetsTalkOpen, setIsLetsTalkOpen] = React.useState(false);
 
-    React.useEffect(() => setMounted(true), []);
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const navLinks = [
-        { name: 'Me', path: '/' },
-        { name: 'Projects', path: '/projects' },
+        { name: 'Home', path: '/' },
+        { name: 'About', path: '/about' },
         { name: 'Blog', path: '/blog' },
+        { name: 'Designs', path: 'https://sumitdesigns.vercel.app/', external: true },
     ];
 
     return (
-        <div className="min-h-screen bg-white dark:bg-[#050505] text-gray-900 dark:text-gray-200 font-sans selection:bg-black/10 dark:selection:bg-white/20 selection:text-black dark:selection:text-white relative">
+        <div className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-zinc-900 dark:text-zinc-100 font-sans selection:bg-black/10 selection:text-black dark:selection:bg-white/10 dark:selection:text-white relative transition-colors duration-300">
             {/* Decorative Background */}
             <GridBackground />
 
@@ -35,22 +41,35 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
                     <div className="absolute -left-1.5 -bottom-1.5 text-black/20 dark:text-white/20 text-[10px]">+</div>
                     <div className="absolute -right-1.5 -bottom-1.5 text-black/20 dark:text-white/20 text-[10px]">+</div>
 
-                    <div className="px-6 h-16 flex items-center justify-end">
-                        {/* Navigation Links */}
-                        <div className="flex items-center gap-4 sm:gap-8">
+                    <div className="px-6 h-16 flex items-center justify-between">
+                        {/* Left: Navigation Links */}
+                        <div className="flex items-center gap-6 sm:gap-10">
                             {navLinks.map((link) => {
-                                const isActive = pathname === link.path;
+                                const isActive = link.path === '/' ? pathname === '/' : pathname.startsWith(link.path);
+                                if (link.external) {
+                                    return (
+                                        <a
+                                            key={link.name}
+                                            href={link.path}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="text-xs sm:text-sm font-medium transition-colors text-gray-500 hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                                        >
+                                            {link.name}
+                                        </a>
+                                    );
+                                }
                                 return (
                                     <Link
                                         key={link.name}
                                         href={link.path}
-                                        className={`text-sm font-medium transition-colors relative ${isActive ? 'text-zinc-900 dark:text-white' : 'text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white'}`}
+                                        className={`text-xs sm:text-sm font-medium transition-colors relative ${isActive ? 'text-zinc-900 dark:text-white' : 'text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white'}`}
                                     >
                                         {link.name}
                                         {isActive && (
                                             <motion.div
                                                 layoutId="nav-underline"
-                                                className="absolute -bottom-5 left-0 right-0 h-[1px] bg-zinc-900 dark:bg-white"
+                                                className="absolute -bottom-5 left-0 right-0 h-[1px] bg-brandAccent"
                                                 initial={{ opacity: 0 }}
                                                 animate={{ opacity: 1 }}
                                                 transition={{ duration: 0.2 }}
@@ -59,26 +78,25 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
                                     </Link>
                                 );
                             })}
-                            <a
-                                href={pathname === '/' ? '#contact' : '/#contact'}
-                                className="text-sm font-medium px-4 py-1.5 rounded-full border border-black/20 text-black/70 hover:text-black hover:border-black/40 hover:bg-black/5 dark:border-white/20 dark:text-white/70 dark:hover:text-white dark:hover:border-white/40 dark:hover:bg-white/5 transition-all"
-                            >
-                                Hire Me
-                            </a>
-                            {/* Theme Toggle */}
+                        </div>
+
+                        {/* Right: Actions */}
+                        <div className="flex items-center gap-2 sm:gap-3">
                             {mounted && (
                                 <button
                                     onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                                    className="p-2 rounded-full text-black/40 hover:text-black hover:bg-black/5 dark:text-white/40 dark:hover:text-white dark:hover:bg-white/5 transition-all"
-                                    aria-label="Toggle theme"
+                                    className="p-1.5 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer"
+                                    aria-label="Toggle Theme"
                                 >
-                                    {theme === 'dark' ? (
-                                        <Sun className="w-4 h-4" />
-                                    ) : (
-                                        <Moon className="w-4 h-4" />
-                                    )}
+                                    {theme === 'dark' ? <Sun className="w-[18px] h-[18px]" /> : <Moon className="w-[18px] h-[18px]" />}
                                 </button>
                             )}
+                            <button
+                                onClick={() => setIsLetsTalkOpen(true)}
+                                className="px-3 sm:px-4 py-1.5 rounded-full bg-transparent border border-zinc-300 dark:border-zinc-700 hover:border-brandAccent hover:text-brandAccent active:bg-brandAccent active:text-white active:border-brandAccent text-zinc-800 dark:text-zinc-200 text-[10px] sm:text-xs font-semibold transition-all duration-200 shadow-sm"
+                            >
+                                Let&apos;s Talk
+                            </button>
                         </div>
                     </div>
                 </header>
@@ -121,6 +139,7 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
                     </div>
                 </footer>
             </div>
+            <LetsTalkModal isOpen={isLetsTalkOpen} onClose={() => setIsLetsTalkOpen(false)} />
         </div>
     );
 };
