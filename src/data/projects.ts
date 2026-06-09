@@ -31,13 +31,13 @@ export const projects: Project[] = [
     featured: true
   },
   {
-    slug: "sumit-builds",
-    name: "Sumit Builds",
-    category: "Open Source & Side Projects",
-    description: "A collection of developer tools, templates, and experimentations.",
-    image: "/sumit-builds.png",
-    metrics: "Active side projects",
-    liveUrl: "https://sumitsharmaa.me",
+    slug: "vibe-market",
+    name: "Vibe Market",
+    category: "Vibe-Coded App Directory",
+    description: "A discovery layer and launching platform for vibe-coded apps.",
+    image: "/vibe-market-landing.png",
+    metrics: "Curated Marketplace",
+    liveUrl: "https://vibemarket.tech",
     featured: true
   },
   {
@@ -78,16 +78,6 @@ export const projects: Project[] = [
     image: "/admin-dashboard-kyc.png",
     metrics: "Enterprise Admin Console",
     liveUrl: "https://nova-seven-sepia.vercel.app/dashboard",
-    featured: false
-  },
-  {
-    slug: "vibe-market",
-    name: "Vibe Market",
-    category: "E-Commerce",
-    description: "A discovery layer for vibe-coded apps.",
-    image: "/vibe-market-landing.png",
-    metrics: "Live · Curated marketplace",
-    liveUrl: "https://vibemarket.tech",
     featured: false
   },
   {
