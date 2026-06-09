@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
@@ -8,6 +8,14 @@ const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
 const RECENTLY_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played?limit=1`;
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
+
+// Standard fallback song when recently played is not available or fails
+const FALLBACK_RECENTLY_PLAYED = {
+    isPlaying: false,
+    title: "Everybody Wants to Rule the World",
+    artist: "Tears for Fears",
+    songUrl: "https://open.spotify.com/track/4RvWPyQ5RL0ao9LP8vnm4m"
+};
 
 async function getAccessToken() {
     const response = await fetch(TOKEN_ENDPOINT, {
@@ -36,14 +44,15 @@ async function getRecentlyPlayed(access_token: string) {
         });
 
         if (response.status === 204 || response.status > 400) {
-            return NextResponse.json({ isPlaying: false });
+            console.warn(`Spotify recently-played returned status ${response.status}. Using fallback track.`);
+            return NextResponse.json(FALLBACK_RECENTLY_PLAYED);
         }
 
         const data = await response.json();
         const track = data?.items?.[0]?.track;
 
         if (!track) {
-            return NextResponse.json({ isPlaying: false });
+            return NextResponse.json(FALLBACK_RECENTLY_PLAYED);
         }
 
         const title = track.name;
@@ -58,11 +67,28 @@ async function getRecentlyPlayed(access_token: string) {
         });
     } catch (err) {
         console.error('Error fetching recently played track:', err);
-        return NextResponse.json({ isPlaying: false });
+        return NextResponse.json(FALLBACK_RECENTLY_PLAYED);
     }
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+    const { searchParams } = new URL(request.url);
+    const mock = searchParams.get('mock');
+
+    // Support mock parameter testing for UI developers
+    if (mock === 'now-playing') {
+        return NextResponse.json({
+            isPlaying: true,
+            title: "Faramosh",
+            artist: "Madboy Mink, Saba Azad",
+            songUrl: "https://open.spotify.com/track/4Pz7jTGLb5wOaQz8U315jZ",
+        });
+    } else if (mock === 'last-played') {
+        return NextResponse.json(FALLBACK_RECENTLY_PLAYED);
+    } else if (mock === 'offline') {
+        return NextResponse.json({ isPlaying: false });
+    }
+
     // If credentials are not present, return a fallback mock playing status matching user request
     if (!client_id || !client_secret || !refresh_token) {
         return NextResponse.json({
@@ -106,13 +132,9 @@ export async function GET() {
         });
     } catch (error) {
         console.error('Error fetching Spotify now playing:', error);
-        // Fallback to mock data matching user screenshot
-        return NextResponse.json({
-            isPlaying: true,
-            title: "Faramosh",
-            artist: "Madboy Mink, Saba Azad",
-            songUrl: "https://open.spotify.com/track/4Pz7jTGLb5wOaQz8U315jZ",
-        });
+        // Fallback to mock data matching user screenshot on error
+        return NextResponse.json(FALLBACK_RECENTLY_PLAYED);
     }
 }
+
 

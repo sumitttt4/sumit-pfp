@@ -13,7 +13,7 @@ console.log('======================================\n');
 console.log('1. Go to: https://developer.spotify.com/dashboard/');
 console.log('2. Log in and open your App (create one if you haven\'t).');
 console.log('3. Click "Edit Settings" or go to Settings.');
-console.log('4. Add exactly "http://localhost:3000/api/callback" to your Redirect URIs and save.');
+console.log('4. Add exactly "http://localhost:3001/api/callback" to your Redirect URIs and save.');
 console.log('5. Copy your Client ID and Client Secret.\n');
 
 const args = process.argv.slice(2);

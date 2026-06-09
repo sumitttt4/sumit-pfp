@@ -28,7 +28,7 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
     ];
 
     return (
-        <div className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-zinc-900 dark:text-zinc-100 font-sans selection:bg-black/10 selection:text-black dark:selection:bg-white/10 dark:selection:text-white relative transition-colors duration-300">
+        <div className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-zinc-900 dark:text-zinc-100 font-sans selection:bg-black/10 selection:text-black dark:selection:bg-white/10 dark:selection:text-white relative transition-colors duration-300 overflow-x-hidden">
             {/* Decorative Background */}
             <GridBackground />
 
@@ -41,9 +41,8 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
                     <div className="absolute -left-1.5 -bottom-1.5 text-black/20 dark:text-white/20 text-[10px]">+</div>
                     <div className="absolute -right-1.5 -bottom-1.5 text-black/20 dark:text-white/20 text-[10px]">+</div>
 
-                    <div className="px-6 h-16 flex items-center justify-between">
-                        {/* Left: Navigation Links */}
-                        <div className="flex items-center gap-6 sm:gap-10">
+                    <div className="px-3 sm:px-6 h-16 flex items-center justify-between">
+                        <div className="flex items-center gap-2.5 sm:gap-6 md:gap-10">
                             {navLinks.map((link) => {
                                 const isActive = link.path === '/' ? pathname === '/' : pathname.startsWith(link.path);
                                 if (link.external) {
@@ -53,7 +52,7 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
                                             href={link.path}
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="text-xs sm:text-sm font-medium transition-colors text-gray-500 hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                                            className="inline-block relative text-[11px] sm:text-sm font-medium transition-colors text-gray-500 hover:text-black dark:text-zinc-400 dark:hover:text-white"
                                         >
                                             {link.name}
                                         </a>
@@ -63,7 +62,7 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
                                     <Link
                                         key={link.name}
                                         href={link.path}
-                                        className={`text-xs sm:text-sm font-medium transition-colors relative ${isActive ? 'text-zinc-900 dark:text-white' : 'text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white'}`}
+                                        className={`inline-block relative text-[11px] sm:text-sm font-medium transition-colors ${isActive ? 'text-zinc-900 dark:text-white' : 'text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white'}`}
                                     >
                                         {link.name}
                                         {isActive && (
@@ -81,19 +80,19 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
                         </div>
 
                         {/* Right: Actions */}
-                        <div className="flex items-center gap-2 sm:gap-3">
+                        <div className="flex items-center gap-1 sm:gap-3">
                             {mounted && (
                                 <button
                                     onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                                    className="p-1.5 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer"
+                                    className="p-1 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer"
                                     aria-label="Toggle Theme"
                                 >
-                                    {theme === 'dark' ? <Sun className="w-[18px] h-[18px]" /> : <Moon className="w-[18px] h-[18px]" />}
+                                    {theme === 'dark' ? <Sun className="w-4 h-4 sm:w-[18px] sm:h-[18px]" /> : <Moon className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />}
                                 </button>
                             )}
                             <button
                                 onClick={() => setIsLetsTalkOpen(true)}
-                                className="px-3 sm:px-4 py-1.5 rounded-full bg-transparent border border-zinc-300 dark:border-zinc-700 hover:border-brandAccent hover:text-brandAccent active:bg-brandAccent active:text-white active:border-brandAccent text-zinc-800 dark:text-zinc-200 text-[10px] sm:text-xs font-semibold transition-all duration-200 shadow-sm"
+                                className="px-2.5 sm:px-4 py-1.5 rounded-full bg-transparent border border-zinc-300 dark:border-zinc-700 hover:border-brandAccent hover:text-brandAccent active:bg-brandAccent active:text-white active:border-brandAccent text-zinc-800 dark:text-zinc-200 text-[10px] sm:text-xs font-semibold transition-all duration-200 shadow-sm whitespace-nowrap"
                             >
                                 Let&apos;s Talk
                             </button>
