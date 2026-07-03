@@ -21,6 +21,17 @@ export const projects: Project[] = [
     featured: true
   },
   {
+    slug: "blurr-design",
+    name: "Blurr Design",
+    category: "Design & Development Studio",
+    description: "Design partner for zero → one teams. We help startups raise & scale with product design.",
+    image: "/blurr-design.png",
+    metrics: "Design Engineer (Part-time)",
+    liveUrl: "https://www.blurr.design/",
+    featured: true
+  },
+
+  {
     slug: "fedup-studio",
     name: "FedUp Studio",
     category: "Design & Development Studio",
@@ -28,27 +39,7 @@ export const projects: Project[] = [
     image: "/fedup-studio.png",
     metrics: "Founder & Design Engineer",
     liveUrl: "https://fedup.studio",
-    featured: true
-  },
-  {
-    slug: "vibe-market",
-    name: "Vibe Market",
-    category: "Vibe-Coded App Directory",
-    description: "A discovery layer and launching platform for vibe-coded apps.",
-    image: "/vibe-market-landing.png",
-    metrics: "Curated Marketplace",
-    liveUrl: "https://vibemarket.tech",
-    featured: true
-  },
-  {
-    slug: "kinetik",
-    name: "Kinetik",
-    category: "UI Component Library",
-    description: "A modern, open-source UI component library for building beautiful interfaces.",
-    image: "/kinetik.png",
-    metrics: "Open Source",
-    liveUrl: "https://www.kinetik.ink/",
-    featured: true
+    featured: false
   },
   {
     slug: "safeagree",

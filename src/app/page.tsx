@@ -108,7 +108,7 @@ export default function Home() {
                         I turn ideas into products using React, Next.js, TypeScript, Figma, Supabase, PostgreSQL, and AI workflows. From branding and design systems to frontend development and product strategy, I enjoy building things people actually use.
                     </p>
                     <p className="text-[15px] text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
-                        Currently building <a href="https://glyph.software" target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white font-medium hover:underline inline-flex items-center gap-0.5 whitespace-nowrap">Glyph<ExternalLink className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" /></a> and running <a href="https://fedup.studio" target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white font-medium hover:underline inline-flex items-center gap-0.5 whitespace-nowrap">Fedup Studio<ExternalLink className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" /></a>.
+                        Currently building <a href="https://glyph.software" target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white font-medium hover:underline inline-flex items-center gap-0.5 whitespace-nowrap">Glyph<ExternalLink className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" /></a> and running <a href="https://www.blurr.design/" target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white font-medium hover:underline inline-flex items-center gap-0.5 whitespace-nowrap">Blurr Design<ExternalLink className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" /></a>.
                     </p>
                 </div>
 
@@ -116,7 +116,7 @@ export default function Home() {
                 {/* Experience Timeline */}
                 <div className="pt-6 border-t border-zinc-100 dark:border-zinc-800/80">
                     <div className="relative pl-4 border-l border-zinc-200 dark:border-zinc-800 space-y-4 text-[13px]">
-                        {/* Fedup Studio */}
+                        {/* Blurr Design */}
                         <div className="relative">
                             <span className="absolute -left-[21px] top-1.5 flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -124,10 +124,21 @@ export default function Home() {
                             </span>
                             <div className="flex items-baseline justify-between flex-wrap gap-2">
                                 <div>
-                                    <span className="font-semibold text-zinc-800 dark:text-white">Fedup Studio</span>
-                                    <span className="text-zinc-400 dark:text-zinc-500 font-light ml-2">— Founder & Design Engineer</span>
+                                    <span className="font-semibold text-zinc-800 dark:text-white">Blurr Design</span>
+                                    <span className="text-zinc-400 dark:text-zinc-500 font-light ml-2">— Design Engineer (Part-time)</span>
                                 </div>
-                                <span className="text-zinc-400 dark:text-zinc-500 font-mono text-xs">Feb 2025 – Present</span>
+                                <span className="text-zinc-400 dark:text-zinc-500 font-mono text-xs">Jul 2026 – Present</span>
+                            </div>
+                        </div>
+                        {/* Glyph */}
+                        <div className="relative">
+                            <span className="absolute -left-[21px] top-1.5 h-2 w-2 rounded-full bg-zinc-300 dark:bg-zinc-700 border border-white dark:border-zinc-950" />
+                            <div className="flex items-baseline justify-between flex-wrap gap-2">
+                                <div>
+                                    <span className="font-medium text-zinc-600 dark:text-zinc-300">Glyph</span>
+                                    <span className="text-zinc-400 dark:text-zinc-500 font-light ml-2">— Founder & Developer</span>
+                                </div>
+                                <span className="text-zinc-400 dark:text-zinc-500 font-mono text-xs">Feb 2025 – Jun 2026</span>
                             </div>
                         </div>
                         {/* Metry AI */}

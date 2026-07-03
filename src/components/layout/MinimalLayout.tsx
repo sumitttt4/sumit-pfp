@@ -9,6 +9,7 @@ import GridBackground from '@/components/ui/GridBackground';
 import { useTheme } from 'next-themes';
 import LetsTalkModal from '@/components/ui/LetsTalkModal';
 import { Sun, Moon } from 'lucide-react';
+import VisitorCounter from '@/components/ui/VisitorCounter';
 
 const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
     const pathname = usePathname();
@@ -114,9 +115,10 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
                     <div className="px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <div className="space-y-2 text-center md:text-left">
                             <div className="text-gray-900 dark:text-gray-200 font-medium">Sumit Sharma</div>
-                            <div className="text-xs text-gray-500">
+                            <div className="text-xs text-gray-500 pb-2">
                                 © {new Date().getFullYear()} All rights reserved.
                             </div>
+                            <VisitorCounter />
                         </div>
 
                         <div className="flex flex-col items-center md:items-end gap-4">
