@@ -38,9 +38,6 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
 
                 {/* Navigation */}
                 <header className="sticky top-0 z-50 bg-white/80 dark:bg-[#050505]/80 backdrop-blur-md border-b border-black/5 dark:border-white/5">
-                    {/* Header Crosshairs */}
-                    <div className="absolute -left-1.5 -bottom-1.5 text-black/20 dark:text-white/20 text-[10px]">+</div>
-                    <div className="absolute -right-1.5 -bottom-1.5 text-black/20 dark:text-white/20 text-[10px]">+</div>
 
                     <div className="px-3 sm:px-6 h-16 flex items-center justify-between">
                         <div className="flex items-center gap-2.5 sm:gap-6 md:gap-10">
@@ -108,9 +105,6 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
 
                 {/* Footer */}
                 <footer className="border-t border-black/5 dark:border-white/5 w-full relative">
-                    {/* Footer Top Crosshairs */}
-                    <div className="absolute -left-1.5 -top-1.5 text-black/20 dark:text-white/20 text-[10px]">+</div>
-                    <div className="absolute -right-1.5 -top-1.5 text-black/20 dark:text-white/20 text-[10px]">+</div>
 
                     <div className="px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <div className="space-y-2 text-center md:text-left">

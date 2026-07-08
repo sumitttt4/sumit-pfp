@@ -3,8 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import LetsTalkModal from '@/components/ui/LetsTalkModal';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, Linkedin, Mail, ExternalLink, Coffee, Send, Clock, MapPin, Globe, Calendar, Twitter } from 'lucide-react';
-import SpotifyNowPlaying from '@/components/ui/SpotifyNowPlaying';
+import { Github, Linkedin, Mail, ExternalLink, FileText, Send, Clock, MapPin, Globe, Calendar, Twitter } from 'lucide-react';
 import projects from '@/data/projects';
 import posts from '@/data/blog';
 import Link from 'next/link';
@@ -113,12 +112,28 @@ export default function Home() {
                     <p className="text-[15px] text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
                         Currently building <a href="https://glyph.software" target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white font-medium hover:underline inline-flex items-center gap-0.5 whitespace-nowrap">Glyph<ExternalLink className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" /></a> and running <a href="https://www.blurr.design/" target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white font-medium hover:underline inline-flex items-center gap-0.5 whitespace-nowrap">Blurr Design<ExternalLink className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" /></a>.
                     </p>
+                    <div className="flex flex-wrap items-center gap-3 pt-3">
+                        <a 
+                            href="https://drive.google.com/file/d/1rEQ2cCs-dJg18AEAcPp4AU5LHI4iTI9u/view?usp=sharing" 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-full bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100 transition-colors shadow-sm"
+                        >
+                            <FileText className="w-3.5 h-3.5" /> View Resume
+                        </a>
+                        <button 
+                            onClick={() => setIsLetsTalkOpen(true)}
+                            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-full bg-zinc-100 text-zinc-850 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700 transition-colors border border-zinc-200/50 dark:border-zinc-700/50"
+                        >
+                            Get in Touch
+                        </button>
+                    </div>
                 </div>
 
 
                 {/* Experience Timeline */}
                 <div className="pt-6 border-t border-zinc-100 dark:border-zinc-800/80">
-                    <div className="relative pl-4 border-l border-zinc-200 dark:border-zinc-800 space-y-4 text-[13px]">
+                    <div className="relative pl-4 border-l border-zinc-200 dark:border-zinc-800 space-y-5 text-[13px]">
                         {/* Blurr Design */}
                         <div className="relative">
                             <span className="absolute -left-[21px] top-1.5 flex h-2 w-2">
@@ -127,72 +142,78 @@ export default function Home() {
                             </span>
                             <div className="flex items-baseline justify-between flex-wrap gap-2">
                                 <div>
-                                    <span className="font-semibold text-zinc-800 dark:text-white">Blurr Design</span>
+                                    <span className="font-semibold text-zinc-805 dark:text-white">Blurr Design</span>
                                     <span className="text-zinc-400 dark:text-zinc-500 font-light ml-2">— Design Engineer (Part-time)</span>
                                 </div>
                                 <span className="text-zinc-400 dark:text-zinc-500 font-mono text-xs">Jul 2026 – Present</span>
                             </div>
+                            <p className="text-[12px] text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed max-w-xl">
+                                Designing high-fidelity interactive interfaces in Figma and writing production-grade React, Next.js, and Tailwind code for early-stage startup clients.
+                            </p>
                         </div>
                         {/* Glyph */}
                         <div className="relative">
                             <span className="absolute -left-[21px] top-1.5 h-2 w-2 rounded-full bg-zinc-300 dark:bg-zinc-700 border border-white dark:border-zinc-950" />
                             <div className="flex items-baseline justify-between flex-wrap gap-2">
                                 <div>
-                                    <span className="font-medium text-zinc-600 dark:text-zinc-300">Glyph</span>
+                                    <span className="font-medium text-zinc-750 dark:text-zinc-300">Glyph</span>
                                     <span className="text-zinc-400 dark:text-zinc-500 font-light ml-2">— Founder & Developer</span>
                                 </div>
                                 <span className="text-zinc-400 dark:text-zinc-500 font-mono text-xs">Feb 2025 – Jun 2026</span>
                             </div>
+                            <p className="text-[12px] text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed max-w-xl">
+                                Architected and shipped a branding SaaS tool solo. Built the full-stack system (Next.js, Supabase, Stripe Integration) and designed all user interface components.
+                            </p>
                         </div>
                         {/* Metry AI */}
                         <div className="relative">
                             <span className="absolute -left-[21px] top-1.5 h-2 w-2 rounded-full bg-zinc-300 dark:bg-zinc-700 border border-white dark:border-zinc-950" />
                             <div className="flex items-baseline justify-between flex-wrap gap-2">
                                 <div>
-                                    <span className="font-medium text-zinc-600 dark:text-zinc-300">Metry AI</span>
+                                    <span className="font-medium text-zinc-750 dark:text-zinc-300">Metry AI</span>
                                     <span className="text-zinc-400 dark:text-zinc-500 font-light ml-2">— Frontend Engineer Intern</span>
                                 </div>
                                 <span className="text-zinc-400 dark:text-zinc-500 font-mono text-xs">Aug 2024 – Jan 2025</span>
                             </div>
+                            <p className="text-[12px] text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed max-w-xl">
+                                Developed modular, typed frontend component libraries and implemented responsive dashboard view layouts in React and TypeScript.
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                {/* Spotify & Social Links */}
-                <div className="pt-4 border-t border-zinc-200/60 dark:border-zinc-800/80 space-y-4">
-                    <SpotifyNowPlaying />
-                    
+                {/* Social Links & Resume */}
+                <div className="pt-4 border-t border-zinc-200/60 dark:border-zinc-800/80">
                     <div className="flex items-center gap-5 text-zinc-400">
                         {/* GitHub */}
-                        <a href="https://github.com/sumitttt4" target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors">
+                        <a href="https://github.com/sumitttt4" target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors" title="GitHub">
                             <Github className="w-[17px] h-[17px]" />
                         </a>
 
                         {/* X (formerly Twitter) */}
-                        <a href="https://x.com/sumitdotme" target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors">
+                        <a href="https://x.com/sumitdotme" target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors" title="Twitter / X">
                             <svg className="w-[15px] h-[15px] fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                             </svg>
                         </a>
 
                         {/* LinkedIn */}
-                        <a href="https://linkedin.com/in/sumitsharma4" target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors">
+                        <a href="https://linkedin.com/in/sumitsharma4" target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors" title="LinkedIn">
                             <Linkedin className="w-[17px] h-[17px]" />
                         </a>
 
                         {/* Email */}
-                        <a href="mailto:sumitsharma9128@gmail.com" className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors">
+                        <a href="mailto:sumitsharma9128@gmail.com" className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors" title="Email">
                             <Mail className="w-[17px] h-[17px]" />
                         </a>
 
-                        {/* Buy Me a Coffee */}
-                        <a href="https://buymeacoffee.com/sumitsharmq" target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors">
-                            <Coffee className="w-[17px] h-[17px]" />
+                        {/* Resume Link */}
+                        <a href="https://drive.google.com/file/d/1rEQ2cCs-dJg18AEAcPp4AU5LHI4iTI9u/view?usp=sharing" target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors" title="View Resume">
+                            <FileText className="w-[17px] h-[17px]" />
                         </a>
                     </div>
                 </div>
             </motion.section>
-            </AsciiHeroContainer>
 
             {/* SKILLS SECTION (Normal & Simple) */}
             <motion.section
@@ -202,7 +223,7 @@ export default function Home() {
                 }}
                 className="space-y-4"
             >
-                <h2 className="text-xs font-bold text-zinc-400 dark:text-zinc-500 tracking-wider uppercase">Tools that I use</h2>
+                <h2 className="text-xs font-bold text-zinc-400 dark:text-zinc-500 tracking-wider uppercase">Tech Stack</h2>
                 <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)] py-2">
                     <div className="flex gap-3 animate-marquee hover:[animation-play-state:paused] active:[animation-play-state:paused]">
                         {/* First list of items */}
@@ -228,6 +249,7 @@ export default function Home() {
                     </div>
                 </div>
             </motion.section>
+            </AsciiHeroContainer>
 
             {/* PROJECTS SECTION */}
             <motion.section
@@ -449,8 +471,8 @@ export default function Home() {
                             <a href="mailto:sumitsharma9128@gmail.com" className="text-zinc-900/50 dark:text-white/30 hover:text-zinc-900 dark:hover:text-white transition-colors transform hover:scale-110">
                                 <Mail className="w-5 h-5" />
                             </a>
-                            <a href="https://buymeacoffee.com/sumitsharmq" target="_blank" rel="noreferrer" className="text-zinc-900/50 dark:text-white/30 hover:text-zinc-900 dark:hover:text-white transition-colors transform hover:scale-110">
-                                <Coffee className="w-5 h-5" />
+                            <a href="https://drive.google.com/file/d/1rEQ2cCs-dJg18AEAcPp4AU5LHI4iTI9u/view?usp=sharing" target="_blank" rel="noreferrer" className="text-zinc-900/50 dark:text-white/30 hover:text-zinc-900 dark:hover:text-white transition-colors transform hover:scale-110" title="View Resume">
+                                <FileText className="w-5 h-5" />
                             </a>
                         </div>
                     </div>
