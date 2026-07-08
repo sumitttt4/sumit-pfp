@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { ExternalLink, Search } from 'lucide-react';
+import { ExternalLink, Search, Github } from 'lucide-react';
 import projects from '@/data/projects';
 
 export default function Projects() {
@@ -53,16 +53,30 @@ export default function Projects() {
                                 <h3 className="text-base font-bold text-zinc-900 dark:text-white group-hover:text-zinc-600 dark:group-hover:text-white/80 transition-colors">
                                     {project.name}
                                 </h3>
-                                {project.liveUrl && (
-                                    <a
-                                        href={project.liveUrl}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="text-gray-500 dark:text-gray-500 hover:text-zinc-900 dark:hover:text-white transition-colors"
-                                    >
-                                        <ExternalLink className="w-4 h-4" />
-                                    </a>
-                                )}
+                                <div className="flex items-center gap-2">
+                                    {project.githubUrl && (
+                                        <a
+                                            href={project.githubUrl}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="text-gray-500 dark:text-gray-500 hover:text-zinc-900 dark:hover:text-white transition-colors"
+                                            title="View GitHub Repository"
+                                        >
+                                            <Github className="w-4 h-4" />
+                                        </a>
+                                    )}
+                                    {project.liveUrl && (
+                                        <a
+                                            href={project.liveUrl}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="text-gray-500 dark:text-gray-500 hover:text-zinc-900 dark:hover:text-white transition-colors"
+                                            title="Visit Live Site"
+                                        >
+                                            <ExternalLink className="w-4 h-4" />
+                                        </a>
+                                    )}
+                                </div>
                             </div>
                             <div className="text-xs font-mono text-zinc-900/50 dark:text-white/50">
                                 {project.category}

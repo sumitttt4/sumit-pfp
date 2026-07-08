@@ -6,6 +6,7 @@ export interface Project {
   image: string;
   metrics: string;
   liveUrl: string;
+  githubUrl?: string;
   featured: boolean;
 }
 
@@ -13,11 +14,33 @@ export const projects: Project[] = [
   {
     slug: "glyph",
     name: "Glyph",
-    category: "AI Brand Identity Generator",
-    description: "Generate logos, colors, typography and complete brand systems in seconds.",
+    category: "Founder • Product Design & Dev",
+    description: "Built and launched a branding tool end-to-end—from product design and frontend code to solo product marketing and execution. Generated $427 in revenue.",
     image: "/glyph.png",
-    metrics: "400+ users • 15 paying customers",
+    metrics: "$427 Revenue • 400+ Users",
     liveUrl: "https://glyph.software",
+    featured: true
+  },
+  {
+    slug: "glyph-skill",
+    name: "Glyph Skill",
+    category: "AI Coding Assistant Skill",
+    description: "An enforceable brand, layout, and documentation skill for your AI coding assistant. Import strict layout constraints, typography locks, color variables, and animation limits.",
+    image: "/glyph-skill.png",
+    metrics: "Live · Open Source",
+    liveUrl: "https://glyph-skillfordesign.vercel.app/",
+    githubUrl: "https://github.com/sumitttt4/Glyph-Skill",
+    featured: true
+  },
+
+  {
+    slug: "vibe-market",
+    name: "Vibe Market",
+    category: "Creator Marketplace",
+    description: "A premium digital marketplace designed and built for creators, featuring bespoke grid systems, smooth loading states, and custom design variables.",
+    image: "/vibe-market-landing.png",
+    metrics: "Design & Development",
+    liveUrl: "https://vibe-market.vercel.app/",
     featured: true
   },
   {

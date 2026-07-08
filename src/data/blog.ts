@@ -79,6 +79,15 @@ const posts: BlogPost[] = [
         slug: "when-love-redefines-you",
         tags: ["Life", "Reflection"],
         link: "https://medium.com/write-a-catalyst/when-love-redefines-you-and-how-you-deal-when-its-over-39f5ed066748"
+    },
+    {
+        id: 8,
+        title: "How I Built and Launched a Branding SaaS to $427 in Solo Revenue",
+        excerpt: "A case study on solo execution, bridging the gap between design and engineering, and landing paying customers as a developer.",
+        date: "Jul 8, 2026",
+        readTime: "6 min read",
+        slug: "how-i-built-glyph-to-427-revenue",
+        tags: ["Startups", "Case Study"]
     }
 ];
 

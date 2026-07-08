@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Github } from 'lucide-react';
 
 interface ProjectCardProps {
   name: string;
@@ -11,6 +11,7 @@ interface ProjectCardProps {
   category: string;
   metrics?: string;
   liveUrl?: string;
+  githubUrl?: string;
 }
 
 export default function ProjectCard({
@@ -20,6 +21,7 @@ export default function ProjectCard({
   category,
   metrics,
   liveUrl,
+  githubUrl,
 }: ProjectCardProps) {
   return (
     <motion.div
@@ -60,17 +62,29 @@ export default function ProjectCard({
           </p>
         </div>
 
-        {/* Live Preview Link */}
-        {liveUrl && (
-          <div className="pt-2">
-            <a
-              href={liveUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-zinc-900 dark:text-white hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors pb-0.5 border-b border-zinc-900/10 hover:border-zinc-900/30 dark:border-white/20 dark:hover:border-white/40"
-            >
-              <ArrowUpRight className="w-3.5 h-3.5" /> Live Preview
-            </a>
+        {/* Action Links */}
+        {(liveUrl || githubUrl) && (
+          <div className="pt-2 flex items-center gap-4">
+            {liveUrl && (
+              <a
+                href={liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-zinc-900 dark:text-white hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors pb-0.5 border-b border-zinc-900/10 hover:border-zinc-900/30 dark:border-white/20 dark:hover:border-white/40"
+              >
+                <ArrowUpRight className="w-3.5 h-3.5" /> Live Preview
+              </a>
+            )}
+            {githubUrl && (
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-zinc-900 dark:text-white hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors pb-0.5 border-b border-zinc-900/10 hover:border-zinc-900/30 dark:border-white/20 dark:hover:border-white/40"
+              >
+                <Github className="w-3.5 h-3.5" /> GitHub
+              </a>
+            )}
           </div>
         )}
       </div>
