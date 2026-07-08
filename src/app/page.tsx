@@ -10,29 +10,31 @@ import posts from '@/data/blog';
 import Link from 'next/link';
 import BorderGrid from '@/components/ui/BorderGrid';
 import ProjectCard from '@/components/ui/ProjectCard';
+import AsciiBadge from '@/components/ui/AsciiBadge';
+import AsciiHeroContainer from '@/components/ui/AsciiHeroContainer';
 
-// Tech Stack Data
+// Tech Stack Data with specific accent brand colors
 const stack = [
-    { name: "JavaScript", color: "bg-yellow-400/10 text-yellow-400 border-yellow-400/20" },
-    { name: "TypeScript", color: "bg-blue-400/10 text-blue-400 border-blue-400/20" },
-    { name: "Next.js", color: "bg-gray-900/10 text-gray-900 border-gray-900/20 dark:bg-white/10 dark:text-white dark:border-white/20" },
-    { name: "React.js", color: "bg-cyan-400/10 text-cyan-400 border-cyan-400/20" },
-    { name: "TailwindCSS", color: "bg-sky-400/10 text-sky-400 border-sky-400/20" },
-    { name: "Node.js", color: "bg-green-400/10 text-green-400 border-green-400/20" },
-    { name: "PostgreSQL", color: "bg-blue-300/10 text-blue-300 border-blue-300/20" },
-    { name: "Figma", color: "bg-purple-400/10 text-purple-400 border-purple-400/20" },
-    { name: "Supabase", color: "bg-emerald-400/10 text-emerald-400 border-emerald-400/20" },
-    { name: "REST APIs", color: "bg-orange-400/10 text-orange-400 border-orange-400/20" },
-    { name: "GraphQL", color: "bg-pink-400/10 text-pink-400 border-pink-400/20" },
-    { name: "Docker", color: "bg-blue-500/10 text-blue-500 border-blue-500/20" },
-    { name: "Prisma", color: "bg-indigo-400/10 text-indigo-400 border-indigo-400/20" },
-    { name: "Framer Motion", color: "bg-fuchsia-400/10 text-fuchsia-400 border-fuchsia-400/20" },
+    { name: "JavaScript", color: "bg-yellow-400/10 text-yellow-400 border-yellow-400/20", accent: "#facc15" },
+    { name: "TypeScript", color: "bg-blue-400/10 text-blue-400 border-blue-400/20", accent: "#3b82f6" },
+    { name: "Next.js", color: "bg-gray-900/10 text-gray-900 border-gray-900/20 dark:bg-white/10 dark:text-white dark:border-white/20", accent: "#a1a1aa" },
+    { name: "React.js", color: "bg-cyan-400/10 text-cyan-400 border-cyan-400/20", accent: "#22d3ee" },
+    { name: "TailwindCSS", color: "bg-sky-400/10 text-sky-400 border-sky-400/20", accent: "#38bdf8" },
+    { name: "Node.js", color: "bg-green-400/10 text-green-400 border-green-400/20", accent: "#4ade80" },
+    { name: "PostgreSQL", color: "bg-blue-300/10 text-blue-300 border-blue-300/20", accent: "#60a5fa" },
+    { name: "Figma", color: "bg-purple-400/10 text-purple-400 border-purple-400/20", accent: "#c084fc" },
+    { name: "Supabase", color: "bg-emerald-400/10 text-emerald-400 border-emerald-400/20", accent: "#34d399" },
+    { name: "REST APIs", color: "bg-orange-400/10 text-orange-400 border-orange-400/20", accent: "#fb923c" },
+    { name: "GraphQL", color: "bg-pink-400/10 text-pink-400 border-pink-400/20", accent: "#f472b6" },
+    { name: "Docker", color: "bg-blue-500/10 text-blue-500 border-blue-500/20", accent: "#60a5fa" },
+    { name: "Prisma", color: "bg-indigo-400/10 text-indigo-400 border-indigo-400/20", accent: "#818cf8" },
+    { name: "Framer Motion", color: "bg-fuchsia-400/10 text-fuchsia-400 border-fuchsia-400/20", accent: "#e879f9" },
 ];
 
 export default function Home() {
     const [isLetsTalkOpen, setIsLetsTalkOpen] = useState(false);
     const [allPosts, setAllPosts] = useState(posts);
-    const roles = ["Design Engineer", "Product Builder", "Developer"];
+    const roles = ["Design Engineer for Startups", "Product Engineer", "Full-Stack Developer"];
     const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
 
     useEffect(() => {
@@ -76,13 +78,14 @@ export default function Home() {
         >
 
             {/* HERO SECTION */}
-            <motion.section
-                variants={{
-                    hidden: { opacity: 0, y: 15 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
-                }}
-                className="max-w-2xl space-y-6 py-10"
-            >
+            <AsciiHeroContainer className="w-full">
+                <motion.section
+                    variants={{
+                        hidden: { opacity: 0, y: 15 },
+                        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+                    }}
+                    className="max-w-2xl space-y-6 py-10"
+                >
                 <div className="space-y-4">
                     <div className="space-y-1">
                         <h1 className="text-[17px] font-semibold text-zinc-900 dark:text-white tracking-tight">
@@ -105,7 +108,7 @@ export default function Home() {
                     </div>
                     
                     <p className="text-[15px] text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed pt-2">
-                        I turn ideas into products using React, Next.js, TypeScript, Figma, Supabase, PostgreSQL, and AI workflows. From branding and design systems to frontend development and product strategy, I enjoy building things people actually use.
+                        I design and build premium, high-fidelity web products for startup teams. By bridging the gap between Figma mockups and production-ready React, Next.js, and TypeScript, I help teams ship polished features faster. Founder of Glyph.
                     </p>
                     <p className="text-[15px] text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
                         Currently building <a href="https://glyph.software" target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white font-medium hover:underline inline-flex items-center gap-0.5 whitespace-nowrap">Glyph<ExternalLink className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" /></a> and running <a href="https://www.blurr.design/" target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white font-medium hover:underline inline-flex items-center gap-0.5 whitespace-nowrap">Blurr Design<ExternalLink className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" /></a>.
@@ -189,6 +192,7 @@ export default function Home() {
                     </div>
                 </div>
             </motion.section>
+            </AsciiHeroContainer>
 
             {/* SKILLS SECTION (Normal & Simple) */}
             <motion.section
@@ -203,21 +207,23 @@ export default function Home() {
                     <div className="flex gap-3 animate-marquee hover:[animation-play-state:paused] active:[animation-play-state:paused]">
                         {/* First list of items */}
                         {stack.map((tech) => (
-                            <span
+                            <AsciiBadge
                                 key={`${tech.name}-1`}
-                                className="px-3.5 py-1.5 rounded-full text-xs font-normal bg-[#f2f2f2] text-zinc-700 hover:bg-[#e4e4e4] transition-colors border border-zinc-200/20 cursor-default dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:border-zinc-800/50 whitespace-nowrap"
+                                accentColor={tech.accent}
+                                className="bg-[#f2f2f2] text-zinc-700 hover:bg-[#e4e4e4]/30 border-zinc-200/20 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800/30 dark:border-zinc-800/50 whitespace-nowrap"
                             >
                                 {tech.name}
-                            </span>
+                            </AsciiBadge>
                         ))}
                         {/* Second list of items to enable seamless looping */}
                         {stack.map((tech) => (
-                            <span
+                            <AsciiBadge
                                 key={`${tech.name}-2`}
-                                className="px-3.5 py-1.5 rounded-full text-xs font-normal bg-[#f2f2f2] text-zinc-700 hover:bg-[#e4e4e4] transition-colors border border-zinc-200/20 cursor-default dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:border-zinc-800/50 whitespace-nowrap"
+                                accentColor={tech.accent}
+                                className="bg-[#f2f2f2] text-zinc-700 hover:bg-[#e4e4e4]/30 border-zinc-200/20 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800/30 dark:border-zinc-800/50 whitespace-nowrap"
                             >
                                 {tech.name}
-                            </span>
+                            </AsciiBadge>
                         ))}
                     </div>
                 </div>
@@ -242,6 +248,7 @@ export default function Home() {
                             category={project.category}
                             metrics={project.metrics}
                             liveUrl={project.liveUrl}
+                            githubUrl={project.githubUrl}
                         />
                     ))}
                 </BorderGrid>

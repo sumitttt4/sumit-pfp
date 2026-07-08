@@ -2,6 +2,7 @@ import { createReader } from '@keystatic/core/reader';
 import { DocumentRenderer } from '@keystatic/core/renderer';
 import keystaticConfig from '../../../../keystatic.config';
 import { notFound } from 'next/navigation';
+import AsciiHeroContainer from '@/components/ui/AsciiHeroContainer';
 
 function formatDate(dateString: string) {
   try {
@@ -37,7 +38,8 @@ export default async function Post({ params }: { params: { slug: string } }) {
   const contentNode = await post.content();
 
   return (
-    <article className="prose prose-sm prose-zinc dark:prose-invert max-w-3xl mx-auto py-12 animate-fade-in">
+    <AsciiHeroContainer className="w-full">
+      <article className="prose prose-sm prose-zinc dark:prose-invert max-w-3xl mx-auto py-12 animate-fade-in">
       <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-wider text-zinc-900/60 dark:text-white/40 mb-6">
           <span>{formatDate(post.date)}</span>
           <span>•</span>
@@ -57,5 +59,6 @@ export default async function Post({ params }: { params: { slug: string } }) {
         )}
       </div>
     </article>
+    </AsciiHeroContainer>
   );
 }

@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Github } from 'lucide-react';
+import AsciiHeroContainer from '@/components/ui/AsciiHeroContainer';
 
 const XIcon = () => (
     <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -12,7 +13,8 @@ const XIcon = () => (
 
 export default function About() {
     return (
-        <motion.div
+        <AsciiHeroContainer className="w-full">
+            <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -86,5 +88,6 @@ export default function About() {
                 </div>
             </div>
         </motion.div>
+        </AsciiHeroContainer>
     );
 }

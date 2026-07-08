@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { createReader } from '@keystatic/core/reader';
 import keystaticConfig from '../../../keystatic.config';
 import staticPosts from '@/data/blog';
+import AsciiHeroContainer from '@/components/ui/AsciiHeroContainer';
 
 function formatDate(dateString: string) {
     try {
@@ -43,7 +44,8 @@ export default async function Blog() {
     }
 
     return (
-        <div className="space-y-12 animate-fade-in">
+        <AsciiHeroContainer className="w-full">
+            <div className="space-y-12 animate-fade-in">
             {/* Main Content */}
             <div className="space-y-16">
                 {/* Main Feed (Left Column) */}
@@ -93,5 +95,6 @@ export default async function Blog() {
                 </div>
             </div>
         </div>
+        </AsciiHeroContainer>
     );
 }
