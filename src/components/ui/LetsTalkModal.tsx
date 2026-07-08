@@ -5,7 +5,8 @@ import {
     Check,
     Mail,
     Calendar,
-    Twitter
+    Twitter,
+    FileText
 } from 'lucide-react';
 
 interface LetsTalkModalProps {
@@ -77,12 +78,31 @@ const LetsTalkModal: React.FC<LetsTalkModalProps> = ({ isOpen, onClose }) => {
                                 Let&apos;s build something.
                             </h2>
                             <p className="text-[13px] text-zinc-500 dark:text-zinc-400 mt-2 leading-relaxed max-w-[340px]">
-                                Available for full-time / part-time roles, freelance projects, and startup collaborations.
+                                Looking for Founding Engineer, Full-Stack Developer, and Design-minded engineering roles.
                             </p>
                         </div>
 
                         {/* List of Contact Rows */}
                         <div className="px-2 pb-6 space-y-1">
+                            {/* Resume Link */}
+                            <button
+                                onClick={() => {
+                                    window.open('https://drive.google.com/file/d/1rEQ2cCs-dJg18AEAcPp4AU5LHI4iTI9u/view?usp=sharing', '_blank');
+                                    setFeedback('Opening Resume...');
+                                    setTimeout(() => setFeedback(null), 3000);
+                                }}
+                                className="group flex items-center justify-between px-4 py-3 rounded-xl hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors text-left w-full"
+                            >
+                                <div className="flex items-center gap-3">
+                                    <FileText className="w-4 h-4 text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" />
+                                    <div className="flex flex-col">
+                                        <span className="text-[13px] font-medium text-zinc-800 dark:text-zinc-200">Resume</span>
+                                        <span className="text-[11px] text-zinc-400 dark:text-zinc-500 mt-0.5">View PDF resume</span>
+                                    </div>
+                                </div>
+                                <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                            </button>
+
                             {/* Email Link */}
                             <button
                                 onClick={handleCopyEmail}

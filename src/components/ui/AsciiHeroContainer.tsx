@@ -67,8 +67,8 @@ const AsciiHeroContainer: React.FC<AsciiHeroContainerProps> = ({
 
             const isDark = document.documentElement.classList.contains('dark');
             
-            // Set base opacities: extremely subtle ambient state
-            const baseAlpha = isDark ? 0.04 : 0.02;
+            // Set base opacities: extremely subtle ambient state (near-invisible until hovered)
+            const baseAlpha = isDark ? 0.012 : 0.006;
             
             ctx.font = "6px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace";
             ctx.textAlign = "center";
