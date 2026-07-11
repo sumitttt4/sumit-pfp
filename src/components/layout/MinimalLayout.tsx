@@ -121,7 +121,7 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
                                 <input
                                     type="email"
                                     placeholder="Enter your email"
-                                    className="flex-1 bg-black/5 border border-black/10 dark:bg-white/5 dark:border-white/10 rounded-lg px-4 py-2 text-sm text-gray-800 dark:text-gray-200 focus:outline-none focus:border-black/30 dark:focus:border-white/30 transition-colors placeholder:text-gray-500 dark:placeholder:text-gray-600"
+                                    className="flex-1 bg-black/5 border border-black/10 dark:bg-white/5 dark:border-white/10 rounded-lg px-4 py-2 text-base md:text-sm text-gray-800 dark:text-gray-200 focus:outline-none focus:border-black/30 dark:focus:border-white/30 transition-all duration-200 placeholder:text-gray-500 dark:placeholder:text-gray-600 focus:scale-[1.01]"
                                 />
                                 <button
                                     type="submit"

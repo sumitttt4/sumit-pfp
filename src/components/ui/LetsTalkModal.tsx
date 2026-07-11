@@ -3,10 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
     ArrowUpRight, 
     Check,
-    Mail,
     Calendar,
-    Twitter,
-    FileText
+    Twitter
 } from 'lucide-react';
 
 interface LetsTalkModalProps {
@@ -94,7 +92,9 @@ const LetsTalkModal: React.FC<LetsTalkModalProps> = ({ isOpen, onClose }) => {
                                 className="group flex items-center justify-between px-4 py-3 rounded-xl hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors text-left w-full"
                             >
                                 <div className="flex items-center gap-3">
-                                    <FileText className="w-4 h-4 text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" />
+                                    <svg className="w-4 h-4 fill-current text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                                    </svg>
                                     <div className="flex flex-col">
                                         <span className="text-[13px] font-medium text-zinc-800 dark:text-zinc-200">Resume</span>
                                         <span className="text-[11px] text-zinc-400 dark:text-zinc-500 mt-0.5">View PDF resume</span>
@@ -109,7 +109,9 @@ const LetsTalkModal: React.FC<LetsTalkModalProps> = ({ isOpen, onClose }) => {
                                 className="group flex items-center justify-between px-4 py-3 rounded-xl hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors text-left w-full"
                             >
                                 <div className="flex items-center gap-3">
-                                    <Mail className="w-4 h-4 text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" />
+                                    <svg className="w-4 h-4 fill-current text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+                                    </svg>
                                     <div className="flex flex-col">
                                         <span className="text-[13px] font-medium text-zinc-800 dark:text-zinc-200">Email</span>
                                         <span className="text-[11px] text-zinc-400 dark:text-zinc-500 mt-0.5">sumitsharma9128@gmail.com</span>
