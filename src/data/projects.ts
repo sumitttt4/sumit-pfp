@@ -44,13 +44,13 @@ export const projects: Project[] = [
     featured: true
   },
   {
-    slug: "blurr-design",
-    name: "Blurr Design",
-    category: "Design & Development Studio",
-    description: "Design partner for zero → one teams. We help startups raise & scale with product design.",
-    image: "/blurr-design.png",
-    metrics: "Design Engineer (Part-time)",
-    liveUrl: "https://www.blurr.design/",
+    slug: "ux-pulse",
+    name: "UX Pulse",
+    category: "AI UX Engineer",
+    description: "Your AI UX engineer watches Microsoft Clarity recordings, explains why users leave, and recommends the highest-impact fixes.",
+    image: "/udpulse.png",
+    metrics: "Built for Microsoft Clarity",
+    liveUrl: "https://uxpulseclarity.vercel.app/",
     featured: true
   },
 

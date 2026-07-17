@@ -19,7 +19,7 @@ const BorderGrid: React.FC<BorderGridProps> = ({ children, columns = 2, classNam
             {children.map((child, index) => (
                 <div
                     key={index}
-                    className="relative border border-black/5 dark:border-white/5 p-8 group transition-colors hover:bg-black/[0.02] dark:hover:bg-white/[0.02]"
+                    className="relative border border-zinc-200/80 dark:border-white/5 p-8 group transition-colors hover:bg-black/[0.015] dark:hover:bg-white/[0.02]"
                 >
                     {/* Content */}
                     {child}
