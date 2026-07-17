@@ -7,7 +7,7 @@ import React from 'react';
  */
 const GridBackground: React.FC = () => {
     return (
-        <div className="fixed inset-0 z-0 bg-[#fafafa] dark:bg-[#050505] transition-colors duration-300" aria-hidden="true" />
+        <div className="fixed inset-0 z-0 bg-[#faf9f6] dark:bg-[#050505] transition-colors duration-300" aria-hidden="true" />
     );
 };
 

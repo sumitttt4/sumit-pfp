@@ -3,11 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import LetsTalkModal from '@/components/ui/LetsTalkModal';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Send, Clock, MapPin, Globe, Calendar, Twitter } from 'lucide-react';
+import { Send, Clock, MapPin, Globe, Calendar, Twitter } from 'lucide-react';
 import projects from '@/data/projects';
 import posts from '@/data/blog';
 import Link from 'next/link';
-import BorderGrid from '@/components/ui/BorderGrid';
 import ProjectCard from '@/components/ui/ProjectCard';
 import AsciiBadge from '@/components/ui/AsciiBadge';
 import AsciiHeroContainer from '@/components/ui/AsciiHeroContainer';
@@ -33,7 +32,7 @@ const stack = [
 export default function Home() {
     const [isLetsTalkOpen, setIsLetsTalkOpen] = useState(false);
     const [allPosts, setAllPosts] = useState(posts);
-    const roles = ["Design Engineer for Startups", "Product Engineer", "Full-Stack Developer"];
+    const roles = ["Product Engineer", "Product Builder", "Design Engineer"];
     const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
 
     useEffect(() => {
@@ -107,10 +106,7 @@ export default function Home() {
                     </div>
                     
                     <p className="text-[15px] text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed pt-2">
-                        I design and build premium, high-fidelity web products for startup teams. By bridging the gap between Figma mockups and production-ready React, Next.js, and TypeScript, I help teams ship polished features faster. Founder of Glyph.
-                    </p>
-                    <p className="text-[15px] text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
-                        Currently building <a href="https://glyph.software" target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white font-medium hover:underline inline-flex items-center gap-0.5 whitespace-nowrap">Glyph<ExternalLink className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" /></a> and running <a href="https://www.blurr.design/" target="_blank" rel="noreferrer" className="text-zinc-900 dark:text-white font-medium hover:underline inline-flex items-center gap-0.5 whitespace-nowrap">Blurr Design<ExternalLink className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" /></a>.
+                        I build internet products with strong UX, fast execution, and clear positioning. My work spans product, frontend, automation, and growth - shipping tools that feel polished, useful, and intentional.
                     </p>
                     <div className="flex flex-wrap items-center gap-3 pt-3">
                         <a 
@@ -135,7 +131,7 @@ export default function Home() {
 
                 {/* Experience Timeline */}
                 <div className="pt-6 border-t border-zinc-100 dark:border-zinc-800/80">
-                    <div className="relative pl-4 border-l border-zinc-200 dark:border-zinc-800 space-y-5 text-[13px]">
+                    <div className="relative pl-4 border-l border-zinc-200/90 dark:border-zinc-800 space-y-6 text-[13px]">
                         {/* Blurr Design */}
                         <div className="relative">
                             <span className="absolute -left-[21px] top-1.5 flex h-2 w-2">
@@ -144,13 +140,13 @@ export default function Home() {
                             </span>
                             <div className="flex items-baseline justify-between flex-wrap gap-2">
                                 <div>
-                                    <span className="font-semibold text-zinc-805 dark:text-white">Blurr Design</span>
-                                    <span className="text-zinc-400 dark:text-zinc-500 font-light ml-2">— Design Engineer (Part-time)</span>
+                                    <span className="font-bold text-zinc-900 dark:text-white">Blurr Design</span>
+                                    <span className="text-zinc-500 dark:text-zinc-400 font-normal ml-2">— Design Engineer (Part-time)</span>
                                 </div>
                                 <span className="text-zinc-400 dark:text-zinc-500 font-mono text-xs">Jul 2026 – Present</span>
                             </div>
-                            <p className="text-[12px] text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed max-w-xl">
-                                Designing high-fidelity interactive interfaces in Figma and writing production-grade React, Next.js, and Tailwind code for early-stage startup clients.
+                            <p className="text-[12px] text-zinc-600 dark:text-zinc-400 mt-1.5 leading-relaxed max-w-xl">
+                                Partnered with early-stage founders to design interactive interfaces in Figma and ship production-grade code, helping multiple startups launch and scale their MVPs.
                             </p>
                         </div>
                         {/* Glyph */}
@@ -158,13 +154,34 @@ export default function Home() {
                             <span className="absolute -left-[21px] top-1.5 h-2 w-2 rounded-full bg-zinc-300 dark:bg-zinc-700 border border-white dark:border-zinc-950" />
                             <div className="flex items-baseline justify-between flex-wrap gap-2">
                                 <div>
-                                    <span className="font-medium text-zinc-750 dark:text-zinc-300">Glyph</span>
-                                    <span className="text-zinc-400 dark:text-zinc-500 font-light ml-2">— Founder & Developer</span>
+                                    <span className="font-bold text-zinc-900 dark:text-white">Glyph</span>
+                                    <span className="text-zinc-500 dark:text-zinc-400 font-normal ml-2">— Founder & Developer</span>
                                 </div>
                                 <span className="text-zinc-400 dark:text-zinc-500 font-mono text-xs">Feb 2025 – Jun 2026</span>
                             </div>
-                            <p className="text-[12px] text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed max-w-xl">
-                                Architected and shipped a branding SaaS tool solo. Built the full-stack system (Next.js, Supabase, Stripe Integration) and designed all user interface components.
+                            <p className="text-[12px] text-zinc-600 dark:text-zinc-400 mt-1.5 leading-relaxed max-w-xl">
+                                Built and launched a branding SaaS platform end-to-end. Designed the system architecture, handled Stripe integration, and scaled the product solo to over 400 active users and paying customers.
+                            </p>
+                        </div>
+                        {/* Glyph Skill */}
+                        <div className="relative">
+                            <span className="absolute -left-[21px] top-1.5 h-2 w-2 rounded-full bg-zinc-300 dark:bg-zinc-700 border border-white dark:border-zinc-950" />
+                            <div className="flex items-baseline justify-between flex-wrap gap-2">
+                                <div>
+                                    <a 
+                                        href="https://glyph-skillfordesign.vercel.app/" 
+                                        target="_blank" 
+                                        rel="noreferrer"
+                                        className="font-bold text-zinc-900 dark:text-white hover:text-brandAccent dark:hover:text-brandAccent hover:underline transition-colors"
+                                    >
+                                        Glyph Skill
+                                    </a>
+                                    <span className="text-zinc-500 dark:text-zinc-400 font-normal ml-2">— Open Source Creator</span>
+                                </div>
+                                <span className="text-zinc-400 dark:text-zinc-500 font-mono text-xs">Mar 2026 – Present</span>
+                            </div>
+                            <p className="text-[12px] text-zinc-600 dark:text-zinc-400 mt-1.5 leading-relaxed max-w-xl">
+                                Designed and launched an open-source framework to enforce design constraints in AI coding workflows. Used by 100+ developers to build polished, non-slop interfaces.
                             </p>
                         </div>
                         {/* Metry AI */}
@@ -172,13 +189,13 @@ export default function Home() {
                             <span className="absolute -left-[21px] top-1.5 h-2 w-2 rounded-full bg-zinc-300 dark:bg-zinc-700 border border-white dark:border-zinc-950" />
                             <div className="flex items-baseline justify-between flex-wrap gap-2">
                                 <div>
-                                    <span className="font-medium text-zinc-750 dark:text-zinc-300">Metry AI</span>
-                                    <span className="text-zinc-400 dark:text-zinc-500 font-light ml-2">— Frontend Engineer Intern</span>
+                                    <span className="font-bold text-zinc-900 dark:text-white">Metry AI</span>
+                                    <span className="text-zinc-500 dark:text-zinc-400 font-normal ml-2">— Frontend Engineer Intern</span>
                                 </div>
                                 <span className="text-zinc-400 dark:text-zinc-500 font-mono text-xs">Aug 2024 – Jan 2025</span>
                             </div>
-                            <p className="text-[12px] text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed max-w-xl">
-                                Developed modular, typed frontend component libraries and implemented responsive dashboard view layouts in React and TypeScript.
+                            <p className="text-[12px] text-zinc-600 dark:text-zinc-400 mt-1.5 leading-relaxed max-w-xl">
+                                Spearheaded component library refactoring in React and TypeScript, boosting frontend rendering performance and reducing dashboard load times.
                             </p>
                         </div>
                     </div>
@@ -267,24 +284,47 @@ export default function Home() {
                     hidden: { opacity: 0, y: 20 },
                     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
                 }}
-                className="space-y-10"
+                className="space-y-12"
             >
                 <h2 className="text-xl font-bold text-zinc-900 dark:text-white/90 tracking-tight">Featured Projects</h2>
-                <BorderGrid columns={2}>
-                    {featuredProjects.map((project) => (
-                        <ProjectCard
-                            key={project.slug}
-                            name={project.name}
-                            description={project.description}
-                            image={project.image}
-                            category={project.category}
-                            metrics={project.metrics}
-                            liveUrl={project.liveUrl}
-                            githubUrl={project.githubUrl}
-                        />
-                    ))}
-                </BorderGrid>
-                <div className="text-center pt-8">
+                
+                {featuredProjects.length > 0 && (
+                    <div className="space-y-12">
+                        {/* Spotlight Project */}
+                        <div className="pb-10 border-b border-zinc-200/80 dark:border-white/5">
+                            <ProjectCard
+                                isSpotlight
+                                name={featuredProjects[0].name}
+                                description={featuredProjects[0].description}
+                                image={featuredProjects[0].image}
+                                category={featuredProjects[0].category}
+                                metrics={featuredProjects[0].metrics}
+                                liveUrl={featuredProjects[0].liveUrl}
+                                githubUrl={featuredProjects[0].githubUrl}
+                            />
+                        </div>
+
+                        {/* Other Projects Grid */}
+                        {featuredProjects.length > 1 && (
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                {featuredProjects.slice(1).map((project) => (
+                                    <ProjectCard
+                                        key={project.slug}
+                                        name={project.name}
+                                        description={project.description}
+                                        image={project.image}
+                                        category={project.category}
+                                        metrics={project.metrics}
+                                        liveUrl={project.liveUrl}
+                                        githubUrl={project.githubUrl}
+                                    />
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                )}
+
+                <div className="text-center pt-4">
                     <Link href="/projects" className="text-sm text-zinc-900/60 dark:text-white/40 hover:text-brandAccent hover:border-brandAccent transition-colors border-b border-transparent pb-1">
                         View all projects →
                     </Link>
@@ -356,103 +396,82 @@ export default function Home() {
                 }}
                 className="w-full relative animate-fade-in"
             >
-                <div className="p-6 sm:p-10 rounded-[20px] bg-black/[0.01] dark:bg-white/[0.01] border border-black/5 dark:border-white/5 backdrop-blur-sm space-y-10">
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
-                        {/* Left Column (60%) */}
-                        <div className="md:col-span-7 space-y-6">
-                            <div className="space-y-3">
-                                <h2 className="text-2xl font-bold text-zinc-900 dark:text-white tracking-tight">Let&apos;s build something meaningful.</h2>
-                                <p className="text-zinc-600 dark:text-zinc-400 text-[15px] leading-relaxed">
-                                    I&apos;m currently building Glyph while helping startups design, build and launch products.
-                                </p>
-                            </div>
-
-                            <div className="space-y-4">
-                                <h3 className="text-xs font-bold text-zinc-400 dark:text-zinc-500 tracking-wider uppercase">Available for</h3>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    {[
-                                        'Full-time roles',
-                                        'Frontend engineering',
-                                        'Product design',
-                                        'Freelance work'
-                                    ].map((item) => (
-                                        <div 
-                                            key={item} 
-                                            className="px-4 py-3 rounded-xl border border-black/5 dark:border-white/5 bg-black/[0.01] dark:bg-white/[0.01] hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors text-sm font-medium text-zinc-700 dark:text-zinc-300"
-                                        >
-                                            {item}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
+                <div className="p-8 sm:p-12 rounded-[24px] bg-white/40 dark:bg-white/[0.01] border border-zinc-200/80 dark:border-white/5 backdrop-blur-sm space-y-10">
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                        {/* Left Column (6 columns) */}
+                        <div className="md:col-span-6 space-y-4">
+                            <h2 className="text-2xl font-bold text-zinc-900 dark:text-white tracking-tight">Let&apos;s build together.</h2>
+                            <p className="text-zinc-600 dark:text-zinc-400 text-[15px] leading-relaxed max-w-md">
+                                Whether you want to collaborate on a new project, chat about product engineering, or schedule a quick consulting call, feel free to reach out.
+                            </p>
                         </div>
 
-                        {/* Right Column (40%) */}
-                        <div className="md:col-span-5 space-y-6 flex flex-col justify-between">
-                            <div className="space-y-3">
-                                <h3 className="text-xs font-bold text-zinc-400 dark:text-zinc-500 tracking-wider uppercase">Contact</h3>
-                                <div className="space-y-3">
-                                    <a 
-                                        href="mailto:sumitsharma9128@gmail.com"
-                                        className="flex items-center gap-3.5 p-3 rounded-xl border border-black/5 dark:border-white/5 bg-black/[0.01] dark:bg-white/[0.01] hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors group"
-                                    >
-                                        <div className="w-9 h-9 rounded-lg bg-black/5 dark:bg-white/5 flex items-center justify-center text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">
-                                            <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
-                                            </svg>
-                                        </div>
-                                        <div className="flex flex-col min-w-0">
-                                            <span className="text-[10px] text-zinc-400 dark:text-zinc-500 tracking-wider uppercase font-semibold">Email</span>
-                                            <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200 truncate">sumitsharma9128@gmail.com</span>
-                                        </div>
-                                    </a>
+                        {/* Right Column (6 columns) */}
+                        <div className="md:col-span-6 space-y-3">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <a 
+                                    href="mailto:sumitsharma9128@gmail.com"
+                                    className="flex items-center gap-3 p-3 rounded-xl border border-zinc-200/80 dark:border-white/5 bg-white dark:bg-white/[0.01] hover:border-brandAccent dark:hover:border-white/10 hover:shadow-[0_2px_8px_rgba(0,0,0,0.01)] transition-all group"
+                                >
+                                    <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-white/5 flex items-center justify-center text-zinc-500 dark:text-zinc-400 group-hover:text-brandAccent transition-colors">
+                                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+                                        </svg>
+                                    </div>
+                                    <div className="flex flex-col min-w-0">
+                                        <span className="text-[9px] text-zinc-400 dark:text-zinc-500 tracking-wider uppercase font-semibold">Email</span>
+                                        <span className="text-xs font-semibold text-zinc-800 dark:text-zinc-200 truncate">sumitsharma9128@gmail.com</span>
+                                    </div>
+                                </a>
 
-                                    <a 
-                                        href="https://x.com/sumitdotme"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="flex items-center gap-3.5 p-3 rounded-xl border border-black/5 dark:border-white/5 bg-black/[0.01] dark:bg-white/[0.01] hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors group"
-                                    >
-                                        <div className="w-9 h-9 rounded-lg bg-black/5 dark:bg-white/5 flex items-center justify-center text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">
-                                            <Twitter className="w-4 h-4" />
-                                        </div>
-                                        <div className="flex flex-col min-w-0">
-                                            <span className="text-[10px] text-zinc-400 dark:text-zinc-500 tracking-wider uppercase font-semibold">Twitter / X</span>
-                                            <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200 truncate">@sumitdotme</span>
-                                        </div>
-                                    </a>
+                                <a 
+                                    href="https://x.com/sumitdotme"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="flex items-center gap-3 p-3 rounded-xl border border-zinc-200/80 dark:border-white/5 bg-white dark:bg-white/[0.01] hover:border-brandAccent dark:hover:border-white/10 hover:shadow-[0_2px_8px_rgba(0,0,0,0.01)] transition-all group"
+                                >
+                                    <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-white/5 flex items-center justify-center text-zinc-500 dark:text-zinc-400 group-hover:text-brandAccent transition-colors">
+                                        <Twitter className="w-4 h-4" />
+                                    </div>
+                                    <div className="flex flex-col min-w-0">
+                                        <span className="text-[9px] text-zinc-400 dark:text-zinc-500 tracking-wider uppercase font-semibold">Twitter / X</span>
+                                        <span className="text-xs font-semibold text-zinc-800 dark:text-zinc-200 truncate">@sumitdotme</span>
+                                    </div>
+                                </a>
 
-                                    <a 
-                                        href="https://cal.com/sumit-sharma/15min"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="flex items-center gap-3.5 p-3 rounded-xl border border-black/5 dark:border-white/5 bg-black/[0.01] dark:bg-white/[0.01] hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors group"
-                                    >
-                                        <div className="w-9 h-9 rounded-lg bg-black/5 dark:bg-white/5 flex items-center justify-center text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">
-                                            <Calendar className="w-4 h-4" />
-                                        </div>
-                                        <div className="flex flex-col min-w-0">
-                                            <span className="text-[10px] text-zinc-400 dark:text-zinc-500 tracking-wider uppercase font-semibold">Schedule</span>
-                                            <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200 truncate">Book a call</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
+                                <a 
+                                    href="https://cal.com/sumit-sharma/15min"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="flex items-center gap-3 p-3 rounded-xl border border-zinc-200/80 dark:border-white/5 bg-white dark:bg-white/[0.01] hover:border-brandAccent dark:hover:border-white/10 hover:shadow-[0_2px_8px_rgba(0,0,0,0.01)] transition-all group"
+                                >
+                                    <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-white/5 flex items-center justify-center text-zinc-500 dark:text-zinc-400 group-hover:text-brandAccent transition-colors">
+                                        <Calendar className="w-4 h-4" />
+                                    </div>
+                                    <div className="flex flex-col min-w-0">
+                                        <span className="text-[9px] text-zinc-400 dark:text-zinc-500 tracking-wider uppercase font-semibold">Schedule</span>
+                                        <span className="text-xs font-semibold text-zinc-800 dark:text-zinc-200 truncate">Book a 15m call</span>
+                                    </div>
+                                </a>
 
-                            <div className="pt-2">
                                 <button
                                     onClick={() => setIsLetsTalkOpen(true)}
-                                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-100 dark:text-zinc-900 font-semibold text-sm transition-all shadow-sm shadow-black/5 group"
+                                    className="flex items-center gap-3 p-3 rounded-xl border border-zinc-200/80 dark:border-white/5 bg-white dark:bg-white/[0.01] hover:border-brandAccent dark:hover:border-white/10 hover:shadow-[0_2px_8px_rgba(0,0,0,0.01)] transition-all text-left w-full group"
                                 >
-                                    <Send className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                                    Get in Touch
+                                    <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-white/5 flex items-center justify-center text-zinc-500 dark:text-zinc-400 group-hover:text-brandAccent transition-colors">
+                                        <Send className="w-4 h-4" />
+                                    </div>
+                                    <div className="flex flex-col min-w-0">
+                                        <span className="text-[9px] text-zinc-400 dark:text-zinc-500 tracking-wider uppercase font-semibold">Contact</span>
+                                        <span className="text-xs font-semibold text-zinc-800 dark:text-zinc-200 truncate">Get in Touch</span>
+                                    </div>
                                 </button>
                             </div>
                         </div>
                     </div>
 
                     {/* Bottom row (Metadata & Socials) */}
-                    <div className="pt-6 border-t border-black/5 dark:border-white/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div className="pt-6 border-t border-zinc-200/85 dark:border-white/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-zinc-500 dark:text-zinc-500 font-medium">
                             <div className="flex items-center gap-1.5">
                                 <Clock className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" />
@@ -469,27 +488,27 @@ export default function Home() {
                         </div>
 
                         <div className="flex gap-6">
-                                <a href="https://github.com/sumitttt4" target="_blank" rel="noreferrer" className="text-zinc-900/50 dark:text-white/30 hover:text-zinc-900 dark:hover:text-white transition-colors transform hover:scale-110" title="GitHub">
+                            <a href="https://github.com/sumitttt4" target="_blank" rel="noreferrer" className="text-zinc-500 hover:text-zinc-900 dark:text-white/30 dark:hover:text-white transition-colors transform hover:scale-110" title="GitHub">
                                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
                                 </svg>
                             </a>
-                            <a href="https://x.com/sumitdotme" target="_blank" rel="noreferrer" className="text-zinc-900/50 dark:text-white/30 hover:text-zinc-900 dark:hover:text-white transition-colors transform hover:scale-110" title="Twitter / X">
+                            <a href="https://x.com/sumitdotme" target="_blank" rel="noreferrer" className="text-zinc-500 hover:text-zinc-900 dark:text-white/30 dark:hover:text-white transition-colors transform hover:scale-110" title="Twitter / X">
                                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                                 </svg>
                             </a>
-                            <a href="https://linkedin.com/in/sumitsharma4" target="_blank" rel="noreferrer" className="text-zinc-900/50 dark:text-white/30 hover:text-zinc-900 dark:hover:text-white transition-colors transform hover:scale-110" title="LinkedIn">
+                            <a href="https://linkedin.com/in/sumitsharma4" target="_blank" rel="noreferrer" className="text-zinc-500 hover:text-zinc-900 dark:text-white/30 dark:hover:text-white transition-colors transform hover:scale-110" title="LinkedIn">
                                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/>
                                 </svg>
                             </a>
-                            <a href="mailto:sumitsharma9128@gmail.com" className="text-zinc-900/50 dark:text-white/30 hover:text-zinc-900 dark:hover:text-white transition-colors transform hover:scale-110" title="Email">
+                            <a href="mailto:sumitsharma9128@gmail.com" className="text-zinc-500 hover:text-zinc-900 dark:text-white/30 dark:hover:text-white transition-colors transform hover:scale-110" title="Email">
                                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
                                 </svg>
                             </a>
-                            <a href="https://drive.google.com/file/d/1rEQ2cCs-dJg18AEAcPp4AU5LHI4iTI9u/view?usp=sharing" target="_blank" rel="noreferrer" className="text-zinc-900/50 dark:text-white/30 hover:text-zinc-900 dark:hover:text-white transition-colors transform hover:scale-110" title="View Resume">
+                            <a href="https://drive.google.com/file/d/1rEQ2cCs-dJg18AEAcPp4AU5LHI4iTI9u/view?usp=sharing" target="_blank" rel="noreferrer" className="text-zinc-500 hover:text-zinc-900 dark:text-white/30 dark:hover:text-white transition-colors transform hover:scale-110" title="View Resume">
                                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
                                 </svg>

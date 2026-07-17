@@ -29,15 +29,15 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
     ];
 
     return (
-        <div className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-zinc-900 dark:text-zinc-100 font-sans selection:bg-black/10 selection:text-black dark:selection:bg-white/10 dark:selection:text-white relative transition-colors duration-300 overflow-x-hidden">
+        <div className="min-h-screen bg-[#faf9f6] dark:bg-[#050505] text-zinc-900 dark:text-zinc-100 font-sans selection:bg-black/10 selection:text-zinc-900 dark:selection:bg-white/10 dark:selection:text-white relative transition-colors duration-300 overflow-x-hidden">
             {/* Decorative Background */}
             <GridBackground />
 
             {/* Structural Main Container with Vertical Rails */}
-            <div className="max-w-5xl mx-auto border-x border-black/5 dark:border-white/5 min-h-screen relative">
+            <div className="max-w-5xl mx-auto border-x border-zinc-200/80 dark:border-white/5 min-h-screen relative">
 
                 {/* Navigation */}
-                <header className="sticky top-0 z-50 bg-white/80 dark:bg-[#050505]/80 backdrop-blur-md border-b border-black/5 dark:border-white/5">
+                <header className="sticky top-0 z-50 bg-white/85 dark:bg-[#050505]/80 backdrop-blur-md border-b border-zinc-200/80 dark:border-white/5">
 
                     <div className="px-3 sm:px-6 h-16 flex items-center justify-between">
                         <div className="flex items-center gap-2.5 sm:gap-6 md:gap-10">
@@ -104,7 +104,7 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
                 </main>
 
                 {/* Footer */}
-                <footer className="border-t border-black/5 dark:border-white/5 w-full relative">
+                <footer className="border-t border-zinc-200/80 dark:border-white/5 w-full relative">
 
                     <div className="px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <div className="space-y-2 text-center md:text-left">
@@ -121,7 +121,7 @@ const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
                                 <input
                                     type="email"
                                     placeholder="Enter your email"
-                                    className="flex-1 bg-black/5 border border-black/10 dark:bg-white/5 dark:border-white/10 rounded-lg px-4 py-2 text-base md:text-sm text-gray-800 dark:text-gray-200 focus:outline-none focus:border-black/30 dark:focus:border-white/30 transition-all duration-200 placeholder:text-gray-500 dark:placeholder:text-gray-600 focus:scale-[1.01]"
+                                    className="flex-1 bg-white dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-lg px-4 py-2 text-base md:text-sm text-zinc-800 dark:text-gray-200 focus:outline-none focus:border-zinc-400 dark:focus:border-white/30 transition-all duration-200 placeholder:text-zinc-400 dark:placeholder:text-gray-600 focus:scale-[1.01]"
                                 />
                                 <button
                                     type="submit"

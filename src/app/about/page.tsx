@@ -36,7 +36,7 @@ export default function About() {
                     Over the past few years I&apos;ve worked across design, frontend development, branding, and product strategy. Instead of choosing one lane, I learned enough of each to take products from idea to launch.
                 </p>
                 <p>
-                    Today I&apos;m building <a href="https://glyph.software" target="_blank" rel="noreferrer" className="text-brandAccent hover:text-brandAccent-hover font-medium hover:underline whitespace-nowrap">Glyph</a>, an AI-powered brand identity generator, while also running <a href="https://www.blurr.design/" target="_blank" rel="noreferrer" className="text-brandAccent hover:text-brandAccent-hover font-medium hover:underline whitespace-nowrap">Blurr Design</a> where I help startups design and build modern digital products.
+                    Today I&apos;m building <a href="https://glyph.software" target="_blank" rel="noreferrer" className="text-brandAccent hover:text-brandAccent-hover font-medium hover:underline whitespace-nowrap">Glyph</a>, an AI-powered brand identity generator, and <a href="https://uxpulseclarity.vercel.app/" target="_blank" rel="noreferrer" className="text-brandAccent hover:text-brandAccent-hover font-medium hover:underline whitespace-nowrap">UX Pulse</a>, an AI UX engineer built for Microsoft Clarity.
                 </p>
                 <p>
                     What excites me most isn&apos;t the technology itself. It&apos;s the moment when an idea stops being a document and becomes something real that people can interact with.
