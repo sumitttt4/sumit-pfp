@@ -132,23 +132,6 @@ export default function Home() {
                 {/* Experience Timeline */}
                 <div className="pt-6 border-t border-zinc-100 dark:border-zinc-800/80">
                     <div className="relative pl-4 border-l border-zinc-200/90 dark:border-zinc-800 space-y-6 text-[13px]">
-                        {/* Blurr Design */}
-                        <div className="relative">
-                            <span className="absolute -left-[21px] top-1.5 flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                            </span>
-                            <div className="flex items-baseline justify-between flex-wrap gap-2">
-                                <div>
-                                    <span className="font-bold text-zinc-900 dark:text-white">Blurr Design</span>
-                                    <span className="text-zinc-500 dark:text-zinc-400 font-normal ml-2">— Design Engineer (Part-time)</span>
-                                </div>
-                                <span className="text-zinc-400 dark:text-zinc-500 font-mono text-xs">Jul 2026 – Present</span>
-                            </div>
-                            <p className="text-[12px] text-zinc-600 dark:text-zinc-400 mt-1.5 leading-relaxed max-w-xl">
-                                Partnered with early-stage founders to design interactive interfaces in Figma and ship production-grade code, helping multiple startups launch and scale their MVPs.
-                            </p>
-                        </div>
                         {/* Glyph */}
                         <div className="relative">
                             <span className="absolute -left-[21px] top-1.5 h-2 w-2 rounded-full bg-zinc-300 dark:bg-zinc-700 border border-white dark:border-zinc-950" />
@@ -165,7 +148,10 @@ export default function Home() {
                         </div>
                         {/* Glyph Skill */}
                         <div className="relative">
-                            <span className="absolute -left-[21px] top-1.5 h-2 w-2 rounded-full bg-zinc-300 dark:bg-zinc-700 border border-white dark:border-zinc-950" />
+                            <span className="absolute -left-[21px] top-1.5 flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            </span>
                             <div className="flex items-baseline justify-between flex-wrap gap-2">
                                 <div>
                                     <a 

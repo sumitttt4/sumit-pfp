@@ -26,7 +26,7 @@ export const projects: Project[] = [
     name: "Glyph Skill",
     category: "AI Coding Assistant Skill",
     description: "An enforceable brand, layout, and documentation skill for your AI coding assistant. Import strict layout constraints, typography locks, color variables, and animation limits.",
-    image: "/glyph-skill.png",
+    image: "/glyph-skill.jpg",
     metrics: "Live · Open Source",
     liveUrl: "https://glyph-skillfordesign.vercel.app/",
     githubUrl: "https://github.com/sumitttt4/Glyph-Skill",
