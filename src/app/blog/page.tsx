@@ -64,7 +64,7 @@ export default async function Blog() {
                     <div className="space-y-8">
                         {allPosts.map((post) => (
                             post.link ? (
-                                <a key={post.id} href={post.link} target="_blank" rel="noreferrer" className="group block cursor-pointer space-y-1">
+                                <a key={post.id} href={post.link} target="_blank" rel="noreferrer" className="group block cursor-pointer space-y-1 transition-all active:scale-[0.99]">
                                     <div className="flex items-center gap-2 text-[10px] font-mono tracking-normal text-zinc-900/40 dark:text-white/30">
                                         <span>{formatDate(post.date)}</span>
                                         <span>•</span>
@@ -77,7 +77,7 @@ export default async function Blog() {
                                     </div>
                                 </a>
                             ) : (
-                                <Link key={post.id} href={`/blog/${post.slug}`} className="group block cursor-pointer space-y-1">
+                                <Link key={post.id} href={`/blog/${post.slug}`} className="group block cursor-pointer space-y-1 transition-all active:scale-[0.99]">
                                     <div className="flex items-center gap-2 text-[10px] font-mono tracking-normal text-zinc-900/40 dark:text-white/30">
                                         <span>{formatDate(post.date)}</span>
                                         <span>•</span>
