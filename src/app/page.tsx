@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, Grid, ArrowUpRight, ChevronUp, Mail, Twitter, Calendar, Send, Clock, MapPin, Globe } from 'lucide-react';
 import projects from '@/data/projects';
 import ProjectCard from '@/components/ui/ProjectCard';
+import Link from 'next/link';
 import AsciiHeroContainer from '@/components/ui/AsciiHeroContainer';
 import GithubCalendarComponent from '@/components/ui/GithubCalendarComponent';
 
@@ -182,8 +183,8 @@ const hiddenStackTools = [
 export default function Home() {
     const [isLetsTalkOpen, setIsLetsTalkOpen] = useState(false);
     const [stackViewMode, setStackViewMode] = useState<'list' | 'grid'>('list');
-    const [projectLayout, setProjectLayout] = useState<'list' | 'grid'>('grid');
-    const [showAllProjects, setShowAllProjects] = useState(false);
+    const [projectLayout, setProjectLayout] = useState<'list' | 'grid'>('list');
+    
     const [isFullStackExpanded, setIsFullStackExpanded] = useState(false);
     const [hoveredProjectId, setHoveredProjectId] = useState<string | null>(null);
     const [hoveredStackCategory, setHoveredStackCategory] = useState<string | null>(null);
@@ -198,7 +199,7 @@ export default function Home() {
         return () => clearInterval(interval);
     }, [roles.length]);
 
-    const visibleProjects = showAllProjects ? projects : projects.slice(0, 4);
+    const visibleProjects = projects.slice(0, 4);
 
     return (
         <motion.div
@@ -469,7 +470,7 @@ export default function Home() {
                         ))}
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-1">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-8 pt-1">
                         {visibleProjects.map((project) => (
                             <ProjectCard
                                 key={project.slug}
@@ -492,12 +493,12 @@ export default function Home() {
                 )}
 
                 <div className="text-center pt-2">
-                    <button
-                        onClick={() => setShowAllProjects(!showAllProjects)}
+                    <Link
+                        href="/projects"
                         className="inline-flex items-center gap-1 px-4 py-1.5 rounded-full bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 text-xs font-semibold hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all active:scale-[0.97] shadow-sm"
                     >
-                        {showAllProjects ? 'Show less' : 'View all'} <ArrowUpRight className="w-3.5 h-3.5" />
-                    </button>
+                        View all <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
                 </div>
             </motion.section>
 

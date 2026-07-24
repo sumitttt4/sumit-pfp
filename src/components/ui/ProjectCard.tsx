@@ -64,11 +64,11 @@ export default function ProjectCard({
         onFocus={onFocus}
         onBlur={onBlur}
         tabIndex={0}
-        className={`group space-y-2.5 flex flex-col h-full outline-none focus:outline-none transition-all duration-200 ease-out ${opacityClass} ${transformClass}`}
+        className={`group space-y-2 flex flex-col h-full outline-none focus:outline-none transition-all duration-200 ease-out ${opacityClass} ${transformClass}`}
       >
         {/* Compact Editorial Image Container */}
         {image && (
-          <div className={`aspect-[16/9.5] w-full rounded-xl overflow-hidden bg-black/[0.03] dark:bg-white/[0.04] border relative transition-all duration-200 ${
+          <div className={`aspect-[16/9] w-full rounded-lg overflow-hidden bg-black/[0.03] dark:bg-white/[0.04] border relative transition-all duration-200 ${
             isHovered
               ? 'border-black/25 dark:border-white/30 shadow-sm'
               : 'border-black/10 dark:border-white/10'
@@ -85,7 +85,7 @@ export default function ProjectCard({
 
         {/* Title & Icon Links */}
         <div className="flex items-center justify-between gap-3 pt-0.5">
-          <h3 className={`text-[15px] font-semibold tracking-tight transition-colors duration-200 ${
+          <h3 className={`text-[13.5px] font-semibold tracking-tight transition-colors duration-200 ${
             isHovered
               ? 'text-brandAccent dark:text-brandAccent'
               : 'text-zinc-900 dark:text-white'
@@ -143,11 +143,11 @@ export default function ProjectCard({
       onFocus={onFocus}
       onBlur={onBlur}
       tabIndex={0}
-      className={`group py-4 border-b border-zinc-200/80 dark:border-zinc-800/80 space-y-1.5 last:border-b-0 outline-none focus:outline-none transition-all duration-200 ease-out ${opacityClass} ${transformClass}`}
+      className={`group py-3 border-b border-zinc-200/80 dark:border-zinc-800/80 space-y-1 last:border-b-0 outline-none focus:outline-none transition-all duration-200 ease-out ${opacityClass} ${transformClass}`}
     >
       {/* Top Header: Title & Action Links */}
       <div className="flex items-center justify-between gap-4">
-        <h3 className={`text-[16px] font-semibold tracking-tight transition-colors duration-200 ${
+        <h3 className={`text-[14.5px] font-semibold tracking-tight transition-colors duration-200 ${
           isHovered
             ? 'text-brandAccent dark:text-brandAccent'
             : 'text-zinc-900 dark:text-white'
@@ -182,7 +182,7 @@ export default function ProjectCard({
       </div>
 
       {/* Description */}
-      <p className={`text-[13.5px] leading-relaxed font-normal max-w-2xl transition-colors duration-200 ${
+      <p className={`text-[13px] leading-relaxed font-normal max-w-2xl transition-colors duration-200 ${
         isHovered ? 'text-zinc-900 dark:text-zinc-200' : 'text-zinc-600 dark:text-zinc-400'
       }`}>
         {description}
