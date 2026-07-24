@@ -13,7 +13,7 @@ interface GithubCalendarComponentProps {
 interface Activity {
   date: string;
   count: number;
-  level: 0 | 1 | 2 | 3 | 4;
+  level: number;
 }
 
 interface TooltipState {
