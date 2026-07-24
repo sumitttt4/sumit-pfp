@@ -25,9 +25,9 @@ const itemVariants = {
     opacity: 1,
     filter: "blur(0px)",
     y: 0,
-    transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] as const },
   },
-};
+} as const;
 
 export default function ProjectCard({
   name,
