@@ -89,7 +89,7 @@ const LetsTalkModal: React.FC<LetsTalkModalProps> = ({ isOpen, onClose }) => {
                                     setFeedback('Opening Resume...');
                                     setTimeout(() => setFeedback(null), 3000);
                                 }}
-                                className="group flex items-center justify-between px-4 py-3 rounded-xl hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors text-left w-full"
+                                className="group flex items-center justify-between px-4 py-3 rounded-xl hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-all active:scale-[0.97] text-left w-full"
                             >
                                 <div className="flex items-center gap-3">
                                     <svg className="w-4 h-4 fill-current text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +106,7 @@ const LetsTalkModal: React.FC<LetsTalkModalProps> = ({ isOpen, onClose }) => {
                             {/* Email Link */}
                             <button
                                 onClick={handleCopyEmail}
-                                className="group flex items-center justify-between px-4 py-3 rounded-xl hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors text-left w-full"
+                                className="group flex items-center justify-between px-4 py-3 rounded-xl hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-all active:scale-[0.97] text-left w-full"
                             >
                                 <div className="flex items-center gap-3">
                                     <svg className="w-4 h-4 fill-current text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -127,7 +127,7 @@ const LetsTalkModal: React.FC<LetsTalkModalProps> = ({ isOpen, onClose }) => {
                                     setFeedback('Opening Cal.com in a new tab...');
                                     setTimeout(() => setFeedback(null), 3000);
                                 }}
-                                className="group flex items-center justify-between px-4 py-3 rounded-xl hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors text-left w-full"
+                                className="group flex items-center justify-between px-4 py-3 rounded-xl hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-all active:scale-[0.97] text-left w-full"
                             >
                                 <div className="flex items-center gap-3">
                                     <Calendar className="w-4 h-4 text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" />
@@ -146,7 +146,7 @@ const LetsTalkModal: React.FC<LetsTalkModalProps> = ({ isOpen, onClose }) => {
                                     setFeedback('Opening X / Twitter in a new tab...');
                                     setTimeout(() => setFeedback(null), 3000);
                                 }}
-                                className="group flex items-center justify-between px-4 py-3 rounded-xl hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors text-left w-full"
+                                className="group flex items-center justify-between px-4 py-3 rounded-xl hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-all active:scale-[0.97] text-left w-full"
                             >
                                 <div className="flex items-center gap-3">
                                     <Twitter className="w-4 h-4 text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" />
@@ -178,7 +178,7 @@ const LetsTalkModal: React.FC<LetsTalkModalProps> = ({ isOpen, onClose }) => {
                             )}
                             <button
                                 onClick={onClose}
-                                className="px-2 py-1 rounded bg-zinc-200/40 dark:bg-zinc-800/40 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80 text-zinc-500 dark:text-zinc-400 transition-colors cursor-pointer"
+                                className="px-2 py-1 rounded bg-zinc-200/40 dark:bg-zinc-800/40 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80 text-zinc-500 dark:text-zinc-400 transition-all active:scale-[0.95] cursor-pointer"
                             >
                                 Close
                             </button>

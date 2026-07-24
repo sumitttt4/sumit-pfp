@@ -17,6 +17,8 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ['var(--font-geist-sans)', 'sans-serif'],
+				serif: ['var(--font-geist-sans)', 'sans-serif'],
+				mono: ['var(--font-geist-sans)', 'sans-serif'],
 				satoshi: ['var(--font-geist-sans)', 'sans-serif'],
 				inter: ['var(--font-geist-sans)', 'sans-serif'],
 				poppins: ['var(--font-geist-sans)', 'sans-serif'],
@@ -92,7 +94,7 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.6s ease-out',
+				'fade-in': 'fade-in 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
 				'float': 'float 3s ease-in-out infinite',
 				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
 			}

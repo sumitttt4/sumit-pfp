@@ -1,148 +1,110 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Github } from 'lucide-react';
+import { ArrowUpRight, Globe, Github } from 'lucide-react';
 
 interface ProjectCardProps {
   name: string;
   description: string;
-  image: string;
-  category: string;
+  image?: string;
+  category?: string;
   metrics?: string;
   liveUrl?: string;
   githubUrl?: string;
-  isSpotlight?: boolean;
+  layout?: 'list' | 'grid';
+  isHovered?: boolean;
+  isAnyHovered?: boolean;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
+
+const itemVariants = {
+  hidden: { opacity: 0, filter: "blur(8px)", y: 8 },
+  show: {
+    opacity: 1,
+    filter: "blur(0px)",
+    y: 0,
+    transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+  },
+};
 
 export default function ProjectCard({
   name,
   description,
   image,
-  category,
-  metrics,
   liveUrl,
   githubUrl,
-  isSpotlight = false,
+  layout = 'list',
+  isHovered = false,
+  isAnyHovered = false,
+  onMouseEnter,
+  onMouseLeave,
+  onFocus,
+  onBlur,
 }: ProjectCardProps) {
-  if (isSpotlight) {
+  // Determine opacity and transform state based on hover spotlight
+  const opacityClass = isAnyHovered
+    ? isHovered
+      ? 'opacity-100'
+      : 'opacity-30'
+    : 'opacity-100';
+
+  const transformClass = isHovered ? '-translate-y-[2px]' : 'translate-y-0';
+
+  if (layout === 'grid') {
     return (
       <motion.div
-        whileHover={{ y: -4 }}
-        transition={{ type: "spring", stiffness: 350, damping: 25 }}
-        className="group grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-center w-full"
+        variants={itemVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        tabIndex={0}
+        className={`group space-y-2.5 flex flex-col h-full outline-none focus:outline-none transition-all duration-200 ease-out ${opacityClass} ${transformClass}`}
       >
-        {/* Large Project Image */}
-        <div className="md:col-span-7 aspect-video w-full rounded-2xl overflow-hidden bg-black/[0.02] border border-zinc-200/80 dark:border-white/10 backdrop-blur-md relative shadow-sm group-hover:shadow-md transition-all duration-300">
-          <img
-            src={image}
-            alt={name}
-            className="w-full h-full object-cover opacity-95 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 ease-out"
-          />
-        </div>
-
-        {/* Info & Spacing */}
-        <div className="md:col-span-5 px-1 flex flex-col justify-center space-y-4">
-          <div className="space-y-3">
-            {/* Category Badge & Metrics */}
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold font-mono bg-zinc-100 text-zinc-700 border border-zinc-200/60 uppercase tracking-wider whitespace-nowrap dark:bg-zinc-800 dark:text-zinc-300 dark:border-zinc-700/50">
-                {category}
-              </span>
-              {metrics && (
-                <span className="text-[11px] text-zinc-500 font-mono flex items-center gap-1 whitespace-nowrap dark:text-zinc-400">
-                  <span className="text-[10px]">↗</span> {metrics}
-                </span>
-              )}
-            </div>
-
-            <h3 className="text-2xl font-bold text-zinc-900 dark:text-white group-hover:text-brandAccent dark:group-hover:text-brandAccent transition-colors tracking-tight leading-tight">
-              {name}
-            </h3>
-
-            <p className="text-[15px] text-zinc-700 dark:text-zinc-400 leading-relaxed font-normal">
-              {description}
-            </p>
+        {/* Compact Editorial Image Container */}
+        {image && (
+          <div className={`aspect-[16/9.5] w-full rounded-xl overflow-hidden bg-black/[0.03] dark:bg-white/[0.04] border relative transition-all duration-200 ${
+            isHovered
+              ? 'border-black/25 dark:border-white/30 shadow-sm'
+              : 'border-black/10 dark:border-white/10'
+          }`}>
+            <img
+              src={image}
+              alt={name}
+              className={`w-full h-full object-cover transition-opacity duration-200 ease-out ${
+                isHovered ? 'opacity-100' : 'opacity-90'
+              }`}
+            />
           </div>
+        )}
 
-          {/* Action Links */}
-          {(liveUrl || githubUrl) && (
-            <div className="pt-2 flex items-center gap-4">
-              {liveUrl && (
-                <a
-                  href={liveUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-zinc-900 dark:text-white hover:text-brandAccent dark:hover:text-brandAccent transition-colors pb-0.5 border-b border-zinc-900/10 hover:border-brandAccent/30 dark:border-white/20 dark:hover:border-white/40"
-                >
-                  <ArrowUpRight className="w-3.5 h-3.5" /> Live Preview
-                </a>
-              )}
-              {githubUrl && (
-                <a
-                  href={githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-zinc-900 dark:text-white hover:text-brandAccent dark:hover:text-brandAccent transition-colors pb-0.5 border-b border-zinc-900/10 hover:border-brandAccent/30 dark:border-white/20 dark:hover:border-white/40"
-                >
-                  <Github className="w-3.5 h-3.5" /> GitHub
-                </a>
-              )}
-            </div>
-          )}
-        </div>
-      </motion.div>
-    );
-  }
-
-  return (
-    <motion.div
-      whileHover={{ y: -6, scale: 1.015 }}
-      transition={{ type: "spring", stiffness: 350, damping: 25 }}
-      className="group space-y-4 flex flex-col h-full"
-    >
-      {/* Small Project Image */}
-      <div className="aspect-video w-full rounded-xl overflow-hidden bg-black/[0.02] border border-zinc-200/80 dark:border-white/10 backdrop-blur-md relative shadow-sm group-hover:shadow-md transition-all duration-300">
-        <img
-          src={image}
-          alt={name}
-          className="w-full h-full object-cover opacity-95 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500 ease-out"
-        />
-      </div>
-
-      {/* Info & Spacing */}
-      <div className="px-1 flex-1 flex flex-col justify-between space-y-3">
-        <div className="space-y-2">
-          {/* Category Badge & Metrics */}
-          <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5">
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold font-mono bg-zinc-100 text-zinc-700 border border-zinc-200/60 uppercase tracking-wider whitespace-nowrap dark:bg-zinc-800 dark:text-zinc-300 dark:border-zinc-700/50">
-              {category}
-            </span>
-            {metrics && (
-              <span className="text-[11px] text-zinc-500 font-mono flex items-center gap-1 whitespace-nowrap dark:text-zinc-400">
-                <span className="text-[10px]">↗</span> {metrics}
-              </span>
-            )}
-          </div>
-
-          <h3 className="text-lg font-bold text-zinc-900 dark:text-white group-hover:text-brandAccent dark:group-hover:text-brandAccent transition-colors tracking-tight leading-snug">
+        {/* Title & Icon Links */}
+        <div className="flex items-center justify-between gap-3 pt-0.5">
+          <h3 className={`text-[15px] font-semibold tracking-tight transition-colors duration-200 ${
+            isHovered
+              ? 'text-brandAccent dark:text-brandAccent'
+              : 'text-zinc-900 dark:text-white'
+          }`}>
             {name}
           </h3>
 
-          <p className="text-[14px] text-zinc-700 dark:text-zinc-400 leading-relaxed font-normal">
-            {description}
-          </p>
-        </div>
-
-        {/* Action Links */}
-        {(liveUrl || githubUrl) && (
-          <div className="pt-2 flex items-center gap-4">
+          <div className={`flex items-center gap-2.5 transition-colors duration-200 ${
+            isHovered ? 'text-zinc-900 dark:text-white' : 'text-zinc-400 dark:text-zinc-500'
+          }`}>
             {liveUrl && (
               <a
                 href={liveUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-zinc-900 dark:text-white hover:text-brandAccent dark:hover:text-brandAccent transition-colors pb-0.5 border-b border-zinc-900/10 hover:border-brandAccent/30 dark:border-white/20 dark:hover:border-white/40"
+                className="hover:text-zinc-900 dark:hover:text-white transition-colors active:scale-[0.95]"
+                title="Visit Live Site"
               >
-                <ArrowUpRight className="w-3.5 h-3.5" /> Live Preview
+                <Globe className="w-3.5 h-3.5" />
               </a>
             )}
             {githubUrl && (
@@ -150,14 +112,81 @@ export default function ProjectCard({
                 href={githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-zinc-900 dark:text-white hover:text-brandAccent dark:hover:text-brandAccent transition-colors pb-0.5 border-b border-zinc-900/10 hover:border-brandAccent/30 dark:border-white/20 dark:hover:border-white/40"
+                className="hover:text-zinc-900 dark:hover:text-white transition-colors active:scale-[0.95]"
+                title="View GitHub Repository"
               >
-                <Github className="w-3.5 h-3.5" /> GitHub
+                <Github className="w-3.5 h-3.5" />
               </a>
             )}
           </div>
-        )}
+        </div>
+
+        {/* Description */}
+        <p className={`text-[13px] leading-relaxed font-normal line-clamp-2 transition-colors duration-200 ${
+          isHovered ? 'text-zinc-800 dark:text-zinc-300' : 'text-zinc-500 dark:text-zinc-400'
+        }`}>
+          {description}
+        </p>
+      </motion.div>
+    );
+  }
+
+  // Default List View (picture-less text rows)
+  return (
+    <motion.div
+      variants={itemVariants}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      tabIndex={0}
+      className={`group py-4 border-b border-zinc-200/80 dark:border-zinc-800/80 space-y-1.5 last:border-b-0 outline-none focus:outline-none transition-all duration-200 ease-out ${opacityClass} ${transformClass}`}
+    >
+      {/* Top Header: Title & Action Links */}
+      <div className="flex items-center justify-between gap-4">
+        <h3 className={`text-[16px] font-semibold tracking-tight transition-colors duration-200 ${
+          isHovered
+            ? 'text-brandAccent dark:text-brandAccent'
+            : 'text-zinc-900 dark:text-white'
+        }`}>
+          {name}
+        </h3>
+
+        <div className={`flex items-center gap-4 text-xs font-medium transition-colors duration-200 ${
+          isHovered ? 'text-zinc-900 dark:text-white' : 'text-zinc-500 dark:text-zinc-400'
+        }`}>
+          {liveUrl && (
+            <a
+              href={liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 hover:text-zinc-900 dark:hover:text-white transition-all active:scale-[0.97]"
+            >
+              Website <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          )}
+          {githubUrl && (
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 hover:text-zinc-900 dark:hover:text-white transition-all active:scale-[0.97]"
+            >
+              GitHub <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          )}
+        </div>
       </div>
+
+      {/* Description */}
+      <p className={`text-[13.5px] leading-relaxed font-normal max-w-2xl transition-colors duration-200 ${
+        isHovered ? 'text-zinc-900 dark:text-zinc-200' : 'text-zinc-600 dark:text-zinc-400'
+      }`}>
+        {description}
+      </p>
     </motion.div>
   );
 }
