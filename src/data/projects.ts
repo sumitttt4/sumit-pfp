@@ -40,7 +40,7 @@ export const projects: Project[] = [
     description: "A premium digital marketplace designed and built for creators, featuring bespoke grid systems, smooth loading states, and custom design variables.",
     image: "/vibe-market-landing.png",
     metrics: "Design & Development",
-    liveUrl: "https://vibe-market.vercel.app/",
+    liveUrl: "https://vibemarket.tech/",
     featured: true
   },
   {
