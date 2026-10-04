@@ -39,18 +39,18 @@ export default async function Post({ params }: { params: { slug: string } }) {
 
   return (
     <AsciiHeroContainer className="w-full">
-      <article className="prose prose-sm prose-zinc dark:prose-invert max-w-3xl mx-auto py-12 animate-fade-in">
-      <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-wider text-zinc-900/60 dark:text-white/40 mb-6">
+      <article className="prose prose-sm prose-zinc dark:prose-invert text-foreground max-w-3xl mx-auto py-12 animate-fade-in">
+      <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-wider text-muted-foreground mb-6">
           <span>{formatDate(post.date)}</span>
           <span>•</span>
           <span>{post.readTime}</span>
           <span>•</span>
-          <span className="text-zinc-900/70 dark:text-white/60">{post.tag}</span>
+          <span className="text-muted-foreground">{post.tag}</span>
       </div>
-      <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white mb-8 border-b border-black/10 dark:border-white/10 pb-8">
+      <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-8 border-b border-border pb-8">
         {post.title}
       </h1>
-      <div className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
+      <div className="text-muted-foreground leading-relaxed text-lg">
         {/* Render serialized markdoc or plain content for now */}
         {contentNode ? (
           <DocumentRenderer document={contentNode} />

@@ -1,147 +1,104 @@
 "use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { motion } from 'framer-motion';
-import GridBackground from '@/components/ui/GridBackground';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import { Sun, Moon, ArrowUp } from "lucide-react";
+import PaperAccent from "@/components/ui/PaperAccent";
+import BrandLogo from "@/components/ui/BrandLogo";
+import AccentPicker from "@/components/ui/AccentPicker";
+import { type AccentChoice } from "@/data/accents";
+import { profile } from "@/data/profile";
 
-import { useTheme } from 'next-themes';
-import LetsTalkModal from '@/components/ui/LetsTalkModal';
-import { Sun, Moon } from 'lucide-react';
-import VisitorCounter from '@/components/ui/VisitorCounter';
-
-const MinimalLayout = ({ children }: { children: React.ReactNode }) => {
-    const pathname = usePathname();
-    const { theme, setTheme } = useTheme();
-    const [mounted, setMounted] = React.useState(false);
-    const [isLetsTalkOpen, setIsLetsTalkOpen] = React.useState(false);
-
-    React.useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    const navLinks = [
-        { name: 'Home', path: '/' },
-        { name: 'About', path: '/about' },
-        { name: 'Blog', path: '/blog' },
-        { name: 'Designs', path: 'https://sumitdesigns.vercel.app/', external: true },
-    ];
-
-    return (
-        <div className="min-h-screen bg-[#faf9f6] dark:bg-[#050505] text-zinc-900 dark:text-zinc-100 font-sans selection:bg-black/10 selection:text-zinc-900 dark:selection:bg-white/10 dark:selection:text-white relative transition-colors duration-300 overflow-x-hidden">
-            {/* Decorative Background */}
-            <GridBackground />
-
-            {/* Structural Main Container with Vertical Rails */}
-            <div className="max-w-5xl mx-auto border-x border-zinc-200/80 dark:border-white/5 min-h-screen relative">
-
-                {/* Navigation */}
-                <header className="sticky top-0 z-50 bg-white/85 dark:bg-[#050505]/80 backdrop-blur-md border-b border-zinc-200/80 dark:border-white/5">
-
-                    <div className="px-3 sm:px-6 h-16 flex items-center justify-between">
-                        <div className="flex items-center gap-2.5 sm:gap-6 md:gap-10">
-                            {navLinks.map((link) => {
-                                const isActive = link.path === '/' ? pathname === '/' : pathname.startsWith(link.path);
-                                if (link.external) {
-                                    return (
-                                        <a
-                                            key={link.name}
-                                            href={link.path}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="inline-block relative text-[11px] sm:text-sm font-medium transition-all text-gray-500 hover:text-black dark:text-zinc-400 dark:hover:text-white active:scale-[0.97]"
-                                        >
-                                            {link.name}
-                                        </a>
-                                    );
-                                }
-                                return (
-                                    <Link
-                                        key={link.name}
-                                        href={link.path}
-                                        className={`inline-block relative text-[11px] sm:text-sm font-medium transition-all active:scale-[0.97] ${isActive ? 'text-zinc-900 dark:text-white' : 'text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white'}`}
-                                    >
-                                        {link.name}
-                                        {isActive && (
-                                            <motion.div
-                                                layoutId="nav-underline"
-                                                className="absolute -bottom-5 left-0 right-0 h-[1px] bg-brandAccent"
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                transition={{ duration: 0.2 }}
-                                            />
-                                        )}
-                                    </Link>
-                                );
-                            })}
-                        </div>
-
-                        {/* Right: Actions */}
-                        <div className="flex items-center gap-1 sm:gap-2">
-                            {mounted && (
-                                <button
-                                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                                    className="p-1.5 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-all active:scale-[0.95] cursor-pointer"
-                                    aria-label="Toggle Theme"
-                                >
-                                    {theme === 'dark' ? <Sun className="w-4 h-4 sm:w-[18px] sm:h-[18px]" /> : <Moon className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />}
-                                </button>
-                            )}
-                            <a
-                                href="https://github.com/sumitttt4"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="p-1.5 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-all active:scale-[0.95] inline-flex items-center justify-center"
-                                title="GitHub Profile"
-                            >
-                                <svg className="w-4 h-4 sm:w-[18px] sm:h-[18px] fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </header>
-
-                {/* Main Content */}
-                <main className="py-20 px-6 sm:px-12 relative">
-                    {children}
-                </main>
-
-                {/* Footer */}
-                <footer className="border-t border-zinc-200/80 dark:border-white/5 w-full relative">
-
-                    <div className="px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                        <div className="space-y-2 text-center md:text-left">
-                            <div className="text-gray-900 dark:text-gray-200 font-medium">Sumit Sharma</div>
-                            <div className="text-xs text-gray-500 pb-2">
-                                © {new Date().getFullYear()} All rights reserved.
-                            </div>
-                            <VisitorCounter />
-                        </div>
-
-                        <div className="flex flex-col items-center md:items-end gap-4">
-                            <p className="text-sm text-gray-600 dark:text-gray-400">Stay updated with my latest projects</p>
-                            <form className="flex w-full max-w-sm gap-2" onSubmit={(e) => e.preventDefault()}>
-                                <input
-                                    type="email"
-                                    placeholder="Enter your email"
-                                    className="flex-1 bg-white dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-lg px-4 py-2 text-base md:text-sm text-zinc-800 dark:text-gray-200 focus:outline-none focus:border-zinc-400 dark:focus:border-white/30 transition-all duration-200 placeholder:text-zinc-400 dark:placeholder:text-gray-600 focus:scale-[1.01]"
-                                />
-                                <button
-                                    type="submit"
-                                    className="bg-black/10 hover:bg-black/20 text-black dark:bg-white/10 dark:hover:bg-white/20 dark:text-white text-sm font-medium px-4 py-2 rounded-lg transition-all active:scale-[0.97]"
-                                >
-                                    Subscribe
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-            <LetsTalkModal isOpen={isLetsTalkOpen} onClose={() => setIsLetsTalkOpen(false)} />
+export default function MinimalLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const path = usePathname();
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const [accent, setAccent] = useState<AccentChoice>("default");
+  useEffect(() => {
+    setMounted(true);
+    // Every visit starts with the original design. Ignore old playground preferences.
+    delete document.documentElement.dataset.accent;
+    delete document.documentElement.dataset.pattern;
+    delete document.documentElement.dataset.typeface;
+  }, []);
+  function changeAccent(next: AccentChoice) {
+    setAccent(next);
+    if (next === "default") delete document.documentElement.dataset.accent;
+    else document.documentElement.dataset.accent = next;
+  }
+  if (path.startsWith("/keystatic")) return <>{children}</>;
+  const links = [
+    { label: "Work", href: "/projects" },
+    { label: "About", href: "/about" },
+    { label: "Writing", href: "/blog" },
+  ];
+  return (
+    <div className="site-shell">
+      <PaperAccent accent={accent} />
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
+      <header className="site-header">
+        <Link className="site-name" href="/" aria-label="Sumit Sharma home">
+          <span>Sumit Sharma</span>
+        </Link>
+        <nav aria-label="Main navigation">
+          {links.map((link) => (
+            <Link
+              href={link.href}
+              key={link.href}
+              aria-current={path.startsWith(link.href) ? "page" : undefined}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <a className="icon-button header-github" href={profile.github} target="_blank" rel="noreferrer" aria-label="Sumit Sharma on GitHub">
+            <BrandLogo name="github" size={17} />
+          </a>
+          <button
+            className="icon-button theme-toggle"
+            type="button"
+            onClick={() =>
+              setTheme(resolvedTheme === "dark" ? "light" : "dark")
+            }
+            aria-label={
+              mounted && resolvedTheme === "dark"
+                ? "Switch to light theme"
+                : "Switch to dark theme"
+            }
+          >
+            {mounted && resolvedTheme === "dark" ? (
+              <Sun size={17} />
+            ) : (
+              <Moon size={17} />
+            )}
+          </button>
+        </nav>
+      </header>
+      <main id="main" tabIndex={-1}>
+        {children}
+      </main>
+      <footer className="site-footer">
+        <div className="footer-signoff">
+          <Link href="/" className="footer-wordmark" aria-label="Sumit Sharma home">sumit<span aria-hidden="true">✳</span></Link>
+          <a href="#main" className="footer-back-top">Back to top <ArrowUp size={14} aria-hidden="true" /></a>
         </div>
-    );
-};
-
-export default MinimalLayout;
+        <AccentPicker value={accent} onChange={changeAccent} />
+        <div className="footer-bottom">
+          <p>© {new Date().getFullYear()} Sumit Sharma<span>{profile.location}</span></p>
+          <nav aria-label="Footer links">
+            <a href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
+            <a href={profile.twitter} target="_blank" rel="noreferrer">X</a>
+            <a href="https://github.com/sumitttt4/sumit-pfp" target="_blank" rel="noreferrer">Source</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+  );
+}

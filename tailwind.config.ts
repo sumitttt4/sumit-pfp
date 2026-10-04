@@ -18,7 +18,7 @@ export default {
 			fontFamily: {
 				sans: ['var(--font-geist-sans)', 'sans-serif'],
 				serif: ['var(--font-geist-sans)', 'sans-serif'],
-				mono: ['var(--font-geist-sans)', 'sans-serif'],
+				mono: ['var(--font-geist-mono)', 'monospace'],
 				satoshi: ['var(--font-geist-sans)', 'sans-serif'],
 				inter: ['var(--font-geist-sans)', 'sans-serif'],
 				poppins: ['var(--font-geist-sans)', 'sans-serif'],

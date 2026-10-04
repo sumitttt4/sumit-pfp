@@ -4,7 +4,7 @@ export interface Project {
   category: string;
   description: string;
   image: string;
-  metrics: string;
+  metrics?: string;
   liveUrl: string;
   githubUrl?: string;
   featured: boolean;
@@ -15,9 +15,8 @@ export const projects: Project[] = [
     slug: "glyph",
     name: "Glyph",
     category: "Founder • Product Design & Dev",
-    description: "Built and launched a branding tool end-to-end—from product design and frontend code to solo product marketing and execution. Generated $427 in revenue.",
+    description: "A tool that turns an idea into a brand identity. Designed, built, and launched independently.",
     image: "/glyph.png",
-    metrics: "$427 Revenue • 400+ Users",
     liveUrl: "https://glyph.software",
     featured: true
   },
@@ -25,7 +24,7 @@ export const projects: Project[] = [
     slug: "glyph-skill",
     name: "Glyph Skill",
     category: "AI Coding Assistant Skill",
-    description: "An enforceable brand, layout, and documentation skill for your AI coding assistant. Import strict layout constraints, typography locks, color variables, and animation limits.",
+    description: "A design skill for AI coding assistants, with practical rules for typography, layout, and motion.",
     image: "/glyph-skill.jpg",
     metrics: "Live · Open Source",
     liveUrl: "https://glyph-skillfordesign.vercel.app/",
@@ -37,7 +36,7 @@ export const projects: Project[] = [
     slug: "vibe-market",
     name: "Vibe Market",
     category: "Creator Marketplace",
-    description: "A premium digital marketplace designed and built for creators, featuring bespoke grid systems, smooth loading states, and custom design variables.",
+    description: "A marketplace for creators to share and sell their digital work.",
     image: "/vibe-market-landing.png",
     metrics: "Design & Development",
     liveUrl: "https://vibemarket.tech/",
@@ -47,7 +46,7 @@ export const projects: Project[] = [
     slug: "ux-pulse",
     name: "UX Pulse",
     category: "AI UX Engineer",
-    description: "Your AI UX engineer watches Microsoft Clarity recordings, explains why users leave, and recommends the highest-impact fixes.",
+    description: "Turns Microsoft Clarity recordings into useful suggestions for improving a product.",
     image: "/udpulse.png",
     metrics: "Built for Microsoft Clarity",
     liveUrl: "https://uxpulseclarity.vercel.app/",
