@@ -6,6 +6,12 @@ import MinimalLayout from "@/components/layout/MinimalLayout";
 import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/next";
 
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
+});
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -15,10 +21,12 @@ const geistSans = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://sumitsharmaa.me"),
   title: "Sumit Sharma – Design Engineer & Product Builder",
-  description: "Design Engineer and Product Builder. I build products, landing pages, and SaaS experiences using React, Next.js, and modern web technologies.",
+  description:
+    "Design Engineer and Product Builder. I build products, landing pages, and SaaS experiences using React, Next.js, and modern web technologies.",
   openGraph: {
     title: "Sumit Sharma – Design Engineer & Product Builder",
-    description: "Design Engineer and Product Builder. I build products, landing pages, and SaaS experiences using React, Next.js, and modern web technologies.",
+    description:
+      "Design Engineer and Product Builder. I build products, landing pages, and SaaS experiences using React, Next.js, and modern web technologies.",
     type: "website",
     url: "https://sumitsharmaa.me",
     siteName: "Sumit Sharma",
@@ -28,7 +36,8 @@ export const metadata: Metadata = {
     site: "@sumitdotme",
     creator: "@sumitdotme",
     title: "Sumit Sharma – Design Engineer & Product Builder",
-    description: "Design Engineer and Product Builder. I build products, landing pages, and SaaS experiences using React, Next.js, and modern web technologies.",
+    description:
+      "Design Engineer and Product Builder. I build products, landing pages, and SaaS experiences using React, Next.js, and modern web technologies.",
   },
 };
 
@@ -42,21 +51,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={geistSans.variable} suppressHydrationWarning>
-      <head>
-        {/* Geist Font is self-hosted via next/font/google */}
-      </head>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>{/* Fonts are bundled locally to avoid external requests. */}</head>
       <body className="font-sans antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem={false}
           disableTransitionOnChange
         >
           <Toaster />
-          <MinimalLayout>
-            {children}
-          </MinimalLayout>
+          <MinimalLayout>{children}</MinimalLayout>
         </ThemeProvider>
         <Analytics />
       </body>
