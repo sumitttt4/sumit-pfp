@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import "../styles/kumo.css";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import MinimalLayout from "@/components/layout/MinimalLayout";
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#477452",
+  themeColor: "#f6821f",
 };
 
 export default function RootLayout({

@@ -14,7 +14,7 @@ export const experience = [
   {
     company: "Craon",
     href: "https://craon.ai",
-    role: "Frontend Engineer",
+    role: "Frontend Engineer · Contract",
     date: "Aug 2026 — Present",
     current: true,
     description:

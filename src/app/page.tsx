@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PortfolioLinkButton } from "@/components/ui/PortfolioControls";
 import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import projects from "@/data/projects";
@@ -12,16 +13,16 @@ import GithubCalendarComponent from "@/components/ui/GithubCalendarComponent";
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 export default function Home() {
-  const selected = projects.filter((project) => project.featured);
+  const selected = projects.filter((project) => project.slug === "glyph");
   return (
     <div className="home-page">
       <section className="hero">
         <h1>Hey, I’m Sumit<span className="hello-mark" aria-hidden="true">✳</span></h1>
-        <p>A frontend engineer who enjoys designing and building things for the web. I care about the little details that make a product feel good to use.</p>
-        <p>Currently at <a className="inline-link" href="#experience">Craon</a>, building an AI video editor. I also built <a className="inline-link" href="https://glyph.software" target="_blank" rel="noreferrer">Glyph</a>, a brand identity generator for builders.</p>
+        <p>A frontend engineer who enjoys designing and building digital products. I care about the little details that make a product feel good to use.</p>
+        <p>Working with <a className="inline-link" href="#experience">Craon</a> on contract, building an AI video editor. I also built <a className="inline-link" href="https://glyph.software" target="_blank" rel="noreferrer">Glyph</a>, a brand identity generator for builders.</p>
         <div className="hero-links">
-          <a href={`mailto:${profile.email}`} className="text-link">Say hello <ArrowUpRight size={14} aria-hidden="true" /></a>
-          <a href={profile.resume} target="_blank" rel="noreferrer" className="text-link">Resume <ArrowUpRight size={14} aria-hidden="true" /></a>
+          <PortfolioLinkButton href={`mailto:${profile.email}`} variant="primary">Email me <ArrowUpRight size={14} aria-hidden="true" /></PortfolioLinkButton>
+          <PortfolioLinkButton href={profile.resume} target="_blank" rel="noreferrer" variant="ghost">Resume <ArrowUpRight size={14} aria-hidden="true" /></PortfolioLinkButton>
         </div>
       </section>
       <GithubCalendarComponent />
@@ -35,7 +36,7 @@ export default function Home() {
         </div>
         <div className="project-grid">
           {selected.map((project, index) => (
-            <ProjectCard key={project.slug} {...project} priority={index < 2} />
+            <ProjectCard key={project.slug} {...project} priority={index === 0} showVisual />
           ))}
         </div>
       </section>

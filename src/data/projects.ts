@@ -5,6 +5,13 @@ export interface Project {
   description: string;
   image: string;
   metrics?: string;
+  title?: string;
+  contribution?: string;
+  tags?: string[];
+  imageAlt?: string;
+  imageCaption?: string;
+  imageAspect?: "square" | "wide";
+  detailUrl?: string;
   liveUrl: string;
   githubUrl?: string;
   featured: boolean;
@@ -16,7 +23,14 @@ export const projects: Project[] = [
     name: "Glyph",
     category: "Founder • Product Design & Dev",
     description: "A tool that turns an idea into a brand identity. Designed, built, and launched independently.",
-    image: "/glyph.png",
+    image: "/projects/glyph-brand-output.webp",
+    title: "Glyph — from an idea to a brand system",
+    contribution: "I independently designed, built, and launched the product, connecting brand identity decisions with developer handoff.",
+    tags: ["Product design", "Frontend", "Brand systems"],
+    imageAlt: "Actual Glyph output showing a logo, colour palette, typography and applications across a brand system.",
+    imageCaption: "One generated identity, carried across a complete visual system.",
+    imageAspect: "square",
+    detailUrl: "/projects/glyph",
     liveUrl: "https://glyph.software",
     featured: true
   },
@@ -29,7 +43,7 @@ export const projects: Project[] = [
     metrics: "Live · Open Source",
     liveUrl: "https://glyph-skillfordesign.vercel.app/",
     githubUrl: "https://github.com/sumitttt4/Glyph-Skill",
-    featured: true
+    featured: false
   },
 
   {
@@ -38,6 +52,11 @@ export const projects: Project[] = [
     category: "Creator Marketplace",
     description: "A marketplace for creators to share and sell their digital work.",
     image: "/vibe-market-landing.png",
+    title: "Vibe Market — discovering builder projects",
+    contribution: "I designed and built the project discovery interface, with a launch feed and dedicated space for browsing creator projects.",
+    tags: ["Interface design", "Web development", "Discovery"],
+    imageAlt: "Vibe Market launch-board interface from the existing project presentation.",
+    imageCaption: "Launch-board interface · existing project screenshot",
     metrics: "Design & Development",
     liveUrl: "https://vibemarket.tech/",
     featured: true
@@ -48,6 +67,11 @@ export const projects: Project[] = [
     category: "AI UX Engineer",
     description: "Turns Microsoft Clarity recordings into useful suggestions for improving a product.",
     image: "/udpulse.png",
+    title: "UX Pulse — a clearer view of UX issues",
+    contribution: "I built the product interface around Microsoft Clarity recordings, UX issues, and suggested fixes.",
+    tags: ["Frontend", "UX", "Microsoft Clarity"],
+    imageAlt: "UX Pulse landing page and dashboard preview from the existing project screenshot.",
+    imageCaption: "Product landing page and dashboard preview · existing project screenshot",
     metrics: "Built for Microsoft Clarity",
     liveUrl: "https://uxpulseclarity.vercel.app/",
     featured: true
