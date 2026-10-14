@@ -7,9 +7,8 @@ import { useEffect, useState } from "react";
 import { Sun, Moon, ArrowUp } from "lucide-react";
 import PaperAccent from "@/components/ui/PaperAccent";
 import BrandLogo from "@/components/ui/BrandLogo";
-import AccentPicker from "@/components/ui/AccentPicker";
-import { type AccentChoice } from "@/data/accents";
 import { profile } from "@/data/profile";
+import { PortfolioButton, PortfolioControlsProvider } from "@/components/ui/PortfolioControls";
 
 export default function MinimalLayout({
   children,
@@ -18,8 +17,8 @@ export default function MinimalLayout({
 }) {
   const path = usePathname();
   const { resolvedTheme, setTheme } = useTheme();
+  const [pointerTheme, setPointerTheme] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [accent, setAccent] = useState<AccentChoice>("default");
   useEffect(() => {
     setMounted(true);
     // Every visit starts with the original design. Ignore old playground preferences.
@@ -27,11 +26,6 @@ export default function MinimalLayout({
     delete document.documentElement.dataset.pattern;
     delete document.documentElement.dataset.typeface;
   }, []);
-  function changeAccent(next: AccentChoice) {
-    setAccent(next);
-    if (next === "default") delete document.documentElement.dataset.accent;
-    else document.documentElement.dataset.accent = next;
-  }
   if (path.startsWith("/keystatic")) return <>{children}</>;
   const links = [
     { label: "Work", href: "/projects" },
@@ -39,8 +33,8 @@ export default function MinimalLayout({
     { label: "Writing", href: "/blog" },
   ];
   return (
-    <div className="site-shell">
-      <PaperAccent accent={accent} />
+    <PortfolioControlsProvider><div className="site-shell">
+      <PaperAccent accent="default" />
       <a href="#main" className="skip-link">
         Skip to content
       </a>
@@ -61,7 +55,14 @@ export default function MinimalLayout({
           <a className="icon-button header-github" href={profile.github} target="_blank" rel="noreferrer" aria-label="Sumit Sharma on GitHub">
             <BrandLogo name="github" size={17} />
           </a>
-          <button
+          <PortfolioButton
+            variant="secondary"
+            shape="circle"
+            disabled={!mounted}
+            data-pointer={pointerTheme}
+            data-theme={mounted && resolvedTheme === "dark" ? "dark" : "light"}
+            onPointerDown={() => setPointerTheme(true)}
+            onKeyDown={() => setPointerTheme(false)}
             className="icon-button theme-toggle"
             type="button"
             onClick={() =>
@@ -73,12 +74,9 @@ export default function MinimalLayout({
                 : "Switch to dark theme"
             }
           >
-            {mounted && resolvedTheme === "dark" ? (
-              <Sun size={17} />
-            ) : (
-              <Moon size={17} />
-            )}
-          </button>
+            <span className="theme-icon theme-icon-sun" aria-hidden="true"><Sun size={17} /></span>
+            <span className="theme-icon theme-icon-moon" aria-hidden="true"><Moon size={17} /></span>
+          </PortfolioButton>
         </nav>
       </header>
       <main id="main" tabIndex={-1}>
@@ -89,7 +87,6 @@ export default function MinimalLayout({
           <Link href="/" className="footer-wordmark" aria-label="Sumit Sharma home">sumit<span aria-hidden="true">✳</span></Link>
           <a href="#main" className="footer-back-top">Back to top <ArrowUp size={14} aria-hidden="true" /></a>
         </div>
-        <AccentPicker value={accent} onChange={changeAccent} />
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} Sumit Sharma<span>{profile.location}</span></p>
           <nav aria-label="Footer links">
@@ -99,6 +96,6 @@ export default function MinimalLayout({
           </nav>
         </div>
       </footer>
-    </div>
+    </div></PortfolioControlsProvider>
   );
 }

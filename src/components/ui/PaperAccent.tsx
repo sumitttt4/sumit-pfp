@@ -51,7 +51,7 @@ export default function PaperAccent({ accent }: { accent: AccentChoice }) {
   }, [visible, reduceMotion]);
 
   const dark = resolvedTheme === "dark";
-  const palette = accents.find((item) => item.id === accent) ?? accents[0];
+  const palette = accents.find((item) => item.id === accent) ?? accents.find(item => item.id === "orange")!;
   return (
     <div
       ref={ref}
