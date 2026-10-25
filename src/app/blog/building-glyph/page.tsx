@@ -1,6 +1,7 @@
+import HeadingWords from '@/components/quiet/HeadingWords';
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import {Arrow} from "@/components/quiet/Icons";
 
 export const metadata: Metadata = {
   title: "Building Glyph: from an idea to a paid product — Sumit Sharma",
@@ -11,10 +12,10 @@ export const metadata: Metadata = {
 export default function GlyphStory() {
   return (
     <article className="page-content glyph-story">
-      <Link href="/blog" className="text-link"><ArrowLeft size={14} aria-hidden="true" /> All writing</Link>
+      <Link href="/blog" className="text-link">All writing</Link>
       <header className="page-heading">
         <p className="eyebrow">Building in public · 2 min read</p>
-        <h1>Building Glyph: from an idea to a paid product</h1>
+        <h1><HeadingWords text="Building Glyph: from an idea to a paid product"/></h1>
         <p>A few decisions, a public launch, and an ongoing learning process.</p>
       </header>
       <div className="story-prose">
@@ -28,7 +29,7 @@ export default function GlyphStory() {
         <p>One monthly subscriber ran into an access issue after paying. I had to upgrade their account manually and provide an extra month. It was a concrete reminder that the payment flow and account access need the same care as the generator.</p>
         <p>Glyph is still evolving. I’m working on output quality and consistency, and deciding which improvements matter before making bigger changes. It’s a paid product, but there are still plenty of questions to answer.</p>
       </div>
-      <a className="text-link story-visit" href="https://glyph.software" target="_blank" rel="noreferrer">Try Glyph <ArrowUpRight size={14} aria-hidden="true" /></a>
+      <a className="text-link story-visit" href="https://glyph.software" target="_blank" rel="noreferrer">Try Glyph <Arrow/></a>
     </article>
   );
 }

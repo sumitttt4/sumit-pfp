@@ -1,3 +1,5 @@
+import {Arrow} from '@/components/quiet/Icons';
+import HeadingWords from '@/components/quiet/HeadingWords';
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -5,37 +7,17 @@ export const metadata: Metadata = { title: "Glyph — Sumit Sharma", alternates:
 export default function GlyphProject() { return (
 <article className="page-content glyph-project">
 <Link className="text-link" href="/projects">
-<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-left" aria-hidden="true">
-<path d="m12 19-7-7 7-7">
-</path>
-<path d="M19 12H5">
-</path>
-</svg> All projects</Link>
+ All projects</Link>
 <header className="page-heading">
 <p className="eyebrow">Independent product · Design &amp; development</p>
-<h1>Glyph: an idea becomes a brand system.</h1>
+<h1><HeadingWords text="Glyph: an idea becomes a brand system."/></h1>
 <p>I designed, built, and launched Glyph independently, from the identity generation experience to payments and the public launch.</p>
 <div className="project-footnote">
-<a className="text-link" href="https://glyph.software" target="_blank" rel="noreferrer">Try Glyph <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right" aria-hidden="true">
-<path d="M7 7h10v10">
-</path>
-<path d="M7 17 17 7">
-</path>
-</svg>
+<a className="text-link" href="https://glyph.software" target="_blank" rel="noreferrer">Try Glyph <Arrow/>
 </a>
-<a className="text-link" href="https://x.com/sumitthq/status/2027032028584276128" target="_blank" rel="noreferrer">Watch the launch demo <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right" aria-hidden="true">
-<path d="M7 7h10v10">
-</path>
-<path d="M7 17 17 7">
-</path>
-</svg>
+<a className="text-link" href="https://x.com/sumitthq/status/2027032028584276128" target="_blank" rel="noreferrer">Watch the launch demo <Arrow/>
 </a>
-<Link className="text-link" href="/blog/building-glyph">Building Glyph <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right" aria-hidden="true">
-<path d="M7 7h10v10">
-</path>
-<path d="M7 17 17 7">
-</path>
-</svg>
+<Link className="text-link" href="/blog/building-glyph">Building Glyph
 </Link>
 </div>
 </header>
@@ -97,25 +79,15 @@ export default function GlyphProject() { return (
 <h3 className="decision-heading">Treat paid access as part of the experience</h3>
 <p>A monthly subscriber paid but didn’t receive the right account access. I upgraded the account manually and provided an extra month. The generation experience only matters if a paying customer can reach it.</p>
 <p className="decision-tradeoff">
-<strong>The lesson:</strong> The manual fix helped that customer, but it isn’t a scalable access flow. Payment success, account entitlement, and recovery need to agree. This is a real incident, not a claim that every failure path is now solved.</p>
+<strong>The lesson:</strong> The manual fix helped that customer, but it isn’t a scalable access flow. Payment success, account entitlement, and recovery need to agree.</p>
 </li>
 </ol>
 </section>
 </div>
 <div className="project-footnote glyph-project-links">
-<Link className="text-link" href="/blog/building-glyph">Read Building Glyph <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right" aria-hidden="true">
-<path d="M7 7h10v10">
-</path>
-<path d="M7 17 17 7">
-</path>
-</svg>
+<Link className="text-link" href="/blog/building-glyph">Read Building Glyph
 </Link>
-<a className="text-link" href="https://x.com/sumitthq/status/2027032028584276128" target="_blank" rel="noreferrer">Watch the launch demo <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right" aria-hidden="true">
-<path d="M7 7h10v10">
-</path>
-<path d="M7 17 17 7">
-</path>
-</svg>
+<a className="text-link" href="https://x.com/sumitthq/status/2027032028584276128" target="_blank" rel="noreferrer">Watch the launch demo <Arrow/>
 </a>
 </div>
 </article>

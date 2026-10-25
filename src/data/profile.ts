@@ -82,7 +82,6 @@ export const stack = [
       ["Claude Code", "claude"],
       ["Codex", "codex"],
       ["OpenCode", "opencode"],
-      ["Cursor", "cursor"],
       ["Antigravity", "antigravity"],
     ],
   },
