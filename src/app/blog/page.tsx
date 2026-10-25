@@ -1,5 +1,7 @@
+import HeadingWords from '@/components/quiet/HeadingWords';
 import type { Metadata } from "next";
-import { ArrowUpRight } from "lucide-react";
+import { Arrow } from "@/components/quiet/Icons";
+import styles from "@/components/quiet/Quiet.module.css";
 import Link from "next/link";
 import { createReader } from "@keystatic/core/reader";
 import keystaticConfig from "../../../keystatic.config";
@@ -11,7 +13,8 @@ export const metadata: Metadata = {
 };
 
 function formatDate(value: string) {
-  const date = new Date(value);
+  const plainDate = value.match(/^([A-Za-z]+) (\d{1,2}), (\d{4})$/);
+  const date = new Date(plainDate ? `${value} 12:00:00 UTC` : value);
   return Number.isNaN(date.getTime())
     ? value
     : date.toLocaleDateString("en-US", {
@@ -43,62 +46,5 @@ export default async function Blog() {
   const posts = Array.from(bySlug.values()).sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
-  return (
-    <div className="page-content">
-      <div className="page-heading">
-        <p className="eyebrow">Thinking out loud</p>
-        <h1>
-          Notes, ideas,
-          <br />
-          <span>and things I’m learning.</span>
-        </h1>
-        <p>
-          Writing about building products, design, and life beyond the screen.
-        </p>
-      </div>
-      <div className="blog-list">
-        {posts.map((post) => {
-          const content = (
-            <>
-              <div className="blog-post-meta">
-                <time>{formatDate(post.date)}</time>
-                <span aria-hidden="true">·</span>
-                <span>{post.readTime}</span>
-                {post.link && (
-                  <>
-                    <span aria-hidden="true">·</span>
-                    <span>Medium</span>
-                  </>
-                )}
-              </div>
-              <div className="blog-post-title">
-                <h2>{post.title}</h2>
-                <ArrowUpRight size={15} aria-hidden="true" />
-              </div>
-              <p>{post.excerpt}</p>
-            </>
-          );
-          return post.link ? (
-            <a
-              className="blog-post-link"
-              key={post.slug}
-              href={post.link}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {content}
-            </a>
-          ) : (
-            <Link
-              className="blog-post-link"
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-            >
-              {content}
-            </Link>
-          );
-        })}
-      </div>
-    </div>
-  );
+  return <><header className={styles.pageIntro}><p className={styles.kicker}>Writing</p><h1><HeadingWords text="Notes from making things"/></h1><p>On design, building products, and life beyond the screen.</p></header><div className={styles.writingList}><Link href="/blog/if-you-want-a-good-ui" className={styles.writingEntry}><div className={styles.writingMeta}>Draft</div><h2>If you want a good UI, try this</h2><p>A few checks for typography, spacing, content, and the way an interface responds.</p></Link>{posts.map(post=>{const content=<><div className={styles.writingMeta}><time>{formatDate(post.date)}</time>{post.readTime&&<><span>·</span><span>{post.readTime}</span></>}{post.link&&<><span>·</span><span>Medium</span></>}</div><h2>{post.title} {post.link&&<Arrow/>}</h2><p>{post.excerpt}</p></>;return post.link?<a className={styles.writingEntry} href={post.link} key={post.slug} target="_blank" rel="noreferrer">{content}</a>:<Link className={styles.writingEntry} href={`/blog/${post.slug}`} key={post.slug}>{content}</Link>})}</div></>;
 }

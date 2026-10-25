@@ -1,71 +1,18 @@
-import type { Metadata } from "next";
-import ContactSection from "@/components/ui/ContactSection";
-import ExperienceSection from "@/components/ui/ExperienceSection";
-import SpotifyNowPlaying from "@/components/ui/SpotifyNowPlaying";
-
-export const metadata: Metadata = {
-  title: "About — Sumit Sharma",
-  alternates: { canonical: "/about" },
-};
-
-export default function About() {
-  return (
-    <div className="page-content">
-      <div className="page-heading">
-        <p className="eyebrow">A little about me</p>
-        <h1>About me</h1>
-      </div>
-      <div className="about-prose">
-        <p>
-          I’m Sumit Sharma, a frontend engineer based in Gurgaon. I work across
-          design and engineering to make products feel simple, even when the
-          problems behind them aren’t.
-        </p>
-        <p>
-          At Craon, I’m working on an AI video editor: the mobile experience,
-          subtitles, timeline interactions, and the performance details that
-          make editing feel responsive.
-        </p>
-        <p>
-          Independently, I’m building{" "}
-          <a href="https://glyph.software" target="_blank" rel="noreferrer">
-            Glyph
-          </a>
-          , a brand identity generator for builders. Taking a product from the
-          first idea to paying customers has taught me to care about the entire
-          experience, beyond the interface.
-        </p>
-        <p>
-          I like thoughtful typography, useful interactions, and finding the
-          small detail that makes something click. I’m still learning, still
-          experimenting, and happiest when I’m building.
-        </p>
-      </div>
-      <section className="section about-interests">
-        <div className="section-heading"><h2>Away from the screen</h2></div>
-        <div className="about-interest">
-          <h3>Films</h3>
-          <p>I keep a movie diary on{" "}
-          <a
-            href="https://letterboxd.com/Sumit232/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Letterboxd
-          </a>
-          .</p>
-        </div>
-        <div className="about-interest">
-          <h3>Music</h3>
-          <div><p>I have a soft spot for ’90s Bollywood.</p><SpotifyNowPlaying /></div>
-        </div>
-        <div className="about-interest">
-          <h3>Learning</h3>
-          <p>I’m learning Spanish, and exploring the small details of design engineering.</p>
-        </div>
-      </section>
-      <ExperienceSection />
-      <ContactSection />
-    </div>
-  );
-}
+import HeadingWords from '@/components/quiet/HeadingWords';
+import type {Metadata} from 'next';
+import Link from 'next/link';
+import PreviewLink from '@/components/quiet/PreviewLink';
+import {personalProfiles} from '@/data/quiet';
+import s from '@/components/quiet/Quiet.module.css';
+export const metadata:Metadata={title:'About — Sumit Sharma',alternates:{canonical:'/about'}};
+export default function About(){return <>
+ <header className={s.pageIntro}><p className={s.kicker}>About</p><h1><HeadingWords text="A little beyond the browser"/></h1><p>I’m Sumit Sharma, a design engineer.</p></header>
+ <section className={s.aboutBody}><div className={s.prose}><p>I build products for the web, from the first interface to the details of how it works. My own projects include Glyph, an AI brand-identity product, Fedup Studio, a landing-page code library, and Musiclb, a song diary.</p><p className={s.affiliation}>Currently at Craon, previously at Metry AI.</p></div></section>
+ <section className={s.section}><h2>Outside work</h2><div className={s.personalLinks}>
+ <div><span>Music</span><PreviewLink {...personalProfiles[1]}/></div>
+ <div><span>Films</span><PreviewLink {...personalProfiles[0]}/></div>
+ <div><span>Learning</span><PreviewLink {...personalProfiles[2]}/></div>
+ </div></section>
+ <section className={s.section}><h2>Things I believe</h2><p className={s.beliefIntro}>A few ideas from my writing.</p><div className={s.personalBeliefs}><a href="https://medium.com/@sumitsharma9128/is-the-glass-half-empty-or-half-full-d4c8c097557e" target="_blank" rel="noreferrer"><h3>There’s room for more than one perspective.</h3><p>The same glass can be half empty and half full. The life behind a viewpoint matters.</p></a><a href="https://medium.com/write-a-catalyst/when-love-redefines-you-and-how-you-deal-when-its-over-39f5ed066748" target="_blank" rel="noreferrer"><h3>Identity needs more than one root.</h3><p>Work, friendships, passions and routines can each hold a part of who we are.</p></a><a href="https://medium.com/@sumitsharma9128/building-is-no-longer-the-hard-part-e83538ae79ad" target="_blank" rel="noreferrer"><h3>Building is only part of the work.</h3><p>Making a product better and helping people discover it are different problems.</p></a></div></section>
+ <section className={s.section}><h2>What I’m working on</h2><p>I’m also building <a className={s.editorialLink} href="https://github.com/sumitttt4/Glyph-Skill" target="_blank" rel="noreferrer">Glyph-Skill</a>, a design skill for better UI and frontend work with coding assistants.</p><p className={s.aboutNavigation}><Link href="/projects">Explore my projects</Link><Link href="/craft">My tools and influences</Link><Link href="/blog">Read my writing</Link></p></section>
+ </>}
