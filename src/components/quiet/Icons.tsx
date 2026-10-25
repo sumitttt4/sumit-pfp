@@ -1,0 +1,6 @@
+import type { SVGProps } from 'react';
+import s from './Quiet.module.css';
+type Props=SVGProps<SVGSVGElement>&{size?:number};
+export function Arrow({size=15,...props}:Props){return <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={s.arrow} aria-hidden="true" {...props}><path d="M6 18 18 6M8 6h10v10"/></svg>}
+export function ThemeIcon(){return <span className={s.themeIcon} aria-hidden="true"><svg className={s.sun} viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4M17.6 17.6 19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg><svg className={s.moon} viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg></span>}
+export function CopyIcon(){return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect className={s.copyBack} x="8" y="3" width="13" height="13" rx="2.5"/><rect className={s.copyFront} x="3" y="8" width="13" height="13" rx="2.5"/></svg>}
