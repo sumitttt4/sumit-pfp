@@ -1705,3 +1705,13 @@
     color: var(--portfolio-button-text) !important;
   }
 }
+
+html:has([data-quiet]),body:has([data-quiet]){background:#faf8f3}
+html.dark:has([data-quiet]),html.dark body:has([data-quiet]){background:#000}
+
+html:has([data-quiet]){scrollbar-width:thin;scrollbar-color:#c5beb2 transparent}
+html.dark:has([data-quiet]){scrollbar-color:#48423a transparent}
+html:has([data-quiet])::-webkit-scrollbar{width:4px;height:4px}
+html:has([data-quiet])::-webkit-scrollbar-track{background:transparent}
+html:has([data-quiet])::-webkit-scrollbar-thumb{background:#c5beb2;border-radius:9px}
+html.dark:has([data-quiet])::-webkit-scrollbar-thumb{background:#48423a}

@@ -1,69 +1,31 @@
-import Link from "next/link";
-import { PortfolioLinkButton } from "@/components/ui/PortfolioControls";
-import { ArrowUpRight } from "lucide-react";
-import type { Metadata } from "next";
-import projects from "@/data/projects";
-import { profile } from "@/data/profile";
-import ProjectCard from "@/components/ui/ProjectCard";
-import StackSection from "@/components/ui/StackSection";
-import ExperienceSection from "@/components/ui/ExperienceSection";
-import ContactSection from "@/components/ui/ContactSection";
-import GithubCalendarComponent from "@/components/ui/GithubCalendarComponent";
-
-export const metadata: Metadata = { alternates: { canonical: "/" } };
-
-export default function Home() {
-  const selected = projects.filter((project) => project.slug === "glyph");
-  return (
-    <div className="home-page">
-      <section className="hero">
-        <h1>Hey, I’m Sumit<span className="hello-mark" aria-hidden="true">✳</span></h1>
-        <p>A frontend engineer who enjoys designing and building digital products. I care about the little details that make a product feel good to use.</p>
-        <p>Working with <a className="inline-link" href="#experience">Craon</a> on contract, building an AI video editor. I also built <a className="inline-link" href="https://glyph.software" target="_blank" rel="noreferrer">Glyph</a>, a brand identity generator for builders.</p>
-        <div className="hero-links">
-          <PortfolioLinkButton href={`mailto:${profile.email}`} variant="primary">Email me <ArrowUpRight size={14} aria-hidden="true" /></PortfolioLinkButton>
-          <PortfolioLinkButton href={profile.resume} target="_blank" rel="noreferrer" variant="ghost">Resume <ArrowUpRight size={14} aria-hidden="true" /></PortfolioLinkButton>
-        </div>
-      </section>
-      <GithubCalendarComponent />
-      <ExperienceSection />
-      <section className="section" id="work">
-        <div className="section-heading">
-          <h2>Selected work</h2>
-          <Link className="text-link" href="/projects">
-            All projects <ArrowUpRight size={14} aria-hidden="true" />
-          </Link>
-        </div>
-        <div className="project-grid">
-          {selected.map((project, index) => (
-            <ProjectCard key={project.slug} {...project} priority={index === 0} showVisual />
-          ))}
-        </div>
-      </section>
-      <StackSection />
-      <section className="section writing-section">
-        <div className="section-heading">
-          <h2>Writing</h2>
-          <Link href="/blog" className="text-link">
-            All writing <ArrowUpRight size={14} aria-hidden="true" />
-          </Link>
-        </div>
-        <Link
-          href="/blog/building-glyph"
-          className="writing-row"
-        >
-          <span>
-            <span className="writing-title">
-              Building Glyph: from an idea to a paid product
-            </span>
-            <span className="writing-excerpt">
-              What I learned designing, building, and launching on my own.
-            </span>
-          </span>
-          <ArrowUpRight size={18} aria-hidden="true" />
-        </Link>
-      </section>
-      <ContactSection />
-    </div>
-  );
-}
+import HeadingWords from '@/components/quiet/HeadingWords';
+import type {Metadata} from 'next';
+import Link from 'next/link';
+import Greeting from '@/components/quiet/Greeting';
+import PreviewLink from '@/components/quiet/PreviewLink';
+import Tool from '@/components/quiet/Tool';
+import Newsletter from '@/components/quiet/Newsletter';
+import ExperienceTimeline from '@/components/quiet/ExperienceTimeline';
+import GithubActivity from '@/components/quiet/GithubActivity';
+import posts from '@/data/blog';
+import {selectedProjects} from '@/data/quiet';
+import s from '@/components/quiet/Quiet.module.css';
+export const metadata:Metadata={title:'Sumit Sharma — Design engineer',description:'Design engineer. Products, notes, and small things worth using.',alternates:{canonical:'/'}};
+const glyph=selectedProjects.find(p=>p.slug==='glyph')!;
+const glyphSkill=selectedProjects.find(p=>p.slug==='glyph-skill')!;
+const fedup=selectedProjects.find(p=>p.slug==='fedup-studio')!;
+const musiclb=selectedProjects.find(p=>p.slug==='musiclb')!;
+export default function Home(){return <>
+ <section className={s.intro}><Greeting/><h1><HeadingWords text="Sumit Sharma"/></h1><p>Design engineer</p></section>
+ <section className={s.section} aria-labelledby="work-title"><h2 id="work-title">Things I’ve built</h2><div className={s.prose}>
+ <p>I shipped <PreviewLink {...glyph}/>, an AI brand-identity product: one brief in, a full launch kit out. <span className={s.projectStatus}>Live · paid</span></p>
+ <p>I’m also building <PreviewLink {...glyphSkill}/>, a design skill that helps AI coding assistants build better UI and frontend layouts.</p>
+ <p><PreviewLink {...fedup}/> is a free library of the actual landing-page code from open-source products.</p>
+ <p><PreviewLink {...musiclb}/> keeps your days in songs.</p>
+ </div><Link className={s.quietLink} href="/projects">All projects</Link></section>
+ <section className={s.section}><h2>How I work</h2><p className={s.prose}>Mostly <Tool name="TypeScript" logo="typescript"/>, <Tool name="React" logo="react"/> and <Tool name="Next.js" logo="nextjs"/>, styled with <Tool name="Tailwind" logo="tailwind"/>, designed in <Tool name="Figma" logo="figma"/>, with <Tool name="Claude Code"/> in the daily loop.</p><Link href="/craft" className={s.quietLink}>The rest of my working kit</Link></section>
+ <section className={s.section}><h2>Writing</h2><div className={s.homeWriting}>{['building-glyph','your-ai-built-website-needs-a-visual-direction-before-it-needs-another-prompt-d30168236c7b'].map(slug=>{const post=posts.find(p=>p.slug===slug)!;const content=<><h3>{post.title}</h3><p>{post.excerpt}</p></>;return post.link?<a key={slug} href={post.link} target="_blank" rel="noreferrer">{content}</a>:<Link key={slug} href={`/blog/${slug}`}>{content}</Link>})}</div><Link className={s.quietLink} href="/blog">All writing</Link></section>
+ <ExperienceTimeline/>
+ <GithubActivity/>
+ <Newsletter/>
+ </>}

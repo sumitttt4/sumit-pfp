@@ -1,3 +1,4 @@
+import mediumPosts from './medium-posts.json';
 export interface BlogPost {
     id: number;
     title: string;
@@ -91,4 +92,5 @@ const posts: BlogPost[] = [
     }
 ];
 
-export default posts;
+const mediumIds=new Set(mediumPosts.map(post=>post.link.match(/[a-f0-9]{12}$/)?.[0]));
+export default [...posts.filter(post=>!post.link||!mediumIds.has(post.link.match(/[a-f0-9]{12}$/)?.[0])),...mediumPosts] as BlogPost[];
