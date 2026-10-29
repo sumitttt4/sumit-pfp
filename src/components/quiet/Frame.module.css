@@ -32,13 +32,8 @@
 .footer h2{font-size:clamp(28px,5vw,36px)!important;font-weight:600!important;letter-spacing:-.045em!important;line-height:1.1!important;margin:0 0 10px!important}
 .footerInvitation{font-size:15px;color:var(--muted);margin:0 0 24px!important}
 .actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
-.button{display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 15px;border-radius:10px;border:1px solid var(--line);background:var(--raised);font-size:14px;font-weight:500;line-height:1;box-shadow:0 1px 1px #0000000a;transition:transform 140ms var(--ease),border-color 150ms ease,background 150ms ease}
-.button:active{transform:scale(.97)}
-.primary{background:var(--ink);border-color:var(--ink);color:var(--paper)!important}
-.emailGroup{display:inline-flex;align-items:center}
-.emailGroup .button:first-child{border-radius:10px 0 0 10px}
-.emailGroup .button:last-child{border-radius:0 10px 10px 0;padding:0 11px;border-left-color:color-mix(in srgb,var(--paper) 22%,var(--ink))}
-.emailGroup svg rect{fill:var(--ink)}
+.emailGroup{display:inline-flex;align-items:center;gap:4px}
+.actions > a,.emailGroup > a{display:inline-flex;align-items:center;gap:5px;font-size:15px;font-weight:500;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
 .copyStatus{font:500 11px/1 var(--mono);color:var(--muted)}
 .footerLinks{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;margin-top:40px;padding-top:18px;border-top:1px dashed var(--line);font-size:13px;color:var(--muted)}
 .footerLinks > a:last-child{margin-left:auto}
@@ -69,8 +64,6 @@
  .mark:hover img{transform:rotate(-6deg)}
  .nav a:hover{color:var(--ink)}
  .iconButton:hover{color:var(--ink)!important;background:var(--surface)}
- .button:hover{border-color:color-mix(in srgb,var(--muted) 45%,var(--line))}
- .primary:hover{background:color-mix(in srgb,var(--ink) 88%,var(--paper))}
  .footerLinks a:hover{color:var(--ink)}
 }
 @media (max-width:640px){
