@@ -36,7 +36,8 @@
 .panelInner{overflow:hidden}
 .panelBody{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px;padding:2px 0 22px 32px;opacity:0;transform:translateY(-4px);transition:opacity 240ms ease,transform 340ms var(--ease)}
 .row[data-open] .panelBody{opacity:1;transform:none}
-.shot{position:relative;display:block;aspect-ratio:1.6;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.shot{position:relative;display:block;aspect-ratio:1.6;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:var(--surface);clip-path:inset(0 0 100% 0 round 10px);transition:clip-path 700ms var(--ease) 60ms}
+.row[data-open] .shot{clip-path:inset(0 0 0 0 round 10px)}
 .shot img{object-fit:cover;object-position:top;transition:transform 600ms var(--ease)}
 .panelText p{margin:0 0 14px!important;font-size:14.5px;line-height:1.75;color:var(--muted)}
 .panelLinks{display:flex;flex-direction:column;align-items:flex-start;gap:8px;font-size:13.5px}
@@ -91,4 +92,4 @@
  .cards{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:72%;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--gutter) * -1);padding:0 var(--gutter) 6px;scroll-padding-inline:var(--gutter);scrollbar-width:none}
  .card{scroll-snap-align:start}
 }
-@media (prefers-reduced-motion:reduce){.panel,.panelBody{transition:none}}
+@media (prefers-reduced-motion:reduce){.shot{transition:none}.panel,.panelBody{transition:none}}

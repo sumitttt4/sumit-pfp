@@ -4,7 +4,6 @@ import "../styles/kumo.css";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import MinimalLayout from "@/components/layout/MinimalLayout";
-import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/next";
 
 const portfolioSans = localFont({src:"./fonts/InterVariable.woff2", variable:"--font-portfolio",weight:"100 900",display:"swap"});
@@ -71,7 +70,6 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
         >
-          <Toaster />
           <MinimalLayout>{children}</MinimalLayout>
         </ThemeProvider>
         <Analytics />
