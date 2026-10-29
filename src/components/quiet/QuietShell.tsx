@@ -8,6 +8,7 @@ import {profile} from '@/data/profile';
 import {revealQuietPage} from '@/lib/quiet-snake';
 import {Arrow,CopyIcon,GithubIcon,InspectIcon,ThemeIcon,XIcon} from './Icons';
 import Inspector from './Inspector';
+import Signature from './Signature';
 import s from './Quiet.module.css';
 import f from './Frame.module.css';
 const links=[['Work','/projects'],['Writing','/blog'],['About','/about'],['Craft','/craft']];
@@ -33,9 +34,11 @@ export default function QuietShell({children}:{children:React.ReactNode}){
  </header>
  <main id="main" tabIndex={-1}>{children}</main>
  <footer className={f.footer} id="contact" aria-label="Contact">
+  <div className={f.footerTop}><div>
   <p className={f.footerIndex}>Contact</p>
   <h2>Let’s work together.</h2>
   <p className={f.footerInvitation}>Open to projects and collaborations.</p>
+  </div><Signature/></div>
   <div className={f.actions}>
    <span className={f.emailGroup}><a href={`mailto:${profile.email}`} title={profile.email}>Email me</a><button type="button" className={s.copy} aria-label="Copy email address" title={profile.email} onClick={copyEmail}><CopyIcon/></button></span>
    <a href={profile.calendar} target="_blank" rel="noreferrer">Book a call <Arrow size={13}/></a>
