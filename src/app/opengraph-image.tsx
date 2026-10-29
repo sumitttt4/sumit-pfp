@@ -51,7 +51,7 @@ export default function OpenGraphImage() {
         }}
       >
         <span>Design engineer & product builder</span>
-        <span>sumitsharmaa.me</span>
+        <span>sumitsharma.pro</span>
       </div>
     </div>,
     size,
