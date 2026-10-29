@@ -13,6 +13,7 @@ import {selectedProjects} from '@/data/quiet';
 import skill from '@/data/glyph-skill.json';
 import f from '@/components/quiet/Frame.module.css';
 import h from '@/components/quiet/Home.module.css';
+import CanvasMount from '@/components/canvas/CanvasMount';
 export const metadata:Metadata={title:'Sumit Sharma — Design engineer',description:'Design engineer. Products, notes, and small things worth using.',alternates:{canonical:'/'}};
 const project=(slug:string)=>selectedProjects.find(p=>p.slug===slug)!;
 const checked=new Date(skill.checkedAt+'T00:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
@@ -25,6 +26,9 @@ const work:ProjectRow[]=[
 const writing=['building-glyph','your-ai-built-website-needs-a-visual-direction-before-it-needs-another-prompt-d30168236c7b'].map(slug=>posts.find(p=>p.slug===slug)!);
 function Head({index,title,more}:{index:string;title:string;more?:React.ReactNode}){return <div className={h.head}><span className={h.index}>{index}</span><h2>{title}</h2>{more}</div>}
 export default function Home(){return <>
+ <script dangerouslySetInnerHTML={{__html:"try{if(matchMedia('(min-width: 900px)').matches&&sessionStorage.getItem('home-list')!=='1')document.documentElement.dataset.canvas=''}catch(e){}"}}/>
+ <CanvasMount/>
+ <div className={h.stacked}>
  <section className={h.hero}>
   <div className={h.identity}><span className={h.avatar}><Image src="/avatar.jpg" alt="" fill sizes="64px" priority/></span><div><Greeting className={h.greeting}/><h1 className={h.name}>Sumit Sharma</h1><p className={h.role}>Design engineer · Frontend at <a href="https://craon.ai" target="_blank" rel="noreferrer">Craon</a></p></div></div>
   <p className={h.lead}>I build products for the web, from the first interface to the details of how it works. I shipped <PreviewLink {...project('glyph')}/>, and I’m building <PreviewLink {...project('glyph-skill')}/> so AI coding assistants make better UI.</p>
@@ -35,4 +39,5 @@ export default function Home(){return <>
  <section className={`${f.rule} ${h.section}`}><Head index="03" title="How I work" more={<Link className={h.more} href="/craft">Full kit <Arrow size={13}/></Link>}/><p className={h.stackLine}>Mostly <Tool name="TypeScript" logo="typescript"/>, <Tool name="React" logo="react"/> and <Tool name="Next.js" logo="nextjs"/>, styled with <Tool name="Tailwind" logo="tailwind"/>, designed in <Tool name="Figma" logo="figma"/>, with <Tool name="Claude Code"/> in the daily loop.</p></section>
  <section className={`${f.rule} ${h.section}`}><Head index="04" title="Writing" more={<Link className={h.more} href="/blog">All writing <Arrow size={13}/></Link>}/><div className={h.posts}>{writing.map(post=>{const body=<><h3>{post.title}</h3><time>{post.date}</time></>;return post.link?<a key={post.slug} className={h.post} href={post.link} target="_blank" rel="noreferrer">{body}</a>:<Link key={post.slug} className={h.post} href={`/blog/${post.slug}`}>{body}</Link>})}</div></section>
  <GithubActivity className={`${f.rule} ${h.section}`} head={<Head index="05" title="On GitHub" more={<a className={h.more} href={profile.github} target="_blank" rel="noreferrer">@sumitttt4 <Arrow size={13}/></a>}/>}/>
+ </div>
  </>}

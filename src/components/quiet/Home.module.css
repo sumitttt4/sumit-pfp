@@ -93,3 +93,6 @@
  .card{scroll-snap-align:start}
 }
 @media (prefers-reduced-motion:reduce){.shot{transition:none}.panel,.panelBody{transition:none}}
+
+/* On wide screens the canvas replaces this stacked page (see CanvasMount). */
+:global(html[data-canvas]) .stacked{display:none}
