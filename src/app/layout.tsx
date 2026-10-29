@@ -8,6 +8,7 @@ import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/next";
 
 const portfolioSans = localFont({src:"./fonts/InterVariable.woff2", variable:"--font-portfolio",weight:"100 900",display:"swap"});
+const manrope = localFont({src:"./fonts/ManropeVariable.woff2",variable:"--font-manrope",weight:"200 800",display:"swap"});
 const devanagari = localFont({src:"./fonts/NotoSansDevanagari.woff2",variable:"--font-devanagari",display:"swap"});
 
 const geistMono = localFont({
@@ -60,7 +61,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${portfolioSans.variable} ${devanagari.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable} ${portfolioSans.variable} ${manrope.variable} ${devanagari.variable}`}
       suppressHydrationWarning
     >
       <head>{/* Fonts are bundled locally to avoid external requests. */}</head>

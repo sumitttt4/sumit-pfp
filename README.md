@@ -4,7 +4,7 @@ Next.js 14, TypeScript and Tailwind, with an editorial portfolio layer shared ac
 
 ## Design
 
-Inter Variable is bundled locally; Noto Sans Devanagari preserves Hindi shaping. A small rotating greeting reserves its layout and becomes static with reduced motion. The warm paper palette has a pure-black dark variant. Colour comes from authentic inline product/tool marks and real screenshots.
+Inter Variable and Manrope (small labels and dates) are bundled locally; Noto Sans Devanagari preserves Hindi shaping. A small rotating greeting reserves its layout and becomes static with reduced motion. The warm paper palette has a pure-black dark variant. Colour comes from authentic inline product/tool marks and real screenshots.
 
 Every page sits in a framed 768px column on a dot-grid canvas, with crosshair marks where section rules meet the rails. Press `I` (or the header button) for inspect mode: column guides, tinted gutters, and a live label showing any element's size, padding, type specs and colour.
 

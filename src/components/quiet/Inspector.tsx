@@ -4,7 +4,7 @@ import f from './Frame.module.css';
 type Spec={top:number;left:number;width:number;height:number;pad:number[];tag:string;detail:string;color:string;flipTag:boolean;flipSpec:boolean};
 const targets='h1,h2,h3,p,a,button,img,li,time,small,strong,input,svg,article,section,nav,span';
 const hex=(value:string)=>{const m=value.match(/[\d.]+/g);return m?'#'+m.slice(0,3).map(v=>Math.round(+v).toString(16).padStart(2,'0')).join(''):value};
-const family=(value:string)=>/mono/i.test(value)?'Geist Mono':/devanagari/i.test(value)?'Noto Sans Devanagari':/portfolio|inter/i.test(value)?'Inter':value.split(',')[0].replace(/['"]/g,'');
+const family=(value:string)=>/mono/i.test(value)?'Geist Mono':/manrope/i.test(value)?'Manrope':/devanagari/i.test(value)?'Noto Sans Devanagari':/portfolio|inter/i.test(value)?'Inter':value.split(',')[0].replace(/['"]/g,'');
 const round=(n:number)=>Math.round(n*10)/10;
 function describe(el:Element):Spec{
  const r=el.getBoundingClientRect(),cs=getComputedStyle(el),size=parseFloat(cs.fontSize),tracking=parseFloat(cs.letterSpacing);

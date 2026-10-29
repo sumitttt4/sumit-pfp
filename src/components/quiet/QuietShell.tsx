@@ -42,7 +42,7 @@ export default function QuietShell({children}:{children:React.ReactNode}){
    <span className={f.copyStatus} role="status">{copy}</span>
   </div>
   <nav className={f.footerLinks} aria-label="Footer links"><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a><a href={profile.twitter} target="_blank" rel="noreferrer">X</a><a href="https://buymeacoffee.com/sumitsharmq" target="_blank" rel="noreferrer">Buy me a coffee</a><a href="#main">Back to top</a></nav>
-  <p className={f.colophon}>Designed and built by Sumit. Set in Inter and Geist Mono. Press <kbd>I</kbd> to inspect the layout.</p>
+  <p className={f.colophon}>Designed and built by Sumit. Press <kbd>I</kbd> to inspect the layout.</p>
  </footer>
  </div>
  {inspect&&<Inspector onClose={closeInspect}/>}
