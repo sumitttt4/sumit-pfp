@@ -86,3 +86,11 @@
 .toast{font-family:var(--font-portfolio),sans-serif!important;background:var(--raised)!important;color:var(--ink)!important;border:1px solid var(--line)!important;border-radius:12px!important;box-shadow:0 12px 30px -16px #3f342055!important}
 .toast [data-description]{color:var(--muted)!important;font-family:var(--label)}
 @media (prefers-reduced-motion:reduce){.canvas [data-reveal]{opacity:1;filter:none;transform:none;transition:none}}
+
+/* Canvas home: the frame opens to the full window and the footer moves onto the board. */
+:global(html[data-canvas]) .frame{width:100%;border-inline:0}
+:global(html[data-canvas]) .frame > main{padding:0}
+:global(html[data-canvas]) .header{padding-inline:16px}
+:global(html[data-canvas]) .footer{display:none}
+:global(html[data-canvas]) .canvas[data-inspect] .frame{box-shadow:none}
+:global(html[data-canvas]) .canvas[data-inspect] .frame::after{display:none}
