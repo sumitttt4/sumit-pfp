@@ -23,7 +23,7 @@ const geistSans = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sumitsharmaa.me"),
+  metadataBase: new URL("https://sumitsharma.pro"),
   title: "Sumit Sharma – Design Engineer & Product Builder",
   description:
     "Design Engineer and Product Builder. I build products, landing pages, and SaaS experiences using React, Next.js, and modern web technologies.",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description:
       "Design Engineer and Product Builder. I build products, landing pages, and SaaS experiences using React, Next.js, and modern web technologies.",
     type: "website",
-    url: "https://sumitsharmaa.me",
+    url: "https://sumitsharma.pro",
     siteName: "Sumit Sharma",
   },
   twitter: {
@@ -46,7 +46,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#faf8f3",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#faf8f3" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
 };
 
 export default function RootLayout({
