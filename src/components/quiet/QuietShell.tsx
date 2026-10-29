@@ -8,6 +8,7 @@ import {profile} from '@/data/profile';
 import {revealQuietPage} from '@/lib/quiet-snake';
 import {Arrow,CopyIcon,GithubIcon,InspectIcon,ThemeIcon,XIcon} from './Icons';
 import Inspector from './Inspector';
+import SideRails from './SideRails';
 import s from './Quiet.module.css';
 import f from './Frame.module.css';
 const links=[['Work','/projects'],['Writing','/blog'],['About','/about'],['Craft','/craft']];
@@ -45,6 +46,7 @@ export default function QuietShell({children}:{children:React.ReactNode}){
   <p className={f.colophon}>Designed and built by Sumit. Press <kbd>I</kbd> to inspect the layout.</p>
  </footer>
  </div>
+ <SideRails key={path}/>
  {inspect&&<Inspector onClose={closeInspect}/>}
  </div>;
 }

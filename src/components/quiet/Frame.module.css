@@ -7,6 +7,7 @@
 
 .frame{position:relative;width:min(var(--frame),100%);margin-inline:auto;min-height:100svh;display:flex;flex-direction:column;background:var(--paper);border-inline:1px solid var(--line)}
 .frame > main{flex:1;padding-inline:var(--gutter);outline:none}
+.frame > main > section,.footer{scroll-margin-top:60px}
 
 .header{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:16px;height:60px;padding-inline:calc(var(--gutter) - 8px);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--paper) 82%,transparent);-webkit-backdrop-filter:blur(12px) saturate(1.4);backdrop-filter:blur(12px) saturate(1.4);font-size:13.5px;line-height:1.4}
 .mark{display:inline-flex;align-items:center;gap:9px;padding:6px 8px;border-radius:8px;font-weight:550;letter-spacing:-.02em;white-space:nowrap;transition:background 150ms ease}
@@ -78,3 +79,35 @@
  .hud span{display:none}
 }
 @media (prefers-reduced-motion:reduce){.box{transition:none}.hud{animation:none}}
+
+/* Margin rails on wide screens: a section ruler (left) and a live spec card (right). */
+.rails{display:none}
+@media (min-width:1024px){
+ .rails{display:block;--margin:calc((100vw - var(--frame)) / 2)}
+ .ruler,.specCard{position:fixed;z-index:20;opacity:0;transition:opacity 320ms ease,transform 420ms var(--ease)}
+ .rails[data-shown] .ruler,.rails[data-shown] .specCard{opacity:1;transform:none}
+ .ruler{top:20vh;height:60vh;left:calc(var(--margin) / 2 - 40px);width:12px;transform:translateX(-10px);background:repeating-linear-gradient(to bottom,var(--line) 0 1px,transparent 1px 8px) left/6px 100% no-repeat,repeating-linear-gradient(to bottom,color-mix(in srgb,var(--muted) 45%,transparent) 0 1px,transparent 1px 40px) left/12px 100% no-repeat}
+ .rulerFill{position:absolute;left:-1px;top:0;width:1px;background:var(--accent);transition:height 120ms linear}
+ .rulerCaret{position:absolute;left:-4px;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--paper);transition:top 120ms linear}
+ .ruler .rulerMark{position:absolute;left:14px;display:flex;align-items:center;gap:6px;height:20px;margin-top:-10px;padding:0 4px;border:0;border-radius:5px;background:transparent;color:var(--muted);font:400 11px/1 var(--label);font-variant-numeric:tabular-nums;white-space:nowrap;transition:color 160ms ease}
+ .rulerMark i{position:absolute;left:-14px;width:12px;height:1px;background:var(--muted)}
+ .rulerMark b{font-weight:500}
+ .rulerMark span{max-width:0;overflow:hidden;opacity:0;transition:max-width 300ms var(--ease),opacity 200ms ease}
+ .ruler .rulerMark[data-active]{color:var(--accent)}
+ .rulerMark[data-active] i{background:var(--accent)}
+ .specCard{top:50%;right:calc(var(--margin) / 2);width:min(184px,calc(var(--margin) - 32px));translate:50% -50%;transform:translateX(10px);padding:14px 14px 12px;border:1px solid var(--line);border-radius:12px;background:color-mix(in srgb,var(--raised) 90%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 12px 30px -20px #3f342050;font:400 12px/1.4 var(--label);color:var(--muted)}
+ .specKicker{margin:0 0 6px!important;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase}
+ .specTitle{display:flex;gap:7px;align-items:baseline;margin:0 0 12px!important;font-family:var(--font-portfolio),sans-serif;font-size:14px;font-weight:550;color:var(--ink);letter-spacing:-.015em;animation:specIn 260ms var(--ease) both}
+ .specTitle b{font:500 11px/1 var(--label);color:var(--accent)}
+ .specCard dl{margin:0;border-top:1px dashed var(--line)}
+ .specCard dl > div{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line)}
+ .specCard dt{color:var(--muted)}
+ .specCard dd{margin:0;color:var(--ink);font-variant-numeric:tabular-nums}
+ .specHint{margin:10px 0 0!important;font-size:11px}
+ .specHint kbd{font:inherit;padding:0 4px;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;color:var(--ink)}
+}
+@media (min-width:1280px){.rulerMark[data-active] span,.ruler:hover .rulerMark span{max-width:calc(var(--margin) / 2 - 10px);opacity:1;text-overflow:ellipsis}}
+@media (max-width:1199px){.specCard{display:none}}
+@media (hover:hover) and (pointer:fine){.ruler .rulerMark:hover{color:var(--ink)}}
+@keyframes specIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.ruler,.specCard,.rulerFill,.rulerCaret{transition:none}.specTitle{animation:none}}
