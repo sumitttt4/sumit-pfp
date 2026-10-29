@@ -37,8 +37,8 @@ export default function QuietShell({children}:{children:React.ReactNode}){
   <h2>Let’s work together.</h2>
   <p className={f.footerInvitation}>Open to projects and collaborations.</p>
   <div className={f.actions}>
-   <span className={f.emailGroup}><a className={`${f.button} ${f.primary}`} href={`mailto:${profile.email}`} title={profile.email}>Email me</a><button type="button" className={`${f.button} ${f.primary}`} aria-label="Copy email address" title={profile.email} onClick={copyEmail}><CopyIcon/></button></span>
-   <a className={f.button} href={profile.calendar} target="_blank" rel="noreferrer">Book a call <Arrow size={13}/></a>
+   <span className={f.emailGroup}><a href={`mailto:${profile.email}`} title={profile.email}>Email me</a><button type="button" className={s.copy} aria-label="Copy email address" title={profile.email} onClick={copyEmail}><CopyIcon/></button></span>
+   <a href={profile.calendar} target="_blank" rel="noreferrer">Book a call <Arrow size={13}/></a>
    <span className={f.copyStatus} role="status">{copy}</span>
   </div>
   <nav className={f.footerLinks} aria-label="Footer links"><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a><a href={profile.twitter} target="_blank" rel="noreferrer">X</a><a href="https://buymeacoffee.com/sumitsharmq" target="_blank" rel="noreferrer">Buy me a coffee</a><a href="#main">Back to top</a></nav>
