@@ -33,7 +33,8 @@
 .actions > a,.emailGroup > a{display:inline-flex;align-items:center;gap:5px;font-size:15px;font-weight:500;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
 .footerLinks{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;margin-top:40px;padding-top:18px;border-top:1px dashed var(--line);font-size:13px;color:var(--muted)}
 .footerLinks > a:last-child{margin-left:auto}
-.visitors{display:inline-flex;align-items:center;gap:7px;margin:8px 0 0!important;font:400 12px/1.5 var(--label);font-variant-numeric:tabular-nums;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin-top:8px;font:400 12px/1.5 var(--label);color:var(--muted)}
+.visitors{display:inline-flex;align-items:center;gap:7px;margin:0!important;font:400 12px/1.5 var(--label);font-variant-numeric:tabular-nums;color:var(--muted)}
 .visitors i{width:6px;height:6px;border-radius:50%;background:#2ca64b}
 .colophon{margin:14px 0 0!important;font:400 12px/1.7 var(--label);font-variant-numeric:tabular-nums;color:var(--muted);letter-spacing:.01em}
 .colophon kbd{font:inherit;padding:1px 5px;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;color:var(--ink)}
@@ -83,3 +84,6 @@
 .toast{font-family:var(--font-portfolio),sans-serif!important;background:var(--raised)!important;color:var(--ink)!important;border:1px solid var(--line)!important;border-radius:12px!important;box-shadow:0 12px 30px -16px #3f342055!important}
 .toast [data-description]{color:var(--muted)!important;font-family:var(--label)}
 @media (prefers-reduced-motion:reduce){.canvas [data-reveal]{opacity:1;filter:none;transform:none;transition:none}}
+
+/* Inspect mode needs a keyboard and a pointer; touch screens don't get the hint or the button. */
+@media (hover:none),(pointer:coarse){.inspectHint,.inspectButton{display:none!important}}
