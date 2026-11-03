@@ -8,7 +8,7 @@ Inter Variable and Manrope (small labels and dates) are bundled locally; Noto Sa
 
 Every page sits in a framed 768px column on a dot-grid canvas, with crosshair marks where section rules meet the rails. Sections blur in as they scroll into view, project screenshots wipe open with clip-path, and copying the email shows a Sonner toast. Press `I` (or the header button) for inspect mode: column guides, tinted gutters, and a live label showing any element's size, padding, type specs and colour.
 
-Home is a hero followed by numbered sections. Glyph, Glyph-Skill, Fedup Studio and Musiclb are expandable rows with screenshots. Other products, early builds and planned work live on Projects. Product and personal-profile links reveal upright previews on hover/focus; separate touch controls preserve the destination link. Work has search and native screenshot disclosures. Craft keeps the wider tool inventory behind a disclosure. Existing writing and the Glyph project page remain available.
+Home is a hero followed by numbered sections. Glyph, Glaze, Slate, Fedup Studio, Glyph-Skill and Musiclb are expandable rows with screenshots. Other products, early builds and planned work live on Projects. Product and personal-profile links reveal upright previews on hover/focus; separate touch controls preserve the destination link. Work has search and native screenshot disclosures. Craft keeps the wider tool inventory behind a disclosure. Existing writing and the Glyph project page remain available.
 
 ## Content boundaries
 
@@ -16,7 +16,9 @@ Home is a hero followed by numbered sections. Glyph, Glyph-Skill, Fedup Studio a
 - Proofline is an early build. Its real icon is reused; the portfolio links to an introduction rather than an unverified public app URL.
 - Revenue attribution is explicitly planned, not a released product.
 - The design article is labelled Draft. The unavailable original nine takes have not been reconstructed as approved quotations.
-- LinkedIn is omitted because the repository did not supply a verified address.
+- LinkedIn (linkedin.com/in/sumitsharma4) and the location line "India (IST, UTC+5:30)" come from the Glaze/Slate brief. No resume link is shown until a shareable resume URL is confirmed.
+- Glaze is open source (MIT) and links to solid-glass.vercel.app.
+- Slate is described only by what was checked on 3 November 2026: the brand name, copy lines and colour fields update the live preview. Uploads, export and project download need an account and aren't claimed. "Live · paid" stays on Glyph only.
 - Email copying reports success only after the clipboard write resolves.
 
 Asset provenance lives in `public/brands/SOURCES.md`, `public/previews/SOURCES.md`, and `public/logos/SOURCES.md`. Font licenses live with the fonts.

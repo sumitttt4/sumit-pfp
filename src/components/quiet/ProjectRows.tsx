@@ -20,7 +20,7 @@ export default function ProjectRows({projects}:{projects:ProjectRow[]}){
    {p.image&&<a href={p.href} target="_blank" rel="noreferrer" className={h.shot} tabIndex={-1} aria-hidden="true"><Image src={p.image} alt="" fill sizes="(max-width:640px) 100vw, 380px"/></a>}
    <div className={h.panelText}><p>{p.description}</p><div className={h.panelLinks}>
     <a href={p.href} target="_blank" rel="noreferrer">{host} <Arrow size={13}/></a>
-    {p.slug==='glyph'&&<Link href="/projects/glyph">Read the case study <Arrow size={13}/></Link>}
+    {p.detail&&<Link href={p.detail}>{p.slug==='glyph'?'Read the case study':'Project notes'} <Arrow size={13}/></Link>}
     {p.extra?.map(link=><a key={link.href} href={link.href} title={link.title} target="_blank" rel="noreferrer">{link.label} <Arrow size={13}/></a>)}
    </div></div>
   </div></div></div>

@@ -360,3 +360,6 @@
 .footer > h2{margin-bottom:4px}
 .footer .footerLinks{margin-top:16px}
 @media(max-width:640px){.pageIntro{padding:24px 0 16px}.intro{padding:24px 0 16px}.projectEntry{padding:20px 0}.footer{margin-top:24px}}
+
+/* Commands and attributes on project pages. */
+.quiet :global(.install-command){margin:14px 0 18px;padding:12px 14px;overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface);font:13px/1.6 var(--font-geist-mono),ui-monospace,monospace;color:var(--ink);white-space:pre}
