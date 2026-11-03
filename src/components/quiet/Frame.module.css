@@ -65,5 +65,3 @@
 .toast [data-description]{color:var(--muted)!important;font-family:var(--label)}
 @media (prefers-reduced-motion:reduce){.canvas [data-reveal]{opacity:1;filter:none;transform:none;transition:none}}
 
-/* The keyboard hint only makes sense with a keyboard. */
-@media (hover:none),(pointer:coarse){.keyHint{display:none!important}}

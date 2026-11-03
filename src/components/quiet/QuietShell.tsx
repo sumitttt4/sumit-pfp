@@ -9,7 +9,6 @@ import {profile} from '@/data/profile';
 import {revealQuietPage} from '@/lib/quiet-snake';
 import {revealOnScroll} from '@/lib/reveal';
 import {Arrow,CopyIcon,GithubIcon,ThemeIcon,XIcon} from './Icons';
-import CommandMenu from './CommandMenu';
 import VisitorCount from './VisitorCount';
 import s from './Quiet.module.css';
 import f from './Frame.module.css';
@@ -31,7 +30,6 @@ export default function QuietShell({children}:{children:React.ReactNode}){
    <a className={`${f.iconButton} ${f.social}`} href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub"><GithubIcon/></a>
    <a className={`${f.iconButton} ${f.social}`} href={profile.twitter} target="_blank" rel="noreferrer" aria-label="X"><XIcon/></a>
    <span className={f.divider}/>
-   <CommandMenu onCopyEmail={copyEmail} onToggleTheme={toggleTheme}/>
    <button className={`${s.theme} ${f.iconButton}`} type="button" aria-label="Toggle colour theme" onClick={toggleTheme}><ThemeIcon/></button>
   </div>
  </header>
@@ -46,7 +44,7 @@ export default function QuietShell({children}:{children:React.ReactNode}){
    <a href={profile.calendar} target="_blank" rel="noreferrer">Book a call <Arrow size={13}/></a>
   </div>
   <nav className={f.footerLinks} aria-label="Footer links"><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a><a href={profile.twitter} target="_blank" rel="noreferrer">X</a><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href="https://buymeacoffee.com/sumitsharmq" target="_blank" rel="noreferrer">Buy me a coffee</a><a href="#main">Back to top</a></nav>
-  <p className={f.colophon}>Designed and built by Sumit.<span className={f.keyHint}> Press <kbd>⌘</kbd> <kbd>K</kbd> to jump anywhere.</span></p>
+  <p className={f.colophon}>Designed and built by Sumit.</p>
   <div className={f.meta}><VisitorCount/>{updated&&<span>Last updated · {updated}</span>}</div>
  </footer>
  </div>
