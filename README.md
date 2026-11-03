@@ -17,6 +17,8 @@ Home is a hero followed by numbered sections. It features four projects (Glyph, 
 - Revenue attribution is explicitly planned, not a released product.
 - The design article is labelled Draft. The unavailable original nine takes have not been reconstructed as approved quotations.
 - LinkedIn (linkedin.com/in/sumitsharma4) and the location line "India (IST, UTC+5:30)" come from the Glaze/Slate brief. No resume link is shown until a shareable resume URL is confirmed.
+- Glyph's revenue ($724 all-time, $57 MRR, 3 active subscriptions) is a dated snapshot from TrustMRR (verified there with Polar) in `src/data/glyph-revenue.json`, checked 3 November 2026. Recheck trustmrr.com/startup/glyph and update the file; it is not a live feed. The older $427 figure is no longer used.
+- More projects lists the newer side projects only (Fedup Studio, Proofline, Musiclb, File Studio).
 - Glaze is open source (MIT) and links to solid-glass.vercel.app.
 - The footer visitor count uses Abacus (abacus.jasoncameron.dev): each browser is counted once, and only on sumitsharma.pro; other hosts use a separate preview key.
 - Slate is described only by what was checked on 3 November 2026: the brand name, copy lines and colour fields update the live preview. Uploads, export and project download need an account and aren't claimed. "Live · paid" stays on Glyph only.

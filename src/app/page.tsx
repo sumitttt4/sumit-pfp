@@ -10,6 +10,7 @@ import {Arrow} from '@/components/quiet/Icons';
 import posts from '@/data/blog';
 import {experience,profile} from '@/data/profile';
 import {featuredProjects} from '@/data/quiet';
+import revenue from '@/data/glyph-revenue.json';
 import h from '@/components/quiet/Home.module.css';
 export const metadata:Metadata={title:'Sumit Sharma — Design engineer',description:'Design engineer. Products, notes, and small things worth using.',alternates:{canonical:'/'}};
 const project=(slug:string)=>featuredProjects.find(p=>p.slug===slug)!;
@@ -18,7 +19,7 @@ function Head({index,title,more}:{index:string;title:string;more?:React.ReactNod
 export default function Home(){return <>
  <section className={h.hero}>
   <div className={h.identity}><span className={h.avatar}><Image src="/avatar.jpg" alt="" fill sizes="64px" priority/></span><div><Greeting className={h.greeting}/><h1 className={h.name}>Sumit Sharma</h1><p className={h.role}>Design engineer · Frontend at <a href="https://craon.ai" target="_blank" rel="noreferrer">Craon</a></p></div></div>
-  <p className={h.lead}>I build products for the web, from the first interface to the details of how it works. I shipped <PreviewLink {...project('glyph')}/>, a paid brand-identity tool, and I make tools for people who build interfaces: <PreviewLink {...project('glaze')}/>, <PreviewLink {...project('glyph-skill')}/> and <PreviewLink {...project('slate')}/>.</p>
+  <p className={h.lead}>I build products for the web, from the first interface to the details of how it works. I shipped <PreviewLink {...project('glyph')}/>, a brand-identity tool with <a className={h.revenue} href={revenue.source} target="_blank" rel="noreferrer" title={`Verified on TrustMRR with ${revenue.verifiedWith}, checked ${revenue.checkedAt}`}>${revenue.allTime} in revenue</a> so far, and I make tools for people who build interfaces: <PreviewLink {...project('glaze')}/>, <PreviewLink {...project('glyph-skill')}/> and <PreviewLink {...project('slate')}/>.</p>
   <p className={h.heroLinks}><a href={profile.calendar} target="_blank" rel="noreferrer">Book a call <Arrow size={13}/></a><a href="#contact">Email me</a></p>
  </section>
  <section className={h.section}><ProjectViews storageKey="view-featured" projects={featuredProjects} head={<Head index="01" title="Things I’ve built" more={<Link className={h.more} href="/projects">All projects <Arrow size={13}/></Link>}/>}/></section>

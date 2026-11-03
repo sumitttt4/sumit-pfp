@@ -365,3 +365,12 @@
 
 /* Commands and attributes on project pages. */
 .quiet :global(.install-command){margin:14px 0 18px;padding:12px 14px;overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface);font:13px/1.6 var(--font-geist-mono),ui-monospace,monospace;color:var(--ink);white-space:pre}
+
+/* Glyph's verified revenue, on its project page. */
+.quiet :global(.revenue-stats){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 10px;padding:0}
+.quiet :global(.revenue-stats) > div{padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:var(--raised)}
+.quiet :global(.revenue-stats) dt{font:400 12px/1.4 var(--label);color:var(--muted)}
+.quiet :global(.revenue-stats) dd{margin:6px 0 0;font-size:26px;font-weight:600;letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--ink)}
+.quiet :global(.revenue-source){margin:0 0 8px!important;font:400 12.5px/1.6 var(--label);color:var(--muted)}
+.quiet :global(.revenue-source) a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+@media(max-width:640px){.quiet :global(.revenue-stats){grid-template-columns:1fr 1fr}.quiet :global(.revenue-stats) > div:last-child{grid-column:1/-1}}
