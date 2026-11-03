@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {useState} from 'react';
 import type {QuietProject} from '@/data/quiet';
-import {Arrow,PlusIcon} from './Icons';
+import {Arrow,ChevronIcon} from './Icons';
 import h from './Home.module.css';
 export type ProjectRow=QuietProject&{tagline:string;live?:boolean;extra?:{label:string;href:string;title?:string}[]};
 export default function ProjectRows({projects}:{projects:ProjectRow[]}){
@@ -14,7 +14,7 @@ export default function ProjectRows({projects}:{projects:ProjectRow[]}){
    <span className={h.rowName}>{p.name}</span>
    <span className={h.rowTag}>{p.tagline}</span>
    <span className={h.rowStatus}>{p.status&&<>{p.live&&<i/>}{p.status}</>}</span>
-   <span className={h.plus}><PlusIcon/></span>
+   <span className={h.chevron}><ChevronIcon/></span>
   </button>
   <div id={panel} className={h.panel} ref={el=>{if(el)el.inert=!expanded}}><div className={h.panelInner}><div className={h.panelBody}>
    {p.image&&<a href={p.href} target="_blank" rel="noreferrer" className={h.shot} tabIndex={-1} aria-hidden="true"><Image src={p.image} alt="" fill sizes="(max-width:640px) 100vw, 380px"/></a>}

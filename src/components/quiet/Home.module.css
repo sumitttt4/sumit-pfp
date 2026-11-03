@@ -29,8 +29,8 @@
 .rowTag{overflow:hidden;font-size:15px;color:var(--muted);white-space:nowrap;text-overflow:ellipsis}
 .rowStatus{display:inline-flex;align-items:center;gap:6px;font:400 12px/1 var(--label);font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
 .rowStatus i{width:6px;height:6px;border-radius:50%;background:#2ca64b}
-.plus{display:grid;place-items:center;color:var(--muted);transition:transform 260ms var(--ease)}
-.row[data-open] .plus{transform:rotate(45deg);color:var(--ink)}
+.chevron{display:grid;place-items:center;color:var(--muted);transition:transform 260ms var(--ease)}
+.row[data-open] .chevron{transform:rotate(180deg);color:var(--ink)}
 .panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows 340ms var(--ease)}
 .row[data-open] .panel{grid-template-rows:1fr}
 .panelInner{overflow:hidden}
@@ -73,7 +73,7 @@
  .avatar:hover{transform:rotate(0) scale(1.04)}
  .more:hover,.panelLinks a:hover,.heroLinks a:hover{color:var(--ink);text-decoration-color:var(--ink)}
  .rowButton:hover .rowName,.post:hover h3{text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
- .rowButton:hover .plus{color:var(--ink)}
+ .rowButton:hover .chevron{color:var(--ink)}
  .shot:hover img{transform:scale(1.02)}
  .card:hover{transform:translateY(-2px);box-shadow:0 14px 28px -18px #3f342060}
 }
