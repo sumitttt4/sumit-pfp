@@ -6,7 +6,7 @@ Next.js 14, TypeScript and Tailwind, with an editorial portfolio layer shared ac
 
 Inter Variable and Manrope (small labels and dates) are bundled locally; Noto Sans Devanagari preserves Hindi shaping. A small rotating greeting reserves its layout and becomes static with reduced motion. The warm paper palette has a pure-black dark variant. Colour comes from authentic inline product/tool marks and real screenshots.
 
-Every page sits in a framed 768px column. Sections blur in as they scroll into view, hovering a job, post or project row dims its siblings, and copying the email shows a Sonner toast. Press ⌘K / Ctrl+K (or the search button in the header) for a command menu that jumps to any page or project, copies the email, books a call or switches theme.
+Every page sits in a framed 768px column. Sections blur in as they scroll into view, hovering a job, post or project row dims its siblings, and copying the email shows a Sonner toast.
 
 Home is a hero followed by numbered sections. It shows six projects (Glyph, Glyph-Skill, Glaze, Slate, Fedup Studio, File Studio) and a Show more button; Work lists every project, adding Proofline and Musiclb. Both use a list/grid toggle that is remembered per visitor. Hello, Hola and नमस्ते rotate in the greeting.
 
