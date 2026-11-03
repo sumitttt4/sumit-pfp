@@ -10,6 +10,7 @@ import {revealQuietPage} from '@/lib/quiet-snake';
 import {revealOnScroll} from '@/lib/reveal';
 import {Arrow,CopyIcon,GithubIcon,InspectIcon,ThemeIcon,XIcon} from './Icons';
 import Inspector from './Inspector';
+import VisitorCount from './VisitorCount';
 import s from './Quiet.module.css';
 import f from './Frame.module.css';
 const links=[['Work','/projects'],['Writing','/blog'],['About','/about'],['Craft','/craft']];
@@ -45,6 +46,7 @@ export default function QuietShell({children}:{children:React.ReactNode}){
   </div>
   <nav className={f.footerLinks} aria-label="Footer links"><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a><a href={profile.twitter} target="_blank" rel="noreferrer">X</a><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href="https://buymeacoffee.com/sumitsharmq" target="_blank" rel="noreferrer">Buy me a coffee</a><a href="#main">Back to top</a></nav>
   <p className={f.colophon}>Designed and built by Sumit. Press <kbd>I</kbd> to inspect the layout.</p>
+  <VisitorCount/>
  </footer>
  </div>
  {inspect&&<Inspector onClose={closeInspect}/>}

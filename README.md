@@ -18,6 +18,7 @@ Home is a hero followed by numbered sections. Glyph, Glaze, Slate, Fedup Studio,
 - The design article is labelled Draft. The unavailable original nine takes have not been reconstructed as approved quotations.
 - LinkedIn (linkedin.com/in/sumitsharma4) and the location line "India (IST, UTC+5:30)" come from the Glaze/Slate brief. No resume link is shown until a shareable resume URL is confirmed.
 - Glaze is open source (MIT) and links to solid-glass.vercel.app.
+- The footer visitor count uses Abacus (abacus.jasoncameron.dev): each browser is counted once, and only on sumitsharma.pro; other hosts use a separate preview key.
 - Slate is described only by what was checked on 3 November 2026: the brand name, copy lines and colour fields update the live preview. Uploads, export and project download need an account and aren't claimed. "Live · paid" stays on Glyph only.
 - Email copying reports success only after the clipboard write resolves.
 
