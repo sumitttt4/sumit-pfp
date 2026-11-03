@@ -23,9 +23,9 @@ export default function GlyphProject() { return (
 </header>
 <figure className="project-visual">
 <div className="project-image-frame">
-<Image alt="An earlier Glyph interface: a product idea input, the brand generation entry point, and identity previews." fill priority quality={90} sizes="(max-width: 684px) calc(100vw - 40px), 620px" src="/glyph.png" />
+<Image alt="The Glyph homepage: An identity for your next idea, with a product idea input and an illustrative brand example." fill priority quality={90} sizes="(max-width: 684px) calc(100vw - 40px), 680px" src="/previews/glyph-2026-11.jpg" />
 </div>
-<figcaption>An earlier product entry point, preserved in the project assets.</figcaption>
+<figcaption>Glyph’s current homepage, captured 3 November 2026.</figcaption>
 </figure>
 <div className="story-prose">
 <section>

@@ -27,9 +27,11 @@
 .intro{padding:40px 0 22px}
 .greeting{color:var(--muted);font-size:18px;line-height:1.6;margin-bottom:17px}
 .greeting > div{position:relative;height:30px;min-width:110px}
-.greetingWord{position:absolute;inset:0;opacity:0;transform:translateY(5px);transition:transform 240ms var(--ease),opacity 200ms ease;white-space:nowrap}
+/* Hello, Hola, नमस्ते: each word blurs in from below and drifts up as the next arrives. */
+.greetingWord{position:absolute;inset:0;opacity:0;transform:translateY(60%);filter:blur(6px);transition:transform 560ms var(--ease),opacity 380ms ease,filter 460ms var(--ease);white-space:nowrap}
+.greetingWord[data-state=out]{transform:translateY(-60%)}
 .greetingWord[lang=hi]{font-family:var(--font-devanagari),sans-serif;line-height:1.8;letter-spacing:0}
-.greetingActive{opacity:1;transform:translateY(0)}
+.greetingActive{opacity:1;transform:translateY(0);filter:none}
 .intro h1{font-size:28px;font-weight:550;letter-spacing:-.04em;line-height:1.4;margin:0 0 12px}
 .intro > p{max-width:555px;line-height:1.8;text-wrap:balance}
 .section{padding:24px 0}
@@ -194,7 +196,7 @@
 }
 @media(prefers-reduced-motion:reduce){
  .quiet *,.quiet *::before,.quiet *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
- .greetingWord{transform:none}
+ .greetingWord{transform:none;filter:none}
  .greetingWord:not(:first-child){display:none}
  .greetingWord:first-child{opacity:1}
  .arrow path{transform:none!important}
