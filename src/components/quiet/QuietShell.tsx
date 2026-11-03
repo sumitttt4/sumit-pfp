@@ -3,13 +3,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {usePathname} from 'next/navigation';
 import {useTheme} from 'next-themes';
-import {useCallback,useEffect,useRef,useState} from 'react';
+import {useCallback,useEffect,useRef} from 'react';
 import {Toaster,toast} from 'sonner';
 import {profile} from '@/data/profile';
 import {revealQuietPage} from '@/lib/quiet-snake';
 import {revealOnScroll} from '@/lib/reveal';
-import {Arrow,CopyIcon,GithubIcon,InspectIcon,ThemeIcon,XIcon} from './Icons';
-import Inspector from './Inspector';
+import {Arrow,CopyIcon,GithubIcon,ThemeIcon,XIcon} from './Icons';
+import CommandMenu from './CommandMenu';
 import VisitorCount from './VisitorCount';
 import s from './Quiet.module.css';
 import f from './Frame.module.css';
@@ -17,23 +17,22 @@ const built=process.env.NEXT_PUBLIC_BUILD_DATE;
 const updated=built?new Date(built).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}):null;
 const links=[['Work','/projects'],['Writing','/blog'],['About','/about'],['Craft','/craft']];
 export default function QuietShell({children}:{children:React.ReactNode}){
- const shell=useRef<HTMLDivElement>(null);const path=usePathname();const {resolvedTheme,setTheme}=useTheme();const [inspect,setInspect]=useState(false);
- const closeInspect=useCallback(()=>setInspect(false),[]);
+ const shell=useRef<HTMLDivElement>(null);const path=usePathname();const {resolvedTheme,setTheme}=useTheme();
+ const toggleTheme=useCallback(()=>setTheme(resolvedTheme==='dark'?'light':'dark'),[resolvedTheme,setTheme]);
  useEffect(()=>{if(shell.current)return revealQuietPage(shell.current)},[path]);
  useEffect(()=>revealOnScroll(),[path]);
- useEffect(()=>{const key=(e:KeyboardEvent)=>{const el=e.target as HTMLElement;if(e.key.toLowerCase()!=='i'||e.metaKey||e.ctrlKey||e.altKey||el.closest('input,textarea,[contenteditable=true],[data-snake-board]'))return;setInspect(v=>!v)};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key)},[]);
- async function copyEmail(){try{await navigator.clipboard.writeText(profile.email);toast('Email copied',{description:profile.email});}catch{toast('Couldn’t copy',{description:'Use the Email me link instead.'});}}
- return <div ref={shell} className={`${s.quiet} ${f.canvas}`} data-quiet data-inspect={inspect?'':undefined}><a href="#main" className={s.skip}>Skip to content</a>
+ const copyEmail=useCallback(async()=>{try{await navigator.clipboard.writeText(profile.email);toast('Email copied',{description:profile.email});}catch{toast('Couldn’t copy',{description:'Use the Email me link instead.'});}},[]);
+ return <div ref={shell} className={`${s.quiet} ${f.canvas}`} data-quiet><a href="#main" className={s.skip}>Skip to content</a>
  <div className={f.frame} data-frame>
  <header className={f.header}>
   <Link href="/" className={f.mark} aria-label="Sumit Sharma, home"><Image src="/avatar.jpg" alt="" width={24} height={24}/><span>Sumit Sharma</span></Link>
   <nav className={f.nav} aria-label="Main navigation">{links.map(([label,href])=><Link key={href} href={href} aria-current={path.startsWith(href)?'page':undefined}>{label}</Link>)}</nav>
-  <div className={f.tools} data-inspect-ui>
+  <div className={f.tools}>
    <a className={`${f.iconButton} ${f.social}`} href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub"><GithubIcon/></a>
    <a className={`${f.iconButton} ${f.social}`} href={profile.twitter} target="_blank" rel="noreferrer" aria-label="X"><XIcon/></a>
    <span className={f.divider}/>
-   <button className={`${f.iconButton} ${f.inspectButton}`} type="button" aria-pressed={inspect} aria-label="Inspect layout" title="Inspect layout (I)" onClick={()=>setInspect(v=>!v)}><InspectIcon/></button>
-   <button className={`${s.theme} ${f.iconButton}`} type="button" aria-label="Toggle colour theme" onClick={()=>setTheme(resolvedTheme==='dark'?'light':'dark')}><ThemeIcon/></button>
+   <CommandMenu onCopyEmail={copyEmail} onToggleTheme={toggleTheme}/>
+   <button className={`${s.theme} ${f.iconButton}`} type="button" aria-label="Toggle colour theme" onClick={toggleTheme}><ThemeIcon/></button>
   </div>
  </header>
  <main id="main" tabIndex={-1}>{children}</main>
@@ -47,11 +46,10 @@ export default function QuietShell({children}:{children:React.ReactNode}){
    <a href={profile.calendar} target="_blank" rel="noreferrer">Book a call <Arrow size={13}/></a>
   </div>
   <nav className={f.footerLinks} aria-label="Footer links"><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a><a href={profile.twitter} target="_blank" rel="noreferrer">X</a><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href="https://buymeacoffee.com/sumitsharmq" target="_blank" rel="noreferrer">Buy me a coffee</a><a href="#main">Back to top</a></nav>
-  <p className={f.colophon}>Designed and built by Sumit.<span className={f.inspectHint}> Press <kbd>I</kbd> to inspect the layout.</span></p>
+  <p className={f.colophon}>Designed and built by Sumit.<span className={f.keyHint}> Press <kbd>⌘</kbd> <kbd>K</kbd> to jump anywhere.</span></p>
   <div className={f.meta}><VisitorCount/>{updated&&<span>Last updated · {updated}</span>}</div>
  </footer>
  </div>
- {inspect&&<Inspector onClose={closeInspect}/>}
  <Toaster theme={resolvedTheme==='dark'?'dark':'light'} position="bottom-center" toastOptions={{className:f.toast}}/>
  </div>;
 }

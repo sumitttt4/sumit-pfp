@@ -12,6 +12,9 @@
 .lead [data-preview-name]{padding:1px 7px 1px 4px;margin-inline:1px;border:1px solid var(--line);border-radius:7px;background:var(--surface)}
 .lead [data-preview-name] > a{font-weight:550;text-decoration:none}
 .revenue{font-variant-numeric:tabular-nums;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px;text-decoration-thickness:1px}
+.showMore{display:flex;justify-content:center;margin:24px 0 0!important}
+.showMore a{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:13.5px;font-weight:500;transition:background 150ms ease,border-color 150ms ease,transform 140ms var(--ease)}
+.showMore a:active{transform:scale(.97)}
 .heroLinks{display:flex;flex-wrap:wrap;gap:8px 22px;margin:22px 0 0!important;font-size:15px}
 .heroLinks a{display:inline-flex;align-items:center;gap:5px;font-weight:500;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
 
@@ -51,6 +54,7 @@
 
 @media (hover:hover) and (pointer:fine){
  .avatar:hover{transform:rotate(0) scale(1.04)}
+ .showMore a:hover{background:var(--raised);border-color:color-mix(in srgb,var(--muted) 40%,var(--line))}
  .more:hover,.heroLinks a:hover{color:var(--ink);text-decoration-color:var(--ink)}
   .post:hover h3{text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
  .card:hover{transform:translateY(-2px);box-shadow:0 14px 28px -18px #3f342060}
