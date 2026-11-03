@@ -18,8 +18,10 @@ const project=(slug:string)=>selectedProjects.find(p=>p.slug===slug)!;
 const checked=new Date(skill.checkedAt+'T00:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
 const work:ProjectRow[]=[
  {...project('glyph'),tagline:'AI brand identity, one brief in',live:true},
- {...project('glyph-skill'),tagline:'Design skill for AI coding assistants',extra:[{label:`GitHub · ${skill.stars} stars`,href:skill.repository,title:`Star count checked ${checked}`}]},
+ {...project('glaze'),tagline:'93 free React components, four finishes',extra:[{label:'Docs',href:'https://solid-glass.vercel.app/docs'},{label:'Code on GitHub',href:'https://github.com/sumitttt4/solid-glass'}]},
+ {...project('slate'),tagline:'Launch films you can make yours'},
  {...project('fedup-studio'),tagline:'Landing-page code library',status:'Free'},
+ {...project('glyph-skill'),tagline:'Design skill for AI coding assistants',extra:[{label:`GitHub · ${skill.stars} stars`,href:skill.repository,title:`Star count checked ${checked}`}]},
  {...project('musiclb'),tagline:'Your days, in songs'},
 ];
 const writing=['building-glyph','your-ai-built-website-needs-a-visual-direction-before-it-needs-another-prompt-d30168236c7b'].map(slug=>posts.find(p=>p.slug===slug)!);

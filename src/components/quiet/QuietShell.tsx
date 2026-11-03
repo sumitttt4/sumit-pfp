@@ -38,11 +38,12 @@ export default function QuietShell({children}:{children:React.ReactNode}){
   <p className={f.footerIndex}>Contact</p>
   <h2>Let’s work together.</h2>
   <p className={f.footerInvitation}>Open to projects and collaborations.</p>
+  <p className={f.footerZone}>Based in {profile.timezone}</p>
   <div className={f.actions}>
    <span className={f.emailGroup}><a href={`mailto:${profile.email}`} title={profile.email}>Email me</a><button type="button" className={s.copy} aria-label="Copy email address" title={profile.email} onClick={copyEmail}><CopyIcon/></button></span>
    <a href={profile.calendar} target="_blank" rel="noreferrer">Book a call <Arrow size={13}/></a>
   </div>
-  <nav className={f.footerLinks} aria-label="Footer links"><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a><a href={profile.twitter} target="_blank" rel="noreferrer">X</a><a href="https://buymeacoffee.com/sumitsharmq" target="_blank" rel="noreferrer">Buy me a coffee</a><a href="#main">Back to top</a></nav>
+  <nav className={f.footerLinks} aria-label="Footer links"><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a><a href={profile.twitter} target="_blank" rel="noreferrer">X</a><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href="https://buymeacoffee.com/sumitsharmq" target="_blank" rel="noreferrer">Buy me a coffee</a><a href="#main">Back to top</a></nav>
   <p className={f.colophon}>Designed and built by Sumit. Press <kbd>I</kbd> to inspect the layout.</p>
  </footer>
  </div>

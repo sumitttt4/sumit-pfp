@@ -9,3 +9,5 @@ Duo artwork is an existing official Duolingo design-blog illustration, not a cap
 React, Next.js, TypeScript, Tailwind, Figma and the other tool marks reuse the repository's existing SVG assets and provenance in `public/logos/SOURCES.md`.
 
 Glyph-Skill’s real SVG icon was downloaded from the icon link in its own site head on 25 October 2026. GitHub’s public repository API reported 12 stars on that date; `src/data/glyph-skill.json` stores this dated snapshot, not a live counter.
+
+Glaze's icon is the site's own `/glaze.svg`, downloaded from solid-glass.vercel.app on 3 November 2026. Slate's site draws its mark in HTML rather than an image file, so `slate.svg` redraws that mark (an rgb(255,91,31) tile, dark left half, white dot) as an SVG.

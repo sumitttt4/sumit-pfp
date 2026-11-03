@@ -1,7 +1,9 @@
 import {projects as previousProjects} from './projects';
-export type QuietProject={slug:string;name:string;href:string;logo?:string;image?:string;description:string;status?:string};
+export type QuietProject={slug:string;name:string;href:string;logo?:string;image?:string;description:string;status?:string;detail?:string};
 export const selectedProjects:QuietProject[]=[
- {slug:'glyph',name:'Glyph',href:'https://glyph.software',logo:'/brands/glyph.svg',image:'/previews/glyph.jpg',description:'An AI brand-identity product. One brief in, a full launch kit out.',status:'Live · paid'},
+ {slug:'glyph',name:'Glyph',href:'https://glyph.software',logo:'/brands/glyph.svg',image:'/previews/glyph.jpg',description:'An AI brand-identity product. One brief in, a full launch kit out.',status:'Live · paid',detail:'/projects/glyph'},
+ {slug:'glaze',name:'Glaze',href:'https://solid-glass.vercel.app',logo:'/brands/glaze.svg',image:'/previews/glaze.jpg',description:'93 free React components for interfaces, AI and voice, each in four finishes. Install any component with one shadcn command.',status:'Open source',detail:'/projects/glaze'},
+ {slug:'slate',name:'Slate',href:'https://motion-videos-nine.vercel.app',logo:'/brands/slate.svg',image:'/previews/slate.jpg',description:'A library of crafted launch films you can make yours. Swap in your brand and the film preview updates live.',status:'Early access',detail:'/projects/slate'},
  {slug:'proofline',name:'Proofline',href:'https://proofline-lime.vercel.app/',logo:'/brands/proofline.svg',description:'A job-search workspace for your proof, company research, applications and founder-email drafts.',status:'Early build'},
  {slug:'fedup-studio',name:'Fedup Studio',href:'https://fedup.studio',logo:'/brands/fedup.svg',image:'/previews/fedup.jpg',description:'A free library of landing-page code adapted from real open-source products.'},
  {slug:'musiclb',name:'Musiclb',href:'https://musiclb.vercel.app/',logo:'/brands/musiclb.png',image:'/previews/musiclb.jpg',description:'Your days, in songs.'},
