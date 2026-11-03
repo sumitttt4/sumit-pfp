@@ -1,6 +1,6 @@
 /** One engine for the React page and the self-contained HTML review. */
 export function createQuietSnake(root){
- const svg=root.querySelector('svg'),board=root.querySelector('[data-snake-board]'),segments=[...root.querySelectorAll('[data-snake-segment]')],food=root.querySelector('[data-snake-food]'),pause=root.querySelector('[data-snake-pause]'),play=root.querySelector('[data-snake-play]'),controls=root.querySelector('[data-snake-controls]'),status=root.querySelector('[data-snake-status]');
+ const svg=root.querySelector('[data-snake-board] svg'),board=root.querySelector('[data-snake-board]'),segments=[...root.querySelectorAll('[data-snake-segment]')],food=root.querySelector('[data-snake-food]'),pause=root.querySelector('[data-snake-pause]'),play=root.querySelector('[data-snake-play]'),controls=root.querySelector('[data-snake-controls]'),status=root.querySelector('[data-snake-status]');
  const cols=Number(svg.dataset.columns),media=matchMedia('(prefers-reduced-motion: reduce)'),route=[];for(let x=0;x<cols;x++)for(let y=0;y<7;y++)route.push([x,x%2?6-y:y]);
  let mode='auto',paused=false,visible=false,dead=false,frame=0,last=0,elapsed=0,index=0,body=[],direction=[1,0],queued=[1,0],target=[10,3],score=0;
  const equal=(a,b)=>a[0]===b[0]&&a[1]===b[1];

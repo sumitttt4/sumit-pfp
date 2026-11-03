@@ -3,6 +3,8 @@ import HeadingWords from '@/components/quiet/HeadingWords';
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import revenue from "@/data/glyph-revenue.json";
+const checked=new Date(revenue.checkedAt+'T00:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
 export const metadata: Metadata = { title: "Glyph — Sumit Sharma", alternates: { canonical: "/projects/glyph" } };
 export default function GlyphProject() { return (
 <article className="page-content glyph-project">
@@ -21,11 +23,17 @@ export default function GlyphProject() { return (
 </Link>
 </div>
 </header>
+<dl className="revenue-stats">
+<div><dt>All-time revenue</dt><dd>${revenue.allTime}</dd></div>
+<div><dt>MRR</dt><dd>${revenue.mrr}</dd></div>
+<div><dt>Active subscriptions</dt><dd>{revenue.activeSubscriptions}</dd></div>
+</dl>
+<p className="revenue-source">Verified on <a href={revenue.source} target="_blank" rel="noreferrer">TrustMRR</a> with {revenue.verifiedWith}, {checked}.</p>
 <figure className="project-visual">
 <div className="project-image-frame">
-<Image alt="An earlier Glyph interface: a product idea input, the brand generation entry point, and identity previews." fill priority quality={90} sizes="(max-width: 684px) calc(100vw - 40px), 620px" src="/glyph.png" />
+<Image alt="The Glyph homepage: An identity for your next idea, with a product idea input and an illustrative brand example." fill priority quality={90} sizes="(max-width: 684px) calc(100vw - 40px), 680px" src="/previews/glyph-2026-11.jpg" />
 </div>
-<figcaption>An earlier product entry point, preserved in the project assets.</figcaption>
+<figcaption>Glyph’s current homepage, captured 3 November 2026.</figcaption>
 </figure>
 <div className="story-prose">
 <section>
