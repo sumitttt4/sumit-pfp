@@ -2,6 +2,8 @@ import HeadingWords from '@/components/quiet/HeadingWords';
 import type { Metadata } from "next";
 import Link from "next/link";
 import {Arrow} from "@/components/quiet/Icons";
+import revenue from "@/data/glyph-revenue.json";
+const checked=new Date(revenue.checkedAt+'T00:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
 
 export const metadata: Metadata = {
   title: "Building Glyph: from an idea to a paid product — Sumit Sharma",
@@ -28,6 +30,7 @@ export default function GlyphStory() {
         <h2>The work after payment</h2>
         <p>One monthly subscriber ran into an access issue after paying. I had to upgrade their account manually and provide an extra month. It was a concrete reminder that the payment flow and account access need the same care as the generator.</p>
         <p>Glyph is still evolving. I’m working on output quality and consistency, and deciding which improvements matter before making bigger changes. It’s a paid product, but there are still plenty of questions to answer.</p>
+        <p>As of {checked}, Glyph has made ${revenue.allTime} in all-time revenue, verified on <a className="inline-link" href={revenue.source} target="_blank" rel="noreferrer">TrustMRR</a>.</p>
       </div>
       <a className="text-link story-visit" href="https://glyph.software" target="_blank" rel="noreferrer">Try Glyph <Arrow/></a>
     </article>

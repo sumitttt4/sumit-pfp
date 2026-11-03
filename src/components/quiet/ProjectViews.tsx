@@ -30,6 +30,7 @@ export default function ProjectViews({projects,head,storageKey,defaultView='list
     {p.status&&<span className={v.status}>{p.live&&<i/>}{p.status}</span>}
    </div>
    <p>{p.description}</p>
+   {p.proof&&<a className={v.proof} href={p.proof.href} target="_blank" rel="noreferrer" title={p.proof.title}>{p.proof.label} <Arrow size={12}/></a>}
    <div className={v.rowLinks}><a href={p.href} target="_blank" rel="noreferrer">Website <Arrow size={12}/></a>{p.repo&&<a href={p.repo} target="_blank" rel="noreferrer">GitHub <Arrow size={12}/></a>}</div>
   </li>)}</ul>
   :<ul key="grid" className={v.grid} data-animate={animate?'':undefined}>{projects.map((p,i)=><li key={p.slug} className={v.card} style={{'--i':i} as CSSProperties}>
@@ -40,6 +41,7 @@ export default function ProjectViews({projects,head,storageKey,defaultView='list
    </div>
    {p.status&&<span className={v.status}>{p.live&&<i/>}{p.status}</span>}
    <p>{p.description}</p>
+   {p.proof&&<a className={v.proof} href={p.proof.href} target="_blank" rel="noreferrer" title={p.proof.title}>{p.proof.label} <Arrow size={12}/></a>}
   </li>)}</ul>}
  </div>;
 }

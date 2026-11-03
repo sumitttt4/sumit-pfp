@@ -33,6 +33,9 @@
 .card .status{align-self:flex-start}
 .card p{margin:0!important;font-size:14px;line-height:1.6;color:var(--muted)}
 
+.proof{grid-column:1/-1;justify-self:start;display:inline-flex;align-items:center;gap:4px;margin-top:2px;font:500 12.5px/1.4 var(--label);font-variant-numeric:tabular-nums;color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
+.card .proof{align-self:flex-start}
+
 /* Switching views: items settle in one after another. */
 .list[data-animate] li,.grid[data-animate] li{animation:itemIn 440ms var(--ease) both;animation-delay:calc(var(--i) * 45ms)}
 @keyframes itemIn{from{opacity:0;filter:blur(4px);transform:translateY(8px)}to{opacity:1;filter:none;transform:none}}
@@ -40,6 +43,7 @@
 @media (hover:hover) and (pointer:fine){
  .list:hover li:not(:hover){opacity:.45}
  .rowLinks a:hover,.icons a:hover{color:var(--ink)}
+ .proof:hover{text-decoration-color:var(--ink)}
  .icons a:hover{background:var(--surface)}
  .name:hover span{text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
  .shot:hover img{transform:scale(1.025)}
