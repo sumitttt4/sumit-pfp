@@ -4,9 +4,11 @@ Next.js 14, TypeScript and Tailwind, with an editorial portfolio layer shared ac
 
 ## Design
 
-Inter Variable is bundled locally; Noto Sans Devanagari preserves Hindi shaping. A small rotating greeting reserves its layout and becomes static with reduced motion. The warm paper palette has a pure-black dark variant. Colour comes from authentic inline product/tool marks and real screenshots.
+Inter Variable and Manrope (small labels and dates) are bundled locally; Noto Sans Devanagari preserves Hindi shaping. A small rotating greeting reserves its layout and becomes static with reduced motion. The warm paper palette has a pure-black dark variant. Colour comes from authentic inline product/tool marks and real screenshots.
 
-Home presents only Glyph, Glyph-Skill, Fedup Studio and Musiclb in natural sentences. Other products, early builds and planned work live on Projects. Product and personal-profile links reveal upright previews on hover/focus; separate touch controls preserve the destination link. Work has search and native screenshot disclosures. Craft keeps the wider tool inventory behind a disclosure. Existing writing and the Glyph project page remain available.
+Every page sits in a framed 768px column. On phones the nav, GitHub and X move into a three-line menu that wipes open under the header, and in-page links (Back to top, Email me) scroll smoothly. Sections blur in as they scroll into view, hovering a job, post or project row dims its siblings, and copying the email shows a Sonner toast.
+
+Home is a hero followed by numbered sections. It shows six projects (Glyph, Glyph-Skill, Glaze, Slate, Fedup Studio, File Studio) and a Show more button; Work lists every project, adding Proofline and Musiclb. Both use a list/grid toggle that is remembered per visitor. Hello, Hola and नमस्ते rotate in the greeting.
 
 ## Content boundaries
 
@@ -14,8 +16,12 @@ Home presents only Glyph, Glyph-Skill, Fedup Studio and Musiclb in natural sente
 - Proofline is an early build. Its real icon is reused; the portfolio links to an introduction rather than an unverified public app URL.
 - Revenue attribution is explicitly planned, not a released product.
 - The design article is labelled Draft. The unavailable original nine takes have not been reconstructed as approved quotations.
-- The newsletter is a prototype. Submitting it makes no request, stores no email and never claims a subscription succeeded.
-- LinkedIn is omitted because the repository did not supply a verified address.
+- LinkedIn (linkedin.com/in/sumitsharma4) and the location line "India (IST, UTC+5:30)" come from the Glaze/Slate brief. No resume link is shown until a shareable resume URL is confirmed.
+- Glyph's revenue ($724 all-time, $57 MRR, 3 active subscriptions) is a dated snapshot from TrustMRR (verified there with Polar) in `src/data/glyph-revenue.json`, checked 3 November 2026. Recheck trustmrr.com/startup/glyph and update the file; it is not a live feed. The older $427 figure is no longer used.
+- Only the newer projects are listed; older builds are not pulled in.
+- Glaze is open source (MIT) and links to solid-glass.vercel.app.
+- The footer visitor count uses Abacus (abacus.jasoncameron.dev): each browser is counted once, and only on sumitsharma.pro; other hosts use a separate preview key.
+- Slate is described only by what was checked on 3 November 2026: the brand name, copy lines and colour fields update the live preview. Uploads, export and project download need an account and aren't claimed. "Live · paid" stays on Glyph only.
 - Email copying reports success only after the clipboard write resolves.
 
 Asset provenance lives in `public/brands/SOURCES.md`, `public/previews/SOURCES.md`, and `public/logos/SOURCES.md`. Font licenses live with the fonts.

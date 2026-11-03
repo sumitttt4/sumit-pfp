@@ -5,6 +5,8 @@ export const profile = {
   github: "https://github.com/sumitttt4",
   twitter: "https://x.com/sumitthq",
   twitterHandle: "@sumitthq",
+  linkedin: "https://linkedin.com/in/sumitsharma4",
+  timezone: "India (IST, UTC+5:30)",
   calendar: "https://cal.com/sumit-sharma/15min",
   resume:
     "https://drive.google.com/file/d/1rEQ2cCs-dJg18AEAcPp4AU5LHI4iTI9u/view?usp=sharing",
