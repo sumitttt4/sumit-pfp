@@ -52,11 +52,31 @@
  .frame{border-inline:0}
  .header{gap:8px;padding-inline:12px}
  .mark{padding:4px}
- .mark span,.social,.divider{display:none}
- .nav a{padding:6px 7px}
+ .mark span,.social,.divider,.nav{display:none}
  .footer{padding-top:40px}
 }
 
+
+/* Phone menu: three lines that fold into a cross, and a panel that wipes open under the header. */
+.menuButton{display:none;place-content:center;gap:4px;width:38px;height:38px;margin-right:-4px;padding:0;border:0;border-radius:9px;background:transparent;color:var(--ink)}
+.menuButton span{display:block;width:18px;height:1.6px;border-radius:2px;background:currentColor;transition:transform 300ms var(--ease),opacity 200ms ease}
+.header[data-menu] .menuButton span:nth-child(1){transform:translateY(5.6px) rotate(45deg)}
+.header[data-menu] .menuButton span:nth-child(2){opacity:0;transform:scaleX(.4)}
+.header[data-menu] .menuButton span:nth-child(3){transform:translateY(-5.6px) rotate(-45deg)}
+.menu{display:none;position:absolute;left:0;right:0;top:100%;padding:8px 20px 22px;border-bottom:1px solid var(--line);background:var(--paper);box-shadow:0 24px 40px -28px #3f342066;clip-path:inset(0 0 100% 0);pointer-events:none;transition:clip-path 460ms var(--ease)}
+.header[data-menu] .menu{clip-path:inset(0 0 -40px 0);pointer-events:auto}
+.menu nav{display:flex;flex-direction:column}
+.menu nav a{padding:12px 0;border-bottom:1px solid var(--line);font-size:22px;font-weight:550;letter-spacing:-.03em;color:var(--ink)}
+.menu nav a[aria-current=page]{color:var(--muted)}
+.menu nav a,.menuSocial{opacity:0;transform:translateY(-8px);transition:opacity 260ms ease,transform 420ms var(--ease);transition-delay:0ms}
+.header[data-menu] .menu nav a,.header[data-menu] .menuSocial{opacity:1;transform:none;transition-delay:calc(60ms + var(--i) * 40ms)}
+.menuSocial{display:flex;gap:10px;margin-top:18px}
+.menuSocial a{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--raised);font-size:14px;font-weight:500;color:var(--ink)}
+.menuButton:active,.menuSocial a:active{transform:scale(.96)}
+.menuBackdrop{display:none;position:fixed;inset:0;z-index:35;background:color-mix(in srgb,var(--ink) 14%,transparent);opacity:0;pointer-events:none;transition:opacity 280ms ease}
+.menuBackdrop[data-open]{opacity:1;pointer-events:auto}
+@media (max-width:640px){.menuButton{display:grid}.menu,.menuBackdrop{display:block}}
+@media (prefers-reduced-motion:reduce){.menu,.menu nav a,.menuSocial,.menuButton span,.menuBackdrop{transition:none}}
 
 /* Motion in the spirit of Emil Kowalski's work: soft blur-in on scroll, a clip-path wipe, Sonner toasts. */
 .canvas [data-reveal]{opacity:0;filter:blur(6px);transform:translateY(14px);transition:opacity 600ms var(--ease),filter 600ms var(--ease),transform 700ms var(--ease)}

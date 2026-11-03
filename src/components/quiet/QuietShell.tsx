@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {usePathname} from 'next/navigation';
 import {useTheme} from 'next-themes';
-import {useCallback,useEffect,useRef} from 'react';
+import {useCallback,useEffect,useRef,useState} from 'react';
 import {Toaster,toast} from 'sonner';
 import {profile} from '@/data/profile';
 import {revealQuietPage} from '@/lib/quiet-snake';
@@ -20,10 +20,15 @@ export default function QuietShell({children}:{children:React.ReactNode}){
  const toggleTheme=useCallback(()=>setTheme(resolvedTheme==='dark'?'light':'dark'),[resolvedTheme,setTheme]);
  useEffect(()=>{if(shell.current)return revealQuietPage(shell.current)},[path]);
  useEffect(()=>revealOnScroll(),[path]);
+ const [menu,setMenu]=useState(false);const header=useRef<HTMLElement>(null);
+ useEffect(()=>{setMenu(false)},[path]);
+ useEffect(()=>{if(!menu)return;const key=(e:KeyboardEvent)=>{if(e.key==='Escape')setMenu(false)};const outside=(e:PointerEvent)=>{if(!header.current?.contains(e.target as Node))setMenu(false)};addEventListener('keydown',key);document.addEventListener('pointerdown',outside);return()=>{removeEventListener('keydown',key);document.removeEventListener('pointerdown',outside)}},[menu]);
+ /* In-page links (Back to top, Email me) glide instead of jumping; page navigation stays instant. */
+ useEffect(()=>{const click=(e:MouseEvent)=>{const a=(e.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="#"]');if(!a||e.metaKey||e.ctrlKey||e.shiftKey)return;const target=document.getElementById(a.hash.slice(1));if(!target)return;e.preventDefault();target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});history.replaceState(null,'',a.hash)};document.addEventListener('click',click);return()=>document.removeEventListener('click',click)},[]);
  const copyEmail=useCallback(async()=>{try{await navigator.clipboard.writeText(profile.email);toast('Email copied',{description:profile.email});}catch{toast('Couldn’t copy',{description:'Use the Email me link instead.'});}},[]);
  return <div ref={shell} className={`${s.quiet} ${f.canvas}`} data-quiet><a href="#main" className={s.skip}>Skip to content</a>
  <div className={f.frame} data-frame>
- <header className={f.header}>
+ <header ref={header} className={f.header} data-menu={menu?'':undefined}>
   <Link href="/" className={f.mark} aria-label="Sumit Sharma, home"><Image src="/avatar.jpg" alt="" width={24} height={24}/><span>Sumit Sharma</span></Link>
   <nav className={f.nav} aria-label="Main navigation">{links.map(([label,href])=><Link key={href} href={href} aria-current={path.startsWith(href)?'page':undefined}>{label}</Link>)}</nav>
   <div className={f.tools}>
@@ -31,8 +36,14 @@ export default function QuietShell({children}:{children:React.ReactNode}){
    <a className={`${f.iconButton} ${f.social}`} href={profile.twitter} target="_blank" rel="noreferrer" aria-label="X"><XIcon/></a>
    <span className={f.divider}/>
    <button className={`${s.theme} ${f.iconButton}`} type="button" aria-label="Toggle colour theme" onClick={toggleTheme}><ThemeIcon/></button>
+   <button className={f.menuButton} type="button" aria-expanded={menu} aria-controls="phone-menu" aria-label={menu?'Close menu':'Open menu'} onClick={()=>setMenu(v=>!v)}><span/><span/><span/></button>
+  </div>
+  <div id="phone-menu" className={f.menu} ref={el=>{if(el)el.inert=!menu}}>
+   <nav aria-label="Menu">{[['Home','/'],...links].map(([label,href],i)=><Link key={href} href={href} style={{'--i':i} as React.CSSProperties} aria-current={(href==='/'?path==='/':path.startsWith(href))?'page':undefined} onClick={()=>setMenu(false)}>{label}</Link>)}</nav>
+   <div className={f.menuSocial} style={{'--i':links.length+1} as React.CSSProperties}><a href={profile.github} target="_blank" rel="noreferrer"><GithubIcon/>GitHub</a><a href={profile.twitter} target="_blank" rel="noreferrer"><XIcon/>X</a></div>
   </div>
  </header>
+ <div className={f.menuBackdrop} data-open={menu?'':undefined} aria-hidden="true" onClick={()=>setMenu(false)}/>
  <main id="main" tabIndex={-1}>{children}</main>
  <footer className={f.footer} id="contact" aria-label="Contact">
   <p className={f.footerIndex}>Contact</p>
