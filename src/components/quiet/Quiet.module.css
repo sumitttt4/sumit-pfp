@@ -304,8 +304,12 @@
 .activityBoard{--green-0:#e9ede7;--green-1:#b7dbb0;--green-2:#78bc72;--green-3:#408b46;--green-4:#206331;outline-offset:6px;border-radius:4px}
 .activityGrid{width:100%;height:auto;display:block;overflow:visible}
 .activityGrid [data-contribution]{transition:fill 180ms ease}
-.activityGrid [data-snake-segment]{fill:var(--accent,#e8552a);transition:transform 130ms linear,opacity 150ms ease;filter:drop-shadow(0 1px 1px #0002)}
-.activityGrid [data-snake-segment]:first-child{fill:color-mix(in srgb,var(--accent,#e8552a) 70%,#fff)}
+.activityGrid [data-snake-body]{transition:opacity 220ms ease}
+.activityGrid [data-snake-segment]{stroke:var(--accent,#e8552a);stroke-linecap:round}
+.activityGrid [data-snake-head] ellipse{fill:color-mix(in srgb,var(--accent,#e8552a) 82%,#fff)}
+.activityGrid [data-snake-eye]{fill:#1b1410}
+.activityGrid [data-snake-tongue]{fill:none;stroke:#e0245e;stroke-width:.9;stroke-linecap:round;transform-box:fill-box;transform-origin:0 50%;animation:tongue 1.8s ease-in-out infinite}
+@keyframes tongue{0%,62%,100%{transform:scaleX(0)}70%,82%{transform:scaleX(1)}}
 .activityGrid [data-snake-food]{fill:var(--accent,#e8552a);stroke:var(--paper);stroke-width:1.5}
 .activityControls{display:flex;align-items:center;justify-content:space-between;gap:8px 18px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:5px}
 .activityControls > div{display:flex;gap:16px}
@@ -321,7 +325,7 @@
 .headingWord{animation:none}
 :global(.dark) .activityBoard{--green-0:#142017;--green-1:#173d23;--green-2:#236e35;--green-3:#35a24b;--green-4:#76d37d}
 @media(max-width:640px){.timelineTop{display:block}.timelineTop > span{display:block;margin:3px 0}.activityControls{gap:4px 12px}.timeline li{padding-left:19px}}
-@media(prefers-reduced-motion:reduce){.activityGrid [data-snake-segment]{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.activityGrid [data-snake-body]{transition:none!important}.activityGrid [data-snake-tongue]{animation:none;transform:none}}
 
 .footerInvitation{font-size:14px;line-height:1.85;color:var(--muted);max-width:470px;margin:0 0 18px!important}
 .footer .contactLine{gap:18px;font-size:14px}
