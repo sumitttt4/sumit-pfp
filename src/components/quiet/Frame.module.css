@@ -78,10 +78,16 @@
 @media (max-width:640px){.menuButton{display:grid}.menu,.menuBackdrop{display:block}}
 @media (prefers-reduced-motion:reduce){.menu,.menu nav a,.menuSocial,.menuButton span,.menuBackdrop{transition:none}}
 
-/* Motion in the spirit of Emil Kowalski's work: soft blur-in on scroll, a clip-path wipe, Sonner toasts. */
+/* Motion: sections blur in softly as they scroll into view. */
 .canvas [data-reveal]{opacity:0;filter:blur(6px);transform:translateY(14px);transition:opacity 600ms var(--ease),filter 600ms var(--ease),transform 700ms var(--ease)}
 .canvas [data-reveal][data-in]{opacity:1;filter:none;transform:none}
-.toast{font-family:var(--font-portfolio),sans-serif!important;background:var(--raised)!important;color:var(--ink)!important;border:1px solid var(--line)!important;border-radius:12px!important;box-shadow:0 12px 30px -16px #3f342055!important}
-.toast [data-description]{color:var(--muted)!important;font-family:var(--label)}
 @media (prefers-reduced-motion:reduce){.canvas [data-reveal]{opacity:1;filter:none;transform:none;transition:none}}
 
+
+/* Copy email: the icon swaps for a check for a moment, nothing more. */
+.copyButton{position:relative}
+.copyIcon,.checkIcon{position:absolute;inset:0;display:grid;place-items:center;transition:opacity 180ms ease,transform 260ms var(--ease),filter 200ms ease}
+.checkIcon{opacity:0;transform:scale(.6);filter:blur(2px);color:#2ca64b}
+.copyButton[data-state=done] .copyIcon{opacity:0;transform:scale(.6);filter:blur(2px)}
+.copyButton[data-state=done] .checkIcon{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){.copyIcon,.checkIcon{transition:none}}
