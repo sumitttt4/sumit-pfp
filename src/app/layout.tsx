@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import MinimalLayout from "@/components/layout/MinimalLayout";
 import { Analytics } from "@vercel/analytics/next";
 
-const portfolioSans = localFont({src:"./fonts/InterVariable.woff2", variable:"--font-portfolio",weight:"100 900",display:"swap"});
+const portfolioSans = localFont({src:"./fonts/FigtreeVariable.woff2", variable:"--font-portfolio",weight:"300 900",display:"swap"});
 const manrope = localFont({src:"./fonts/ManropeVariable.woff2",variable:"--font-manrope",weight:"200 800",display:"swap"});
 const devanagari = localFont({src:"./fonts/NotoSansDevanagari.woff2",variable:"--font-devanagari",display:"swap"});
 
