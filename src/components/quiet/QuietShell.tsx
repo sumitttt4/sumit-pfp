@@ -4,11 +4,10 @@ import Image from 'next/image';
 import {usePathname} from 'next/navigation';
 import {useTheme} from 'next-themes';
 import {useCallback,useEffect,useRef,useState} from 'react';
-import {Toaster,toast} from 'sonner';
 import {profile} from '@/data/profile';
 import {revealQuietPage} from '@/lib/quiet-snake';
 import {revealOnScroll} from '@/lib/reveal';
-import {Arrow,CopyIcon,GithubIcon,ThemeIcon,XIcon} from './Icons';
+import {Arrow,CheckIcon,CopyIcon,GithubIcon,ThemeIcon,XIcon} from './Icons';
 import VisitorCount from './VisitorCount';
 import s from './Quiet.module.css';
 import f from './Frame.module.css';
@@ -25,7 +24,9 @@ export default function QuietShell({children}:{children:React.ReactNode}){
  useEffect(()=>{if(!menu)return;const key=(e:KeyboardEvent)=>{if(e.key==='Escape')setMenu(false)};const outside=(e:PointerEvent)=>{if(!header.current?.contains(e.target as Node))setMenu(false)};addEventListener('keydown',key);document.addEventListener('pointerdown',outside);return()=>{removeEventListener('keydown',key);document.removeEventListener('pointerdown',outside)}},[menu]);
  /* In-page links (Back to top, Email me) glide instead of jumping; page navigation stays instant. */
  useEffect(()=>{const click=(e:MouseEvent)=>{const a=(e.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="#"]');if(!a||e.metaKey||e.ctrlKey||e.shiftKey)return;const target=document.getElementById(a.hash.slice(1));if(!target)return;e.preventDefault();target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});history.replaceState(null,'',a.hash)};document.addEventListener('click',click);return()=>document.removeEventListener('click',click)},[]);
- const copyEmail=useCallback(async()=>{try{await navigator.clipboard.writeText(profile.email);toast('Email copied',{description:profile.email});}catch{toast('Couldn’t copy',{description:'Use the Email me link instead.'});}},[]);
+ const [copied,setCopied]=useState<'idle'|'done'|'failed'>('idle');const copyTimer=useRef<ReturnType<typeof setTimeout>>();
+ useEffect(()=>()=>clearTimeout(copyTimer.current),[]);
+ const copyEmail=useCallback(async()=>{clearTimeout(copyTimer.current);try{await navigator.clipboard.writeText(profile.email);setCopied('done')}catch{setCopied('failed')}copyTimer.current=setTimeout(()=>setCopied('idle'),1600)},[]);
  return <div ref={shell} className={`${s.quiet} ${f.canvas}`} data-quiet><a href="#main" className={s.skip}>Skip to content</a>
  <div className={f.frame} data-frame>
  <header ref={header} className={f.header} data-menu={menu?'':undefined}>
@@ -51,7 +52,7 @@ export default function QuietShell({children}:{children:React.ReactNode}){
   <p className={f.footerInvitation}>Open to projects and collaborations.</p>
   <p className={f.footerZone}>Based in {profile.timezone}</p>
   <div className={f.actions}>
-   <span className={f.emailGroup}><a href={`mailto:${profile.email}`} title={profile.email}>Email me</a><button type="button" className={s.copy} aria-label="Copy email address" title={profile.email} onClick={copyEmail}><CopyIcon/></button></span>
+   <span className={f.emailGroup}><a href={`mailto:${profile.email}`} title={profile.email}>Email me</a><button type="button" className={`${s.copy} ${f.copyButton}`} data-state={copied} aria-label="Copy email address" title={copied==='done'?'Copied':profile.email} onClick={copyEmail}><span className={f.copyIcon}><CopyIcon/></span><span className={f.checkIcon}><CheckIcon/></span></button><span className={s.srOnly} role="status">{copied==='done'?'Email address copied':copied==='failed'?'Couldn’t copy. Use the Email me link.':''}</span></span>
    <a href={profile.calendar} target="_blank" rel="noreferrer">Book a call <Arrow size={13}/></a>
   </div>
   <nav className={f.footerLinks} aria-label="Footer links"><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a><a href={profile.twitter} target="_blank" rel="noreferrer">X</a><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href="https://buymeacoffee.com/sumitsharmq" target="_blank" rel="noreferrer">Buy me a coffee</a><a href="#main">Back to top</a></nav>
@@ -59,6 +60,5 @@ export default function QuietShell({children}:{children:React.ReactNode}){
   <div className={f.meta}><VisitorCount/>{updated&&<span>Last updated · {updated}</span>}</div>
  </footer>
  </div>
- <Toaster theme={resolvedTheme==='dark'?'dark':'light'} position="bottom-center" toastOptions={{className:f.toast}}/>
  </div>;
 }

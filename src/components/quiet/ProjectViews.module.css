@@ -13,12 +13,12 @@
 .list{border-top:1px solid var(--line)}
 .list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:16px 0;border-bottom:1px solid var(--line);transition:opacity 220ms ease}
 .rowMain{display:flex;align-items:center;gap:10px;min-width:0}
-.name{display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:550;letter-spacing:-.015em;color:var(--ink)}
+.name{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:550;letter-spacing:-.015em;color:var(--ink)}
 .name img{border-radius:4px;object-fit:contain;flex:none}
 .noLogo{width:18px;height:18px;border-radius:4px;background:var(--surface);flex:none}
 .status{display:inline-flex;align-items:center;gap:6px;font:400 12px/1 var(--label);color:var(--muted);white-space:nowrap}
 .status i{width:6px;height:6px;border-radius:50%;background:#2ca64b}
-.list p{grid-column:1/-1;margin:0!important;font-size:14.5px;line-height:1.65;color:var(--muted)}
+.list p{grid-column:1/-1;margin:0!important;font-size:14px;line-height:1.65;color:var(--muted)}
 .rowLinks{grid-column:2;grid-row:1;display:flex;gap:14px;font:400 12.5px/1 var(--label);color:var(--muted)}
 .rowLinks a{display:inline-flex;align-items:center;gap:4px;transition:color 150ms ease}
 
@@ -31,7 +31,7 @@
 .icons{display:flex;gap:2px}
 .icons a{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;color:var(--muted);transition:color 150ms ease,background 150ms ease}
 .card .status{align-self:flex-start}
-.card p{margin:0!important;font-size:14px;line-height:1.6;color:var(--muted)}
+.card p{margin:0!important;font-size:13.5px;line-height:1.6;color:var(--muted)}
 
 .proof{grid-column:1/-1;justify-self:start;display:inline-flex;align-items:center;gap:4px;margin-top:2px;font:500 12.5px/1.4 var(--label);font-variant-numeric:tabular-nums;color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
 .card .proof{align-self:flex-start}
