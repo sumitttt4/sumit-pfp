@@ -304,9 +304,9 @@
 .activityBoard{--green-0:#e9ede7;--green-1:#b7dbb0;--green-2:#78bc72;--green-3:#408b46;--green-4:#206331;outline-offset:6px;border-radius:4px}
 .activityGrid{width:100%;height:auto;display:block;overflow:visible}
 .activityGrid [data-contribution]{transition:fill 180ms ease}
-.activityGrid [data-snake-segment]{fill:#2ca64b;transition:transform 130ms linear,opacity 150ms ease;filter:drop-shadow(0 1px 1px #0002)}
-.activityGrid [data-snake-segment]:first-child{fill:#76dc75}
-.activityGrid [data-snake-food]{fill:#2da74b;stroke:var(--paper);stroke-width:1.5}
+.activityGrid [data-snake-segment]{fill:var(--accent,#e8552a);transition:transform 130ms linear,opacity 150ms ease;filter:drop-shadow(0 1px 1px #0002)}
+.activityGrid [data-snake-segment]:first-child{fill:color-mix(in srgb,var(--accent,#e8552a) 70%,#fff)}
+.activityGrid [data-snake-food]{fill:var(--accent,#e8552a);stroke:var(--paper);stroke-width:1.5}
 .activityControls{display:flex;align-items:center;justify-content:space-between;gap:8px 18px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:5px}
 .activityControls > div{display:flex;gap:16px}
 .activityControls button{border:0;background:none;padding:5px 0;font-size:11px;min-height:32px}
