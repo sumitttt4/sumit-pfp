@@ -1,7 +1,0 @@
-/* Full-bleed halftone sky: breaks out of the framed column, sits behind the content, fades into the paper. */
-.sky{position:absolute;left:50%;width:100vw;transform:translateX(-50%);z-index:-1;pointer-events:none}
-.sky canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1200ms var(--ease)}
-.sky[data-ready] canvas{opacity:1}
-.hero{top:60px;height:620px;-webkit-mask-image:linear-gradient(#000 190px,#00000026 330px,#0000000f 520px,transparent);mask-image:linear-gradient(#000 190px,#00000026 330px,#0000000f 520px,transparent)}
-.footer{bottom:0;height:300px;opacity:.4;-webkit-mask-image:linear-gradient(transparent,#00000040 55%,#000);mask-image:linear-gradient(transparent,#00000040 55%,#000)}
-@media (max-width:640px){.hero{height:520px;-webkit-mask-image:linear-gradient(#000 140px,#00000026 250px,transparent);mask-image:linear-gradient(#000 140px,#00000026 250px,transparent)}.footer{height:260px}}

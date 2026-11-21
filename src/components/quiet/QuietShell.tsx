@@ -8,7 +8,7 @@ import {profile} from '@/data/profile';
 import {revealQuietPage} from '@/lib/quiet-snake';
 import {revealOnScroll} from '@/lib/reveal';
 import {Arrow,CheckIcon,CopyIcon,GithubIcon,ThemeIcon,XIcon} from './Icons';
-import HalftoneSky from './HalftoneSky';
+import PaperSky from './PaperSky';
 import VisitorCount from './VisitorCount';
 import s from './Quiet.module.css';
 import f from './Frame.module.css';
@@ -30,7 +30,7 @@ export default function QuietShell({children}:{children:React.ReactNode}){
  const copyEmail=useCallback(async()=>{clearTimeout(copyTimer.current);try{await navigator.clipboard.writeText(profile.email);setCopied('done')}catch{setCopied('failed')}copyTimer.current=setTimeout(()=>setCopied('idle'),1600)},[]);
  return <div ref={shell} className={`${s.quiet} ${f.canvas}`} data-quiet><a href="#main" className={s.skip}>Skip to content</a>
  <div className={f.frame} data-frame>
- {path==='/'&&<HalftoneSky variant="hero"/>}
+ {path==='/'&&<PaperSky variant="hero"/>}
  <header ref={header} className={f.header} data-menu={menu?'':undefined}>
   <Link href="/" className={f.mark} aria-label="Sumit Sharma, home"><Image src="/avatar.jpg" alt="" width={24} height={24}/><span>Sumit Sharma</span></Link>
   <nav className={f.nav} aria-label="Main navigation">{links.map(([label,href])=><Link key={href} href={href} aria-current={path.startsWith(href)?'page':undefined}>{label}</Link>)}</nav>
@@ -49,7 +49,7 @@ export default function QuietShell({children}:{children:React.ReactNode}){
  <div className={f.menuBackdrop} data-open={menu?'':undefined} aria-hidden="true" onClick={()=>setMenu(false)}/>
  <main id="main" tabIndex={-1}>{children}</main>
  <footer className={f.footer} id="contact" aria-label="Contact">
-  <HalftoneSky variant="footer"/>
+  <PaperSky variant="footer"/>
   <p className={f.footerIndex}>Contact</p>
   <h2>Let’s work together.</h2>
   <p className={f.footerInvitation}>Open to projects and collaborations.</p>
