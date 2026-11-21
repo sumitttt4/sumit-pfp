@@ -378,3 +378,11 @@
 .quiet :global(.revenue-source){margin:0 0 8px!important;font:400 12.5px/1.6 var(--label);color:var(--muted)}
 .quiet :global(.revenue-source) a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
 @media(max-width:640px){.quiet :global(.revenue-stats){grid-template-columns:1fr 1fr}.quiet :global(.revenue-stats) > div:last-child{grid-column:1/-1}}
+
+/* Craft: a row of live Paper Shaders. */
+.shaderShelf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px}
+.shaderShelf figure{margin:0}
+.shaderTile{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:12px;background:var(--surface);box-shadow:0 0 0 1px var(--line)}
+.shaderShelf figcaption{display:flex;flex-direction:column;gap:2px;padding:10px 2px 0;font-size:13px;line-height:1.5;color:var(--muted)}
+.shaderShelf figcaption strong{font-weight:550;color:var(--ink)}
+@media (max-width:640px){.shaderShelf{grid-template-columns:1fr 1fr}.shaderShelf figure:last-child{display:none}}

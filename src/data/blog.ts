@@ -93,4 +93,9 @@ const posts: BlogPost[] = [
 ];
 
 const mediumIds=new Set(mediumPosts.map(post=>post.link.match(/[a-f0-9]{12}$/)?.[0]));
-export default [...posts.filter(post=>!post.link||!mediumIds.has(post.link.match(/[a-f0-9]{12}$/)?.[0])),...mediumPosts] as BlogPost[];
+/* The site shows tech and life writing only; growth and marketing pieces stay on Medium. */
+const hidden=['Reddit Playbook','first paying customers','First $389','Free Subscriptions','Boring” SaaS','ChatGPT Prompt Will Change','Growth Consultant Prompt','Learn Books 10x'];
+export const lifeTitles=['First Money Online','force people to watch','Doing Nothing','Love Redefines You'];
+export const isLife=(title:string)=>lifeTitles.some(t=>title.includes(t));
+const all=[...posts.filter(post=>!post.link||!mediumIds.has(post.link.match(/[a-f0-9]{12}$/)?.[0])),...mediumPosts] as BlogPost[];
+export default all.filter(post=>!hidden.some(h=>post.title.includes(h)));
