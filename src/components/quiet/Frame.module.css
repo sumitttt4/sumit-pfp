@@ -91,3 +91,4 @@
 .copyButton[data-state=done] .copyIcon{opacity:0;transform:scale(.6);filter:blur(2px)}
 .copyButton[data-state=done] .checkIcon{opacity:1;transform:none;filter:none}
 @media (prefers-reduced-motion:reduce){.copyIcon,.checkIcon{transition:none}}
+.footerBanner{margin-bottom:36px}

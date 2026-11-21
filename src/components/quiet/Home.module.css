@@ -76,3 +76,4 @@
 /* Hovering one item quietly dims its siblings. */
 .jobs li,.post{transition:opacity 220ms ease}
 @media (hover:hover) and (pointer:fine){.jobs:hover li:not(:hover),.posts:hover .post:not(:hover){opacity:.45}}
+.sky{margin-bottom:32px}
