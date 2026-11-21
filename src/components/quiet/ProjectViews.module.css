@@ -12,7 +12,8 @@
 .list,.grid{list-style:none;margin:0;padding:0}
 .list{border-top:1px solid var(--line)}
 .list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:16px 0;border-bottom:1px solid var(--line);transition:opacity 220ms ease}
-.rowMain{display:flex;align-items:center;gap:10px;min-width:0}
+.rowMain{display:flex;align-items:baseline;gap:10px;min-width:0}
+.rule{flex:1;border-bottom:1px dotted color-mix(in srgb,var(--muted) 55%,transparent);transform:translateY(-3px);min-width:16px}
 .name{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:550;letter-spacing:-.015em;color:var(--ink)}
 .name img{border-radius:4px;object-fit:contain;flex:none}
 .noLogo{width:18px;height:18px;border-radius:4px;background:var(--surface);flex:none}

@@ -1,7 +1,7 @@
 .quiet {
  --paper:#faf8f3;--ink:#39352f;--muted:#736d64;--line:#e7e2d9;--surface:#f1ede5;--raised:#fffdf9;--ease:cubic-bezier(.23,1,.32,1);
  --detail:var(--ink);--mark:var(--ink);
- min-height:100svh;background:var(--paper);color:var(--ink);font-family:var(--font-portfolio),sans-serif;font-size:15.5px;line-height:1.75;font-optical-sizing:auto;letter-spacing:-.012em;
+ min-height:100svh;background:var(--paper);color:var(--ink);font-family:var(--font-portfolio),sans-serif;font-size:14.5px;line-height:1.7;font-optical-sizing:auto;letter-spacing:-.012em;
 }
 .quiet *{box-sizing:border-box}
 .quiet a{color:inherit;text-decoration:none}
@@ -68,7 +68,7 @@
 .signoff{display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:19px;margin-top:28px;letter-spacing:0}
 .pageIntro{padding:42px 0 21px}
 .kicker{font-size:12px;letter-spacing:.025em;color:var(--muted);line-height:1.6;margin:0 0 13px!important}
-.pageIntro h1{font-size:28px;font-weight:500;line-height:1.35;letter-spacing:-.04em;margin:0 0 22px;text-wrap:balance}
+.pageIntro h1{font-size:24px;font-weight:550;line-height:1.3;letter-spacing:-.035em;margin:0 0 18px;text-wrap:balance}
 .pageIntro > p:not(.kicker){color:var(--muted);line-height:1.85}
 .beliefs p{font-size:15px;line-height:1.85;margin:0 0 23px}
 .beliefs strong{display:block;font-weight:500;margin-bottom:3px}
@@ -142,7 +142,7 @@
 .quiet :global(.project-image-frame img){object-fit:cover;object-position:top}
 .quiet :global(.glyph-project h2){font-size:18px;font-weight:500;line-height:1.6;margin:28px 0 15px}
 .quiet :global(.glyph-project p){font-size:15px;line-height:1.85;color:var(--muted)}
-:global(.dark) .quiet{--paper:#000;--ink:#ededed;--muted:#aaa;--line:#343434;--surface:#111;--raised:#171717;color-scheme:dark}
+:global(.dark) .quiet{--paper:#121210;--ink:#eceae4;--muted:#a39e94;--line:#2e2e2a;--surface:#1c1c19;--raised:#1a1a17;color-scheme:dark}
 :global(.dark) .sun{opacity:1;transform:rotate(0) scale(1)}
 :global(.dark) .moon{opacity:0;transform:rotate(45deg) scale(.7)}
 :global(.dark) .toolLogo[src*="nextjs"],:global(.dark) .toolLogo[src*="github"],:global(.dark) .toolLogo[src*="vercel"],:global(.dark) .toolLogo[src*="radix"],:global(.dark) .toolLogo[src*="shadcn"],:global(.dark) .toolLogo[src*="prisma"],:global(.dark) .toolLogo[src*="opencode"]{filter:invert(1)}
@@ -181,7 +181,7 @@
  .support{font-size:12px;line-height:1.8}
  .signoff{align-items:start;flex-direction:column;gap:8px}
  .pageIntro{padding:28px 0 15px}
- .pageIntro h1{font-size:25px;line-height:1.4;margin-bottom:20px}
+ .pageIntro h1{font-size:22px;line-height:1.35;margin-bottom:16px}
  .reference > a:first-child{align-items:start;flex-direction:column;gap:1px}
  .reference p{font-size:14px}
  .projectEntry{padding:21px 0}
