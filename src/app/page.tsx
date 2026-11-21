@@ -10,7 +10,7 @@ import posts from '@/data/blog';
 import {experience,profile} from '@/data/profile';
 import {featuredProjects} from '@/data/quiet';
 import h from '@/components/quiet/Home.module.css';
-export const metadata:Metadata={title:'Sumit Sharma — Design engineer',description:'Design engineer in India. I build for the web and make small, focused tools.',alternates:{canonical:'/'}};
+export const metadata:Metadata={title:'Sumit Sharma — Design engineer',description:'Design engineer. I build for the web and make small, focused tools.',alternates:{canonical:'/'}};
 const project=(slug:string)=>featuredProjects.find(p=>p.slug===slug)!;
 const ext={target:'_blank',rel:'noreferrer'};
 /* "Aug 2026 — Present" → "2026 – now", "Feb 2026 — Jun 2026" → "2026". */
@@ -26,8 +26,8 @@ export default function Home(){return <>
  <section className={h.hero}>
   <div className={h.identity}><span className={h.avatar}><Image src="/avatar.jpg" alt="" fill sizes="56px" priority/></span><div><Greeting className={h.greeting}/><h1 className={h.name}>Sumit Sharma</h1><p className={h.role}>Design engineer</p></div></div>
   <div className={h.about}>
-   <p>I’m from India. I build for the web and make small, focused tools like <PreviewLink {...project('glyph')}/>, <PreviewLink {...project('glaze')}/> and <PreviewLink {...project('glyph-skill')}/>.</p>
-   <p>You can reach me on <a href={profile.github} {...ext}>GitHub</a>, <a href={profile.twitter} {...ext}>X</a>, <a href={profile.linkedin} {...ext}>LinkedIn</a> or by <a href="#contact">email</a>.</p>
+   <p>I build for the web and make small, focused tools like <PreviewLink {...project('glyph')}/>, <PreviewLink {...project('glaze')}/> and <PreviewLink {...project('glyph-skill')}/>.</p>
+   <p>You can reach me on <a href={profile.github} {...ext}>GitHub</a> and <a href={profile.twitter} {...ext}>X</a>.</p>
   </div>
  </section>
  <section className={r.section}><SectionHead title="Collections"/><Rows items={collections}/></section>
