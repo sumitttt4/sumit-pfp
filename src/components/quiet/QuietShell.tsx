@@ -8,6 +8,7 @@ import {profile} from '@/data/profile';
 import {revealQuietPage} from '@/lib/quiet-snake';
 import {revealOnScroll} from '@/lib/reveal';
 import {Arrow,CheckIcon,CopyIcon,GithubIcon,ThemeIcon,XIcon} from './Icons';
+import HalftoneBanner from './HalftoneBanner';
 import VisitorCount from './VisitorCount';
 import s from './Quiet.module.css';
 import f from './Frame.module.css';
@@ -47,6 +48,7 @@ export default function QuietShell({children}:{children:React.ReactNode}){
  <div className={f.menuBackdrop} data-open={menu?'':undefined} aria-hidden="true" onClick={()=>setMenu(false)}/>
  <main id="main" tabIndex={-1}>{children}</main>
  <footer className={f.footer} id="contact" aria-label="Contact">
+  <HalftoneBanner className={f.footerBanner} src="/halftone/deep-blue.jpg" height={150} cell={5} bg="#020a1c" focus={[.5,.55]}/>
   <p className={f.footerIndex}>Contact</p>
   <h2>Let’s work together.</h2>
   <p className={f.footerInvitation}>Open to projects and collaborations.</p>
