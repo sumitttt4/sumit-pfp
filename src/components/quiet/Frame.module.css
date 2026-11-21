@@ -6,6 +6,7 @@
 .canvas :is(a,button,input,summary):focus-visible{outline-color:var(--accent)}
 
 .frame{position:relative;width:min(var(--frame),100%);margin-inline:auto;min-height:100svh;display:flex;flex-direction:column;isolation:isolate}
+.frame{padding-top:240px}
 .frame[data-home]{padding-top:250px}
 .frame > main{flex:1;padding-inline:var(--gutter);outline:none}
 .frame > main > section,.footer{scroll-margin-top:60px}
@@ -41,6 +42,7 @@
 @media (max-width:640px){
  .canvas{--gutter:20px;--cols:4;background-color:var(--paper)}
  .frame{border-inline:0}
+ .frame{padding-top:160px}
  .frame[data-home]{padding-top:170px}
  .header{gap:8px;padding-inline:12px}
  .mark{padding:4px}
