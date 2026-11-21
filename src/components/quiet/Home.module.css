@@ -12,8 +12,7 @@
 .about p{margin:0 0 14px!important}
 .about p:last-child{margin:0!important}
 .about p > a{text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px;text-decoration-thickness:1px;transition:text-decoration-color 150ms ease}
-.about [data-preview-name]{padding:1px 7px 1px 4px;margin-inline:1px;border:1px solid var(--line);border-radius:7px;background:var(--surface)}
-.about [data-preview-name] > a{font-weight:550;text-decoration:none}
+.about [data-preview-name] > a{font-weight:400;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px;text-decoration-thickness:1px}
 
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .card{display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:var(--raised);transition:transform 260ms var(--ease),box-shadow 260ms var(--ease)}
