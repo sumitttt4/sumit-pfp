@@ -5,6 +5,9 @@ import {useTheme} from 'next-themes';
 import s from './PaperSky.module.css';
 
 const Dithering=dynamic(()=>import('@paper-design/shaders-react').then(m=>m.Dithering),{ssr:false});
+const Warp=dynamic(()=>import('@paper-design/shaders-react').then(m=>m.Warp),{ssr:false});
+/* Footer band: liquid warp, the orange accent folding into the sky blue. */
+const warp={light:['#faf8f3','#ffb38a','#e8552a','#2457ea'],dark:['#000000','#5a1c08','#ff6f43','#2f5cff']};
 
 /**
  * Full-bleed animated sky made with a Paper Shaders dither: a slow simplex-noise field quantised through an 8x8 Bayer matrix.
@@ -29,6 +32,7 @@ export default function PaperSky({variant}:{variant:'hero'|'footer'}){
  const c=palette[resolvedTheme==='dark'?'dark':'light'][variant];
  const hero=variant==='hero';
  return <div ref={ref} className={`${s.sky} ${hero?s.hero:s.footer}`} aria-hidden="true" data-ready={mounted?'':undefined}>
-  {mounted&&<Dithering style={{position:'absolute',inset:0,width:'100%',height:'100%'}} colorBack={c.back} colorFront={c.front} shape={hero?'simplex':'dots'} type={hero?'8x8':'4x4'} size={3} scale={hero?.75:.55} speed={live?(hero?.22:.14):0} offsetY={hero?-.1:.2}/>}
+  {mounted&&!hero&&<Warp style={{position:'absolute',inset:0,width:'100%',height:'100%'}} colors={warp[resolvedTheme==='dark'?'dark':'light']} proportion={.45} softness={1} distortion={.25} swirl={.8} swirlIterations={10} shape="checks" shapeScale={.1} speed={live?.6:0}/>}
+  {mounted&&hero&&<Dithering style={{position:'absolute',inset:0,width:'100%',height:'100%'}} colorBack={c.back} colorFront={c.front} shape={hero?'simplex':'dots'} type={hero?'8x8':'4x4'} size={3} scale={hero?.75:.55} speed={live?(hero?.22:.14):0} offsetY={hero?-.1:.2}/>}
  </div>;
 }
