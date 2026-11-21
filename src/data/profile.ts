@@ -59,6 +59,7 @@ export const stack = [
       ["shadcn/ui", "shadcn"],
       ["Radix UI", "radix"],
       ["Motion", "motion"],
+      ["Paper Shaders", "paper"],
     ],
   },
   {
