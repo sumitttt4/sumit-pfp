@@ -29,7 +29,7 @@ export default function QuietShell({children}:{children:React.ReactNode}){
  const copyEmail=useCallback(async()=>{clearTimeout(copyTimer.current);try{await navigator.clipboard.writeText(profile.email);setCopied('done')}catch{setCopied('failed')}copyTimer.current=setTimeout(()=>setCopied('idle'),1600)},[]);
  return <div ref={shell} className={`${s.quiet} ${f.canvas}`} data-quiet><a href="#main" className={s.skip}>Skip to content</a>
  <div className={f.frame} data-frame data-home={path==='/'?'':undefined}>
- {path==='/'&&<PaperSky variant="hero"/>}
+ <PaperSky variant="hero"/>
  <header ref={header} className={f.header} data-menu={menu?'':undefined}>
   <Link href="/" className={f.mark}>Sumit Sharma</Link>
   <nav className={f.nav} aria-label="Main navigation">{links.map(([label,href])=><Link key={href} href={href} aria-current={path.startsWith(href)?'page':undefined}>{label}</Link>)}</nav>
