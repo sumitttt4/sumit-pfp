@@ -25,6 +25,8 @@ export default function ContactSheet() {
             href={project.href}
             target="_blank"
             rel="noreferrer"
+            aria-label={project.name}
+            title={project.name}
             style={{ '--still': still.light, '--still-dark': still.dark, '--num': still.num, '--num-dark': still.numDark, '--i': index } as CSSProperties}
           >
             <span className={s.perf} aria-hidden="true" />

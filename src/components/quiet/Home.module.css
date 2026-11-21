@@ -1,47 +1,39 @@
-.hero { padding: 18px 0 8px; }
-.who { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
-.avatar { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; flex: none; }
-.greeting { margin: 0 0 1px !important; font-size: 13px !important; line-height: 1.4 !important; color: var(--muted); }
-.greeting > div { height: 18px !important; min-width: 72px; }
-.name { margin: 0; font-size: 22px; font-weight: 560; letter-spacing: -.03em; line-height: 1.15; }
-.role { margin: 3px 0 0; font-size: 13px; line-height: 1.5; color: var(--muted); }
-.role a, .reach a, .ink { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; text-decoration-thickness: 1px; }
-.hero p.bio { margin: 0 0 12px; font-size: 14.5px; line-height: 1.75; text-wrap: pretty; }
-.hero p.reach { margin: 0; font-size: 14px; line-height: 1.7; }
+.hero { padding: 36px 0 8px; }
+.who { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+.avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; flex: none; }
+.name { margin: 0; font-size: 18px; font-weight: 550; letter-spacing: -.02em; line-height: 1.2; }
+.role { margin: 2px 0 0; font-size: 13px; line-height: 1.4; color: var(--muted); }
+.hero p.bio { max-width: 46ch; margin: 0 0 14px; font-size: 14px; line-height: 1.65; text-wrap: pretty; }
+.hero p.reach { margin: 0; font-size: 14px; line-height: 1.6; }
+.reach a { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
 
-.section { padding: 28px 0 4px; }
-.label { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 0 0 8px; }
-.label h2 { margin: 0; font-size: 13px; font-weight: 550; letter-spacing: -.01em; color: var(--muted); }
-.label a { font-size: 12.5px; color: var(--muted); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.section { padding-top: 56px; }
+.github { padding-top: 56px; }
+.labelRow { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.section > h2.label,
+.github h2.label { margin: 0 0 8px; font-size: 13px; font-weight: 450; letter-spacing: 0; line-height: 1.4; color: var(--muted); }
+.labelRow a { font-size: 12px; color: var(--muted); }
 
 .list { list-style: none; margin: 0; padding: 0; }
-.list > li { padding: 9px 0; }
-.leader { display: flex; align-items: baseline; gap: 8px; min-width: 0; color: inherit; }
-.leaderName { display: inline-flex; align-items: center; gap: 7px; min-width: 0; font-size: 14px; font-weight: 550; letter-spacing: -.02em; line-height: 1.45; }
-.leaderName img { width: 14px; height: 14px; border-radius: 3px; object-fit: contain; flex: none; }
-.dots { flex: 1 1 20px; border-bottom: 1px dotted color-mix(in srgb, var(--muted) 55%, transparent); transform: translateY(-4px); min-width: 16px; }
-.hint { flex: 0 1 auto; max-width: 52%; font-size: 12.5px; line-height: 1.45; color: var(--muted); text-align: right; text-wrap: pretty; }
-time.hint { white-space: nowrap; max-width: none; }
-.list p.detail { margin: 3px 0 0; font-size: 13px; line-height: 1.65; color: var(--muted); text-wrap: pretty; }
-.list p.links { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 4px 0 0; font-size: 12px; line-height: 1.5; color: var(--muted); }
-.list p.links a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
-.now { margin-left: 2px; padding: 2px 5px; border-radius: 4px; background: var(--surface); color: var(--muted); font: 550 9.5px/1 var(--font-geist-mono), ui-monospace, monospace; letter-spacing: .06em; text-transform: uppercase; }
-
-a.leader { text-decoration: none; }
-a.leader:hover .leaderName, .leaderName:hover { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 6px 0;
+  color: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.row > span:first-child { flex: none; font-weight: 500; }
+.dots { flex: 1 1 auto; min-width: 16px; border-bottom: 1px dotted color-mix(in srgb, var(--muted) 50%, transparent); transform: translateY(-3px); }
+.hint { flex: none; color: var(--muted); font-weight: 400; font-size: 13px; white-space: nowrap; }
 
 @media (hover: hover) and (pointer: fine) {
-  .label a:hover, .reach a:hover, .role a:hover, .ink:hover, .links a:hover { text-decoration-color: var(--ink); }
-  .list:hover > li:not(:hover) { opacity: .5; }
-  .list > li { transition: opacity 180ms ease; }
+  .row:hover > span:first-child { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+  .reach a:hover, .labelRow a:hover { color: var(--ink); }
 }
 @media (max-width: 640px) {
-  .hero { padding-top: 8px; }
-  .name { font-size: 20px; }
-  .bio { font-size: 14px; }
-  .hint { max-width: 46%; }
-  .section { padding-top: 24px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .list > li { transition: none; }
+  .hero { padding-top: 28px; }
+  .section, .github { padding-top: 44px; }
+  .hint { font-size: 12.5px; }
 }
