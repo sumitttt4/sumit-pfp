@@ -4,7 +4,7 @@ import styles from "@/components/quiet/Quiet.module.css";
 import { Rows, SectionHead, rowStyles as r } from "@/components/quiet/Rows";
 import { createReader } from "@keystatic/core/reader";
 import keystaticConfig from "../../../keystatic.config";
-import staticPosts from "@/data/blog";
+import staticPosts, { isLife } from "@/data/blog";
 
 export const metadata: Metadata = {
   title: "Writing — Sumit Sharma",
@@ -45,5 +45,5 @@ export default async function Blog() {
   const posts = Array.from(bySlug.values()).sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
-  return <><header className={styles.pageIntro}><p className={styles.kicker}>Writing</p><h1><HeadingWords text="Notes from making things"/></h1><p>On design, building products, and life beyond the screen.</p></header><section className={r.section}><SectionHead title="All writing"/><Rows items={[{key:"draft",label:"If you want a good UI, try this",meta:"Draft",href:"/blog/if-you-want-a-good-ui"},...posts.map(post=>({key:post.slug,label:post.title,meta:post.link?`Medium · ${formatDate(post.date)}`:formatDate(post.date),href:post.link??`/blog/${post.slug}`}))]}/></section></>;
+  return <><header className={styles.pageIntro}><p className={styles.kicker}>Writing</p><h1><HeadingWords text="Notes from making things"/></h1><p>On building for the web, and on life.</p></header>{[["Tech",posts.filter(p=>!isLife(p.title)),true],["Life",posts.filter(p=>isLife(p.title)),false]].map(([title,list,draft])=><section className={r.section} key={title as string}><SectionHead title={title as string}/><Rows items={[...(draft?[{key:"draft",label:"If you want a good UI, try this",meta:"Draft",href:"/blog/if-you-want-a-good-ui"}]:[]),...(list as typeof posts).map(post=>({key:post.slug,label:post.title,meta:formatDate(post.date),href:post.link??`/blog/${post.slug}`}))]}/></section>)}</>;
 }
