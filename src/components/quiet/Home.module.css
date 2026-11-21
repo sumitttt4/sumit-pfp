@@ -1,5 +1,5 @@
 /* Home: one hero, then numbered sections separated by framed rules. */
-.hero{padding:56px 0 48px}
+.hero{padding:250px 0 48px}
 .identity{display:flex;align-items:center;gap:16px;margin-bottom:28px}
 .avatar{position:relative;flex:none;width:64px;height:64px;border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px var(--line),0 8px 18px -10px #3f342060;transform:rotate(-3deg);transition:transform 320ms var(--ease)}
 .avatar img{object-fit:cover}
@@ -60,7 +60,7 @@
  .card:hover{transform:translateY(-2px);box-shadow:0 14px 28px -18px #3f342060}
 }
 @media (max-width:640px){
- .hero{padding:36px 0 36px}
+ .hero{padding:190px 0 36px}
  .identity{gap:14px;margin-bottom:22px}
  .avatar{width:56px;height:56px;border-radius:14px}
  .name{font-size:29px!important}
@@ -76,4 +76,3 @@
 /* Hovering one item quietly dims its siblings. */
 .jobs li,.post{transition:opacity 220ms ease}
 @media (hover:hover) and (pointer:fine){.jobs:hover li:not(:hover),.posts:hover .post:not(:hover){opacity:.45}}
-.sky{margin-bottom:32px}
