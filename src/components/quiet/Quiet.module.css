@@ -1,5 +1,5 @@
 .quiet {
- --paper:#faf8f3;--ink:#39352f;--muted:#736d64;--line:#e7e2d9;--surface:#f1ede5;--raised:#fffdf9;--ease:cubic-bezier(.23,1,.32,1);
+ --paper:#f5f7fd;--ink:#1c2433;--muted:#5d6b82;--line:#e1e6f2;--surface:#e8eefb;--raised:#ffffff;--ease:cubic-bezier(.23,1,.32,1);
  --detail:var(--ink);--mark:var(--ink);
  min-height:100svh;background:var(--paper);color:var(--ink);font-family:var(--font-portfolio),sans-serif;font-size:14.5px;line-height:1.7;font-optical-sizing:auto;letter-spacing:-.012em;
 }
@@ -142,7 +142,7 @@
 .quiet :global(.project-image-frame img){object-fit:cover;object-position:top}
 .quiet :global(.glyph-project h2){font-size:18px;font-weight:500;line-height:1.6;margin:28px 0 15px}
 .quiet :global(.glyph-project p){font-size:15px;line-height:1.85;color:var(--muted)}
-:global(.dark) .quiet{--paper:#121210;--ink:#eceae4;--muted:#a39e94;--line:#2e2e2a;--surface:#1c1c19;--raised:#1a1a17;color-scheme:dark}
+:global(.dark) .quiet{--paper:#12141c;--ink:#eef1f8;--muted:#a3adc4;--line:#2c3348;--surface:#1c2233;--raised:#1a2030;color-scheme:dark}
 :global(.dark) .sun{opacity:1;transform:rotate(0) scale(1)}
 :global(.dark) .moon{opacity:0;transform:rotate(45deg) scale(.7)}
 :global(.dark) .toolLogo[src*="nextjs"],:global(.dark) .toolLogo[src*="github"],:global(.dark) .toolLogo[src*="vercel"],:global(.dark) .toolLogo[src*="radix"],:global(.dark) .toolLogo[src*="shadcn"],:global(.dark) .toolLogo[src*="prisma"],:global(.dark) .toolLogo[src*="opencode"]{filter:invert(1)}

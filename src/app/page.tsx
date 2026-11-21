@@ -1,7 +1,7 @@
+import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import ContactSheet from '@/components/quiet/ContactSheet';
 import GithubActivity from '@/components/quiet/GithubActivity';
 import GlyphMark from '@/components/quiet/GlyphMark';
 import Tool from '@/components/quiet/Tool';
@@ -15,22 +15,14 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 };
 
-const hints: Record<string, string> = {
-  glyph: 'Brand identity',
-  'glyph-skill': 'Design skill',
-  glaze: 'React components',
-  slate: 'Launch films',
-  'fedup-studio': 'Landing pages',
-  'file-studio': 'File tools',
+const projects: Record<string, { hint: string; color: string }> = {
+  glyph: { hint: 'Brand identity', color: '#e25a2a' },
+  'glyph-skill': { hint: 'Design skill', color: '#2f9e62' },
+  glaze: { hint: 'React components', color: '#3b7ddd' },
+  slate: { hint: 'Launch films', color: '#7a5af5' },
+  'fedup-studio': { hint: 'Landing pages', color: '#e0a100' },
+  'file-studio': { hint: 'File tools', color: '#e15b8a' },
 };
-
-const collections = [
-  ['Work', '/projects', 'Shipped products'],
-  ['Writing', '/blog', 'Notes and essays'],
-  ['Craft', '/craft', 'Tools I use'],
-  ['Resume', '/resume', 'Where I’ve worked'],
-  ['About', '/about', 'Off the clock'],
-] as const;
 
 export default function Home() {
   return (
@@ -54,32 +46,20 @@ export default function Home() {
       </section>
 
       <section className={h.section}>
-        <h2 className={h.label}>Collections</h2>
-        <ul className={h.list}>
-          {collections.map(([name, href, hint]) => (
-            <li key={href}>
-              <Link className={h.row} href={href}>
-                <span>{name}</span>
-                <span className={h.dots} aria-hidden="true" />
-                <span className={h.hint}>{hint}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className={h.section}>
         <h2 className={h.label}>Projects</h2>
         <ul className={h.list}>
-          {featuredProjects.map((item) => (
-            <li key={item.slug}>
-              <Link className={h.row} href={item.detail ?? `/projects#${item.slug}`}>
-                <span>{item.name}</span>
-                <span className={h.dots} aria-hidden="true" />
-                <span className={h.hint}>{hints[item.slug] ?? item.name}</span>
-              </Link>
-            </li>
-          ))}
+          {featuredProjects.map((item) => {
+            const tone = projects[item.slug] ?? { hint: item.name, color: '#7a5af5' };
+            return (
+              <li key={item.slug}>
+                <Link className={h.row} href={item.detail ?? `/projects#${item.slug}`} style={{ '--row': tone.color } as CSSProperties}>
+                  <span className={h.chip} aria-hidden="true" />
+                  <span className={h.project}>{item.name}</span>
+                  <span className={h.hint}>{tone.hint}</span>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </section>
 
@@ -92,8 +72,6 @@ export default function Home() {
           </div>
         )}
       />
-
-      <ContactSheet />
     </>
   );
 }
