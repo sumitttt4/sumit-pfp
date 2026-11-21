@@ -1,0 +1,24 @@
+/* Rows: label · · · · · · note. Quiet section titles, generous space between sections. */
+.section{padding-block:30px}
+.head{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:28px;margin-bottom:8px}
+.head h2{margin:0!important;font-size:14px!important;font-weight:400!important;line-height:1.5!important;letter-spacing:0!important;color:var(--muted)!important}
+.more{display:inline-flex;align-items:center;gap:4px;font-size:13px;color:var(--muted);transition:color 150ms ease}
+
+.rows{list-style:none;margin:0;padding:0}
+.row{display:flex;align-items:baseline;gap:14px;padding:7px 0;font-size:15px;line-height:1.55;color:var(--ink)}
+.label{flex:0 1 auto;min-width:0;text-wrap:pretty}
+.label img{display:inline-block;vertical-align:-3px;margin-right:8px;border-radius:4px;object-fit:contain}
+.leader{flex:1 1 24px;min-width:24px;align-self:center;height:0;border-top:1px dotted color-mix(in srgb,var(--muted) 40%,transparent)}
+.meta{flex:none;max-width:55%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:right;font-size:14px;color:var(--muted)}
+.metaWrap{flex:0 1 auto;max-width:68%;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:2px 14px;font-size:14px;color:var(--muted)}
+.dot{display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:#2ca64b;vertical-align:2px}
+
+@media (hover:hover) and (pointer:fine){
+ a.row:hover .label{text-decoration:underline;text-decoration-color:var(--muted);text-underline-offset:4px;text-decoration-thickness:1px}
+ a.row:hover .leader{border-top-color:color-mix(in srgb,var(--muted) 70%,transparent)}
+ .more:hover{color:var(--ink)}
+}
+@media (max-width:640px){.row{gap:10px}.meta{max-width:48%;font-size:13.5px}.metaWrap{max-width:62%}}
+/* Wrapping notes (tool lists): keep the leader on the first line. */
+.rows[data-wrap] .row{align-items:flex-start}
+.rows[data-wrap] .leader{align-self:flex-start;margin-top:.8em}

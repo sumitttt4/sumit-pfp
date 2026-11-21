@@ -1,0 +1,7 @@
+/* Shader skies. Hero: full-bleed behind the top of the page, fading into the paper.
+   Footer: a full-bleed decorative band, like a garland above the last line. */
+.sky{left:50%;width:100vw;transform:translateX(-50%);pointer-events:none;opacity:0;transition:opacity 1200ms var(--ease)}
+.sky[data-ready]{opacity:1}
+.hero{position:absolute;top:0;z-index:-1;height:640px;-webkit-mask-image:linear-gradient(#000 150px,#00000022 250px,#0000000c 440px,transparent 640px);mask-image:linear-gradient(#000 150px,#00000022 250px,#0000000c 440px,transparent 640px)}
+.footer{position:relative;height:240px;margin:32px 0 28px;-webkit-mask-image:radial-gradient(50% 50% at 50% 50%,#000 25%,#0000008c 60%,transparent 100%);mask-image:radial-gradient(50% 50% at 50% 50%,#000 25%,#0000008c 60%,transparent 100%)}
+@media (max-width:640px){.hero{height:480px;-webkit-mask-image:linear-gradient(#000 100px,#00000022 165px,transparent 460px);mask-image:linear-gradient(#000 100px,#00000022 165px,transparent 460px)}.footer{height:150px;-webkit-mask-image:radial-gradient(50% 50% at 50% 50%,#000 25%,#0000008c 60%,transparent 100%);mask-image:radial-gradient(50% 50% at 50% 50%,#000 25%,#0000008c 60%,transparent 100%)}}
