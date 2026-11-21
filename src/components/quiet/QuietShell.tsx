@@ -1,13 +1,12 @@
 "use client";
 import Link from 'next/link';
-import Image from 'next/image';
 import {usePathname} from 'next/navigation';
 import {useTheme} from 'next-themes';
 import {useCallback,useEffect,useRef,useState} from 'react';
 import {profile} from '@/data/profile';
 import {revealQuietPage} from '@/lib/quiet-snake';
 import {revealOnScroll} from '@/lib/reveal';
-import {Arrow,CheckIcon,CopyIcon,GithubIcon,ThemeIcon,XIcon} from './Icons';
+import {CheckIcon,CopyIcon,GithubIcon,ThemeIcon,XIcon} from './Icons';
 import PaperSky from './PaperSky';
 import VisitorCount from './VisitorCount';
 import s from './Quiet.module.css';
@@ -29,10 +28,10 @@ export default function QuietShell({children}:{children:React.ReactNode}){
  useEffect(()=>()=>clearTimeout(copyTimer.current),[]);
  const copyEmail=useCallback(async()=>{clearTimeout(copyTimer.current);try{await navigator.clipboard.writeText(profile.email);setCopied('done')}catch{setCopied('failed')}copyTimer.current=setTimeout(()=>setCopied('idle'),1600)},[]);
  return <div ref={shell} className={`${s.quiet} ${f.canvas}`} data-quiet><a href="#main" className={s.skip}>Skip to content</a>
- <div className={f.frame} data-frame>
+ <div className={f.frame} data-frame data-home={path==='/'?'':undefined}>
  {path==='/'&&<PaperSky variant="hero"/>}
  <header ref={header} className={f.header} data-menu={menu?'':undefined}>
-  <Link href="/" className={f.mark} aria-label="Sumit Sharma, home"><Image src="/avatar.jpg" alt="" width={24} height={24}/><span>Sumit Sharma</span></Link>
+  <Link href="/" className={f.mark}>Sumit Sharma</Link>
   <nav className={f.nav} aria-label="Main navigation">{links.map(([label,href])=><Link key={href} href={href} aria-current={path.startsWith(href)?'page':undefined}>{label}</Link>)}</nav>
   <div className={f.tools}>
    <a className={`${f.iconButton} ${f.social}`} href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub"><GithubIcon/></a>
@@ -50,16 +49,14 @@ export default function QuietShell({children}:{children:React.ReactNode}){
  <main id="main" tabIndex={-1}>{children}</main>
  <footer className={f.footer} id="contact" aria-label="Contact">
   <PaperSky variant="footer"/>
-  <p className={f.footerIndex}>Contact</p>
-  <h2>Let’s work together.</h2>
-  <p className={f.footerInvitation}>Open to projects and collaborations.</p>
-  <p className={f.footerZone}>Based in {profile.timezone}</p>
-  <div className={f.actions}>
-   <span className={f.emailGroup}><a href={`mailto:${profile.email}`} title={profile.email}>Email me</a><button type="button" className={`${s.copy} ${f.copyButton}`} data-state={copied} aria-label="Copy email address" title={copied==='done'?'Copied':profile.email} onClick={copyEmail}><span className={f.copyIcon}><CopyIcon/></span><span className={f.checkIcon}><CheckIcon/></span></button><span className={s.srOnly} role="status">{copied==='done'?'Email address copied':copied==='failed'?'Couldn’t copy. Use the Email me link.':''}</span></span>
-   <a href={profile.calendar} target="_blank" rel="noreferrer">Book a call <Arrow size={13}/></a>
+  <div className={f.footRow}>
+   <span>© {new Date().getFullYear()} Sumit Sharma</span>
+   <nav className={f.footLinks} aria-label="Contact">
+    <span className={f.emailGroup}><a href={`mailto:${profile.email}`} title={profile.email}>Email</a><button type="button" className={`${s.copy} ${f.copyButton}`} data-state={copied} aria-label="Copy email address" title={copied==='done'?'Copied':profile.email} onClick={copyEmail}><span className={f.copyIcon}><CopyIcon/></span><span className={f.checkIcon}><CheckIcon/></span></button><span className={s.srOnly} role="status">{copied==='done'?'Email address copied':copied==='failed'?'Couldn’t copy. Use the Email link.':''}</span></span>
+    <a href={profile.calendar} target="_blank" rel="noreferrer">Book a call</a>
+    <a href="#main">Back to top</a>
+   </nav>
   </div>
-  <nav className={f.footerLinks} aria-label="Footer links"><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a><a href={profile.twitter} target="_blank" rel="noreferrer">X</a><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href="https://buymeacoffee.com/sumitsharmq" target="_blank" rel="noreferrer">Buy me a coffee</a><a href="#main">Back to top</a></nav>
-  <p className={f.colophon}>Designed and built by Sumit.</p>
   <div className={f.meta}><VisitorCount/>{updated&&<span>Last updated · {updated}</span>}</div>
  </footer>
  </div>
