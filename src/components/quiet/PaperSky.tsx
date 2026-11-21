@@ -11,8 +11,8 @@ const Dithering=dynamic(()=>import('@paper-design/shaders-react').then(m=>m.Dith
  * It sits behind the page, fades into the paper, and stands still when off-screen, in a hidden tab, or for reduced motion.
  */
 const palette={
- light:{hero:{front:'#2457eaf2',back:'#2457ea00'},footer:{front:'#2457ea99',back:'#2457ea00'}},
- dark:{hero:{front:'#7aa2ffe6',back:'#0b1b5000'},footer:{front:'#5b86ff80',back:'#0b1b5000'}},
+ light:{hero:{front:'#2457eaf2',back:'#2457ea00'},footer:{front:'#e8552ad9',back:'#e8552a00'}},
+ dark:{hero:{front:'#7aa2ffe6',back:'#0b1b5000'},footer:{front:'#ff6f43cc',back:'#ff6f4300'}},
 };
 export default function PaperSky({variant}:{variant:'hero'|'footer'}){
  const ref=useRef<HTMLDivElement>(null);const {resolvedTheme}=useTheme();
@@ -29,6 +29,6 @@ export default function PaperSky({variant}:{variant:'hero'|'footer'}){
  const c=palette[resolvedTheme==='dark'?'dark':'light'][variant];
  const hero=variant==='hero';
  return <div ref={ref} className={`${s.sky} ${hero?s.hero:s.footer}`} aria-hidden="true" data-ready={mounted?'':undefined}>
-  {mounted&&<Dithering style={{position:'absolute',inset:0,width:'100%',height:'100%'}} colorBack={c.back} colorFront={c.front} shape={hero?'simplex':'warp'} type="8x8" size={hero?3:2.5} scale={hero?.75:1.1} speed={live?(hero?.22:.14):0} offsetY={hero?-.1:.2}/>}
+  {mounted&&<Dithering style={{position:'absolute',inset:0,width:'100%',height:'100%'}} colorBack={c.back} colorFront={c.front} shape={hero?'simplex':'dots'} type={hero?'8x8':'4x4'} size={3} scale={hero?.75:.55} speed={live?(hero?.22:.14):0} offsetY={hero?-.1:.2}/>}
  </div>;
 }

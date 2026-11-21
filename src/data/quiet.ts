@@ -10,8 +10,8 @@ export const featuredProjects:QuietProject[]=[
  {slug:'file-studio',name:'File Studio',href:'https://ineedthis-delta.vercel.app/',logo:'/brands/file-studio.svg',image:'/previews/file-studio-2026-11.jpg',tagline:'Private file tools in your browser',description:'Private file tools for PDFs, images, video and archives that run in your browser, with nothing uploaded.'},
 ];
 export const moreProjects:QuietProject[]=[
- {slug:'proofline',name:'Proofline',href:'https://proofline-lime.vercel.app/',logo:'/brands/proofline.svg',image:'/previews/proofline-2026-11.jpg',description:'A local job-search workspace: discover teams, connect your proof, and prepare an application or founder email.',status:'Early build'},
- {slug:'musiclb',name:'Musiclb',href:'https://musiclb.vercel.app/',logo:'/brands/musiclb.png',image:'/previews/musiclb-2026-11.jpg',description:'A little music diary for you and your friends. Log a song, keep a memory.'},
+ {slug:'proofline',name:'Proofline',href:'https://proofline-lime.vercel.app/',tagline:'A local job-search workspace',logo:'/brands/proofline.svg',image:'/previews/proofline-2026-11.jpg',description:'A local job-search workspace: discover teams, connect your proof, and prepare an application or founder email.',status:'Early build'},
+ {slug:'musiclb',name:'Musiclb',href:'https://musiclb.vercel.app/',tagline:'A music diary for you and friends',logo:'/brands/musiclb.png',image:'/previews/musiclb-2026-11.jpg',description:'A little music diary for you and your friends. Log a song, keep a memory.'},
 ];
 export const allProjects:QuietProject[]=[...featuredProjects,...moreProjects];
 export const personalProfiles=[
