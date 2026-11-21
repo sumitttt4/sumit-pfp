@@ -24,10 +24,10 @@ export default function ProjectViews({projects,head,storageKey,defaultView='list
     <button type="button" role="radio" aria-checked={view==='grid'} aria-label="Grid view" onClick={()=>choose('grid')}><GridIcon/></button>
    </div>
   </div>
-  {view==='list'?<ul key="list" className={v.list} data-animate={animate?'':undefined}>{projects.map((p,i)=><li key={p.slug} style={{'--i':i} as CSSProperties}>
+  {view==='list'?<ul key="list" className={v.list} data-animate={animate?'':undefined}>{projects.map((p,i)=><li id={p.slug} key={p.slug} style={{'--i':i} as CSSProperties}>
    <div className={v.rowMain}>
     <Primary p={p} className={v.name}>{p.logo?<Image src={p.logo} alt="" width={18} height={18} unoptimized/>:<span className={v.noLogo}/>}<span>{p.name}</span></Primary>
-    {p.status&&<span className={v.status}>{p.live&&<i/>}{p.status}</span>}
+    {p.status&&<><span className={v.rule} aria-hidden="true"/><span className={v.status}>{p.live&&<i/>}{p.status}</span></>}
    </div>
    <p>{p.description}</p>
    {p.proof&&<a className={v.proof} href={p.proof.href} target="_blank" rel="noreferrer" title={p.proof.title}>{p.proof.label} <Arrow size={12}/></a>}

@@ -1,0 +1,67 @@
+.sheet {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  max-width: 420px;
+  margin: 72px 0 12px;
+}
+.frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  color: inherit;
+  transition: transform 160ms var(--ease, cubic-bezier(.23, 1, .32, 1));
+}
+.frame:active { transform: scale(.98); }
+.perf {
+  height: 6px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--muted) 70%, transparent) 1px, transparent 1.2px) center / 9px 6px repeat-x;
+}
+.cell {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 2px;
+  background: var(--still);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 14%, transparent);
+  animation: expose 18s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -3s);
+}
+.no {
+  position: absolute;
+  left: 5px;
+  bottom: 4px;
+  font: 500 9px/1 var(--font-geist-mono), ui-monospace, monospace;
+  letter-spacing: .04em;
+  color: var(--num);
+}
+.name {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@keyframes expose {
+  0%, 72%, 100% { filter: saturate(.88) brightness(.96); }
+  80%, 88% { filter: saturate(1.05) brightness(1.08); }
+}
+:global(.dark) .cell { background: var(--still-dark); }
+:global(.dark) .no { color: var(--num-dark); }
+@media (hover: hover) and (pointer: fine) {
+  .frame:hover .name { color: var(--ink); }
+  .frame:hover .cell { animation-play-state: paused; filter: brightness(1.06); }
+}
+@media (max-width: 640px) {
+  .sheet { gap: 6px; margin-top: 28px; }
+  .name { font-size: 9.5px; }
+  .no { left: 3px; bottom: 3px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cell { animation: none; filter: none; }
+}

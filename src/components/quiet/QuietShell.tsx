@@ -1,6 +1,5 @@
 "use client";
 import Link from 'next/link';
-import Image from 'next/image';
 import {usePathname} from 'next/navigation';
 import {useTheme} from 'next-themes';
 import {useCallback,useEffect,useRef,useState} from 'react';
@@ -8,6 +7,7 @@ import {profile} from '@/data/profile';
 import {revealQuietPage} from '@/lib/quiet-snake';
 import {revealOnScroll} from '@/lib/reveal';
 import {Arrow,CheckIcon,CopyIcon,GithubIcon,ThemeIcon,XIcon} from './Icons';
+import PaperWash from './PaperWash';
 import VisitorCount from './VisitorCount';
 import s from './Quiet.module.css';
 import f from './Frame.module.css';
@@ -29,13 +29,11 @@ export default function QuietShell({children}:{children:React.ReactNode}){
  const copyEmail=useCallback(async()=>{clearTimeout(copyTimer.current);try{await navigator.clipboard.writeText(profile.email);setCopied('done')}catch{setCopied('failed')}copyTimer.current=setTimeout(()=>setCopied('idle'),1600)},[]);
  return <div ref={shell} className={`${s.quiet} ${f.canvas}`} data-quiet><a href="#main" className={s.skip}>Skip to content</a>
  <div className={f.frame} data-frame>
+ {path==='/'&&<PaperWash/>}
  <header ref={header} className={f.header} data-menu={menu?'':undefined}>
-  <Link href="/" className={f.mark} aria-label="Sumit Sharma, home"><Image src="/avatar.jpg" alt="" width={24} height={24}/><span>Sumit Sharma</span></Link>
+  <Link href="/" className={f.mark} aria-label="Sumit Sharma, home"><span>Sumit Sharma</span></Link>
   <nav className={f.nav} aria-label="Main navigation">{links.map(([label,href])=><Link key={href} href={href} aria-current={path.startsWith(href)?'page':undefined}>{label}</Link>)}</nav>
   <div className={f.tools}>
-   <a className={`${f.iconButton} ${f.social}`} href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub"><GithubIcon/></a>
-   <a className={`${f.iconButton} ${f.social}`} href={profile.twitter} target="_blank" rel="noreferrer" aria-label="X"><XIcon/></a>
-   <span className={f.divider}/>
    <button className={`${s.theme} ${f.iconButton}`} type="button" aria-label="Toggle colour theme" onClick={toggleTheme}><ThemeIcon/></button>
    <button className={f.menuButton} type="button" aria-expanded={menu} aria-controls="phone-menu" aria-label={menu?'Close menu':'Open menu'} onClick={()=>setMenu(v=>!v)}><span/><span/><span/></button>
   </div>
