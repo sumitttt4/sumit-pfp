@@ -11,7 +11,6 @@ import posts from '@/data/blog';
 import {experience,profile} from '@/data/profile';
 import {featuredProjects} from '@/data/quiet';
 import revenue from '@/data/glyph-revenue.json';
-import HalftoneBanner from '@/components/quiet/HalftoneBanner';
 import h from '@/components/quiet/Home.module.css';
 export const metadata:Metadata={title:'Sumit Sharma — Design engineer',description:'Design engineer. Products, notes, and small things worth using.',alternates:{canonical:'/'}};
 const project=(slug:string)=>featuredProjects.find(p=>p.slug===slug)!;
@@ -19,7 +18,6 @@ const writing=['building-glyph','your-ai-built-website-needs-a-visual-direction-
 function Head({index,title,more}:{index:string;title:string;more?:React.ReactNode}){return <div className={h.head}><span className={h.index}>{index}</span><h2>{title}</h2>{more}</div>}
 export default function Home(){return <>
  <section className={h.hero}>
-  <HalftoneBanner className={h.sky} src="/halftone/clouds.jpg" height={230} cell={6} bg="#1d4fe3" tint="#ffffff" focus={[.5,.42]}/>
   <div className={h.identity}><span className={h.avatar}><Image src="/avatar.jpg" alt="" fill sizes="64px" priority/></span><div><Greeting className={h.greeting}/><h1 className={h.name}>Sumit Sharma</h1><p className={h.role}>Design engineer · Frontend at <a href="https://craon.ai" target="_blank" rel="noreferrer">Craon</a></p></div></div>
   <p className={h.lead}>I build products for the web, from the first interface to the details of how it works. I shipped <PreviewLink {...project('glyph')}/>, a brand-identity tool with <a className={h.revenue} href={revenue.source} target="_blank" rel="noreferrer" title={`Verified on TrustMRR with ${revenue.verifiedWith}, checked ${revenue.checkedAt}`}>${revenue.allTime} in revenue</a> so far, and I make tools for people who build interfaces: <PreviewLink {...project('glaze')}/>, <PreviewLink {...project('glyph-skill')}/> and <PreviewLink {...project('slate')}/>.</p>
   <p className={h.heroLinks}><a href={profile.calendar} target="_blank" rel="noreferrer">Book a call <Arrow size={13}/></a><a href="#contact">Email me</a></p>

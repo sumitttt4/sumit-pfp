@@ -1,11 +1,11 @@
 /* The canvas: a framed column with crosshair marks where section rules meet the rails. */
-.canvas{--accent:#e8552a;--accent-soft:color-mix(in srgb,var(--accent) 8%,transparent);--label:var(--font-manrope),var(--font-portfolio),sans-serif;--gutter:40px;--frame:768px;--cols:12;--gap:16px;
+.canvas{overflow-x:clip;--accent:#e8552a;--accent-soft:color-mix(in srgb,var(--accent) 8%,transparent);--label:var(--font-manrope),var(--font-portfolio),sans-serif;--gutter:40px;--frame:768px;--cols:12;--gap:16px;
  background-color:color-mix(in srgb,var(--paper) 96%,var(--ink))}
 :global(.dark) .canvas{--accent:#ff6f43}
 .canvas ::selection{background:color-mix(in srgb,var(--accent) 22%,transparent)}
 .canvas :is(a,button,input,summary):focus-visible{outline-color:var(--accent)}
 
-.frame{position:relative;width:min(var(--frame),100%);margin-inline:auto;min-height:100svh;display:flex;flex-direction:column;background:var(--paper);border-inline:1px solid var(--line)}
+.frame{position:relative;width:min(var(--frame),100%);margin-inline:auto;min-height:100svh;display:flex;flex-direction:column;isolation:isolate;background:var(--paper);border-inline:1px solid var(--line)}
 .frame > main{flex:1;padding-inline:var(--gutter);outline:none}
 .frame > main > section,.footer{scroll-margin-top:60px}
 
@@ -21,7 +21,7 @@
 .iconButton[aria-pressed=true]{color:var(--accent)!important;background:var(--accent-soft)}
 .divider{width:1px;height:16px;background:var(--line);margin-inline:6px}
 
-.footer{position:relative;border-top:1px solid var(--line)}
+.footer{position:relative;isolation:isolate;border-top:1px solid var(--line)}
 
 .footer{padding:48px var(--gutter) 28px}
 .footerIndex{font:400 12px/1 var(--label);font-variant-numeric:tabular-nums;color:var(--muted);letter-spacing:.02em;margin:0 0 14px!important}
@@ -91,4 +91,3 @@
 .copyButton[data-state=done] .copyIcon{opacity:0;transform:scale(.6);filter:blur(2px)}
 .copyButton[data-state=done] .checkIcon{opacity:1;transform:none;filter:none}
 @media (prefers-reduced-motion:reduce){.copyIcon,.checkIcon{transition:none}}
-.footerBanner{margin-bottom:36px}
