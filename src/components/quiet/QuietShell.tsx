@@ -29,7 +29,7 @@ export default function QuietShell({children}:{children:React.ReactNode}){
  const copyEmail=useCallback(async()=>{clearTimeout(copyTimer.current);try{await navigator.clipboard.writeText(profile.email);setCopied('done')}catch{setCopied('failed')}copyTimer.current=setTimeout(()=>setCopied('idle'),1600)},[]);
  return <div ref={shell} className={`${s.quiet} ${f.canvas}`} data-quiet><a href="#main" className={s.skip}>Skip to content</a>
  <div className={f.frame} data-frame data-home={path==='/'?'':undefined}>
- <PaperSky variant="hero"/>
+ <PaperSky/>
  <header ref={header} className={f.header} data-menu={menu?'':undefined}>
   <Link href="/" className={f.mark}>Sumit Sharma</Link>
   <nav className={f.nav} aria-label="Main navigation">{links.map(([label,href])=><Link key={href} href={href} aria-current={path.startsWith(href)?'page':undefined}>{label}</Link>)}</nav>
@@ -42,13 +42,12 @@ export default function QuietShell({children}:{children:React.ReactNode}){
   </div>
   <div id="phone-menu" className={f.menu} ref={el=>{if(el)el.inert=!menu}}>
    <nav aria-label="Menu">{[['Home','/'],...links].map(([label,href],i)=><Link key={href} href={href} style={{'--i':i} as React.CSSProperties} aria-current={(href==='/'?path==='/':path.startsWith(href))?'page':undefined} onClick={()=>setMenu(false)}>{label}</Link>)}</nav>
-   <div className={f.menuSocial} style={{'--i':links.length+1} as React.CSSProperties}><a href={profile.github} target="_blank" rel="noreferrer"><GithubIcon/>GitHub</a><a href={profile.twitter} target="_blank" rel="noreferrer"><XIcon/>X</a></div>
+   <div className={f.menuSocial} style={{'--i':links.length+1} as React.CSSProperties}><a href={profile.github} target="_blank" rel="noreferrer"><GithubIcon/>GitHub</a><a href={profile.twitter} target="_blank" rel="noreferrer"><XIcon/>{profile.twitterHandle}</a></div>
   </div>
  </header>
  <div className={f.menuBackdrop} data-open={menu?'':undefined} aria-hidden="true" onClick={()=>setMenu(false)}/>
  <main id="main" tabIndex={-1}>{children}</main>
  <footer className={f.footer} id="contact" aria-label="Contact">
-  <PaperSky variant="footer"/>
   <div className={f.footRow}>
    <span>© {new Date().getFullYear()} Sumit Sharma</span>
    <nav className={f.footLinks} aria-label="Contact">

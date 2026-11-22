@@ -50,7 +50,7 @@ export default function OpenGraphImage() {
           color: "#69696e",
         }}
       >
-        <span>Design engineer & product builder</span>
+        <span>Design engineer</span>
         <span>sumitsharma.pro</span>
       </div>
     </div>,
