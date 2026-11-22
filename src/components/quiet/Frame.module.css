@@ -24,7 +24,7 @@
 .divider{width:1px;height:16px;background:var(--line);margin-inline:6px}
 
 
-.footer{position:relative;isolation:isolate;padding:0 var(--gutter) 32px}
+.footer{position:relative;isolation:isolate;margin-top:48px;padding:28px var(--gutter) 32px}
 .footRow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 20px;font-size:13.5px;color:var(--muted)}
 .footLinks{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}
 .footLinks a{transition:color 150ms ease}
@@ -60,12 +60,12 @@
 .menu{display:none;position:absolute;left:0;right:0;top:100%;padding:8px 20px 22px;border-bottom:1px solid var(--line);background:var(--paper);box-shadow:0 24px 40px -28px #3f342066;clip-path:inset(0 0 100% 0);pointer-events:none;transition:clip-path 460ms var(--ease)}
 .header[data-menu] .menu{clip-path:inset(0 0 -40px 0);pointer-events:auto}
 .menu nav{display:flex;flex-direction:column}
-.menu nav a{padding:12px 0;border-bottom:1px solid var(--line);font-size:19px;font-weight:550;letter-spacing:-.02em;color:var(--ink)}
+.menu nav a{padding:11px 0;border-bottom:1px dotted color-mix(in srgb,var(--muted) 40%,transparent);font-size:16px;font-weight:400;letter-spacing:-.01em;color:var(--ink)}
 .menu nav a[aria-current=page]{color:var(--muted)}
 .menu nav a,.menuSocial{opacity:0;transform:translateY(-8px);transition:opacity 260ms ease,transform 420ms var(--ease);transition-delay:0ms}
 .header[data-menu] .menu nav a,.header[data-menu] .menuSocial{opacity:1;transform:none;transition-delay:calc(60ms + var(--i) * 40ms)}
 .menuSocial{display:flex;gap:10px;margin-top:18px}
-.menuSocial a{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--raised);font-size:14px;font-weight:500;color:var(--ink)}
+.menuSocial a{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--raised);font-size:14px;font-weight:400;color:var(--ink)}
 .menuButton:active,.menuSocial a:active{transform:scale(.96)}
 .menuBackdrop{display:none;position:fixed;inset:0;z-index:35;background:color-mix(in srgb,var(--ink) 14%,transparent);opacity:0;pointer-events:none;transition:opacity 280ms ease}
 .menuBackdrop[data-open]{opacity:1;pointer-events:auto}
