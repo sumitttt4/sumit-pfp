@@ -24,13 +24,13 @@ const geistSans = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sumitsharma.pro"),
-  title: "Sumit Sharma – Design Engineer & Product Builder",
+  title: "Sumit Sharma — Design engineer",
   description:
-    "Design Engineer and Product Builder. I build products, landing pages, and SaaS experiences using React, Next.js, and modern web technologies.",
+    "Design engineer. I build for the web and make small, focused tools.",
   openGraph: {
-    title: "Sumit Sharma – Design Engineer & Product Builder",
+    title: "Sumit Sharma — Design engineer",
     description:
-      "Design Engineer and Product Builder. I build products, landing pages, and SaaS experiences using React, Next.js, and modern web technologies.",
+      "Design engineer. I build for the web and make small, focused tools.",
     type: "website",
     url: "https://sumitsharma.pro",
     siteName: "Sumit Sharma",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@sumitthq",
     creator: "@sumitthq",
-    title: "Sumit Sharma – Design Engineer & Product Builder",
+    title: "Sumit Sharma — Design engineer",
     description:
-      "Design Engineer and Product Builder. I build products, landing pages, and SaaS experiences using React, Next.js, and modern web technologies.",
+      "Design engineer. I build for the web and make small, focused tools.",
   },
 };
 
