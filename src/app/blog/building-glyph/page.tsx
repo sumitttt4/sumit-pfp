@@ -4,7 +4,7 @@ import Link from "next/link";
 import {Arrow} from "@/components/quiet/Icons";
 
 export const metadata: Metadata = {
-  title: "Building Glyph: from an idea to a paid product — Sumit Sharma",
+  title: "Building Glyph: from an idea to a paid product · Sumit Sharma",
   description: "A short note on building Glyph solo, launching it, and learning from paying customers.",
   alternates: { canonical: "/blog/building-glyph" },
 };

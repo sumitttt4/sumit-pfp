@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 const site="https://motion-videos-nine.vercel.app";
-export const metadata: Metadata = { title: "Slate — Sumit Sharma", description: "A library of crafted launch films you can make yours.", alternates: { canonical: "/projects/slate" } };
+export const metadata: Metadata = { title: "Slate · Sumit Sharma", description: "A library of crafted launch films you can make yours.", alternates: { canonical: "/projects/slate" } };
 export default function SlateProject() { return (
 <article className="page-content glyph-project">
 <Link className="text-link" href="/projects">All projects</Link>

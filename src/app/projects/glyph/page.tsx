@@ -3,7 +3,7 @@ import HeadingWords from '@/components/quiet/HeadingWords';
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-export const metadata: Metadata = { title: "Glyph — Sumit Sharma", alternates: { canonical: "/projects/glyph" } };
+export const metadata: Metadata = { title: "Glyph · Sumit Sharma", alternates: { canonical: "/projects/glyph" } };
 export default function GlyphProject() { return (
 <article className="page-content glyph-project">
 <Link className="text-link" href="/projects">

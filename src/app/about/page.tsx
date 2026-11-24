@@ -3,7 +3,7 @@ import type {Metadata} from 'next';
 import {Rows,SectionHead,rowStyles as r} from '@/components/quiet/Rows';
 import {personalProfiles} from '@/data/quiet';
 import s from '@/components/quiet/Quiet.module.css';
-export const metadata:Metadata={title:'About — Sumit Sharma',alternates:{canonical:'/about'}};
+export const metadata:Metadata={title:'About · Sumit Sharma',alternates:{canonical:'/about'}};
 const away=(name:string)=>personalProfiles.find(p=>p.name===name)!;
 const outside=[
  {key:'films',label:'Films',meta:'Letterboxd',href:away('Letterboxd').href},
