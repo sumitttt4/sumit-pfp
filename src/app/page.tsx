@@ -10,11 +10,11 @@ import posts from '@/data/blog';
 import {experience,profile} from '@/data/profile';
 import {featuredProjects} from '@/data/quiet';
 import h from '@/components/quiet/Home.module.css';
-export const metadata:Metadata={title:'Sumit Sharma — Design engineer',description:'Design engineer. I build for the web and make small, focused tools.',alternates:{canonical:'/'}};
+export const metadata:Metadata={title:'Sumit Sharma · Design engineer',description:'Design engineer. I build for the web and make small, focused tools.',alternates:{canonical:'/'}};
 const project=(slug:string)=>featuredProjects.find(p=>p.slug===slug)!;
 const ext={target:'_blank',rel:'noreferrer'};
-/* "Aug 2026 — Present" → "2026 – now", "Feb 2026 — Jun 2026" → "2026". */
-const years=(date:string)=>{const [a,b]=date.split(' — ').map(d=>d==='Present'?'now':d.match(/\d{4}/)?.[0]);return !b||a===b?a:`${a} – ${b}`};
+/* "Aug 2026 to Present" → "since 2026", "Feb 2026 to Jun 2026" → "2026". */
+const years=(date:string)=>{const [a,b]=date.split(' to ').map(d=>d==='Present'?'now':d.match(/\d{4}/)?.[0]);return b==='now'?`since ${a}`:!b||a===b?a:`${a} to ${b}`};
 const collections=[
  {key:'writing',label:'Writing',meta:'Notes from making things',href:'/blog'},
  {key:'craft',label:'Craft',meta:'Tools and taste',href:'/craft'},

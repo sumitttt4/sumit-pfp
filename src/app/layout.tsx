@@ -24,11 +24,11 @@ const geistSans = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sumitsharma.pro"),
-  title: "Sumit Sharma — Design engineer",
+  title: "Sumit Sharma · Design engineer",
   description:
     "Design engineer. I build for the web and make small, focused tools.",
   openGraph: {
-    title: "Sumit Sharma — Design engineer",
+    title: "Sumit Sharma · Design engineer",
     description:
       "Design engineer. I build for the web and make small, focused tools.",
     type: "website",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@sumitthq",
     creator: "@sumitthq",
-    title: "Sumit Sharma — Design engineer",
+    title: "Sumit Sharma · Design engineer",
     description:
       "Design engineer. I build for the web and make small, focused tools.",
   },

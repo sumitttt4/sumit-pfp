@@ -7,7 +7,7 @@ import keystaticConfig from "../../../keystatic.config";
 import staticPosts, { isLife } from "@/data/blog";
 
 export const metadata: Metadata = {
-  title: "Writing — Sumit Sharma",
+  title: "Writing · Sumit Sharma",
   alternates: { canonical: "/blog" },
 };
 

@@ -17,7 +17,7 @@ export const experience = [
     company: "Craon",
     href: "https://craon.ai",
     role: "Frontend Engineer · Contract",
-    date: "Aug 2026 — Present",
+    date: "Aug 2026 to Present",
     current: true,
     description:
       "Building an AI video editor. Working on the mobile editing experience, subtitles, timeline interactions, and frontend performance.",
@@ -26,7 +26,7 @@ export const experience = [
     company: "Glyph",
     href: "https://glyph.software",
     role: "Founder & Developer",
-    date: "Feb 2026 — Jun 2026",
+    date: "Feb 2026 to Jun 2026",
     current: false,
     description:
       "Designed, built, and launched a brand identity generator, from the product experience to payments and launch.",

@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Sumit Sharma — Design engineer and product builder";
+export const alt = "Sumit Sharma, design engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

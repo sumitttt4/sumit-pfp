@@ -5,7 +5,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 const site="https://glazeui.xyz";
 const install="npx shadcn@latest add sumitttt4/glazeui/glaze#main";
-export const metadata: Metadata = { title: "Glaze — Sumit Sharma", description: "93 free React components for interfaces, AI and voice, each in four finishes.", alternates: { canonical: "/projects/glaze" } };
+export const metadata: Metadata = { title: "Glaze · Sumit Sharma", description: "93 free React components for interfaces, AI and voice, each in four finishes.", alternates: { canonical: "/projects/glaze" } };
 export default function GlazeProject() { return (
 <article className="page-content glyph-project">
 <Link className="text-link" href="/projects">All projects</Link>
