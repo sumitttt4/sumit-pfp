@@ -3,8 +3,8 @@ import HeadingWords from '@/components/quiet/HeadingWords';
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-const site="https://solid-glass.vercel.app";
-const install="npx shadcn@latest add sumitttt4/solid-glass/glaze#main";
+const site="https://glazeui.xyz";
+const install="npx shadcn@latest add sumitttt4/glazeui/glaze#main";
 export const metadata: Metadata = { title: "Glaze — Sumit Sharma", description: "93 free React components for interfaces, AI and voice, each in four finishes.", alternates: { canonical: "/projects/glaze" } };
 export default function GlazeProject() { return (
 <article className="page-content glyph-project">
@@ -16,7 +16,7 @@ export default function GlazeProject() { return (
 <div className="project-footnote">
 <a className="text-link" href={site} target="_blank" rel="noreferrer">Visit Glaze <Arrow/></a>
 <a className="text-link" href={`${site}/docs`} target="_blank" rel="noreferrer">Read the docs <Arrow/></a>
-<a className="text-link" href="https://github.com/sumitttt4/solid-glass" target="_blank" rel="noreferrer">Code on GitHub <Arrow/></a>
+<a className="text-link" href="https://github.com/sumitttt4/glazeui" target="_blank" rel="noreferrer">Code on GitHub <Arrow/></a>
 </div>
 </header>
 <figure className="glyph-output">

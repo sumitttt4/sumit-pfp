@@ -41,7 +41,7 @@ export const projects: Project[] = [
     description: "A design skill for AI coding assistants, with practical rules for typography, layout, and motion.",
     image: "/glyph-skill.jpg",
     metrics: "Live · Open Source",
-    liveUrl: "https://glyph-skillfordesign.vercel.app/",
+    liveUrl: "https://designskill.site",
     githubUrl: "https://github.com/sumitttt4/Glyph-Skill",
     featured: false
   },

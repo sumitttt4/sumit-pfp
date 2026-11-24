@@ -26,7 +26,7 @@ export default function Home(){return <>
  <section className={h.hero}>
   <div className={h.identity}><span className={h.avatar}><Image src="/avatar.jpg" alt="" fill sizes="56px" priority/></span><div><Greeting className={h.greeting}/><h1 className={h.name}>Sumit Sharma</h1><p className={h.role}>Design engineer</p></div></div>
   <div className={h.about}>
-   <p>I build for the web and make small, focused tools like <PreviewLink {...project('glyph')}/>, <PreviewLink {...project('glaze')}/> and <PreviewLink {...project('glyph-skill')}/>.</p>
+   <p>I build for the web and make small, focused tools like <PreviewLink {...project('glyph')}/>, <PreviewLink {...project('glaze')}/> and <PreviewLink {...project('design-skill')}/>.</p>
    <p>You can reach me on <a href={profile.github} {...ext}>GitHub</a>, <a href={profile.twitter} {...ext}>X</a> or by <a href={`mailto:${profile.email}`}>email</a>.</p>
   </div>
  </section>
