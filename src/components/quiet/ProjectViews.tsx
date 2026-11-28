@@ -11,7 +11,7 @@ type View='list'|'grid';
 function Primary({p,className,children,label}:{p:QuietProject;className?:string;children:ReactNode;label?:string}){
  return p.detail?<Link className={className} href={p.detail} aria-label={label}>{children}</Link>:<a className={className} href={p.href} target="_blank" rel="noreferrer" aria-label={label}>{children}</a>;
 }
-/* Projects as dotted rows or a screenshot grid; the choice is remembered per visitor. */
+/* Projects as rows or a screenshot grid; the choice is remembered per visitor. */
 export default function ProjectViews({projects,title,more,storageKey,defaultView='list'}:{projects:QuietProject[];title:string;more?:ReactNode;storageKey:string;defaultView?:View}){
  const [view,setView]=useState<View>(defaultView);const [animate,setAnimate]=useState(false);
  useEffect(()=>{try{const saved=localStorage.getItem(storageKey);if(saved==='list'||saved==='grid')setView(saved)}catch{}},[storageKey]);
