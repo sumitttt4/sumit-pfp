@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "../styles/kumo.css";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import MinimalLayout from "@/components/layout/MinimalLayout";
