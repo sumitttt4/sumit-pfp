@@ -4,6 +4,7 @@
  min-height:100svh;background:var(--paper);color:var(--ink);font-family:var(--font-portfolio),sans-serif;font-size:15.5px;line-height:1.75;font-optical-sizing:auto;letter-spacing:-.012em;
 }
 .quiet *{box-sizing:border-box}
+.quiet{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .quiet a{color:inherit;text-decoration:none}
 .quiet button,.quiet input{font:inherit;color:inherit}
 .quiet button{cursor:pointer;touch-action:manipulation}

@@ -1,4 +1,4 @@
-/* Projects: dotted rows or a two-column screenshot grid, switched with a quiet text toggle. */
+/* Projects: rows or a two-column screenshot grid, switched with a quiet text toggle. */
 .root{position:relative}
 .tools{display:flex;align-items:center;gap:16px}
 .toggle{display:flex;gap:2px;font-size:13px}

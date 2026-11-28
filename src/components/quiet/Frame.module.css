@@ -60,7 +60,7 @@
 .menu{display:none;position:absolute;left:0;right:0;top:100%;padding:8px 20px 22px;border-bottom:1px solid var(--line);background:var(--paper);box-shadow:0 24px 40px -28px #3f342066;clip-path:inset(0 0 100% 0);pointer-events:none;transition:clip-path 460ms var(--ease)}
 .header[data-menu] .menu{clip-path:inset(0 0 -40px 0);pointer-events:auto}
 .menu nav{display:flex;flex-direction:column}
-.menu nav a{padding:11px 0;border-bottom:1px dotted color-mix(in srgb,var(--muted) 40%,transparent);font-size:16px;font-weight:400;letter-spacing:-.01em;color:var(--ink)}
+.menu nav a{padding:11px 0;border-bottom:1px solid var(--line);font-size:16px;font-weight:400;letter-spacing:-.01em;color:var(--ink)}
 .menu nav a[aria-current=page]{color:var(--muted)}
 .menu nav a,.menuSocial{opacity:0;transform:translateY(-8px);transition:opacity 260ms ease,transform 420ms var(--ease);transition-delay:0ms}
 .header[data-menu] .menu nav a,.header[data-menu] .menuSocial{opacity:1;transform:none;transition-delay:calc(60ms + var(--i) * 40ms)}
